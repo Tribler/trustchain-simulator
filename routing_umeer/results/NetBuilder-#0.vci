@@ -1,0 +1,33 @@
+file 35700 1551351563                                           
+version 2
+run NetBuilder-0-20190228-11:56:33-4810
+attr configname NetBuilder
+attr datetime 20190228-11:56:33
+attr experiment NetBuilder
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network networks.Dynamic
+attr processid 4810
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.address "int(replace(fullName(), \"rte\", \"\"))"
+param **.destAddresses "\"1 50\""
+param **.appType "\"App\""
+param **.app.packetLength "4096 bytes"
+
+vector 0 Dynamic.rte50.app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 1 Dynamic.rte1.app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+0	826 17529 174 32322 0.319801588399 18.275938762829 501 0 0.82781509094 164.92977500278 71.89869154461
+1	18355 17344 317 32335 0.476073026124 18.284610239523 471 0 0.811236733256 187.37739825434 90.339472145873
+
