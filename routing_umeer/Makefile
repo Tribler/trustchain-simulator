@@ -30,11 +30,12 @@ PROJECTRELATIVE_PATH =
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc, .msg and .sm files
-OBJS = $O/node/App.o $O/node/L2Queue.o $O/node/Routing.o $O/node/Packet_m.o
+OBJS = $O/node/App.o $O/node/L2Queue.o $O/node/Routing.o $O/node/Packet_m.o $O/node/PacketChain_m.o
 
 # Message files
 MSGFILES = \
-    node/Packet.msg
+    node/Packet.msg \
+    node/PacketChain.msg
 
 # SM files
 SMFILES =
