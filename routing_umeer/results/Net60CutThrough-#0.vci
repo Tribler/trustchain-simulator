@@ -1,4 +1,4 @@
-file 3345 1551346318                                            
+file 3448 1554376779                                            
 version 2
 run Net60CutThrough-0-20190228-10:31:21-3691
 attr configname Net60CutThrough
@@ -26,10 +26,9 @@ vector 0 Net60.rte[50].app endToEndDelay:vector ETV
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, vector"
 attr unit s
+0	928 1463 107 3436 0.001773413142 0.008816752647 42 0 0.005405699165 0.056503266487 0.00015094129489547
 vector 1 Net60.rte[1].app endToEndDelay:vector ETV
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, vector"
 attr unit s
-0	897 1421 107 3436 0.001773413142 0.008816752647 42 0 0.005405699165 0.056503266487 0.00015094129489547
-1	2318 1026 133 3382 0.001880873596 0.008696617596 29 0 0.004492974586 0.052508152091 0.00013373463562643
-
+1	2391 1057 133 3382 0.001880873596 0.008696617596 29 0 0.004492974586 0.052508152091 0.00013373463562643
