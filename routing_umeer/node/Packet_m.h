@@ -30,7 +30,22 @@ class Packet;
  *     int srcAddr \@packetData;
  *     int destAddr \@packetData;
  *     int hopCount \@packetData;
- *     int extraInfo \@packetData;
+ * 
+ *     // This is an enum and it has the following meaning
+ *     // 0 - Transaction  
+ *     // 1 - Chain Request
+ *     // 2 - Send Chain
+ *     // 3 - Ack of Transaction
+ *     int packetType \@packetData;
+ * 
+ *     //Send Transaction
+ *     int transactionValue \@packetData;
+ * 
+ *     //Sending Chain Information
+ *     int databaseSize \@packetData;
+ *     int userA[] \@packetData;
+ *     int userB[] \@packetData;
+ *     int transaction[] \@packetData;
  * }
  * </pre>
  */
@@ -40,8 +55,15 @@ class Packet : public ::omnetpp::cPacket
     int srcAddr = 0;
     int destAddr = 0;
     int hopCount = 0;
-    int extraInfo = 0;
+    int packetType = 0;
     int transactionValue = 0;
+    int databaseSize = 0;
+    int *userA = nullptr;
+    size_t userA_arraysize = 0;
+    int *userB = nullptr;
+    size_t userB_arraysize = 0;
+    int *transaction = nullptr;
+    size_t transaction_arraysize = 0;
 
   private:
     void copy(const Packet& other);
@@ -66,11 +88,33 @@ class Packet : public ::omnetpp::cPacket
     virtual void setDestAddr(int destAddr);
     virtual int getHopCount() const;
     virtual void setHopCount(int hopCount);
-    virtual int getExtraInfo() const;
-    virtual void setExtraInfo(int extraInfo);
+    virtual int getPacketType() const;
+    virtual void setPacketType(int packetType);
     virtual int getTransactionValue() const;
     virtual void setTransactionValue(int transactionValue);
-
+    virtual int getDatabaseSize() const;
+    virtual void setDatabaseSize(int databaseSize);
+    virtual void setUserAArraySize(size_t size);
+    virtual size_t getUserAArraySize() const;
+    virtual int getUserA(size_t k) const;
+    virtual void setUserA(size_t k, int userA);
+    virtual void insertUserA(int userA);
+    virtual void insertUserA(size_t k, int userA);
+    virtual void eraseUserA(size_t k);
+    virtual void setUserBArraySize(size_t size);
+    virtual size_t getUserBArraySize() const;
+    virtual int getUserB(size_t k) const;
+    virtual void setUserB(size_t k, int userB);
+    virtual void insertUserB(int userB);
+    virtual void insertUserB(size_t k, int userB);
+    virtual void eraseUserB(size_t k);
+    virtual void setTransactionArraySize(size_t size);
+    virtual size_t getTransactionArraySize() const;
+    virtual int getTransaction(size_t k) const;
+    virtual void setTransaction(size_t k, int transaction);
+    virtual void insertTransaction(int transaction);
+    virtual void insertTransaction(size_t k, int transaction);
+    virtual void eraseTransaction(size_t k);
 };
 
 inline void doParsimPacking(omnetpp::cCommBuffer *b, const Packet& obj) {obj.parsimPack(b);}

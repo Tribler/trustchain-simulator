@@ -15,6 +15,7 @@
 #include <omnetpp.h>
 #include "Packet_m.h"
 
+
 using namespace omnetpp;
 
 /**
@@ -148,6 +149,12 @@ void App::threadFunction(){
 
 void App::createMessage()
 {
+    //Just for Production Test
+    if(myAddress != 0){
+        return;
+    }
+
+
     //Check if i have the money for the transaction
     calculateChainValue();
     if(chainTotalValue<=0){
@@ -166,7 +173,7 @@ void App::createMessage()
 
     char pkname[40];
     sprintf(pkname, "#%ld from-%d-to-%d $%d",  pkCounter++, myAddress, destAddress, transactionValue);
-    EV << "generating packet " << pkname << endl;
+    //EV << "generating packet " << pkname << endl;
 
     if (hasGUI())
             getParentModule()->bubble("Generating packet...");
@@ -185,6 +192,8 @@ void App::createMessage()
 void App::receiveMessage(cMessage *msg){
     // Handle incoming packet
     Packet *pk = check_and_cast<Packet *>(msg);
+
+
     EV << "received packet " << pk->getName() << " after " << pk->getHopCount() << "hops" << endl;
     emit(endToEndDelaySignal, simTime() - pk->getCreationTime());
     emit(hopCountSignal, pk->getHopCount());

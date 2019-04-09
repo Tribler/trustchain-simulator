@@ -25,21 +25,11 @@ network Net5
             datarate = uniform(1kbps, 100kbps);
         }
     submodules:
-        rte[7]: Node {
+        rte[2]: Node {
             address = index;            
         }
     connections:
-        rte[1].port++ <--> C <--> rte[0].port++;
-        rte[0].port++ <--> C <--> rte[2].port++;
-        rte[4].port++ <--> C <--> rte[3].port++;
-        rte[3].port++ <--> C <--> rte[2].port++;
-        rte[2].port++ <--> C <--> rte[4].port++;
-        rte[5].port++ <--> C <--> rte[3].port++;
-        rte[6].port++ <--> C <--> rte[5].port++;
-        rte[6].port++ <--> C <--> rte[4].port++;
-        rte[1].port++ <--> C <--> rte[2].port++;
-                rte[1].port++ <--> C <--> rte[3].port++;
-        
+        rte[1].port++ <--> C <--> rte[0].port++;        
         
         
 }

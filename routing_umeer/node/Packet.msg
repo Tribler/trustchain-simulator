@@ -16,6 +16,21 @@ packet Packet
     int srcAddr @packetData;
     int destAddr @packetData;
     int hopCount @packetData;
-    int extraInfo @packetData;
+    
+   // This is an enum and it has the following meaning
+   // 0 - Transaction  
+   // 1 - Chain Request
+   // 2 - Send Chain
+   // 3 - Ack of Transaction
+    int packetType @packetData;
+    
+    //Send Transaction
+    int transactionValue @packetData;   
+   
+    //Sending Chain Information
+    int databaseSize @packetData;
+    int userA[] @packetData;
+    int userB[] @packetData;
+    int transaction[] @packetData;
 }
 
