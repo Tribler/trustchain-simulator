@@ -36,14 +36,15 @@ class Packet;
  *     // 1 - Chain Request
  *     // 2 - Send Chain
  *     // 3 - Ack of Transaction
+ *     // 4 - Information Dissemination
  *     int packetType \@packetData;
  * 
  *     //Send Transaction
  *     int transactionValue \@packetData;
  * 
  *     //Sending Chain Information
- *     int databaseSize \@packetData;
- *     int userA[] \@packetData;
+ *     //int databaseSize \@packetData;
+ *     //int userA[] \@packetData;
  *     int userB[] \@packetData;
  *     int transaction[] \@packetData;
  * }
@@ -57,9 +58,6 @@ class Packet : public ::omnetpp::cPacket
     int hopCount = 0;
     int packetType = 0;
     int transactionValue = 0;
-    int databaseSize = 0;
-    int *userA = nullptr;
-    size_t userA_arraysize = 0;
     int *userB = nullptr;
     size_t userB_arraysize = 0;
     int *transaction = nullptr;
@@ -92,15 +90,6 @@ class Packet : public ::omnetpp::cPacket
     virtual void setPacketType(int packetType);
     virtual int getTransactionValue() const;
     virtual void setTransactionValue(int transactionValue);
-    virtual int getDatabaseSize() const;
-    virtual void setDatabaseSize(int databaseSize);
-    virtual void setUserAArraySize(size_t size);
-    virtual size_t getUserAArraySize() const;
-    virtual int getUserA(size_t k) const;
-    virtual void setUserA(size_t k, int userA);
-    virtual void insertUserA(int userA);
-    virtual void insertUserA(size_t k, int userA);
-    virtual void eraseUserA(size_t k);
     virtual void setUserBArraySize(size_t size);
     virtual size_t getUserBArraySize() const;
     virtual int getUserB(size_t k) const;

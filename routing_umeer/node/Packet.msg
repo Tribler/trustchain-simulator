@@ -22,14 +22,15 @@ packet Packet
    // 1 - Chain Request
    // 2 - Send Chain
    // 3 - Ack of Transaction
+   // 4 - Information Dissemination
     int packetType @packetData;
     
     //Send Transaction
     int transactionValue @packetData;   
    
     //Sending Chain Information
-    int databaseSize @packetData;
-    int userA[] @packetData;
+    //int databaseSize @packetData;
+    //int userA[] @packetData;
     int userB[] @packetData;
     int transaction[] @packetData;
 }

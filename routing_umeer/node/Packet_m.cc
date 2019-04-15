@@ -219,7 +219,6 @@ Packet::Packet(const Packet& other) : ::omnetpp::cPacket(other)
 
 Packet::~Packet()
 {
-    delete [] this->userA;
     delete [] this->userB;
     delete [] this->transaction;
 }
@@ -239,13 +238,6 @@ void Packet::copy(const Packet& other)
     this->hopCount = other.hopCount;
     this->packetType = other.packetType;
     this->transactionValue = other.transactionValue;
-    this->databaseSize = other.databaseSize;
-    delete [] this->userA;
-    this->userA = (other.userA_arraysize==0) ? nullptr : new int[other.userA_arraysize];
-    userA_arraysize = other.userA_arraysize;
-    for (size_t i = 0; i < userA_arraysize; i++) {
-        this->userA[i] = other.userA[i];
-    }
     delete [] this->userB;
     this->userB = (other.userB_arraysize==0) ? nullptr : new int[other.userB_arraysize];
     userB_arraysize = other.userB_arraysize;
@@ -268,9 +260,6 @@ void Packet::parsimPack(omnetpp::cCommBuffer *b) const
     doParsimPacking(b,this->hopCount);
     doParsimPacking(b,this->packetType);
     doParsimPacking(b,this->transactionValue);
-    doParsimPacking(b,this->databaseSize);
-    b->pack(userA_arraysize);
-    doParsimArrayPacking(b,this->userA,userA_arraysize);
     b->pack(userB_arraysize);
     doParsimArrayPacking(b,this->userB,userB_arraysize);
     b->pack(transaction_arraysize);
@@ -285,15 +274,6 @@ void Packet::parsimUnpack(omnetpp::cCommBuffer *b)
     doParsimUnpacking(b,this->hopCount);
     doParsimUnpacking(b,this->packetType);
     doParsimUnpacking(b,this->transactionValue);
-    doParsimUnpacking(b,this->databaseSize);
-    delete [] this->userA;
-    b->unpack(userA_arraysize);
-    if (userA_arraysize == 0) {
-        this->userA = nullptr;
-    } else {
-        this->userA = new int[userA_arraysize];
-        doParsimArrayUnpacking(b,this->userA,userA_arraysize);
-    }
     delete [] this->userB;
     b->unpack(userB_arraysize);
     if (userB_arraysize == 0) {
@@ -360,82 +340,6 @@ int Packet::getTransactionValue() const
 void Packet::setTransactionValue(int transactionValue)
 {
     this->transactionValue = transactionValue;
-}
-
-int Packet::getDatabaseSize() const
-{
-    return this->databaseSize;
-}
-
-void Packet::setDatabaseSize(int databaseSize)
-{
-    this->databaseSize = databaseSize;
-}
-
-size_t Packet::getUserAArraySize() const
-{
-    return userA_arraysize;
-}
-
-int Packet::getUserA(size_t k) const
-{
-    if (k >= userA_arraysize) throw omnetpp::cRuntimeError("Array of size userA_arraysize indexed by %lu", (unsigned long)k);
-    return this->userA[k];
-}
-
-void Packet::setUserAArraySize(size_t newSize)
-{
-    int *userA2 = (newSize==0) ? nullptr : new int[newSize];
-    size_t minSize = userA_arraysize < newSize ? userA_arraysize : newSize;
-    for (size_t i = 0; i < minSize; i++)
-        userA2[i] = this->userA[i];
-    for (size_t i = minSize; i < newSize; i++)
-        userA2[i] = 0;
-    delete [] this->userA;
-    this->userA = userA2;
-    userA_arraysize = newSize;
-}
-
-void Packet::setUserA(size_t k, int userA)
-{
-    if (k >= userA_arraysize) throw omnetpp::cRuntimeError("Array of size  indexed by %lu", (unsigned long)k);
-    this->userA[k] = userA;
-}
-
-void Packet::insertUserA(size_t k, int userA)
-{
-    if (k > userA_arraysize) throw omnetpp::cRuntimeError("Array of size  indexed by %lu", (unsigned long)k);
-    size_t newSize = userA_arraysize + 1;
-    int *userA2 = new int[newSize];
-    size_t i;
-    for (i = 0; i < k; i++)
-        userA2[i] = this->userA[i];
-    userA2[k] = userA;
-    for (i = k + 1; i < newSize; i++)
-        userA2[i] = this->userA[i-1];
-    delete [] this->userA;
-    this->userA = userA2;
-    userA_arraysize = newSize;
-}
-
-void Packet::insertUserA(int userA)
-{
-    insertUserA(userA_arraysize, userA);
-}
-
-void Packet::eraseUserA(size_t k)
-{
-    if (k >= userA_arraysize) throw omnetpp::cRuntimeError("Array of size  indexed by %lu", (unsigned long)k);
-    size_t newSize = userA_arraysize - 1;
-    int *userA2 = (newSize == 0) ? nullptr : new int[newSize];
-    size_t i;
-    for (i = 0; i < k; i++)
-        userA2[i] = this->userA[i];
-    for (i = k; i < newSize; i++)
-        userA2[i] = this->userA[i+1];
-    delete [] this->userA;
-    this->userA = userA2;
-    userA_arraysize = newSize;
 }
 
 size_t Packet::getUserBArraySize() const
@@ -580,8 +484,6 @@ class PacketDescriptor : public omnetpp::cClassDescriptor
         FIELD_hopCount,
         FIELD_packetType,
         FIELD_transactionValue,
-        FIELD_databaseSize,
-        FIELD_userA,
         FIELD_userB,
         FIELD_transaction,
     };
@@ -646,7 +548,7 @@ const char *PacketDescriptor::getProperty(const char *propertyname) const
 int PacketDescriptor::getFieldCount() const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
-    return basedesc ? 9+basedesc->getFieldCount() : 9;
+    return basedesc ? 7+basedesc->getFieldCount() : 7;
 }
 
 unsigned int PacketDescriptor::getFieldTypeFlags(int field) const
@@ -663,12 +565,10 @@ unsigned int PacketDescriptor::getFieldTypeFlags(int field) const
         FD_ISEDITABLE,    // FIELD_hopCount
         FD_ISEDITABLE,    // FIELD_packetType
         FD_ISEDITABLE,    // FIELD_transactionValue
-        FD_ISEDITABLE,    // FIELD_databaseSize
-        FD_ISARRAY | FD_ISEDITABLE,    // FIELD_userA
         FD_ISARRAY | FD_ISEDITABLE,    // FIELD_userB
         FD_ISARRAY | FD_ISEDITABLE,    // FIELD_transaction
     };
-    return (field >= 0 && field < 9) ? fieldTypeFlags[field] : 0;
+    return (field >= 0 && field < 7) ? fieldTypeFlags[field] : 0;
 }
 
 const char *PacketDescriptor::getFieldName(int field) const
@@ -685,12 +585,10 @@ const char *PacketDescriptor::getFieldName(int field) const
         "hopCount",
         "packetType",
         "transactionValue",
-        "databaseSize",
-        "userA",
         "userB",
         "transaction",
     };
-    return (field >= 0 && field < 9) ? fieldNames[field] : nullptr;
+    return (field >= 0 && field < 7) ? fieldNames[field] : nullptr;
 }
 
 int PacketDescriptor::findField(const char *fieldName) const
@@ -702,10 +600,8 @@ int PacketDescriptor::findField(const char *fieldName) const
     if (fieldName[0] == 'h' && strcmp(fieldName, "hopCount") == 0) return base+2;
     if (fieldName[0] == 'p' && strcmp(fieldName, "packetType") == 0) return base+3;
     if (fieldName[0] == 't' && strcmp(fieldName, "transactionValue") == 0) return base+4;
-    if (fieldName[0] == 'd' && strcmp(fieldName, "databaseSize") == 0) return base+5;
-    if (fieldName[0] == 'u' && strcmp(fieldName, "userA") == 0) return base+6;
-    if (fieldName[0] == 'u' && strcmp(fieldName, "userB") == 0) return base+7;
-    if (fieldName[0] == 't' && strcmp(fieldName, "transaction") == 0) return base+8;
+    if (fieldName[0] == 'u' && strcmp(fieldName, "userB") == 0) return base+5;
+    if (fieldName[0] == 't' && strcmp(fieldName, "transaction") == 0) return base+6;
     return basedesc ? basedesc->findField(fieldName) : -1;
 }
 
@@ -723,12 +619,10 @@ const char *PacketDescriptor::getFieldTypeString(int field) const
         "int",    // FIELD_hopCount
         "int",    // FIELD_packetType
         "int",    // FIELD_transactionValue
-        "int",    // FIELD_databaseSize
-        "int",    // FIELD_userA
         "int",    // FIELD_userB
         "int",    // FIELD_transaction
     };
-    return (field >= 0 && field < 9) ? fieldTypeStrings[field] : nullptr;
+    return (field >= 0 && field < 7) ? fieldTypeStrings[field] : nullptr;
 }
 
 const char **PacketDescriptor::getFieldPropertyNames(int field) const
@@ -757,14 +651,6 @@ const char **PacketDescriptor::getFieldPropertyNames(int field) const
             return names;
         }
         case FIELD_transactionValue: {
-            static const char *names[] = { "packetData",  nullptr };
-            return names;
-        }
-        case FIELD_databaseSize: {
-            static const char *names[] = { "packetData",  nullptr };
-            return names;
-        }
-        case FIELD_userA: {
             static const char *names[] = { "packetData",  nullptr };
             return names;
         }
@@ -804,12 +690,6 @@ const char *PacketDescriptor::getFieldProperty(int field, const char *propertyna
         case FIELD_transactionValue:
             if (!strcmp(propertyname, "packetData")) return "";
             return nullptr;
-        case FIELD_databaseSize:
-            if (!strcmp(propertyname, "packetData")) return "";
-            return nullptr;
-        case FIELD_userA:
-            if (!strcmp(propertyname, "packetData")) return "";
-            return nullptr;
         case FIELD_userB:
             if (!strcmp(propertyname, "packetData")) return "";
             return nullptr;
@@ -830,7 +710,6 @@ int PacketDescriptor::getFieldArraySize(void *object, int field) const
     }
     Packet *pp = (Packet *)object; (void)pp;
     switch (field) {
-        case FIELD_userA: return pp->getUserAArraySize();
         case FIELD_userB: return pp->getUserBArraySize();
         case FIELD_transaction: return pp->getTransactionArraySize();
         default: return 0;
@@ -866,8 +745,6 @@ std::string PacketDescriptor::getFieldValueAsString(void *object, int field, int
         case FIELD_hopCount: return long2string(pp->getHopCount());
         case FIELD_packetType: return long2string(pp->getPacketType());
         case FIELD_transactionValue: return long2string(pp->getTransactionValue());
-        case FIELD_databaseSize: return long2string(pp->getDatabaseSize());
-        case FIELD_userA: return long2string(pp->getUserA(i));
         case FIELD_userB: return long2string(pp->getUserB(i));
         case FIELD_transaction: return long2string(pp->getTransaction(i));
         default: return "";
@@ -889,8 +766,6 @@ bool PacketDescriptor::setFieldValueAsString(void *object, int field, int i, con
         case FIELD_hopCount: pp->setHopCount(string2long(value)); return true;
         case FIELD_packetType: pp->setPacketType(string2long(value)); return true;
         case FIELD_transactionValue: pp->setTransactionValue(string2long(value)); return true;
-        case FIELD_databaseSize: pp->setDatabaseSize(string2long(value)); return true;
-        case FIELD_userA: pp->setUserA(i,string2long(value)); return true;
         case FIELD_userB: pp->setUserB(i,string2long(value)); return true;
         case FIELD_transaction: pp->setTransaction(i,string2long(value)); return true;
         default: return false;
