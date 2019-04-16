@@ -34,6 +34,20 @@ public:
     }
 };
 
+class LogDatabaseElement {
+public:
+    int UserAId, UserASeqNum, UserBId, UserBSeqNum, transactionValue; // values limited to +- 2147483647
+
+    LogDatabaseElement(int UserAId, int UserASeqNum, int UserBId,
+            int UserBSeqNum, int transactionValue) {
+        this->UserAId = UserAId;
+        this->UserASeqNum = UserASeqNum;
+        this->UserBId = UserBId;
+        this->UserBSeqNum = UserBSeqNum;
+        this->transactionValue = transactionValue;
+    }
+};
+
 class App: public cSimpleModule {
 private:
     // configuration
@@ -62,6 +76,7 @@ private:
 
     //TrustChain Storage
     std::vector<TrustChainElement> trustChain;
+    std::vector<LogDatabaseElement> logDatabase;
 
 public:
     App();
@@ -87,6 +102,7 @@ protected:
 
     virtual void verificationTransactionChain(Packet *pk);
     virtual void logTransactionChain(Packet *pk);
+    virtual bool isAlreadyPresentInDb(LogDatabaseElement *element);
 };
 
 Define_Module(App);
@@ -149,7 +165,6 @@ void App::handleMessage(cMessage *msg) {
 }
 
 void App::threadFunction() {
-
     if (waitingForAck == 0) { //Not transaction are pending
 
         //Just for Production Test (ONLY 0 CAN SEND MONEY)
@@ -171,7 +186,6 @@ void App::threadFunction() {
 }
 
 void App::receiveMessage(cMessage *msg) {
-
     // Handle incoming packet
     Packet *pk = check_and_cast<Packet *>(msg);
 
@@ -229,7 +243,6 @@ void App::receiveMessage(cMessage *msg) {
 }
 
 void App::createTransactionMessage() {
-
     //Calculate transaction value
     int transactionValue = intuniform(1, chainTotalValue);
 
@@ -261,7 +274,6 @@ void App::createTransactionMessage() {
 }
 
 void App::createChainRequestMessage() {
-
     int destAddress = tempBlockID;
 
     char pkname[40];
@@ -284,7 +296,6 @@ void App::createChainRequestMessage() {
 }
 
 void App::createChainLogMessage() {
-
     int destAddress = tempBlockID;
 
     char pkname[40];
@@ -325,13 +336,11 @@ void App::createChainLogMessage() {
 }
 
 void App::createAckMessage() {
-
     int destAddress = tempBlockID;
 
     char pkname[40];
     sprintf(pkname, "#%ld from-%d-to-%d transaction ack", pkCounter++,
             myAddress, destAddress);
-    //EV << "generating packet " << pkname << endl;
 
     if (hasGUI())
         getParentModule()->bubble("Generating packet...");
@@ -361,15 +370,54 @@ void App::verificationTransactionChain(Packet *pk) {
 }
 
 void App::logTransactionChain(Packet *pk) {
-    //TODO
+    if (pk->getUserBIDArraySize() != 0) {
+        int i;
+        for (i = 1; i < pk->getUserBIDArraySize(); i++) {
+            LogDatabaseElement *element = new LogDatabaseElement(
+                    pk->getSrcAddr(), i + 1, pk->getUserBID(i),
+                    pk->getUserBSeqNum(i), pk->getTransaction(i));
+            if (!isAlreadyPresentInDb(element)) {
+                logDatabase.push_back(*element);
+                EV << " **************new element" << endl;
+            } else {
+                EV << " ***************already present " << endl;
+            }
+        }
+    }
 }
+
+bool App::isAlreadyPresentInDb(LogDatabaseElement *element) {
+    int i;
+    for (i = 0; i < logDatabase.size(); i++) {
+        if (logDatabase[i].UserAId == element->UserAId
+                && logDatabase[i].UserASeqNum == element->UserASeqNum
+                && logDatabase[i].UserBId == element->UserBId
+                && logDatabase[i].UserBSeqNum == element->UserBSeqNum) {
+            return true;
+        }
+        if (logDatabase[i].UserAId == element->UserBId
+                && logDatabase[i].UserASeqNum == element->UserBSeqNum
+                && logDatabase[i].UserBId == element->UserAId
+                && logDatabase[i].UserBSeqNum == element->UserASeqNum) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void App::createDisseminationMessage() {
     //TODO
-
+    int i;
+    for (i = 0; i < logDatabase.size(); i++) {
+        EV << " UserA " << logDatabase[i].UserAId << " UserADeqNum: "
+                  << logDatabase[i].UserASeqNum << " UserB "
+                  << logDatabase[i].UserBId << " UserBDeqNum: "
+                  << logDatabase[i].UserBSeqNum << " transaction:"
+                  << logDatabase[i].transactionValue << endl;
+    }
 }
 
 int App::randomNodeAddressPicker() {
-
     int destAddress = -1;
 
     while (destAddress == -1 || destAddress == myAddress) {
@@ -383,16 +431,20 @@ void App::registerNewChainNode(int id, int seqNum, int value) {
     TrustChainElement *chainElement = new TrustChainElement(id, seqNum, value);
     trustChain.push_back(*chainElement);
     calculateChainValue();
+
+    if (id != -1) {
+        LogDatabaseElement *element = new LogDatabaseElement(myAddress,
+                trustChain.size(), id, seqNum, value);
+        logDatabase.push_back(*element);
+    }
 }
 
 void App::calculateChainValue() {
-
     int localTotalChainValue = 0, i = 0;
 
     for (i = 0; i < trustChain.size(); i++) {
         localTotalChainValue = localTotalChainValue
                 + trustChain[i].transactionValue;
     }
-
     chainTotalValue = localTotalChainValue;
 }
