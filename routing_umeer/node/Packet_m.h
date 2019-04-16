@@ -41,11 +41,13 @@ class Packet;
  * 
  *     //Send Transaction
  *     int transactionValue \@packetData;
+ *     int myChainSeqNum \@packetData;
  * 
  *     //Sending Chain Information
  *     //int databaseSize \@packetData;
  *     //int userA[] \@packetData;
- *     int userB[] \@packetData;
+ *     int userBID[] \@packetData;
+ *     int userBSeqNum[] \@packetData;
  *     int transaction[] \@packetData;
  * }
  * </pre>
@@ -58,8 +60,11 @@ class Packet : public ::omnetpp::cPacket
     int hopCount = 0;
     int packetType = 0;
     int transactionValue = 0;
-    int *userB = nullptr;
-    size_t userB_arraysize = 0;
+    int myChainSeqNum = 0;
+    int *userBID = nullptr;
+    size_t userBID_arraysize = 0;
+    int *userBSeqNum = nullptr;
+    size_t userBSeqNum_arraysize = 0;
     int *transaction = nullptr;
     size_t transaction_arraysize = 0;
 
@@ -90,13 +95,22 @@ class Packet : public ::omnetpp::cPacket
     virtual void setPacketType(int packetType);
     virtual int getTransactionValue() const;
     virtual void setTransactionValue(int transactionValue);
-    virtual void setUserBArraySize(size_t size);
-    virtual size_t getUserBArraySize() const;
-    virtual int getUserB(size_t k) const;
-    virtual void setUserB(size_t k, int userB);
-    virtual void insertUserB(int userB);
-    virtual void insertUserB(size_t k, int userB);
-    virtual void eraseUserB(size_t k);
+    virtual int getMyChainSeqNum() const;
+    virtual void setMyChainSeqNum(int myChainSeqNum);
+    virtual void setUserBIDArraySize(size_t size);
+    virtual size_t getUserBIDArraySize() const;
+    virtual int getUserBID(size_t k) const;
+    virtual void setUserBID(size_t k, int userBID);
+    virtual void insertUserBID(int userBID);
+    virtual void insertUserBID(size_t k, int userBID);
+    virtual void eraseUserBID(size_t k);
+    virtual void setUserBSeqNumArraySize(size_t size);
+    virtual size_t getUserBSeqNumArraySize() const;
+    virtual int getUserBSeqNum(size_t k) const;
+    virtual void setUserBSeqNum(size_t k, int userBSeqNum);
+    virtual void insertUserBSeqNum(int userBSeqNum);
+    virtual void insertUserBSeqNum(size_t k, int userBSeqNum);
+    virtual void eraseUserBSeqNum(size_t k);
     virtual void setTransactionArraySize(size_t size);
     virtual size_t getTransactionArraySize() const;
     virtual int getTransaction(size_t k) const;

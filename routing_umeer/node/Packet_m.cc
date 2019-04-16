@@ -219,7 +219,8 @@ Packet::Packet(const Packet& other) : ::omnetpp::cPacket(other)
 
 Packet::~Packet()
 {
-    delete [] this->userB;
+    delete [] this->userBID;
+    delete [] this->userBSeqNum;
     delete [] this->transaction;
 }
 
@@ -238,11 +239,18 @@ void Packet::copy(const Packet& other)
     this->hopCount = other.hopCount;
     this->packetType = other.packetType;
     this->transactionValue = other.transactionValue;
-    delete [] this->userB;
-    this->userB = (other.userB_arraysize==0) ? nullptr : new int[other.userB_arraysize];
-    userB_arraysize = other.userB_arraysize;
-    for (size_t i = 0; i < userB_arraysize; i++) {
-        this->userB[i] = other.userB[i];
+    this->myChainSeqNum = other.myChainSeqNum;
+    delete [] this->userBID;
+    this->userBID = (other.userBID_arraysize==0) ? nullptr : new int[other.userBID_arraysize];
+    userBID_arraysize = other.userBID_arraysize;
+    for (size_t i = 0; i < userBID_arraysize; i++) {
+        this->userBID[i] = other.userBID[i];
+    }
+    delete [] this->userBSeqNum;
+    this->userBSeqNum = (other.userBSeqNum_arraysize==0) ? nullptr : new int[other.userBSeqNum_arraysize];
+    userBSeqNum_arraysize = other.userBSeqNum_arraysize;
+    for (size_t i = 0; i < userBSeqNum_arraysize; i++) {
+        this->userBSeqNum[i] = other.userBSeqNum[i];
     }
     delete [] this->transaction;
     this->transaction = (other.transaction_arraysize==0) ? nullptr : new int[other.transaction_arraysize];
@@ -260,8 +268,11 @@ void Packet::parsimPack(omnetpp::cCommBuffer *b) const
     doParsimPacking(b,this->hopCount);
     doParsimPacking(b,this->packetType);
     doParsimPacking(b,this->transactionValue);
-    b->pack(userB_arraysize);
-    doParsimArrayPacking(b,this->userB,userB_arraysize);
+    doParsimPacking(b,this->myChainSeqNum);
+    b->pack(userBID_arraysize);
+    doParsimArrayPacking(b,this->userBID,userBID_arraysize);
+    b->pack(userBSeqNum_arraysize);
+    doParsimArrayPacking(b,this->userBSeqNum,userBSeqNum_arraysize);
     b->pack(transaction_arraysize);
     doParsimArrayPacking(b,this->transaction,transaction_arraysize);
 }
@@ -274,13 +285,22 @@ void Packet::parsimUnpack(omnetpp::cCommBuffer *b)
     doParsimUnpacking(b,this->hopCount);
     doParsimUnpacking(b,this->packetType);
     doParsimUnpacking(b,this->transactionValue);
-    delete [] this->userB;
-    b->unpack(userB_arraysize);
-    if (userB_arraysize == 0) {
-        this->userB = nullptr;
+    doParsimUnpacking(b,this->myChainSeqNum);
+    delete [] this->userBID;
+    b->unpack(userBID_arraysize);
+    if (userBID_arraysize == 0) {
+        this->userBID = nullptr;
     } else {
-        this->userB = new int[userB_arraysize];
-        doParsimArrayUnpacking(b,this->userB,userB_arraysize);
+        this->userBID = new int[userBID_arraysize];
+        doParsimArrayUnpacking(b,this->userBID,userBID_arraysize);
+    }
+    delete [] this->userBSeqNum;
+    b->unpack(userBSeqNum_arraysize);
+    if (userBSeqNum_arraysize == 0) {
+        this->userBSeqNum = nullptr;
+    } else {
+        this->userBSeqNum = new int[userBSeqNum_arraysize];
+        doParsimArrayUnpacking(b,this->userBSeqNum,userBSeqNum_arraysize);
     }
     delete [] this->transaction;
     b->unpack(transaction_arraysize);
@@ -342,70 +362,146 @@ void Packet::setTransactionValue(int transactionValue)
     this->transactionValue = transactionValue;
 }
 
-size_t Packet::getUserBArraySize() const
+int Packet::getMyChainSeqNum() const
 {
-    return userB_arraysize;
+    return this->myChainSeqNum;
 }
 
-int Packet::getUserB(size_t k) const
+void Packet::setMyChainSeqNum(int myChainSeqNum)
 {
-    if (k >= userB_arraysize) throw omnetpp::cRuntimeError("Array of size userB_arraysize indexed by %lu", (unsigned long)k);
-    return this->userB[k];
+    this->myChainSeqNum = myChainSeqNum;
 }
 
-void Packet::setUserBArraySize(size_t newSize)
+size_t Packet::getUserBIDArraySize() const
 {
-    int *userB2 = (newSize==0) ? nullptr : new int[newSize];
-    size_t minSize = userB_arraysize < newSize ? userB_arraysize : newSize;
+    return userBID_arraysize;
+}
+
+int Packet::getUserBID(size_t k) const
+{
+    if (k >= userBID_arraysize) throw omnetpp::cRuntimeError("Array of size userBID_arraysize indexed by %lu", (unsigned long)k);
+    return this->userBID[k];
+}
+
+void Packet::setUserBIDArraySize(size_t newSize)
+{
+    int *userBID2 = (newSize==0) ? nullptr : new int[newSize];
+    size_t minSize = userBID_arraysize < newSize ? userBID_arraysize : newSize;
     for (size_t i = 0; i < minSize; i++)
-        userB2[i] = this->userB[i];
+        userBID2[i] = this->userBID[i];
     for (size_t i = minSize; i < newSize; i++)
-        userB2[i] = 0;
-    delete [] this->userB;
-    this->userB = userB2;
-    userB_arraysize = newSize;
+        userBID2[i] = 0;
+    delete [] this->userBID;
+    this->userBID = userBID2;
+    userBID_arraysize = newSize;
 }
 
-void Packet::setUserB(size_t k, int userB)
+void Packet::setUserBID(size_t k, int userBID)
 {
-    if (k >= userB_arraysize) throw omnetpp::cRuntimeError("Array of size  indexed by %lu", (unsigned long)k);
-    this->userB[k] = userB;
+    if (k >= userBID_arraysize) throw omnetpp::cRuntimeError("Array of size  indexed by %lu", (unsigned long)k);
+    this->userBID[k] = userBID;
 }
 
-void Packet::insertUserB(size_t k, int userB)
+void Packet::insertUserBID(size_t k, int userBID)
 {
-    if (k > userB_arraysize) throw omnetpp::cRuntimeError("Array of size  indexed by %lu", (unsigned long)k);
-    size_t newSize = userB_arraysize + 1;
-    int *userB2 = new int[newSize];
+    if (k > userBID_arraysize) throw omnetpp::cRuntimeError("Array of size  indexed by %lu", (unsigned long)k);
+    size_t newSize = userBID_arraysize + 1;
+    int *userBID2 = new int[newSize];
     size_t i;
     for (i = 0; i < k; i++)
-        userB2[i] = this->userB[i];
-    userB2[k] = userB;
+        userBID2[i] = this->userBID[i];
+    userBID2[k] = userBID;
     for (i = k + 1; i < newSize; i++)
-        userB2[i] = this->userB[i-1];
-    delete [] this->userB;
-    this->userB = userB2;
-    userB_arraysize = newSize;
+        userBID2[i] = this->userBID[i-1];
+    delete [] this->userBID;
+    this->userBID = userBID2;
+    userBID_arraysize = newSize;
 }
 
-void Packet::insertUserB(int userB)
+void Packet::insertUserBID(int userBID)
 {
-    insertUserB(userB_arraysize, userB);
+    insertUserBID(userBID_arraysize, userBID);
 }
 
-void Packet::eraseUserB(size_t k)
+void Packet::eraseUserBID(size_t k)
 {
-    if (k >= userB_arraysize) throw omnetpp::cRuntimeError("Array of size  indexed by %lu", (unsigned long)k);
-    size_t newSize = userB_arraysize - 1;
-    int *userB2 = (newSize == 0) ? nullptr : new int[newSize];
+    if (k >= userBID_arraysize) throw omnetpp::cRuntimeError("Array of size  indexed by %lu", (unsigned long)k);
+    size_t newSize = userBID_arraysize - 1;
+    int *userBID2 = (newSize == 0) ? nullptr : new int[newSize];
     size_t i;
     for (i = 0; i < k; i++)
-        userB2[i] = this->userB[i];
+        userBID2[i] = this->userBID[i];
     for (i = k; i < newSize; i++)
-        userB2[i] = this->userB[i+1];
-    delete [] this->userB;
-    this->userB = userB2;
-    userB_arraysize = newSize;
+        userBID2[i] = this->userBID[i+1];
+    delete [] this->userBID;
+    this->userBID = userBID2;
+    userBID_arraysize = newSize;
+}
+
+size_t Packet::getUserBSeqNumArraySize() const
+{
+    return userBSeqNum_arraysize;
+}
+
+int Packet::getUserBSeqNum(size_t k) const
+{
+    if (k >= userBSeqNum_arraysize) throw omnetpp::cRuntimeError("Array of size userBSeqNum_arraysize indexed by %lu", (unsigned long)k);
+    return this->userBSeqNum[k];
+}
+
+void Packet::setUserBSeqNumArraySize(size_t newSize)
+{
+    int *userBSeqNum2 = (newSize==0) ? nullptr : new int[newSize];
+    size_t minSize = userBSeqNum_arraysize < newSize ? userBSeqNum_arraysize : newSize;
+    for (size_t i = 0; i < minSize; i++)
+        userBSeqNum2[i] = this->userBSeqNum[i];
+    for (size_t i = minSize; i < newSize; i++)
+        userBSeqNum2[i] = 0;
+    delete [] this->userBSeqNum;
+    this->userBSeqNum = userBSeqNum2;
+    userBSeqNum_arraysize = newSize;
+}
+
+void Packet::setUserBSeqNum(size_t k, int userBSeqNum)
+{
+    if (k >= userBSeqNum_arraysize) throw omnetpp::cRuntimeError("Array of size  indexed by %lu", (unsigned long)k);
+    this->userBSeqNum[k] = userBSeqNum;
+}
+
+void Packet::insertUserBSeqNum(size_t k, int userBSeqNum)
+{
+    if (k > userBSeqNum_arraysize) throw omnetpp::cRuntimeError("Array of size  indexed by %lu", (unsigned long)k);
+    size_t newSize = userBSeqNum_arraysize + 1;
+    int *userBSeqNum2 = new int[newSize];
+    size_t i;
+    for (i = 0; i < k; i++)
+        userBSeqNum2[i] = this->userBSeqNum[i];
+    userBSeqNum2[k] = userBSeqNum;
+    for (i = k + 1; i < newSize; i++)
+        userBSeqNum2[i] = this->userBSeqNum[i-1];
+    delete [] this->userBSeqNum;
+    this->userBSeqNum = userBSeqNum2;
+    userBSeqNum_arraysize = newSize;
+}
+
+void Packet::insertUserBSeqNum(int userBSeqNum)
+{
+    insertUserBSeqNum(userBSeqNum_arraysize, userBSeqNum);
+}
+
+void Packet::eraseUserBSeqNum(size_t k)
+{
+    if (k >= userBSeqNum_arraysize) throw omnetpp::cRuntimeError("Array of size  indexed by %lu", (unsigned long)k);
+    size_t newSize = userBSeqNum_arraysize - 1;
+    int *userBSeqNum2 = (newSize == 0) ? nullptr : new int[newSize];
+    size_t i;
+    for (i = 0; i < k; i++)
+        userBSeqNum2[i] = this->userBSeqNum[i];
+    for (i = k; i < newSize; i++)
+        userBSeqNum2[i] = this->userBSeqNum[i+1];
+    delete [] this->userBSeqNum;
+    this->userBSeqNum = userBSeqNum2;
+    userBSeqNum_arraysize = newSize;
 }
 
 size_t Packet::getTransactionArraySize() const
@@ -484,7 +580,9 @@ class PacketDescriptor : public omnetpp::cClassDescriptor
         FIELD_hopCount,
         FIELD_packetType,
         FIELD_transactionValue,
-        FIELD_userB,
+        FIELD_myChainSeqNum,
+        FIELD_userBID,
+        FIELD_userBSeqNum,
         FIELD_transaction,
     };
   public:
@@ -548,7 +646,7 @@ const char *PacketDescriptor::getProperty(const char *propertyname) const
 int PacketDescriptor::getFieldCount() const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
-    return basedesc ? 7+basedesc->getFieldCount() : 7;
+    return basedesc ? 9+basedesc->getFieldCount() : 9;
 }
 
 unsigned int PacketDescriptor::getFieldTypeFlags(int field) const
@@ -565,10 +663,12 @@ unsigned int PacketDescriptor::getFieldTypeFlags(int field) const
         FD_ISEDITABLE,    // FIELD_hopCount
         FD_ISEDITABLE,    // FIELD_packetType
         FD_ISEDITABLE,    // FIELD_transactionValue
-        FD_ISARRAY | FD_ISEDITABLE,    // FIELD_userB
+        FD_ISEDITABLE,    // FIELD_myChainSeqNum
+        FD_ISARRAY | FD_ISEDITABLE,    // FIELD_userBID
+        FD_ISARRAY | FD_ISEDITABLE,    // FIELD_userBSeqNum
         FD_ISARRAY | FD_ISEDITABLE,    // FIELD_transaction
     };
-    return (field >= 0 && field < 7) ? fieldTypeFlags[field] : 0;
+    return (field >= 0 && field < 9) ? fieldTypeFlags[field] : 0;
 }
 
 const char *PacketDescriptor::getFieldName(int field) const
@@ -585,10 +685,12 @@ const char *PacketDescriptor::getFieldName(int field) const
         "hopCount",
         "packetType",
         "transactionValue",
-        "userB",
+        "myChainSeqNum",
+        "userBID",
+        "userBSeqNum",
         "transaction",
     };
-    return (field >= 0 && field < 7) ? fieldNames[field] : nullptr;
+    return (field >= 0 && field < 9) ? fieldNames[field] : nullptr;
 }
 
 int PacketDescriptor::findField(const char *fieldName) const
@@ -600,8 +702,10 @@ int PacketDescriptor::findField(const char *fieldName) const
     if (fieldName[0] == 'h' && strcmp(fieldName, "hopCount") == 0) return base+2;
     if (fieldName[0] == 'p' && strcmp(fieldName, "packetType") == 0) return base+3;
     if (fieldName[0] == 't' && strcmp(fieldName, "transactionValue") == 0) return base+4;
-    if (fieldName[0] == 'u' && strcmp(fieldName, "userB") == 0) return base+5;
-    if (fieldName[0] == 't' && strcmp(fieldName, "transaction") == 0) return base+6;
+    if (fieldName[0] == 'm' && strcmp(fieldName, "myChainSeqNum") == 0) return base+5;
+    if (fieldName[0] == 'u' && strcmp(fieldName, "userBID") == 0) return base+6;
+    if (fieldName[0] == 'u' && strcmp(fieldName, "userBSeqNum") == 0) return base+7;
+    if (fieldName[0] == 't' && strcmp(fieldName, "transaction") == 0) return base+8;
     return basedesc ? basedesc->findField(fieldName) : -1;
 }
 
@@ -619,10 +723,12 @@ const char *PacketDescriptor::getFieldTypeString(int field) const
         "int",    // FIELD_hopCount
         "int",    // FIELD_packetType
         "int",    // FIELD_transactionValue
-        "int",    // FIELD_userB
+        "int",    // FIELD_myChainSeqNum
+        "int",    // FIELD_userBID
+        "int",    // FIELD_userBSeqNum
         "int",    // FIELD_transaction
     };
-    return (field >= 0 && field < 7) ? fieldTypeStrings[field] : nullptr;
+    return (field >= 0 && field < 9) ? fieldTypeStrings[field] : nullptr;
 }
 
 const char **PacketDescriptor::getFieldPropertyNames(int field) const
@@ -654,7 +760,15 @@ const char **PacketDescriptor::getFieldPropertyNames(int field) const
             static const char *names[] = { "packetData",  nullptr };
             return names;
         }
-        case FIELD_userB: {
+        case FIELD_myChainSeqNum: {
+            static const char *names[] = { "packetData",  nullptr };
+            return names;
+        }
+        case FIELD_userBID: {
+            static const char *names[] = { "packetData",  nullptr };
+            return names;
+        }
+        case FIELD_userBSeqNum: {
             static const char *names[] = { "packetData",  nullptr };
             return names;
         }
@@ -690,7 +804,13 @@ const char *PacketDescriptor::getFieldProperty(int field, const char *propertyna
         case FIELD_transactionValue:
             if (!strcmp(propertyname, "packetData")) return "";
             return nullptr;
-        case FIELD_userB:
+        case FIELD_myChainSeqNum:
+            if (!strcmp(propertyname, "packetData")) return "";
+            return nullptr;
+        case FIELD_userBID:
+            if (!strcmp(propertyname, "packetData")) return "";
+            return nullptr;
+        case FIELD_userBSeqNum:
             if (!strcmp(propertyname, "packetData")) return "";
             return nullptr;
         case FIELD_transaction:
@@ -710,7 +830,8 @@ int PacketDescriptor::getFieldArraySize(void *object, int field) const
     }
     Packet *pp = (Packet *)object; (void)pp;
     switch (field) {
-        case FIELD_userB: return pp->getUserBArraySize();
+        case FIELD_userBID: return pp->getUserBIDArraySize();
+        case FIELD_userBSeqNum: return pp->getUserBSeqNumArraySize();
         case FIELD_transaction: return pp->getTransactionArraySize();
         default: return 0;
     }
@@ -745,7 +866,9 @@ std::string PacketDescriptor::getFieldValueAsString(void *object, int field, int
         case FIELD_hopCount: return long2string(pp->getHopCount());
         case FIELD_packetType: return long2string(pp->getPacketType());
         case FIELD_transactionValue: return long2string(pp->getTransactionValue());
-        case FIELD_userB: return long2string(pp->getUserB(i));
+        case FIELD_myChainSeqNum: return long2string(pp->getMyChainSeqNum());
+        case FIELD_userBID: return long2string(pp->getUserBID(i));
+        case FIELD_userBSeqNum: return long2string(pp->getUserBSeqNum(i));
         case FIELD_transaction: return long2string(pp->getTransaction(i));
         default: return "";
     }
@@ -766,7 +889,9 @@ bool PacketDescriptor::setFieldValueAsString(void *object, int field, int i, con
         case FIELD_hopCount: pp->setHopCount(string2long(value)); return true;
         case FIELD_packetType: pp->setPacketType(string2long(value)); return true;
         case FIELD_transactionValue: pp->setTransactionValue(string2long(value)); return true;
-        case FIELD_userB: pp->setUserB(i,string2long(value)); return true;
+        case FIELD_myChainSeqNum: pp->setMyChainSeqNum(string2long(value)); return true;
+        case FIELD_userBID: pp->setUserBID(i,string2long(value)); return true;
+        case FIELD_userBSeqNum: pp->setUserBSeqNum(i,string2long(value)); return true;
         case FIELD_transaction: pp->setTransaction(i,string2long(value)); return true;
         default: return false;
     }

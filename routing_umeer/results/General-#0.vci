@@ -1,15 +1,15 @@
-file 1266 1555335963                                            
+file 1266 1555415742                                            
 version 2
-run General-0-20190415-15:45:56-10228
+run General-0-20190416-13:55:06-16432
 attr configname General
-attr datetime 20190415-15:45:56
+attr datetime 20190416-13:55:06
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network networks.Net5
-attr processid 10228
+attr processid 16432
 attr repetition 0
 attr replication #0
 attr resultdir results

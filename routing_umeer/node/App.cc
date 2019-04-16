@@ -25,10 +25,11 @@ const int INITIAL_MONEY = 10;
 
 class TrustChainElement {
 public:
-    int partnerId, transactionValue; // values limited to +- 2147483647
+    int partnerId, partnerSeqNum, transactionValue; // values limited to +- 2147483647
 
-    TrustChainElement(int partnerId, int transactionValue) {
+    TrustChainElement(int partnerId, int partnerSeqNum, int transactionValue) {
         this->partnerId = partnerId;
+        this->partnerSeqNum = partnerSeqNum;
         this->transactionValue = transactionValue;
     }
 };
@@ -42,7 +43,7 @@ private:
     cPar *packetLengthBytes;
 
     // state
-    cMessage *generatePacket;
+    //cMessage *generatePacket;
     cMessage *timerThread;
     long pkCounter;
     long chainTotalValue;
@@ -51,6 +52,7 @@ private:
     int waitingForChainLog; //2 - Chain Request (waiting for chain)
 
     int tempBlockID;
+    int tempPartnerSeqNum;
     int tempBlockTransaction;
 
     // signals
@@ -73,8 +75,10 @@ protected:
     virtual void threadFunction();
     virtual void receiveMessage(cMessage *msg);
     virtual int randomNodeAddressPicker();
+    virtual void registerNewChainNode(int id, int seqNum, int value);
     virtual void calculateChainValue();
 
+    //Messaging
     virtual void createTransactionMessage();
     virtual void createChainRequestMessage();
     virtual void createChainLogMessage();
@@ -88,12 +92,12 @@ protected:
 Define_Module(App);
 
 App::App() {
-    generatePacket = nullptr;
+    //generatePacket = nullptr;
     timerThread = nullptr;
 }
 
 App::~App() {
-    cancelAndDelete(generatePacket);
+    //cancelAndDelete(generatePacket);
     cancelAndDelete(timerThread);
 }
 
@@ -104,6 +108,7 @@ void App::initialize() {
     pkCounter = 0;
 
     tempBlockID = 0;
+    tempPartnerSeqNum = 0;
     tempBlockTransaction = 0;
     waitingForAck = 0;
     waitingForChainLog = 0;
@@ -124,11 +129,10 @@ void App::initialize() {
                 "At least one address must be specified in the destAddresses parameter!");
 
     // TrustChain initialization
-    TrustChainElement *chainElement = new TrustChainElement(-1, INITIAL_MONEY);
-    trustChain.push_back(*chainElement);
+    registerNewChainNode(-1, -1, INITIAL_MONEY);
 
     //Start the recursive thread
-    timerThread = new cMessage("nextPacket");
+    timerThread = new cMessage("TimerThead");
     scheduleAt(sendIATime->doubleValue(), timerThread);
 
     endToEndDelaySignal = registerSignal("endToEndDelay");
@@ -177,80 +181,51 @@ void App::receiveMessage(cMessage *msg) {
     emit(hopCountSignal, pk->getHopCount());
     emit(sourceAddressSignal, pk->getSrcAddr());
 
-    if (pk->getPacketType() == 0) { // Transaction Request Received
+    switch (pk->getPacketType()) {
+    case 0: { // Transaction Request Received
         tempBlockID = pk->getSrcAddr();
+        tempPartnerSeqNum = pk->getMyChainSeqNum();
         tempBlockTransaction = pk->getTransactionValue();
         createChainRequestMessage();
         waitingForChainLog = 1;
-    } else if (pk->getPacketType() == 1) { // Chain Request Received
+        break;
+    }
+    case 1: { // Chain Request Received
         createChainLogMessage();
-    } else if (pk->getPacketType() == 2) { // Chain Received
-        // log / verification procedure here
-        //TODO
-
+        break;
+    }
+    case 2: { // Partner Chain Received
         verificationTransactionChain(pk);
         logTransactionChain(pk);
 
         waitingForChainLog = 0;
-        TrustChainElement *chainElement = new TrustChainElement(tempBlockID,
+        registerNewChainNode(tempBlockID, tempPartnerSeqNum,
                 tempBlockTransaction);
-        trustChain.push_back(*chainElement);
-        calculateChainValue();
-
         createAckMessage();
         createDisseminationMessage();
         tempBlockID = 0;
         tempBlockTransaction = 0;
-    } else if (pk->getPacketType() == 3) { // Ack Received
+        break;
+    }
+    case 3: { // Ack Received
         if (pk->getSrcAddr() == tempBlockID) {
-            TrustChainElement *chainElement = new TrustChainElement(tempBlockID,
+            registerNewChainNode(tempBlockID, pk->getMyChainSeqNum(),
                     -tempBlockTransaction);
-            trustChain.push_back(*chainElement);
-            calculateChainValue();
-
             createDisseminationMessage();
             tempBlockID = 0;
             tempBlockTransaction = 0;
             waitingForAck = 0;
         }
+        break;
     }
-
-//    TrustChainElement *chainElement = new TrustChainElement(pk->getSrcAddr(), pk->getTransactionValue());
-//    trustChain.push_back(*chainElement);
-//    calculateChainValue();
-
-//    if (trustChain.size() != 0){
-//            EV << "I'm "<< myAddress <<" I have in my trustChain mex form ";
-//
-//            int i, totalValue=0;
-//            for(i=0; i<trustChain.size(); i++){
-//                EV << " "<<trustChain[i].partnerId << " with transaction value: "<<trustChain[i].transactionValue;
-//                totalValue = totalValue + trustChain[i].transactionValue;
-//            }
-//
-//            EV << endl<< " and a total value of: "<< totalValue;
-//            EV << " "<< endl;
-//        }
-
+    default: {
+        break;
+    }
+    }
     delete pk;
 
     if (hasGUI())
         getParentModule()->bubble("Arrived!");
-}
-void App::verificationTransactionChain(Packet *pk) {
-    if (pk->getUserBArraySize() != 0) {
-               int i;
-               for (i = 0; i < pk->getUserBArraySize(); i++) {
-                   EV << " User B array size: " << pk->getUserBArraySize()
-                             << " get user: " << pk->getUserB(i)
-                             << " get transaction: " << pk->getTransaction(i)
-                             << endl;
-               }
-           }
-    //TODO
-}
-void App::logTransactionChain(Packet *pk) {
-
 }
 
 void App::createTransactionMessage() {
@@ -280,6 +255,7 @@ void App::createTransactionMessage() {
 
     pk->setPacketType(0);
     pk->setTransactionValue(transactionValue);
+    pk->setMyChainSeqNum(trustChain.size() + 1);
 
     send(pk, "out");
 }
@@ -330,15 +306,18 @@ void App::createChainLogMessage() {
     //Add chain to the block
 
     if (trustChain.size() != 0) {
-        pk->setUserBArraySize(trustChain.size());
+        pk->setUserBIDArraySize(trustChain.size());
+        pk->setUserBSeqNumArraySize(trustChain.size());
         pk->setTransactionArraySize(trustChain.size());
         int i;
         for (i = 0; i < trustChain.size(); i++) {
-            pk->setUserB(i, trustChain[i].partnerId);
+            pk->setUserBID(i, trustChain[i].partnerId);
+            pk->setUserBSeqNum(i, trustChain[i].partnerSeqNum);
             pk->setTransaction(i, trustChain[i].transactionValue);
         }
     } else {
-        pk->setUserBArraySize(0);
+        pk->setUserBIDArraySize(0);
+        pk->setUserBSeqNumArraySize(0);
         pk->setTransactionArraySize(0);
     }
 
@@ -364,10 +343,26 @@ void App::createAckMessage() {
     pk->setDestAddr(destAddress);
 
     pk->setPacketType(3);
+    pk->setMyChainSeqNum(trustChain.size());
 
     send(pk, "out");
 }
 
+void App::verificationTransactionChain(Packet *pk) {
+    if (pk->getUserBIDArraySize() != 0) {
+        int i;
+        for (i = 0; i < pk->getUserBIDArraySize(); i++) {
+            EV << " User B array size: " << pk->getUserBIDArraySize()
+                      << " get user: " << pk->getUserBID(i)
+                      << " get user chain seq numb: " << pk->getUserBSeqNum(i)
+                      << " get transaction: " << pk->getTransaction(i) << endl;
+        }
+    }
+}
+
+void App::logTransactionChain(Packet *pk) {
+    //TODO
+}
 void App::createDisseminationMessage() {
     //TODO
 
@@ -382,6 +377,12 @@ int App::randomNodeAddressPicker() {
     }
 
     return destAddress;
+}
+
+void App::registerNewChainNode(int id, int seqNum, int value) {
+    TrustChainElement *chainElement = new TrustChainElement(id, seqNum, value);
+    trustChain.push_back(*chainElement);
+    calculateChainValue();
 }
 
 void App::calculateChainValue() {

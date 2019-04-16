@@ -26,12 +26,14 @@ packet Packet
     int packetType @packetData;
     
     //Send Transaction
-    int transactionValue @packetData;   
+    int transactionValue @packetData;
+    int myChainSeqNum @packetData;   
    
     //Sending Chain Information
     //int databaseSize @packetData;
     //int userA[] @packetData;
-    int userB[] @packetData;
+    int userBID[] @packetData;
+    int userBSeqNum[] @packetData;
     int transaction[] @packetData;
 }
 
