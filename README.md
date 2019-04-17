@@ -14,6 +14,6 @@ This repository contains two TrustChain simulations built with OMNeT++, the goal
 
 [Thesis description doc](https://www.overleaf.com/read/mqxnswyjzcbm)
 
-[Attack and malicious node description doc](https://www.overleaf.com/read/wmnnttvdggzb)
+[Attack and malicious node definition doc](https://www.overleaf.com/read/wmnnttvdggzb)
 
 
