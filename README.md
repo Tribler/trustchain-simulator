@@ -9,8 +9,11 @@ This repository contains two TrustChain simulations built with OMNeT++, the goal
 
 ## Documentation
 [OMNEt++ Website](https://omnetpp.org/)
+
 [OMNet++ Guide](https://doc.omnetpp.org/omnetpp/manual/)
+
 [Thesis description doc](https://www.overleaf.com/read/mqxnswyjzcbm)
+
 [Attack and malicious node description doc](https://www.overleaf.com/read/wmnnttvdggzb)
 
 
