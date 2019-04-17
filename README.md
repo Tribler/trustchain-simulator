@@ -8,9 +8,9 @@ This repository contains two TrustChain simulations built with OMNeT++, the goal
 - [ ] Modify the standard implementation with defence system
 
 ## Documentation
-[OMNEt++ Website](https://omnetpp.org/)
+[OMNeT++ Website](https://omnetpp.org/)
 
-[OMNet++ Guide](https://doc.omnetpp.org/omnetpp/manual/)
+[OMNeT++ Guide](https://doc.omnetpp.org/omnetpp/manual/)
 
 [TrustChain article](https://www.sciencedirect.com/science/article/pii/S0167739X17318988)
 
