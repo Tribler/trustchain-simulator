@@ -59,9 +59,6 @@ private:
     long pkCounter;
     long chainTotalValue;
 
-    int waitingForAck; //0 - IDLE 1 - Transaction Sent (waiting for ack)
-    int waitingForChainLog; //2 - Chain Request (waiting for chain)
-
     int tempBlockID;
     int tempPartnerSeqNum;
     int tempBlockTransaction;
@@ -96,6 +93,7 @@ protected:
     virtual void createChainLogMessage();
     virtual void createAckMessage();
     virtual void createDisseminationMessage(int userXID, int userXSeqNum, int userYID, int userYSeqNum, int transactionValue);
+    virtual void createBusyMessage(int destAddress);
 
     virtual bool verificationTransactionChain(Packet *pk);
     virtual void logTransactionChain(Packet *pk);
@@ -123,11 +121,9 @@ void App::initialize()
     sendIATime = &par("sendIaTime");  // volatile parameter
     pkCounter = 0;
 
-    tempBlockID = 0;
+    tempBlockID = -1;
     tempPartnerSeqNum = 0;
     tempBlockTransaction = 0;
-    waitingForAck = 0;
-    waitingForChainLog = 0;
 
     //Information To Log
     WATCH(pkCounter);
@@ -167,21 +163,18 @@ void App::handleMessage(cMessage *msg)
 
 void App::threadFunction()
 {
-    if (waitingForAck == 0) { //Not transaction are pending
+    if (tempBlockID == -1) { //Not transaction are pending
 
         //Just for Production Test (ONLY 0 CAN SEND MONEY)
-        if (myAddress != 0) {
-            return;
-        }
+        //if (myAddress != 0) {
+            //return;
+        //}
 
         //Check if i have the money for the transaction
         calculateChainValue();
-        if (chainTotalValue <= 0) {
-            return;
+        if (chainTotalValue > 0) {
+            createTransactionMessage();
         }
-
-        createTransactionMessage();
-        waitingForAck = 1;
     }
 
     scheduleAt(simTime() + sendIATime->doubleValue(), timerThread);
@@ -189,7 +182,10 @@ void App::threadFunction()
 
 void App::receiveMessage(cMessage *msg)
 {
+
     // Handle incoming packet
+    if (hasGUI())
+        getParentModule()->bubble("Arrived!");
     Packet *pk = check_and_cast<Packet *>(msg);
 
     //EV << "received packet " << pk->getName() << " after " << pk->getHopCount()<< "hops" << endl;
@@ -199,11 +195,16 @@ void App::receiveMessage(cMessage *msg)
 
     switch (pk->getPacketType()) {
         case 0: { // Transaction Request Received
+
+            if (tempBlockID != -1) { //currently in another transaction
+                createBusyMessage(pk->getSrcAddr());
+                break;
+            }
+
             tempBlockID = pk->getSrcAddr();
             tempPartnerSeqNum = pk->getMyChainSeqNum();
             tempBlockTransaction = pk->getTransactionValue();
             createChainRequestMessage();
-            waitingForChainLog = 1;
             break;
         }
         case 1: { // Chain Request Received
@@ -219,11 +220,10 @@ void App::receiveMessage(cMessage *msg)
             }
             logTransactionChain(pk);
 
-            waitingForChainLog = 0;
             registerNewChainNode(tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
             createAckMessage();
             createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
-            tempBlockID = 0;
+            tempBlockID = -1;
             tempBlockTransaction = 0;
             break;
         }
@@ -231,9 +231,8 @@ void App::receiveMessage(cMessage *msg)
             if (pk->getSrcAddr() == tempBlockID) {
                 registerNewChainNode(tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
                 createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
-                tempBlockID = 0;
+                tempBlockID = -1;
                 tempBlockTransaction = 0;
-                waitingForAck = 0;
             }
             break;
         }
@@ -248,14 +247,39 @@ void App::receiveMessage(cMessage *msg)
             }
             break;
         }
+        case 5: { // Busy Received
+            if (pk->getSrcAddr() == tempBlockID) {
+                tempBlockID = -1;
+                tempBlockTransaction = 0;
+            }
+            break;
+        }
         default: {
             break;
         }
     }
     delete pk;
 
+}
+
+void App::createBusyMessage(int destAddress)
+{
+
+    char pkname[40];
+    sprintf(pkname, "#%ld from-%d-to-%d busy", pkCounter++, myAddress, destAddress);
+
     if (hasGUI())
-        getParentModule()->bubble("Arrived!");
+        getParentModule()->bubble("Generating packet...");
+
+    //Packet Creation
+    Packet *pk = new Packet(pkname);
+    pk->setByteLength(packetLengthBytes->intValue());
+    pk->setSrcAddr(myAddress);
+    pk->setDestAddr(destAddress);
+
+    pk->setPacketType(5);
+
+    send(pk, "out");
 }
 
 void App::createTransactionMessage()

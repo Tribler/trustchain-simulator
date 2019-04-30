@@ -37,6 +37,7 @@ class Packet;
  *     // 2 - Send Chain
  *     // 3 - Ack of Transaction
  *     // 4 - Information Dissemination
+ *     // 5 - Busy Message
  *     int packetType \@packetData;
  * 
  *     //Send Transaction
