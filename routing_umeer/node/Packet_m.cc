@@ -258,6 +258,10 @@ void Packet::copy(const Packet& other)
     for (size_t i = 0; i < transaction_arraysize; i++) {
         this->transaction[i] = other.transaction[i];
     }
+    this->userXID = other.userXID;
+    this->userXSeqNum = other.userXSeqNum;
+    this->userYID = other.userYID;
+    this->userYSeqNum = other.userYSeqNum;
 }
 
 void Packet::parsimPack(omnetpp::cCommBuffer *b) const
@@ -275,6 +279,10 @@ void Packet::parsimPack(omnetpp::cCommBuffer *b) const
     doParsimArrayPacking(b,this->userBSeqNum,userBSeqNum_arraysize);
     b->pack(transaction_arraysize);
     doParsimArrayPacking(b,this->transaction,transaction_arraysize);
+    doParsimPacking(b,this->userXID);
+    doParsimPacking(b,this->userXSeqNum);
+    doParsimPacking(b,this->userYID);
+    doParsimPacking(b,this->userYSeqNum);
 }
 
 void Packet::parsimUnpack(omnetpp::cCommBuffer *b)
@@ -310,6 +318,10 @@ void Packet::parsimUnpack(omnetpp::cCommBuffer *b)
         this->transaction = new int[transaction_arraysize];
         doParsimArrayUnpacking(b,this->transaction,transaction_arraysize);
     }
+    doParsimUnpacking(b,this->userXID);
+    doParsimUnpacking(b,this->userXSeqNum);
+    doParsimUnpacking(b,this->userYID);
+    doParsimUnpacking(b,this->userYSeqNum);
 }
 
 int Packet::getSrcAddr() const
@@ -570,6 +582,46 @@ void Packet::eraseTransaction(size_t k)
     transaction_arraysize = newSize;
 }
 
+int Packet::getUserXID() const
+{
+    return this->userXID;
+}
+
+void Packet::setUserXID(int userXID)
+{
+    this->userXID = userXID;
+}
+
+int Packet::getUserXSeqNum() const
+{
+    return this->userXSeqNum;
+}
+
+void Packet::setUserXSeqNum(int userXSeqNum)
+{
+    this->userXSeqNum = userXSeqNum;
+}
+
+int Packet::getUserYID() const
+{
+    return this->userYID;
+}
+
+void Packet::setUserYID(int userYID)
+{
+    this->userYID = userYID;
+}
+
+int Packet::getUserYSeqNum() const
+{
+    return this->userYSeqNum;
+}
+
+void Packet::setUserYSeqNum(int userYSeqNum)
+{
+    this->userYSeqNum = userYSeqNum;
+}
+
 class PacketDescriptor : public omnetpp::cClassDescriptor
 {
   private:
@@ -584,6 +636,10 @@ class PacketDescriptor : public omnetpp::cClassDescriptor
         FIELD_userBID,
         FIELD_userBSeqNum,
         FIELD_transaction,
+        FIELD_userXID,
+        FIELD_userXSeqNum,
+        FIELD_userYID,
+        FIELD_userYSeqNum,
     };
   public:
     PacketDescriptor();
@@ -646,7 +702,7 @@ const char *PacketDescriptor::getProperty(const char *propertyname) const
 int PacketDescriptor::getFieldCount() const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
-    return basedesc ? 9+basedesc->getFieldCount() : 9;
+    return basedesc ? 13+basedesc->getFieldCount() : 13;
 }
 
 unsigned int PacketDescriptor::getFieldTypeFlags(int field) const
@@ -667,8 +723,12 @@ unsigned int PacketDescriptor::getFieldTypeFlags(int field) const
         FD_ISARRAY | FD_ISEDITABLE,    // FIELD_userBID
         FD_ISARRAY | FD_ISEDITABLE,    // FIELD_userBSeqNum
         FD_ISARRAY | FD_ISEDITABLE,    // FIELD_transaction
+        FD_ISEDITABLE,    // FIELD_userXID
+        FD_ISEDITABLE,    // FIELD_userXSeqNum
+        FD_ISEDITABLE,    // FIELD_userYID
+        FD_ISEDITABLE,    // FIELD_userYSeqNum
     };
-    return (field >= 0 && field < 9) ? fieldTypeFlags[field] : 0;
+    return (field >= 0 && field < 13) ? fieldTypeFlags[field] : 0;
 }
 
 const char *PacketDescriptor::getFieldName(int field) const
@@ -689,8 +749,12 @@ const char *PacketDescriptor::getFieldName(int field) const
         "userBID",
         "userBSeqNum",
         "transaction",
+        "userXID",
+        "userXSeqNum",
+        "userYID",
+        "userYSeqNum",
     };
-    return (field >= 0 && field < 9) ? fieldNames[field] : nullptr;
+    return (field >= 0 && field < 13) ? fieldNames[field] : nullptr;
 }
 
 int PacketDescriptor::findField(const char *fieldName) const
@@ -706,6 +770,10 @@ int PacketDescriptor::findField(const char *fieldName) const
     if (fieldName[0] == 'u' && strcmp(fieldName, "userBID") == 0) return base+6;
     if (fieldName[0] == 'u' && strcmp(fieldName, "userBSeqNum") == 0) return base+7;
     if (fieldName[0] == 't' && strcmp(fieldName, "transaction") == 0) return base+8;
+    if (fieldName[0] == 'u' && strcmp(fieldName, "userXID") == 0) return base+9;
+    if (fieldName[0] == 'u' && strcmp(fieldName, "userXSeqNum") == 0) return base+10;
+    if (fieldName[0] == 'u' && strcmp(fieldName, "userYID") == 0) return base+11;
+    if (fieldName[0] == 'u' && strcmp(fieldName, "userYSeqNum") == 0) return base+12;
     return basedesc ? basedesc->findField(fieldName) : -1;
 }
 
@@ -727,8 +795,12 @@ const char *PacketDescriptor::getFieldTypeString(int field) const
         "int",    // FIELD_userBID
         "int",    // FIELD_userBSeqNum
         "int",    // FIELD_transaction
+        "int",    // FIELD_userXID
+        "int",    // FIELD_userXSeqNum
+        "int",    // FIELD_userYID
+        "int",    // FIELD_userYSeqNum
     };
-    return (field >= 0 && field < 9) ? fieldTypeStrings[field] : nullptr;
+    return (field >= 0 && field < 13) ? fieldTypeStrings[field] : nullptr;
 }
 
 const char **PacketDescriptor::getFieldPropertyNames(int field) const
@@ -776,6 +848,22 @@ const char **PacketDescriptor::getFieldPropertyNames(int field) const
             static const char *names[] = { "packetData",  nullptr };
             return names;
         }
+        case FIELD_userXID: {
+            static const char *names[] = { "packetData",  nullptr };
+            return names;
+        }
+        case FIELD_userXSeqNum: {
+            static const char *names[] = { "packetData",  nullptr };
+            return names;
+        }
+        case FIELD_userYID: {
+            static const char *names[] = { "packetData",  nullptr };
+            return names;
+        }
+        case FIELD_userYSeqNum: {
+            static const char *names[] = { "packetData",  nullptr };
+            return names;
+        }
         default: return nullptr;
     }
 }
@@ -814,6 +902,18 @@ const char *PacketDescriptor::getFieldProperty(int field, const char *propertyna
             if (!strcmp(propertyname, "packetData")) return "";
             return nullptr;
         case FIELD_transaction:
+            if (!strcmp(propertyname, "packetData")) return "";
+            return nullptr;
+        case FIELD_userXID:
+            if (!strcmp(propertyname, "packetData")) return "";
+            return nullptr;
+        case FIELD_userXSeqNum:
+            if (!strcmp(propertyname, "packetData")) return "";
+            return nullptr;
+        case FIELD_userYID:
+            if (!strcmp(propertyname, "packetData")) return "";
+            return nullptr;
+        case FIELD_userYSeqNum:
             if (!strcmp(propertyname, "packetData")) return "";
             return nullptr;
         default: return nullptr;
@@ -870,6 +970,10 @@ std::string PacketDescriptor::getFieldValueAsString(void *object, int field, int
         case FIELD_userBID: return long2string(pp->getUserBID(i));
         case FIELD_userBSeqNum: return long2string(pp->getUserBSeqNum(i));
         case FIELD_transaction: return long2string(pp->getTransaction(i));
+        case FIELD_userXID: return long2string(pp->getUserXID());
+        case FIELD_userXSeqNum: return long2string(pp->getUserXSeqNum());
+        case FIELD_userYID: return long2string(pp->getUserYID());
+        case FIELD_userYSeqNum: return long2string(pp->getUserYSeqNum());
         default: return "";
     }
 }
@@ -893,6 +997,10 @@ bool PacketDescriptor::setFieldValueAsString(void *object, int field, int i, con
         case FIELD_userBID: pp->setUserBID(i,string2long(value)); return true;
         case FIELD_userBSeqNum: pp->setUserBSeqNum(i,string2long(value)); return true;
         case FIELD_transaction: pp->setTransaction(i,string2long(value)); return true;
+        case FIELD_userXID: pp->setUserXID(string2long(value)); return true;
+        case FIELD_userXSeqNum: pp->setUserXSeqNum(string2long(value)); return true;
+        case FIELD_userYID: pp->setUserYID(string2long(value)); return true;
+        case FIELD_userYSeqNum: pp->setUserYSeqNum(string2long(value)); return true;
         default: return false;
     }
 }

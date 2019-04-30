@@ -35,5 +35,13 @@ packet Packet
     int userBID[] @packetData;
     int userBSeqNum[] @packetData;
     int transaction[] @packetData;
+    
+    //Dissemination data
+    int userXID @packetData;
+    int userXSeqNum @packetData;
+    int userYID @packetData;
+    int userYSeqNum @packetData;
+    
+
 }
 

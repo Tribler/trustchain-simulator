@@ -1,14 +1,14 @@
 version 2
-run General-0-20190417-13:34:24-18572
+run General-0-20190430-13:59:37-18164
 attr configname General
-attr datetime 20190417-13:34:24
+attr datetime 20190430-13:59:37
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network networks.Net5
-attr processid 18572
+attr processid 18164
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -25,28 +25,28 @@ attr title "hop count of arrived packets, mean"
 scalar Net5.rte[0].app hopCount:max 1
 attr interpolationmode none
 attr title "hop count of arrived packets, max"
-scalar Net5.rte[0].app endToEndDelay:mean 1.097772819458
+scalar Net5.rte[0].app endToEndDelay:mean 1.2807577545543
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, mean"
 attr unit s
-scalar Net5.rte[0].app endToEndDelay:max 1.097772819458
+scalar Net5.rte[0].app endToEndDelay:max 1.646727624747
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, max"
 attr unit s
 statistic Net5.rte[0].routing outputIf:histogram
-field count 12
-field mean -0.5
-field stddev 0.52223296786709
+field count 7
+field mean -0.42857142857143
+field stddev 0.53452248382485
 field min -1
 field max 0
-field sum -6
-field sqrsum 6
+field sum -3
+field sqrsum 3
 attr interpolationmode none
 attr title "output interface for each routed packet, histogram"
 bin	-inf	0
 bin	-2	0
-bin	-1	6
-bin	0	6
+bin	-1	3
+bin	0	4
 bin	1	0
 scalar Net5.rte[0].routing drop:count 0
 attr interpolationmode none
@@ -56,53 +56,53 @@ scalar Net5.rte[0].routing drop:sum 0
 attr interpolationmode none
 attr title "dropped packet byte length, sum"
 attr unit bytes
-scalar Net5.rte[0].queue[0] rxBytes:count 6
+scalar Net5.rte[0].queue[0] rxBytes:count 3
 attr interpolationmode none
 attr title "received packet byte length, count"
 attr unit bytes
-scalar Net5.rte[0].queue[0] rxBytes:sum 24576
+scalar Net5.rte[0].queue[0] rxBytes:sum 12288
 attr interpolationmode none
 attr title "received packet byte length, sum"
 attr unit bytes
 statistic Net5.rte[0].queue[0] rxBytes:histogram
-field count 6
+field count 3
 field mean 4096
 field stddev 0
 field min 4096
 field max 4096
-field sum 24576
-field sqrsum 100663296
+field sum 12288
+field sqrsum 50331648
 attr interpolationmode none
 attr title "received packet byte length, histogram"
 attr unit bytes
 bin	-inf	0
 bin	4095	0
-bin	4096	6
+bin	4096	3
 bin	4097	0
-scalar Net5.rte[0].queue[0] txBytes:count 6
+scalar Net5.rte[0].queue[0] txBytes:count 4
 attr interpolationmode none
 attr title "transmitting packet byte length, count"
 attr unit bytes
-scalar Net5.rte[0].queue[0] txBytes:sum 24576
+scalar Net5.rte[0].queue[0] txBytes:sum 16384
 attr interpolationmode none
 attr title "transmitting packet byte length, sum"
 attr unit bytes
 statistic Net5.rte[0].queue[0] txBytes:histogram
-field count 6
+field count 4
 field mean 4096
 field stddev 0
 field min 4096
 field max 4096
-field sum 24576
-field sqrsum 100663296
+field sum 16384
+field sqrsum 67108864
 attr interpolationmode none
 attr title "transmitting packet byte length, histogram"
 attr unit bytes
 bin	-inf	0
 bin	4095	0
-bin	4096	6
+bin	4096	4
 bin	4097	0
-scalar Net5.rte[0].queue[0] busy:timeavg 0.13886550082431
+scalar Net5.rte[0].queue[0] busy:timeavg 0.22235246614416
 attr interpolationmode sample-hold
 attr title "server busy state, timeavg"
 scalar Net5.rte[0].queue[0] qlen:timeavg 0
@@ -134,19 +134,19 @@ attr interpolationmode none
 attr title "end-to-end delay of arrived packets, max"
 attr unit s
 statistic Net5.rte[1].routing outputIf:histogram
-field count 12
+field count 6
 field mean -0.5
-field stddev 0.52223296786709
+field stddev 0.54772255750517
 field min -1
 field max 0
-field sum -6
-field sqrsum 6
+field sum -3
+field sqrsum 3
 attr interpolationmode none
 attr title "output interface for each routed packet, histogram"
 bin	-inf	0
 bin	-2	0
-bin	-1	6
-bin	0	6
+bin	-1	3
+bin	0	3
 bin	1	0
 scalar Net5.rte[1].routing drop:count 0
 attr interpolationmode none
@@ -156,59 +156,59 @@ scalar Net5.rte[1].routing drop:sum 0
 attr interpolationmode none
 attr title "dropped packet byte length, sum"
 attr unit bytes
-scalar Net5.rte[1].queue[0] rxBytes:count 6
+scalar Net5.rte[1].queue[0] rxBytes:count 3
 attr interpolationmode none
 attr title "received packet byte length, count"
 attr unit bytes
-scalar Net5.rte[1].queue[0] rxBytes:sum 24576
+scalar Net5.rte[1].queue[0] rxBytes:sum 12288
 attr interpolationmode none
 attr title "received packet byte length, sum"
 attr unit bytes
 statistic Net5.rte[1].queue[0] rxBytes:histogram
-field count 6
+field count 3
 field mean 4096
 field stddev 0
 field min 4096
 field max 4096
-field sum 24576
-field sqrsum 100663296
+field sum 12288
+field sqrsum 50331648
 attr interpolationmode none
 attr title "received packet byte length, histogram"
 attr unit bytes
 bin	-inf	0
 bin	4095	0
-bin	4096	6
+bin	4096	3
 bin	4097	0
-scalar Net5.rte[1].queue[0] txBytes:count 6
+scalar Net5.rte[1].queue[0] txBytes:count 3
 attr interpolationmode none
 attr title "transmitting packet byte length, count"
 attr unit bytes
-scalar Net5.rte[1].queue[0] txBytes:sum 24576
+scalar Net5.rte[1].queue[0] txBytes:sum 12288
 attr interpolationmode none
 attr title "transmitting packet byte length, sum"
 attr unit bytes
 statistic Net5.rte[1].queue[0] txBytes:histogram
-field count 6
+field count 3
 field mean 4096
 field stddev 0
 field min 4096
 field max 4096
-field sum 24576
-field sqrsum 100663296
+field sum 12288
+field sqrsum 50331648
 attr interpolationmode none
 attr title "transmitting packet byte length, histogram"
 attr unit bytes
 bin	-inf	0
 bin	4095	0
-bin	4096	6
+bin	4096	3
 bin	4097	0
-scalar Net5.rte[1].queue[0] busy:timeavg 0.19677075675801
+scalar Net5.rte[1].queue[0] busy:timeavg 0.23630309240135
 attr interpolationmode sample-hold
 attr title "server busy state, timeavg"
-scalar Net5.rte[1].queue[0] qlen:timeavg 0
+scalar Net5.rte[1].queue[0] qlen:timeavg 0.078767697467116
 attr interpolationmode sample-hold
 attr title "queue length, timeavg"
-scalar Net5.rte[1].queue[0] qlen:max 0
+scalar Net5.rte[1].queue[0] qlen:max 1
 attr interpolationmode sample-hold
 attr title "queue length, max"
 scalar Net5.rte[1].queue[0] drop:count 0

@@ -49,6 +49,14 @@ class Packet;
  *     int userBID[] \@packetData;
  *     int userBSeqNum[] \@packetData;
  *     int transaction[] \@packetData;
+ * 
+ *     //Dissemination data
+ *     int userXID \@packetData;
+ *     int userXSeqNum \@packetData;
+ *     int userYID \@packetData;
+ *     int userYSeqNum \@packetData;
+ * 
+ * 
  * }
  * </pre>
  */
@@ -67,6 +75,10 @@ class Packet : public ::omnetpp::cPacket
     size_t userBSeqNum_arraysize = 0;
     int *transaction = nullptr;
     size_t transaction_arraysize = 0;
+    int userXID = 0;
+    int userXSeqNum = 0;
+    int userYID = 0;
+    int userYSeqNum = 0;
 
   private:
     void copy(const Packet& other);
@@ -118,6 +130,14 @@ class Packet : public ::omnetpp::cPacket
     virtual void insertTransaction(int transaction);
     virtual void insertTransaction(size_t k, int transaction);
     virtual void eraseTransaction(size_t k);
+    virtual int getUserXID() const;
+    virtual void setUserXID(int userXID);
+    virtual int getUserXSeqNum() const;
+    virtual void setUserXSeqNum(int userXSeqNum);
+    virtual int getUserYID() const;
+    virtual void setUserYID(int userYID);
+    virtual int getUserYSeqNum() const;
+    virtual void setUserYSeqNum(int userYSeqNum);
 };
 
 inline void doParsimPacking(omnetpp::cCommBuffer *b, const Packet& obj) {obj.parsimPack(b);}

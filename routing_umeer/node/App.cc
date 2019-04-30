@@ -95,7 +95,7 @@ protected:
     virtual void createChainRequestMessage();
     virtual void createChainLogMessage();
     virtual void createAckMessage();
-    virtual void createDisseminationMessage();
+    virtual void createDisseminationMessage(int userXID, int userXSeqNum, int userYID, int userYSeqNum, int transactionValue);
 
     virtual bool verificationTransactionChain(Packet *pk);
     virtual void logTransactionChain(Packet *pk);
@@ -222,7 +222,7 @@ void App::receiveMessage(cMessage *msg)
             waitingForChainLog = 0;
             registerNewChainNode(tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
             createAckMessage();
-            createDisseminationMessage();
+            createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
             tempBlockID = 0;
             tempBlockTransaction = 0;
             break;
@@ -230,10 +230,21 @@ void App::receiveMessage(cMessage *msg)
         case 3: { // Ack Received
             if (pk->getSrcAddr() == tempBlockID) {
                 registerNewChainNode(tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
-                createDisseminationMessage();
+                createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
                 tempBlockID = 0;
                 tempBlockTransaction = 0;
                 waitingForAck = 0;
+            }
+            break;
+        }
+        case 4: { // Dissemination Received
+            LogDatabaseElement *element = new LogDatabaseElement(pk->getUserXID(), pk->getUserXSeqNum(), pk->getUserYID(), pk->getUserYSeqNum(), pk->getTransactionValue());
+            if (!isAlreadyPresentInDb(element)) {
+                logDatabase.push_back(*element);
+                //EV << " **************new element" << endl;
+            }
+            else {
+                //EV << " ***************already present " << endl;
             }
             break;
         }
@@ -440,13 +451,40 @@ bool App::isAlreadyPresentInDb(LogDatabaseElement *element)
     return false;
 }
 
-void App::createDisseminationMessage()
+void App::createDisseminationMessage(int userXID, int userXSeqNum, int userYID, int userYSeqNum, int transactionValue)
 {
-    //TODO
+
     int i;
-    for (i = 0; i < logDatabase.size(); i++) {
-        EV << " UserA " << logDatabase[i].UserAId << " UserADeqNum: " << logDatabase[i].UserASeqNum << " UserB " << logDatabase[i].UserBId << " UserBDeqNum: " << logDatabase[i].UserBSeqNum << " transaction:"
-                << logDatabase[i].transactionValue << endl;
+    for (i = 0; i < destAddresses.size(); i++) {
+
+        // Sending packet
+        int destAddress = destAddresses[i];
+        if (destAddress == myAddress) {
+            continue;
+        }
+
+        char pkname[40];
+        sprintf(pkname, "#%ld from-%d-to-%d dissemination", pkCounter++, myAddress, destAddress);
+
+        if (hasGUI())
+            getParentModule()->bubble("Generating packet...");
+
+        //Packet Creation
+        Packet *pk = new Packet(pkname);
+        pk->setByteLength(packetLengthBytes->intValue());
+        pk->setSrcAddr(myAddress);
+        pk->setDestAddr(destAddress);
+
+        pk->setPacketType(4);
+
+        pk->setUserXID(userXID);
+        pk->setUserXSeqNum(userXSeqNum);
+        pk->setUserYID(userYID);
+        pk->setUserYSeqNum(userYSeqNum);
+        pk->setTransactionValue(transactionValue);
+
+        send(pk, "out");
+
     }
 }
 
