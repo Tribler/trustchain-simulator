@@ -1,104 +1,15 @@
-#ifdef _MSC_VER
-#pragma warning(disable:4786)
-#endif
+//TODO LIST
+// - create event logging system
+// - implement evil node
 
-#include <vector>
-#include <omnetpp.h>
-#include "Packet_m.h"
+#include "App.h"
 
 using namespace omnetpp;
 
 const int INITIAL_MONEY = 10;
 
-//TODO LIST
-// - create event logging system
-// - create transaction dissemination algh
-// - expand system to multiple nodes parallel transactions (heavy debug required)
-// - implement evil node
-
-class TrustChainElement
-{
-public:
-    int partnerId, partnerSeqNum, transactionValue; // values limited to +- 2147483647
-
-    TrustChainElement(int partnerId, int partnerSeqNum, int transactionValue)
-    {
-        this->partnerId = partnerId;
-        this->partnerSeqNum = partnerSeqNum;
-        this->transactionValue = transactionValue;
-    }
-};
-
-class LogDatabaseElement
-{
-public:
-    int UserAId, UserASeqNum, UserBId, UserBSeqNum, transactionValue; // values limited to +- 2147483647
-
-    LogDatabaseElement(int UserAId, int UserASeqNum, int UserBId, int UserBSeqNum, int transactionValue)
-    {
-        this->UserAId = UserAId;
-        this->UserASeqNum = UserASeqNum;
-        this->UserBId = UserBId;
-        this->UserBSeqNum = UserBSeqNum;
-        this->transactionValue = transactionValue;
-    }
-};
-
-class App : public cSimpleModule
-{
-private:
-    // configuration
-    int myAddress;
-    std::vector<int> destAddresses;
-    cPar *sendIATime;
-    cPar *packetLengthBytes;
-
-    // state
-    //cMessage *generatePacket;
-    cMessage *timerThread;
-    long pkCounter;
-    long chainTotalValue;
-
-    int tempBlockID;
-    int tempPartnerSeqNum;
-    int tempBlockTransaction;
-
-    // signals
-    simsignal_t endToEndDelaySignal;
-    simsignal_t hopCountSignal;
-    simsignal_t sourceAddressSignal;
-
-    //TrustChain Storage
-    std::vector<TrustChainElement> trustChain;
-    std::vector<LogDatabaseElement> logDatabase;
-
-public:
-    App();
-    virtual ~App();
-
-protected:
-    virtual void initialize() override;
-    virtual void handleMessage(cMessage *msg) override;
-
-    //Utility functions
-    virtual void threadFunction();
-    virtual void receiveMessage(cMessage *msg);
-    virtual int randomNodeAddressPicker();
-    virtual void registerNewChainNode(int id, int seqNum, int value);
-    virtual void calculateChainValue();
-
-    //Messaging
-    virtual void createTransactionMessage();
-    virtual void createChainRequestMessage();
-    virtual void createChainLogMessage();
-    virtual void createAckMessage();
-    virtual void createDisseminationMessage(int userXID, int userXSeqNum, int userYID, int userYSeqNum, int transactionValue);
-    virtual void createBusyMessage(int destAddress);
-
-    virtual bool verificationTransactionChain(Packet *pk);
-    virtual void logTransactionChain(Packet *pk);
-    virtual bool isAlreadyPresentInDb(LogDatabaseElement *element);
-};
+const int EVIL_NODE_ID[] = {0};
+const int EVIL_SLEEPING_TRANSACTION = 5;
 
 Define_Module(App);
 
@@ -142,6 +53,14 @@ void App::initialize()
     // TrustChain initialization
     registerNewChainNode(-1, -1, INITIAL_MONEY);
 
+    amIEvil = false;
+    int i=0;
+    for (i=0; i< sizeof(EVIL_NODE_ID)/sizeof(EVIL_NODE_ID[0]); i++){
+        if(myAddress == EVIL_NODE_ID[i]){
+            amIEvil = true;
+        }
+    }
+
     //Start the recursive thread
     timerThread = new cMessage("TimerThead");
     scheduleAt(sendIATime->doubleValue(), timerThread);
@@ -167,7 +86,7 @@ void App::threadFunction()
 
         //Just for Production Test (ONLY 0 CAN SEND MONEY)
         //if (myAddress != 0) {
-            //return;
+        //return;
         //}
 
         //Check if i have the money for the transaction
@@ -182,13 +101,10 @@ void App::threadFunction()
 
 void App::receiveMessage(cMessage *msg)
 {
-
-    // Handle incoming packet
     if (hasGUI())
         getParentModule()->bubble("Arrived!");
     Packet *pk = check_and_cast<Packet *>(msg);
 
-    //EV << "received packet " << pk->getName() << " after " << pk->getHopCount()<< "hops" << endl;
     emit(endToEndDelaySignal, simTime() - pk->getCreationTime());
     emit(hopCountSignal, pk->getHopCount());
     emit(sourceAddressSignal, pk->getSrcAddr());
@@ -229,8 +145,15 @@ void App::receiveMessage(cMessage *msg)
         }
         case 3: { // Ack Received
             if (pk->getSrcAddr() == tempBlockID) {
-                registerNewChainNode(tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
-                createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
+                if (!isNodeEvil()) {
+                    registerNewChainNode(tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
+                    createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
+                }else{
+                    char text[128];
+                   sprintf(text, "I'm evil node #%d and i just completed a transaction ->Event number: %lld", myAddress, getSimulation()->getEventNumber());
+                   getSimulation()->getActiveEnvir()->alert(text);
+                }
+
                 tempBlockID = -1;
                 tempBlockTransaction = 0;
             }
@@ -544,3 +467,14 @@ void App::calculateChainValue()
     }
     chainTotalValue = localTotalChainValue;
 }
+
+bool App::isNodeEvil()
+{
+    if (amIEvil && trustChain.size() >= EVIL_SLEEPING_TRANSACTION) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+

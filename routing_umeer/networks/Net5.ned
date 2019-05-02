@@ -21,8 +21,8 @@ network Net5
         //here it set the connection speed and dealy (eventualy also packet drop)
         channel C extends DatarateChannel
         {
-            delay = uniform(0.01ms, 1s);
-            datarate = uniform(1kbps, 100kbps);
+            delay = uniform(0.01ms, 250ms);
+            datarate = uniform(100kbps, 500kbps);
         }
     submodules:
         rte[3]: Node {

@@ -1,15 +1,15 @@
-file 1052402 1556652234                                         
+file 2841 1556819933                                            
 version 2
-run General-0-20190430-19:33:22-17292
+run General-0-20190502-19:58:37-8592
 attr configname General
-attr datetime 20190430-19:33:22
+attr datetime 20190502-19:58:37
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network networks.Net5
-attr processid 17292
+attr processid 8592
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -18,21 +18,21 @@ attr seedset 0
 param **.appType "\"App\""
 param **.app.packetLength "4096 bytes"
 param **.destAddresses "\"0 1 2\""
-param **.sendIaTime "uniform(1000ms, 2500ms)"
+param **.sendIaTime "uniform(1000ms, 3500ms)"
 
 vector 0 Net5.rte[0].app endToEndDelay:vector ETV
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, vector"
 attr unit s
-vector 1 Net5.rte[2].app endToEndDelay:vector ETV
+vector 1 Net5.rte[1].app endToEndDelay:vector ETV
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, vector"
 attr unit s
-vector 2 Net5.rte[1].app endToEndDelay:vector ETV
+vector 2 Net5.rte[2].app endToEndDelay:vector ETV
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, vector"
 attr unit s
-0	981 348838 14 168508 2.544074727341 10815.974120540084 8266 1.097772819458 3.1612033281 11470.175787022 16847.737397009
-1	349819 346892 19 168512 2.602383704826 10816.606134935332 8300 0.94600288986 1.981674279827 8480.9369280978 8850.276115169
-2	696711 355689 27 168497 3.646676559726 10815.314820594712 8429 0.930948075368 1.87387639132 8926.448608786 9637.3911122623
+0	979 767 7 317 1.978239065416 9.718922595575 21 0.234402552278 0.331597217115 5.454091691882 1.4409200663246
+1	1746 625 14 311 2.231902239778 9.484520043297 17 0.210884603019 0.328526159375 4.40908406544 1.1589138158182
+2	2371 468 32 291 2.666001045496 7.964326083357 13 0.19969625344 0.293473044231 2.883353710094 0.65324377964538
 
