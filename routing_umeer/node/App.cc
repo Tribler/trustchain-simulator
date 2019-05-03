@@ -1,6 +1,5 @@
 //TODO LIST
 // - create event logging system
-// - implement evil node
 
 #include "App.h"
 
@@ -8,20 +7,18 @@ using namespace omnetpp;
 
 const int INITIAL_MONEY = 10;
 
-const int EVIL_NODE_ID[] = {0};
+const int EVIL_NODE_ID[] = { -1 };
 const int EVIL_SLEEPING_TRANSACTION = 5;
 
 Define_Module(App);
 
 App::App()
 {
-    //generatePacket = nullptr;
     timerThread = nullptr;
 }
 
 App::~App()
 {
-    //cancelAndDelete(generatePacket);
     cancelAndDelete(timerThread);
 }
 
@@ -29,7 +26,7 @@ void App::initialize()
 {
     myAddress = par("address");
     packetLengthBytes = &par("packetLength");
-    sendIATime = &par("sendIaTime");  // volatile parameter
+    sendIATime = &par("sendIaTime");
     pkCounter = 0;
 
     tempBlockID = -1;
@@ -41,22 +38,23 @@ void App::initialize()
     WATCH(myAddress);
     WATCH(chainTotalValue);
 
+    //Neighbors definition
     const char *destAddressesPar = par("destAddresses");
     cStringTokenizer tokenizer(destAddressesPar);
     const char *token;
     while ((token = tokenizer.nextToken()) != nullptr)
         destAddresses.push_back(atoi(token));
-
     if (destAddresses.size() == 0)
         throw cRuntimeError("At least one address must be specified in the destAddresses parameter!");
 
-    // TrustChain initialization
+    //TrustChain initialization
     registerNewChainNode(-1, -1, INITIAL_MONEY);
 
+    //Node status definition
     amIEvil = false;
-    int i=0;
-    for (i=0; i< sizeof(EVIL_NODE_ID)/sizeof(EVIL_NODE_ID[0]); i++){
-        if(myAddress == EVIL_NODE_ID[i]){
+    int i = 0;
+    for (i = 0; i < sizeof(EVIL_NODE_ID) / sizeof(EVIL_NODE_ID[0]); i++) {
+        if (myAddress == EVIL_NODE_ID[i]) {
             amIEvil = true;
         }
     }
@@ -82,14 +80,14 @@ void App::handleMessage(cMessage *msg)
 
 void App::threadFunction()
 {
-    if (tempBlockID == -1) { //Not transaction are pending
+    if (tempBlockID == -1) { //No transaction are pending
 
         //Just for Production Test (ONLY 0 CAN SEND MONEY)
         //if (myAddress != 0) {
         //return;
         //}
 
-        //Check if i have the money for the transaction
+        //Check if i have the money to start a transaction
         calculateChainValue();
         if (chainTotalValue > 0) {
             createTransactionMessage();
@@ -129,16 +127,18 @@ void App::receiveMessage(cMessage *msg)
         }
         case 2: { // Partner Chain Received
 
-            if (!verificationTransactionChain(pk)) {
+            if (verificationTransactionChain(pk)) {
+                logTransactionChain(pk);
+
+                registerNewChainNode(tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
+                createAckMessage();
+                createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
+            }
+            else {
                 char text[128];
-                sprintf(text, "Event number: %lld", getSimulation()->getEventNumber());
+                sprintf(text, "Double spending detected by #%d orchestrated by #%d", myAddress, tempBlockID);
                 getSimulation()->getActiveEnvir()->alert(text);
             }
-            logTransactionChain(pk);
-
-            registerNewChainNode(tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
-            createAckMessage();
-            createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
             tempBlockID = -1;
             tempBlockTransaction = 0;
             break;
@@ -148,10 +148,11 @@ void App::receiveMessage(cMessage *msg)
                 if (!isNodeEvil()) {
                     registerNewChainNode(tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
                     createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
-                }else{
+                }
+                else {
                     char text[128];
-                   sprintf(text, "I'm evil node #%d and i just completed a transaction ->Event number: %lld", myAddress, getSimulation()->getEventNumber());
-                   getSimulation()->getActiveEnvir()->alert(text);
+                    sprintf(text, "I'm evil node #%d and i just completed a malicious transaction with #%d", myAddress, tempBlockID);
+                    getSimulation()->getActiveEnvir()->alert(text);
                 }
 
                 tempBlockID = -1;
