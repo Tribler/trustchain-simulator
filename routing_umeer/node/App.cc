@@ -7,8 +7,8 @@ using namespace omnetpp;
 
 const int INITIAL_MONEY = 10;
 
-const int EVIL_NODE_ID[] = { -1 };
-const int EVIL_SLEEPING_TRANSACTION = 5;
+const int EVIL_NODE_ID[] = { 1 };
+const int EVIL_SLEEPING_TRANSACTION = 0;
 
 Define_Module(App);
 
@@ -127,12 +127,14 @@ void App::receiveMessage(cMessage *msg)
         }
         case 2: { // Partner Chain Received
 
-            if (verificationTransactionChain(pk)) {
+           if (verificationTransactionChain(pk)) {
                 logTransactionChain(pk);
 
                 registerNewChainNode(tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
                 createAckMessage();
-                createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
+                if (!isNodeEvil()) {
+                    createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
+                }
             }
             else {
                 char text[128];
@@ -149,11 +151,6 @@ void App::receiveMessage(cMessage *msg)
                     registerNewChainNode(tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
                     createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
                 }
-                else {
-                    char text[128];
-                    sprintf(text, "I'm evil node #%d and i just completed a malicious transaction with #%d", myAddress, tempBlockID);
-                    getSimulation()->getActiveEnvir()->alert(text);
-                }
 
                 tempBlockID = -1;
                 tempBlockTransaction = 0;
@@ -161,13 +158,31 @@ void App::receiveMessage(cMessage *msg)
             break;
         }
         case 4: { // Dissemination Received
-            LogDatabaseElement *element = new LogDatabaseElement(pk->getUserXID(), pk->getUserXSeqNum(), pk->getUserYID(), pk->getUserYSeqNum(), pk->getTransactionValue());
-            if (!isAlreadyPresentInDb(element)) {
-                logDatabase.push_back(*element);
-                //EV << " **************new element" << endl;
+//            if (myAddress == 0) {
+//
+//                int i;
+//                EV << "logDatabase:" << endl;
+//                for (i = 0; i < logDatabase.size(); i++) {
+//                    EV << "User A: " << logDatabase[i].UserAId << " User A Seq N: " << logDatabase[i].UserASeqNum << " User B: " << logDatabase[i].UserBId << " User B Seq N: " << logDatabase[i].UserBSeqNum
+//                            << " Transac: " << logDatabase[i].transactionValue << endl;
+//                }
+//
+//                char text[128];
+//                sprintf(text, "I am  #%d and i received dissemination #%d #%d <> #%d #%d $#%d ", myAddress, pk->getUserXID(), pk->getUserXSeqNum(), pk->getUserYID(), pk->getUserYSeqNum(), pk->getTransactionValue());
+//                getSimulation()->getActiveEnvir()->alert(text);
+//
+//            }
+            int result = verificationDissemination(pk);
+            if (result==-1) {
+                LogDatabaseElement *element = new LogDatabaseElement(pk->getUserXID(), pk->getUserXSeqNum(), pk->getUserYID(), pk->getUserYSeqNum(), pk->getTransactionValue());
+                if (!isAlreadyPresentInDb(element)) {
+                    logDatabase.push_back(*element);
+                }
             }
             else {
-                //EV << " ***************already present " << endl;
+                char text[128];
+                sprintf(text, "Double spending detected in dissemination by #%d orchestrated by #%d ", myAddress, result);
+                getSimulation()->getActiveEnvir()->alert(text);
             }
             break;
         }
@@ -216,6 +231,12 @@ void App::createTransactionMessage()
 
     tempBlockID = destAddress;
     tempBlockTransaction = transactionValue;
+
+    if (isNodeEvil()) {
+        char text[128];
+        sprintf(text, "i am #%d starting evil transaction with #%d of value $%d ", myAddress, tempBlockID, tempBlockTransaction);
+        getSimulation()->getActiveEnvir()->alert(text);
+    }
 
     char pkname[40];
     sprintf(pkname, "#%ld from-%d-to-%d $%d", pkCounter++, myAddress, destAddress, transactionValue);
@@ -368,6 +389,52 @@ bool App::verificationTransactionChain(Packet *pk)
     return true;
 }
 
+int App::verificationDissemination(Packet *pk)
+{
+    int i;
+    for (i = 0; i < logDatabase.size(); i++) {
+
+        if (logDatabase[i].UserAId == pk->getUserXID() && logDatabase[i].UserASeqNum == pk->getUserXSeqNum()) {
+            if (logDatabase[i].UserBId == pk->getUserYID() && logDatabase[i].UserBSeqNum == pk->getUserYSeqNum() && abs(logDatabase[i].transactionValue) == abs(pk->getTransactionValue())) {
+                return -1;
+            }
+            else {
+                return logDatabase[i].UserAId;
+            }
+        }
+
+        if (logDatabase[i].UserAId == pk->getUserYID() && logDatabase[i].UserASeqNum == pk->getUserYSeqNum()) {
+            if (logDatabase[i].UserBId == pk->getUserXID() && logDatabase[i].UserBSeqNum == pk->getUserXSeqNum() && abs(logDatabase[i].transactionValue) == abs(pk->getTransactionValue())) {
+                return -1;
+            }
+            else {
+                return logDatabase[i].UserAId;
+            }
+        }
+
+        if (logDatabase[i].UserBId == pk->getUserXID() && logDatabase[i].UserBSeqNum == pk->getUserXSeqNum()) {
+            if (logDatabase[i].UserAId == pk->getUserYID() && logDatabase[i].UserASeqNum == pk->getUserYSeqNum() && abs(logDatabase[i].transactionValue) == abs(pk->getTransactionValue())) {
+                return -1;
+            }
+            else {
+                return logDatabase[i].UserBId;
+            }
+        }
+
+        if (logDatabase[i].UserBId == pk->getUserYID() && logDatabase[i].UserBSeqNum == pk->getUserYSeqNum()) {
+            if (logDatabase[i].UserAId == pk->getUserXID() && logDatabase[i].UserASeqNum == pk->getUserXSeqNum() && abs(logDatabase[i].transactionValue) == abs(pk->getTransactionValue())) {
+                return -1;
+            }
+            else {
+                return logDatabase[i].UserBId;
+            }
+        }
+
+    }
+
+    return -1;
+}
+
 void App::logTransactionChain(Packet *pk)
 {
     if (pk->getUserBIDArraySize() != 0) {
@@ -405,7 +472,7 @@ void App::createDisseminationMessage(int userXID, int userXSeqNum, int userYID, 
     int i;
     for (i = 0; i < destAddresses.size(); i++) {
 
-        // Sending packet
+// Sending packet
         int destAddress = destAddresses[i];
         if (destAddress == myAddress) {
             continue;
@@ -417,7 +484,7 @@ void App::createDisseminationMessage(int userXID, int userXSeqNum, int userYID, 
         if (hasGUI())
             getParentModule()->bubble("Generating packet...");
 
-        //Packet Creation
+//Packet Creation
         Packet *pk = new Packet(pkname);
         pk->setByteLength(packetLengthBytes->intValue());
         pk->setSrcAddr(myAddress);

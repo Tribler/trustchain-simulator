@@ -3,6 +3,7 @@
 #endif
 
 #include <vector>
+#include <cstdlib>
 #include <omnetpp.h>
 #include "Packet_m.h"
 
@@ -89,6 +90,7 @@ protected:
     virtual void createBusyMessage(int destAddress);
 
     virtual bool verificationTransactionChain(Packet *pk);
+    virtual int verificationDissemination(Packet *pk); //return -1 if all good otherwise return the id of the evil node
     virtual void logTransactionChain(Packet *pk);
     virtual bool isAlreadyPresentInDb(LogDatabaseElement *element);
     virtual bool isNodeEvil();
