@@ -1,0 +1,6 @@
+60	61	Directed	75			1.0
+60	62	Directed	76			1.0
+60	64	Directed	77			1.0
+61	63	Directed	78			1.0
+62	63	Directed	79			1.0
+62	64	Directed	80			1.0

@@ -1,5 +1,6 @@
 //TODO LIST
 // - create event logging system
+// - optimize evil node so that do transactions with node far
 
 #include "App.h"
 
@@ -7,7 +8,7 @@ using namespace omnetpp;
 
 const int INITIAL_MONEY = 10;
 
-const int EVIL_NODE_ID[] = { 1 };
+const int EVIL_NODE_ID[] = { -1 };
 const int EVIL_SLEEPING_TRANSACTION = 0;
 
 Define_Module(App);
