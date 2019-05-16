@@ -39,12 +39,19 @@ void App::initialize()
     WATCH(myAddress);
     WATCH(chainTotalValue);
 
-    //Neighbors definition
-    const char *destAddressesPar = par("destAddresses");
-    cStringTokenizer tokenizer(destAddressesPar);
-    const char *token;
-    while ((token = tokenizer.nextToken()) != nullptr)
-        destAddresses.push_back(atoi(token));
+    //future implemetation
+//    const char *destAddressesPar = par("destAddresses");
+//    cStringTokenizer tokenizer(destAddressesPar);
+//    const char *token;
+//    while ((token = tokenizer.nextToken()) != nullptr)
+//        destAddresses.push_back(atoi(token));
+
+//Neighbors definition
+    const int totalNodes = par("totalNodes");
+    for (int i = 0; i < totalNodes; i++) {
+        destAddresses.push_back(i);
+    }
+
     if (destAddresses.size() == 0)
         throw cRuntimeError("At least one address must be specified in the destAddresses parameter!");
 
@@ -128,7 +135,7 @@ void App::receiveMessage(cMessage *msg)
         }
         case 2: { // Partner Chain Received
 
-           if (verificationTransactionChain(pk)) {
+            if (verificationTransactionChain(pk)) {
                 logTransactionChain(pk);
 
                 registerNewChainNode(tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
@@ -174,7 +181,7 @@ void App::receiveMessage(cMessage *msg)
 //
 //            }
             int result = verificationDissemination(pk);
-            if (result==-1) {
+            if (result == -1) {
                 LogDatabaseElement *element = new LogDatabaseElement(pk->getUserXID(), pk->getUserXSeqNum(), pk->getUserYID(), pk->getUserYSeqNum(), pk->getTransactionValue());
                 if (!isAlreadyPresentInDb(element)) {
                     logDatabase.push_back(*element);

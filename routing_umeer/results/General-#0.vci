@@ -1,15 +1,15 @@
-file 8759 1557946028                                            
+file 1178471 1558021850                                         
 version 2
-run General-0-20190515-20:46:31-17396
+run General-0-20190516-17:49:06-18340
 attr configname General
-attr datetime 20190515-20:46:31
+attr datetime 20190516-17:49:06
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network networks.Net5
-attr processid 17396
+attr processid 18340
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -17,57 +17,32 @@ attr runnumber 0
 attr seedset 0
 param **.appType "\"App\""
 param **.app.packetLength "4096 bytes"
+param **.app.totalNodes 4
 param **.destAddresses "\"0 1 2 3 4 5 6 7 8 9\""
 param **.sendIaTime "uniform(5s, 10s)"
 
-vector 0 Net5.rte[4].app endToEndDelay:vector ETV
+vector 0 Net5.rte[0].app endToEndDelay:vector ETV
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, vector"
 attr unit s
-vector 1 Net5.rte[9].app endToEndDelay:vector ETV
+vector 1 Net5.rte[3].app endToEndDelay:vector ETV
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, vector"
 attr unit s
-vector 2 Net5.rte[2].app endToEndDelay:vector ETV
+vector 2 Net5.rte[1].app endToEndDelay:vector ETV
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, vector"
 attr unit s
-vector 3 Net5.rte[7].app endToEndDelay:vector ETV
+vector 3 Net5.rte[2].app endToEndDelay:vector ETV
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, vector"
 attr unit s
-vector 4 Net5.rte[0].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 5 Net5.rte[6].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 6 Net5.rte[3].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 7 Net5.rte[1].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 8 Net5.rte[8].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 9 Net5.rte[5].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-0	2045 738 11 1396 5.452192759784 9.793587723943 20 0.062805707235 0.475230394692 4.124049847915 1.0834754637687
-1	2783 632 21 1443 5.622754767161 10.035733583814 17 0.052570041716 0.535220254756 5.322659030817 2.0244727099052
-2	3415 706 64 1417 5.912372552599 9.863117877386 19 0.110316536921 0.533571173117 3.649728276392 0.88649281653851
-3	4121 629 71 1422 5.946899513195 9.87193656688 17 0.064079113916 0.473263444568 3.51375491018 1.0269968356535
-4	4750 743 78 1457 5.97400442557 11.692112169069 20 0.091184026291 0.394470540167 3.514084525263 0.74971237880846
-5	5493 633 85 1432 6.001003028842 9.914259538014 17 0.039507403089 0.475479913124 3.239306723409 0.87258775038705
-6	6126 665 123 1390 6.056148928069 9.786094298672 18 0.117590230366 0.38742117636 4.057369287894 1.0595475498715
-7	6791 631 134 1381 6.10672346131 9.77232527954 17 0.052197070831 0.405988629591 2.8009305848 0.5717418511808
-8	7422 633 140 1446 6.118929063978 10.05916200737 17 0.102590971092 0.660488885058 4.043049979319 1.4344934295262
-9	8055 702 159 1435 6.172438457333 9.940883254849 19 0.095477890667 0.348089664016 3.731391593087 0.84025048318878
+0	1166 295448 7 245226 5.374748904919 6415.210946454518 6991 0.091184026291 0.416757283138 1083.1705662637 201.34074369373
+1	296614 293644 13 245234 5.471415384742 6415.250030982255 6975 0.096666479823 0.567531963921 1732.8090822595 557.06381457657
+2	590258 294867 43 245241 5.663315205801 6415.281821921207 6994 0.100715794768 0.350577101636 1188.0925915204 226.68628419131
+3	885125 292874 62 245186 5.796008222492 6414.922890580723 6931 0.086863084018 0.535464950537 1528.8029321905 419.27684414876
+0	1177999 86 245291 245314 6415.599158926934 6415.808196915606 2 0.108299017055 0.230473921709 0.338772938764 0.064846905683005
+1	1178085 128 245263 245325 6415.422776838513 6416.020027299601 3 0.241742729329 0.49988625779 1.183933292823 0.50395891675502
+2	1178213 85 245267 245311 6415.490859909879 6415.757479850637 2 0.122174904654 0.17975685674 0.301931761394 0.047239234872259
+3	1178298 171 245254 245294 6415.368685005225 6415.622214834784 4 0.086863084018 0.25981234368 0.564893436621 0.099846960955529
 
