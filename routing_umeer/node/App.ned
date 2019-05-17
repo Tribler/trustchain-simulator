@@ -19,6 +19,7 @@ simple App like IApp
         int totalNodes;
         string destAddresses;  // destination addresses
         volatile double sendIaTime @unit(s) = default(exponential(1s)); // time between generating packets
+        volatile double sendIaTimeEvil @unit(s);
         volatile int packetLength @unit(byte);  // length of one message (fixed! no "volatile" modifier)
         @display("i=block/browser");
         @signal[endToEndDelay](type="simtime_t");

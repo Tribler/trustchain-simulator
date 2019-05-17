@@ -8,8 +8,9 @@ using namespace omnetpp;
 
 const int INITIAL_MONEY = 10;
 
-const int EVIL_NODE_ID[] = { -1 };
-const int EVIL_SLEEPING_TRANSACTION = 0;
+const int EVIL_NODE_ID[] = { 1 }; // [-1 means that there are no evil node]
+const int EVIL_SLEEPING_TRANSACTION = 2; // [1 is MIN]
+const int EVIL_NUMBER_OF_TRANSACTION = 2; // [2 is MIN] total max number of transaction to perform after the first evil transaction
 
 Define_Module(App);
 
@@ -28,6 +29,7 @@ void App::initialize()
     myAddress = par("address");
     packetLengthBytes = &par("packetLength");
     sendIATime = &par("sendIaTime");
+    sendIaTimeEvil = &par("sendIaTimeEvil");
     pkCounter = 0;
 
     tempBlockID = -1;
@@ -66,6 +68,7 @@ void App::initialize()
             amIEvil = true;
         }
     }
+    totalEvilTransactions = 0;
 
     //Start the recursive thread
     timerThread = new cMessage("TimerThead");
@@ -102,7 +105,20 @@ void App::threadFunction()
         }
     }
 
-    scheduleAt(simTime() + sendIATime->doubleValue(), timerThread);
+    if (!isNodeEvil()) {
+        scheduleAt(simTime() + sendIATime->doubleValue(), timerThread);
+    }
+    else {
+        if (totalEvilTransactions + 1 < EVIL_NUMBER_OF_TRANSACTION) {
+            scheduleAt(simTime() + sendIaTimeEvil->doubleValue(), timerThread);
+        }
+        else {
+            char text[128];
+            sprintf(text, "Evil node #%d is now peforming his last transaction", myAddress);
+            getSimulation()->getActiveEnvir()->alert(text);
+
+        }
+    }
 }
 
 void App::receiveMessage(cMessage *msg)
@@ -119,6 +135,11 @@ void App::receiveMessage(cMessage *msg)
         case 0: { // Transaction Request Received
 
             if (tempBlockID != -1) { //currently in another transaction
+                createBusyMessage(pk->getSrcAddr());
+                break;
+            }
+
+            if (isNodeEvil()) { //ignore all the incoming transactions
                 createBusyMessage(pk->getSrcAddr());
                 break;
             }
@@ -159,6 +180,12 @@ void App::receiveMessage(cMessage *msg)
                     registerNewChainNode(tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
                     createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
                 }
+                else {
+                    char text[128];
+                    sprintf(text, "i am #%d and i completed an evil transaction with #%d of value $%d distant: %d ", myAddress, tempBlockID, tempBlockTransaction, pk->getHopCount());
+                    getSimulation()->getActiveEnvir()->alert(text);
+                    totalEvilTransactions = totalEvilTransactions + 1;
+                }
 
                 tempBlockID = -1;
                 tempBlockTransaction = 0;
@@ -166,6 +193,7 @@ void App::receiveMessage(cMessage *msg)
             break;
         }
         case 4: { // Dissemination Received
+            //DEBUG CODE
 //            if (myAddress == 0) {
 //
 //                int i;

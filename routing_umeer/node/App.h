@@ -44,7 +44,9 @@ private:
     int myAddress;
     std::vector<int> destAddresses;
     cPar *sendIATime;
+    cPar *sendIaTimeEvil;
     cPar *packetLengthBytes;
+
 
     // state
     //cMessage *generatePacket;
@@ -52,6 +54,7 @@ private:
     long pkCounter;
     long chainTotalValue;
     bool amIEvil;
+    int totalEvilTransactions;
 
     int tempBlockID;
     int tempPartnerSeqNum;
