@@ -6,7 +6,7 @@
 
 using namespace omnetpp;
 
-const int INITIAL_MONEY = 10;
+const int INITIAL_MONEY = 100;
 
 const int EVIL_NODE_ID[] = { 1 }; // [-1 means that there are no evil node]
 const int EVIL_SLEEPING_TRANSACTION = 2; // [1 is MIN]
@@ -167,7 +167,7 @@ void App::receiveMessage(cMessage *msg)
             }
             else {
                 char text[128];
-                sprintf(text, "Double spending detected by #%d orchestrated by #%d", myAddress, tempBlockID);
+                sprintf(text, "Double spending detected by #%d orchestrated by #%d distant: %d", myAddress, tempBlockID, pk->getHopCount());
                 getSimulation()->getActiveEnvir()->alert(text);
             }
             tempBlockID = -1;
