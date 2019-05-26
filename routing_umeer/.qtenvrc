@@ -1,5 +1,5 @@
 [General]
-last-configname=Net5
+last-configname=General
 last-runnumber=0
 
 [RunModeProfiles]
@@ -12,4 +12,4 @@ run-max-animation-speed=nan
 run-max-playback-speed=100
 run-min-animation-speed=nan
 run-min-playback-speed=0.01
-run-playback-speed=100
+run-playback-speed=0.22387211385683395

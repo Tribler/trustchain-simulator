@@ -1,6 +1,7 @@
 //TODO LIST
 // - create event logging system
 // - optimize evil node so that do transactions with node far
+// - implement anti busy protection on last transaciton
 
 #include "App.h"
 
@@ -9,7 +10,7 @@ using namespace omnetpp;
 const int INITIAL_MONEY = 100;
 
 const int EVIL_NODE_ID[] = { 1 }; // [-1 means that there are no evil node]
-const int EVIL_SLEEPING_TRANSACTION = 2; // [1 is MIN]
+const int EVIL_SLEEPING_TRANSACTION = 1; // [1 is MIN]
 const int EVIL_NUMBER_OF_TRANSACTION = 2; // [2 is MIN] total max number of transaction to perform after the first evil transaction
 
 Define_Module(App);
@@ -116,7 +117,7 @@ void App::threadFunction()
             char text[128];
             sprintf(text, "Evil node #%d is now peforming his last transaction", myAddress);
             getSimulation()->getActiveEnvir()->alert(text);
-
+            // what if that is busy?
         }
     }
 }
@@ -326,7 +327,7 @@ void App::createChainLogMessage()
 
     //Packet Creation
     Packet *pk = new Packet(pkname);
-    pk->setByteLength(packetLengthBytes->intValue());
+    pk->setByteLength(packetLengthBytes->intValue() + ((trustChain.size() - 1)*10));
     pk->setSrcAddr(myAddress);
     pk->setDestAddr(destAddress);
 

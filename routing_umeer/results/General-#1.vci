@@ -1,0 +1,55 @@
+file 14352 1558104516                                           
+version 2
+run General-1-20190517-16:43:39-17476
+attr configname General
+attr datetime 20190517-16:43:39
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network networks.Net5
+attr processid 17476
+attr repetition 1
+attr replication #1
+attr resultdir results
+attr runnumber 1
+attr seedset 1
+param **.appType "\"App\""
+param **.app.packetLength "4096 bytes"
+param **.app.totalNodes 5
+param **.destAddresses "\"0\""
+param **.sendIaTime "uniform(5s, 10s)"
+param **.sendIaTimeEvil "uniform(1ms, 10ms)"
+
+vector 0 Net5.rte[2].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 1 Net5.rte[4].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 2 Net5.rte[1].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 3 Net5.rte[0].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 4 Net5.rte[3].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+0	1345 2405 7 2457 5.2545769864 49.060664399749 63 0.085113213351 0.247538938768 9.603171992102 1.628955857157
+1	3750 2573 13 2442 5.359603611549 49.00612675838 67 0.073999228284 0.279045989873 9.80688104802 1.732700477837
+2	6323 2403 50 2461 5.599946879691 49.070348146589 63 0.065973598876 0.179434924292 6.770093978363 0.79661684129026
+3	8726 2409 60 2471 5.649643085946 49.140056781364 63 0.063030256515 0.28750850225 9.58047280598 1.6785127222022
+4	11135 2360 79 2475 5.732644769987 49.183033608365 62 0.075967227588 0.355702060499 10.624444058895 2.2838414472322
+0	13495 117 2554 2697 50.947363290054 51.353918420576 3 0.085113213351 0.117639006558 0.28786543326 0.028327454037819
+1	13612 115 2536 2654 50.89070806669 51.236279414018 3 0.105026625149 0.148539959155 0.402106543459 0.055158830921727
+2	13727 272 2527 2750 50.858293476729 51.471375857555 7 0.065973598876 0.179434924292 0.704331146647 0.085282322323338
+3	13999 234 2503 2747 50.783752745858 51.470029036379 6 0.063030256515 0.233749622361 1.026400654732 0.20008218846403
+4	14233 117 2667 2740 51.241041323821 51.451525273544 3 0.075967227588 0.353075171263 0.505009626439 0.13620411589721
+
