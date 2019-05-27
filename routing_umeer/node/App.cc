@@ -170,6 +170,7 @@ void App::receiveMessage(cMessage *msg)
                 char text[128];
                 sprintf(text, "Double spending detected by #%d orchestrated by #%d distant: %d", myAddress, tempBlockID, pk->getHopCount());
                 getSimulation()->getActiveEnvir()->alert(text);
+                endSimulation();
             }
             tempBlockID = -1;
             tempBlockTransaction = 0;
@@ -220,6 +221,7 @@ void App::receiveMessage(cMessage *msg)
                 char text[128];
                 sprintf(text, "Double spending detected in dissemination by #%d orchestrated by #%d ", myAddress, result);
                 getSimulation()->getActiveEnvir()->alert(text);
+                endSimulation();
             }
             break;
         }

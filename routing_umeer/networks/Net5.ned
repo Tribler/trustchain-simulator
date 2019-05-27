@@ -12,8 +12,8 @@ network Net5
         //here it set the connection speed and dealy (eventualy also packet drop)
         channel C extends DatarateChannel
         {
-            delay = uniform(5ms, 100ms);
-            datarate =  7920kbps;//https://www.fastmetrics.com/internet-connection-speed-by-country.php#top-10-worldwide with a 10% vairiance
+            delay =  100ms;
+            datarate =  7200kbps;//https://www.fastmetrics.com/internet-connection-speed-by-country.php#top-10-worldwide with a 10% vairiance
             // packet size https://www.isi.edu/~johnh/PAPERS/Sinha07a.pdf
         }
     submodules:
