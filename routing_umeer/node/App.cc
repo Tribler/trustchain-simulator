@@ -116,6 +116,7 @@ void App::threadFunction()
         else {
             char text[128];
             sprintf(text, "Evil node #%d is now performing his last transaction Time: %s s", myAddress, SIMTIME_STR(simTime()));
+            EV << text << endl;
             getSimulation()->getActiveEnvir()->alert(text);
             // what if that is busy?
         }
@@ -168,7 +169,8 @@ void App::receiveMessage(cMessage *msg)
             }
             else {
                 char text[128];
-                sprintf(text, "Double spending detected by #%d orchestrated by #%d distant: %d Time: %s s", myAddress, tempBlockID, pk->getHopCount(), SIMTIME_STR(simTime()));
+                sprintf(text, "Node: #%d - detected double spending in verification done by #%d distant: %d Time: %s s", myAddress, tempBlockID, pk->getHopCount(), SIMTIME_STR(simTime()));
+                EV << text << endl;
                 getSimulation()->getActiveEnvir()->alert(text);
                 endSimulation();
             }
@@ -184,7 +186,8 @@ void App::receiveMessage(cMessage *msg)
                 }
                 else {
                     char text[128];
-                    sprintf(text, "i am #%d and i completed an evil transaction with #%d of value $%d distant: %d Time: %s s", myAddress, tempBlockID, tempBlockTransaction, pk->getHopCount(),SIMTIME_STR(simTime()));
+                    sprintf(text, "Evil node: #%d - completed transaction with #%d of value $%d distant: %d Time: %s s", myAddress, tempBlockID, tempBlockTransaction, pk->getHopCount(), SIMTIME_STR(simTime()));
+                    EV << text << endl;
                     getSimulation()->getActiveEnvir()->alert(text);
                     totalEvilTransactions = totalEvilTransactions + 1;
                 }
@@ -219,7 +222,8 @@ void App::receiveMessage(cMessage *msg)
             }
             else {
                 char text[128];
-                sprintf(text, "Double spending detected in dissemination by #%d orchestrated by #%d Time: %s s", myAddress, result, SIMTIME_STR(simTime()));
+                sprintf(text, "Node: #%d - detected double spending in dissemination done by #%d Time: %s s", myAddress, result, SIMTIME_STR(simTime()));
+                EV << text << endl;
                 getSimulation()->getActiveEnvir()->alert(text);
                 endSimulation();
             }
@@ -273,7 +277,8 @@ void App::createTransactionMessage()
 
     if (isNodeEvil()) {
         char text[128];
-        sprintf(text, "i am #%d starting evil transaction with #%d of value $%d Time: %s s", myAddress, tempBlockID, tempBlockTransaction, SIMTIME_STR(simTime()));
+        sprintf(text, "Evil node: #%d - starting transaction with #%d of value $%d Time: %s s", myAddress, tempBlockID, tempBlockTransaction, SIMTIME_STR(simTime()));
+        EV << text << endl;
         getSimulation()->getActiveEnvir()->alert(text);
     }
 
@@ -329,7 +334,7 @@ void App::createChainLogMessage()
 
     //Packet Creation
     Packet *pk = new Packet(pkname);
-    pk->setByteLength(packetLengthBytes->intValue() + ((trustChain.size() - 1)*10));
+    pk->setByteLength(packetLengthBytes->intValue() + ((trustChain.size() - 1) * 10));
     pk->setSrcAddr(myAddress);
     pk->setDestAddr(destAddress);
 
@@ -396,12 +401,12 @@ bool App::verificationTransactionChain(Packet *pk)
                     //all good!
                 }
                 else {
-                    EV << "****The local transaction is not matching with the data provided" << endl;
+                    //EV << "****The local transaction is not matching with the data provided" << endl;
                     return false;
                 }
             }
             else {
-                EV << "****There aren't enough transactions in the received chain" << endl;
+                //EV << "****There aren't enough transactions in the received chain" << endl;
                 return false;
             }
         }
@@ -412,12 +417,12 @@ bool App::verificationTransactionChain(Packet *pk)
                     //all good!
                 }
                 else {
-                    EV << "****The local transaction is not matching with the data provided B" << endl;
+                    //EV << "****The local transaction is not matching with the data provided B" << endl;
                     return false;
                 }
             }
             else {
-                EV << "****There aren't enough transactions in the received chain B" << endl;
+                //EV << "****There aren't enough transactions in the received chain B" << endl;
                 return false;
             }
 
