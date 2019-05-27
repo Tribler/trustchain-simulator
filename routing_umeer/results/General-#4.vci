@@ -1,55 +1,275 @@
-file 17240 1558108900                                           
+file 139347 1558969925                                          
 version 2
-run General-4-20190517-16:55:11-17476
+run General-4-20190527-17:12:04-10860
 attr configname General
-attr datetime 20190517-16:55:11
+attr datetime 20190527-17:12:04
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network networks.Net5
-attr processid 17476
+attr processid 10860
 attr repetition 4
 attr replication #4
 attr resultdir results
 attr runnumber 4
 attr seedset 4
 param **.appType "\"App\""
-param **.app.packetLength "4096 bytes"
-param **.app.totalNodes 5
+param **.app.packetLength "1500 bytes"
+param **.app.totalNodes 50
 param **.destAddresses "\"0\""
 param **.sendIaTime "uniform(5s, 10s)"
 param **.sendIaTimeEvil "uniform(1ms, 10ms)"
 
-vector 0 Net5.rte[1].app endToEndDelay:vector ETV
+vector 0 Net5.rte[32].app endToEndDelay:vector ETV
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, vector"
 attr unit s
-vector 1 Net5.rte[4].app endToEndDelay:vector ETV
+vector 1 Net5.rte[17].app endToEndDelay:vector ETV
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, vector"
 attr unit s
-vector 2 Net5.rte[2].app endToEndDelay:vector ETV
+vector 2 Net5.rte[48].app endToEndDelay:vector ETV
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, vector"
 attr unit s
-vector 3 Net5.rte[0].app endToEndDelay:vector ETV
+vector 3 Net5.rte[34].app endToEndDelay:vector ETV
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, vector"
 attr unit s
-vector 4 Net5.rte[3].app endToEndDelay:vector ETV
+vector 4 Net5.rte[25].app endToEndDelay:vector ETV
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, vector"
 attr unit s
-0	1345 1865 7 1893 5.906793910214 36.134571227402 49 0.042169586871 0.267977341664 6.228892739228 0.94852254011755
-1	3210 1871 13 1907 5.967249930106 36.265463117304 49 0.060456019892 0.298031073449 8.839902019044 1.9136278969044
-2	5081 1906 53 1910 6.170228025246 36.285184566538 50 0.066544561884 0.317752522683 8.960331975456 1.989295312071
-3	6987 2018 59 1882 6.187415050588 36.047764774122 53 0.116599246551 0.375874473424 9.419530956586 1.9356174324207
-4	9005 1943 66 1896 6.224138533371 36.136370724913 51 0.133720746053 0.519403438087 12.258347822858 3.7441776944693
-0	10948 1282 1947 3217 40.543760247663 61.245774371757 33 0.042169586871 0.267977341664 4.273585854749 0.65720625998286
-1	12230 1283 1988 3152 40.674652137565 60.891289403695 33 0.060456019892 0.298031073449 5.75850823678 1.1771398880645
-2	13513 1208 1992 3181 40.694373586799 60.957833965579 31 0.066544561884 0.317752522683 4.937324789879 0.99964130724286
-3	14721 1276 1917 3226 40.161519006517 61.37835680123 33 0.116599246551 0.31843958697 6.480472728762 1.4331678017242
-4	15997 1241 1923 3237 40.29523975257 63.655735014239 32 0.133720746053 0.519403438087 8.999124336915 3.0089731305022
+vector 5 Net5.rte[3].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 6 Net5.rte[36].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 7 Net5.rte[21].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 8 Net5.rte[41].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 9 Net5.rte[43].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 10 Net5.rte[30].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 11 Net5.rte[11].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 12 Net5.rte[4].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 13 Net5.rte[44].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 14 Net5.rte[16].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 15 Net5.rte[18].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 16 Net5.rte[26].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 17 Net5.rte[29].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 18 Net5.rte[28].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 19 Net5.rte[0].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 20 Net5.rte[8].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 21 Net5.rte[14].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 22 Net5.rte[10].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 23 Net5.rte[13].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 24 Net5.rte[19].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 25 Net5.rte[47].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 26 Net5.rte[15].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 27 Net5.rte[22].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 28 Net5.rte[23].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 29 Net5.rte[24].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 30 Net5.rte[20].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 31 Net5.rte[33].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 32 Net5.rte[37].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 33 Net5.rte[38].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 34 Net5.rte[49].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 35 Net5.rte[2].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 36 Net5.rte[7].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 37 Net5.rte[39].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 38 Net5.rte[6].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 39 Net5.rte[9].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 40 Net5.rte[12].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 41 Net5.rte[40].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 42 Net5.rte[31].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 43 Net5.rte[35].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 44 Net5.rte[45].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 45 Net5.rte[42].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 46 Net5.rte[46].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 47 Net5.rte[1].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 48 Net5.rte[27].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 49 Net5.rte[5].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+0	8221 2557 67 47768 5.33079574939 12.348418848108 66 0.115000000003 0.458333333345 20.415698473339 6.7979186242215
+1	10778 2559 81 46958 5.400123705688 12.130085514771 66 0.101666666667 0.436666666674 17.421666666871 5.1885194445579
+2	13337 2633 91 47106 5.424133601332 12.162145641376 68 0.11666666667 0.586666666684 18.497431281978 5.5503618537823
+3	15970 2568 105 47689 5.451597139172 12.330085514771 66 0.108333333335 0.530000000006 23.173333333668 8.7215555558004
+4	18538 2563 115 47739 5.503901810219 12.340085514773 66 0.103333333334 0.548333333343 21.191666666925 7.5095472224046
+5	21101 2611 129 47510 5.539484618264 12.292145641362 67 0.203333333334 0.515000000003 27.416070838572 11.803872553119
+6	23712 2567 147 47453 5.627466934666 12.245478974706 66 0.101666666667 0.668333333347 23.169773574669 9.216469667781
+7	26279 2529 153 47316 5.635795749391 12.220478974701 65 0.108333333335 0.523333333338 19.155000000231 6.2768361112553
+8	28808 2578 164 47719 5.705123705689 12.336752181439 66 0.118333333337 0.676666666682 25.34404594774 10.740754993898
+9	31386 2643 194 47486 5.80890181022 12.255478974708 68 0.108333333335 0.578333333349 21.738697986765 7.6170278913973
+10	34029 2676 383 47722 5.910654197646 12.337145641371 67 0.110000000002 0.558333333345 21.12537631718 7.3403597412154
+11	36705 2637 390 47288 5.920877885872 12.215085514768 66 0.101666666667 0.411666666669 18.564087121591 5.6675865386206
+12	39342 2682 410 47304 5.932466934667 12.218418848102 67 0.101666666667 0.515000000003 20.131373396305 6.5452945851401
+13	42024 2635 453 47492 5.935800268001 12.257145641375 66 0.103333333334 0.580000000016 20.994109059635 7.558396932342
+14	44659 2583 497 47261 5.939133601335 12.212145641366 65 0.103333333334 0.43333333334 16.56122081262 4.9132180191246
+15	47242 2586 498 46876 5.939133601335 12.116752181435 65 0.108333333335 0.435000000007 17.565742392823 5.2360620530284
+16	49828 2671 499 47621 5.939133601335 12.321752181436 67 0.108333333335 0.55000000001 18.651169579658 5.8807289873228
+17	52499 2638 539 47449 5.944133601336 12.245085514774 66 0.113333333336 0.453333333344 17.927773712606 5.4264708867035
+18	55137 2592 753 47442 6.022544552539 12.243418848107 65 0.101666666667 0.453333333344 19.427451600251 6.4350715230118
+19	57729 2642 779 47258 6.034133601334 12.211752181434 66 0.101666666667 0.510000000002 19.76328094598 6.603890751886
+20	60371 2628 902 46791 6.035800268001 12.097145641363 66 0.103333333334 0.52101275981 19.023579595099 6.0539855658611
+21	62999 2600 903 47677 6.035800268001 12.328418848104 65 0.105000000001 0.631666666673 24.920276535416 10.290565804282
+22	65599 2636 904 47276 6.035800268001 12.213418848101 66 0.103333333334 0.521666666671 20.490742392748 7.0297972489076
+23	68235 2638 921 47517 6.037466934668 12.308812308032 66 0.101666666667 0.530000000006 20.517111438027 7.1996734963668
+24	70873 2595 924 47711 6.037466934668 12.335085514772 65 0.101666666667 0.640000000008 21.789502912919 8.120629872986
+25	73468 2560 941 47277 6.039133601335 12.213418848101 64 0.103333333334 0.568333333347 24.179075726339 10.088921692434
+26	76028 2709 943 47647 6.039133601335 12.32508551477 68 0.105000000001 0.531666666673 18.31035376788 5.4930277720657
+27	78737 2749 946 47400 6.039133601335 12.235085514772 69 0.103333333334 0.443333333342 21.64600739483 7.3407551013383
+28	81486 2594 955 47731 6.040800268002 12.338418848106 65 0.106666666668 0.535000000007 22.510000000242 8.5563333335162
+29	84080 2718 967 47651 6.042466934669 12.32508551477 68 0.103333333334 0.446666666676 20.999440379227 7.1540654710746
+30	86798 2635 969 47313 6.042466934669 12.220085514769 66 0.113333333336 0.431666666673 19.522409059501 6.264112399937
+31	89433 2642 996 47430 6.045800268003 12.240478974705 66 0.105000000001 0.561666666679 19.696666667006 6.4147388891107
+32	92075 2682 1029 47460 6.049133601337 12.247145641373 67 0.106666666668 0.568333333347 22.105523632377 8.0712857460646
+33	94757 2632 1030 47382 6.049133601337 12.231752181438 66 0.11666666667 0.570411134093 23.077853527084 8.6173871012605
+34	97389 2592 1054 47503 6.052466934671 12.26547897471 65 0.103333333334 0.588333333351 20.233431988176 7.1217283107366
+35	99981 2601 1104 47287 6.111790372357 12.215085514768 65 0.101666666667 0.410000000002 18.287773712378 5.7495985470996
+36	102582 2677 1124 47323 6.113457039024 12.221752181436 67 0.101666666667 0.418333333337 19.535762433357 6.3531650252395
+37	105259 2635 1388 47465 6.125123705693 12.250085514775 66 0.115000000003 0.53333333334 21.883937399187 7.8329243455062
+38	107894 2637 1450 47149 6.135800268001 12.210085514767 66 0.101666666667 0.51666666667 23.081078769135 8.7277350420408
+39	110531 2594 1511 47133 6.140800268002 12.200478974697 65 0.206666666668 0.520000000004 25.701666666827 10.7654416668
+40	113125 2599 1512 47136 6.140800268002 12.205478974698 65 0.103333333334 0.628333333339 20.85887183796 7.4346850351096
+41	115724 2758 1541 47776 6.144133601336 12.353812308041 69 0.101666666667 0.575000000015 26.095032819278 10.818007856083
+42	118482 2639 1577 47678 6.14746693467 12.328418848104 66 0.105000000001 0.526666666672 22.482803514297 8.3829459464243
+43	121121 2595 1598 47757 6.149133601337 12.345478974706 65 0.108333333335 0.56666666668 20.577773712636 7.1601375127663
+44	123716 2518 1635 45951 6.152466934671 11.805478974698 63 0.101666666667 0.581666666683 21.57570174753 8.4126688966756
+45	126234 2604 1637 47732 6.152466934671 12.338418848106 65 0.230000000006 0.561666666679 27.152543912702 11.845519626659
+46	128838 2593 1651 47099 6.154133601338 12.158812308042 65 0.105000000001 0.58333333335 24.06353665356 9.619836764475
+47	131431 2685 1737 47567 6.213457039024 12.315085514768 67 0.101666666667 0.510000000002 22.884873758254 8.5755253700287
+48	134116 2671 1855 47779 6.220123705692 12.353851352475 67 0.103333333334 0.551666666677 25.081380375609 10.258912976911
+49	136787 2558 2575 47127 6.316790372358 12.193812308029 64 0.205000000001 0.61666666667 28.45842039994 13.346843038625
 
