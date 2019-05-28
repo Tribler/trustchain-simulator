@@ -1,15 +1,15 @@
-file 140383 1558972729                                          
+file 3614 1559056639                                            
 version 2
-run General-0-20190527-17:58:49-13792
+run General-0-20190528-17:14:49-7872
 attr configname General
-attr datetime 20190527-17:58:49
+attr datetime 20190528-17:14:49
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network networks.Net5
-attr processid 13792
+attr processid 7872
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -17,7 +17,7 @@ attr runnumber 0
 attr seedset 0
 param **.appType "\"App\""
 param **.app.packetLength "1500 bytes"
-param **.app.totalNodes 50
+param **.app.totalNodes 3
 param **.destAddresses "\"0\""
 param **.sendIaTime "uniform(5s, 10s)"
 param **.sendIaTimeEvil "uniform(1ms, 10ms)"
@@ -26,250 +26,15 @@ vector 0 Net5.rte[1].app endToEndDelay:vector ETV
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, vector"
 attr unit s
-vector 1 Net5.rte[32].app endToEndDelay:vector ETV
+vector 1 Net5.rte[0].app endToEndDelay:vector ETV
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, vector"
 attr unit s
-vector 2 Net5.rte[28].app endToEndDelay:vector ETV
+vector 2 Net5.rte[2].app endToEndDelay:vector ETV
 attr interpolationmode none
 attr title "end-to-end delay of arrived packets, vector"
 attr unit s
-vector 3 Net5.rte[23].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 4 Net5.rte[15].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 5 Net5.rte[0].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 6 Net5.rte[30].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 7 Net5.rte[48].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 8 Net5.rte[5].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 9 Net5.rte[13].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 10 Net5.rte[29].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 11 Net5.rte[9].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 12 Net5.rte[16].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 13 Net5.rte[4].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 14 Net5.rte[21].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 15 Net5.rte[11].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 16 Net5.rte[49].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 17 Net5.rte[34].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 18 Net5.rte[24].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 19 Net5.rte[25].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 20 Net5.rte[47].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 21 Net5.rte[33].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 22 Net5.rte[2].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 23 Net5.rte[44].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 24 Net5.rte[8].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 25 Net5.rte[17].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 26 Net5.rte[18].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 27 Net5.rte[26].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 28 Net5.rte[19].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 29 Net5.rte[37].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 30 Net5.rte[20].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 31 Net5.rte[14].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 32 Net5.rte[31].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 33 Net5.rte[35].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 34 Net5.rte[38].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 35 Net5.rte[43].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 36 Net5.rte[45].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 37 Net5.rte[39].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 38 Net5.rte[36].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 39 Net5.rte[10].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 40 Net5.rte[3].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 41 Net5.rte[22].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 42 Net5.rte[12].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 43 Net5.rte[7].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 44 Net5.rte[27].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 45 Net5.rte[46].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 46 Net5.rte[40].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 47 Net5.rte[41].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 48 Net5.rte[42].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-vector 49 Net5.rte[6].app endToEndDelay:vector ETV
-attr interpolationmode none
-attr title "end-to-end delay of arrived packets, vector"
-attr unit s
-0	8221 2812 27 47565 5.406091995603 11.936469492261 72 0.101666666667 0.510000000002 24.301773053015 9.0079952924432
-1	11033 2687 41 48034 5.486898211962 12.057891756447 69 0.115000000003 0.460000000012 21.110824164517 6.985887916181
-2	13720 2610 71 47707 5.638979818173 11.952891756446 67 0.113333333336 0.464999133004 19.599831011784 6.3726965732046
-3	16330 2658 77 48418 5.660180293555 12.251225089779 68 0.106975865122 0.535000000007 22.937331042279 8.4097509899384
-4	18988 2644 83 48387 5.690231545296 12.246225089778 68 0.108333333335 0.53333333334 18.311403109532 5.5835737087137
-5	21632 2658 105 48353 5.794705452131 12.241225089777 68 0.101666666667 0.508333333335 19.276665799733 6.215571476645
-6	24290 2612 115 47640 5.842313151507 11.944802825596 67 0.110000000002 0.558333333345 21.669724135193 7.7015044194313
-7	26902 2652 136 48441 5.998038785465 12.25586260422 68 0.11666666667 0.588333333351 19.504292822923 6.2013467507952
-8	29554 2615 285 47925 6.21008722045 12.041225089777 67 0.205000000001 0.615000000003 30.282049625822 14.360764083181
-9	32169 2536 457 47602 6.303038785466 11.941225089777 65 0.101666666667 0.543333333342 21.375619279677 7.9524014959933
-10	34705 2726 607 48245 6.319705452136 12.15622508978 68 0.111666666669 0.455000000011 17.800978897319 5.3450391450642
-11	37431 2607 697 47932 6.375180293558 12.042891756444 65 0.105000000001 0.539999132999 25.249599526247 10.597063019239
-12	40038 2595 904 47966 6.4063721188 12.047891756445 65 0.103333333334 0.445000000009 17.917879614053 5.5563929724031
-13	42633 2646 928 47924 6.408038785467 12.041225089777 66 0.101666666667 0.554999133002 19.910566981818 6.5331173938837
-14	45279 2603 977 47609 6.411372118801 11.941469492262 65 0.108333333335 0.441666666675 20.024079946196 6.8069778471768
-15	47882 2595 978 47619 6.411372118801 11.942891756444 65 0.110000000002 0.440000000008 16.678717244995 4.8094263534365
-16	50477 2643 998 48071 6.413038785468 12.064558423115 66 0.103333333334 0.590000000018 20.509975409935 7.1527315632451
-17	53120 2642 1019 47382 6.414705452135 11.846469492263 66 0.108333333335 0.544999133 21.84981074448 7.9607963759633
-18	55762 2689 1036 48429 6.416372118802 12.252891756446 67 0.103333333334 0.464640513505 20.058402203027 6.6280145278474
-19	58451 2717 1053 48437 6.418038785469 12.254558423113 68 0.103333333334 0.55000000001 22.099431330141 7.9035841037171
-20	61168 2604 1102 48018 6.42303878547 12.054802825598 65 0.103333333334 0.585000000017 24.546281888601 10.274445769447
-21	63772 2605 1115 48044 6.424705452137 12.059558423114 65 0.101666666667 0.563333333346 19.371031479026 6.4499552877188
-22	66377 2688 1312 48104 6.5063721188 12.13955842311 67 0.101666666667 0.423718111833 19.132782620774 5.9804338816177
-23	69065 2603 1351 47641 6.508038785467 11.944802825596 65 0.103333333334 0.581666666683 21.29845382166 7.9421609608959
-24	71668 2638 1392 47604 6.509705452134 11.941225089777 66 0.101666666667 0.556665799669 18.796409014092 6.0622252773577
-25	74306 2637 1393 48409 6.509705452134 12.249558423112 66 0.108333333335 0.431666666673 19.690384778713 6.3021058097684
-26	76943 2670 1456 48430 6.513038785468 12.252891756446 67 0.108333333335 0.461307180171 17.980098041311 5.2907029102339
-27	79613 2598 1457 48261 6.513038785468 12.157891756447 65 0.108333333335 0.551666666677 19.279251265605 6.300076665103
-28	82211 2608 1458 48202 6.513038785468 12.151225089779 65 0.103333333334 0.641666666675 23.23324498619 8.9815151297061
-29	84819 2602 1459 48064 6.513038785468 12.062891756448 65 0.108333333335 0.570000000014 22.37989554966 8.5651435457821
-30	87421 2719 1481 48217 6.514705452135 12.152891756446 68 0.108333333335 0.431666666673 19.716665799901 6.2398329230971
-31	90140 2609 1482 48162 6.514705452135 12.146225089778 65 0.105000000001 0.662973846838 24.543370569396 10.117365680214
-32	92749 2682 1593 47967 6.52303878547 12.047891756445 67 0.101666666667 0.526666666672 21.34863652327 7.6335553138504
-33	95431 2638 1609 48291 6.524705452137 12.161225089781 66 0.101666666667 0.569999133005 19.686688022237 6.6963803456797
-34	98069 2594 1627 48322 6.528038785471 12.166225089782 65 0.105000000001 0.573332466339 22.68048617687 8.4897730376785
-35	100663 2599 1639 48303 6.529705452138 12.162891756448 65 0.108333333335 0.580000000016 20.89008661375 7.4609182088755
-36	103262 2605 1647 48339 6.531372118805 12.171225089783 65 0.118333333337 0.58333333335 24.729534580745 10.227445110954
-37	105867 2605 1828 48005 6.581846960226 12.053136158931 65 0.113333333336 0.53333333334 22.4783324667 8.3414744049242
-38	108472 2638 1932 48055 6.608038785467 12.061225089781 66 0.101666666667 0.674640513507 24.556258285349 10.203937423194
-39	111110 2681 1960 48397 6.609705452134 12.247891756445 67 0.103333333334 0.521666666671 21.152939775898 7.3980539694125
-40	113791 2727 1963 48120 6.609705452134 12.141225089777 68 0.101666666667 0.553332466335 26.426479410762 11.197400143037
-41	116518 2641 2009 48013 6.613038785468 12.054558423113 66 0.103333333334 0.443333333342 23.032328857868 8.4403895361158
-42	119159 2640 2011 47958 6.613038785468 12.046225089778 66 0.101666666667 0.643333333342 20.0434879875 7.0611260898272
-43	121799 2686 2012 48376 6.613038785468 12.244558423111 67 0.101666666667 0.449743343245 22.253461455214 7.9157296180001
-44	124485 2684 2088 48438 6.621372118803 12.254558423113 67 0.103333333334 0.555022222233 25.349957831422 10.402129327359
-45	127169 2644 2116 48091 6.624705452137 12.071225089783 66 0.105000000001 0.585000000017 24.60750674876 10.076793950319
-46	129813 2683 2132 48234 6.628038785471 12.154558423113 67 0.101666666667 0.575000000015 23.916652960864 9.520887984743
-47	132496 2643 2138 47699 6.629705452138 11.951469492264 66 0.118333333337 0.678333333349 26.295675128033 11.326326218838
-48	135139 2598 2145 47935 6.631372118805 12.043136158929 65 0.101666666667 0.561666666679 26.531665800104 11.388268846591
-49	137737 2644 2420 48121 6.709705452134 12.141225089777 66 0.101666666667 0.518333333337 22.959157918078 9.0206909981239
+0	1041 823 7 999 7.845734178188 32.735683173707 22 0.101666666667 0.103333333334 2.240122222229 0.2281026376557
+1	1864 968 13 1037 7.947400844855 32.839016507041 26 0.101666666667 0.103333333334 2.649717113866 0.27004693755143
+2	2832 780 35 387 8.150734178189 25.290311449202 21 0.101666666667 0.103333333334 2.140044444452 0.21809237160648
 

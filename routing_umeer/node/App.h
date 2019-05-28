@@ -54,8 +54,10 @@ private:
     long pkCounter;
     long chainTotalValue;
     bool amIEvil;
+    std::vector<int> victimDestAddresses; //used to keep track of whom the evil node has attacked
     int totalEvilTransactions;
 
+    //Transactions related par
     int tempBlockID;
     int tempPartnerSeqNum;
     int tempBlockTransaction;
@@ -97,4 +99,5 @@ protected:
     virtual void logTransactionChain(Packet *pk);
     virtual bool isAlreadyPresentInDb(LogDatabaseElement *element);
     virtual bool isNodeEvil();
+    virtual bool itIsAlreadyBeenAttacked(int nodeId);
 };

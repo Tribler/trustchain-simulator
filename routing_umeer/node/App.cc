@@ -7,10 +7,10 @@
 
 using namespace omnetpp;
 
-const int INITIAL_MONEY = 100;
+const int INITIAL_MONEY = 10;
 
 const int EVIL_NODE_ID[] = { 1 }; // [-1 means that there are no evil node]
-const int EVIL_SLEEPING_TRANSACTION = 1; // [1 is MIN]
+const int EVIL_SLEEPING_TRANSACTION = 5; // [1 is MIN]
 const int EVIL_NUMBER_OF_TRANSACTION = 2; // [2 is MIN] total max number of transaction to perform after the first evil transaction
 
 Define_Module(App);
@@ -42,7 +42,7 @@ void App::initialize()
     WATCH(myAddress);
     WATCH(chainTotalValue);
 
-    //future implemetation
+    //Obsolete
 //    const char *destAddressesPar = par("destAddresses");
 //    cStringTokenizer tokenizer(destAddressesPar);
 //    const char *token;
@@ -93,13 +93,6 @@ void App::handleMessage(cMessage *msg)
 void App::threadFunction()
 {
     if (tempBlockID == -1) { //No transaction are pending
-
-        //Just for Production Test (ONLY 0 CAN SEND MONEY)
-        //if (myAddress != 0) {
-        //return;
-        //}
-
-        //Check if i have the money to start a transaction
         calculateChainValue();
         if (chainTotalValue > 0) {
             createTransactionMessage();
@@ -141,7 +134,8 @@ void App::receiveMessage(cMessage *msg)
                 break;
             }
 
-            if (isNodeEvil()) { //ignore all the incoming transactions
+            calculateChainValue();
+            if (isNodeEvil() && chainTotalValue != 0) { //ignore all the incoming transactions
                 createBusyMessage(pk->getSrcAddr());
                 break;
             }
@@ -190,6 +184,7 @@ void App::receiveMessage(cMessage *msg)
                     EV << text << endl;
                     getSimulation()->getActiveEnvir()->alert(text);
                     totalEvilTransactions = totalEvilTransactions + 1;
+                    victimDestAddresses.push_back(tempBlockID);
                 }
 
                 tempBlockID = -1;
@@ -198,21 +193,6 @@ void App::receiveMessage(cMessage *msg)
             break;
         }
         case 4: { // Dissemination Received
-            //DEBUG CODE
-//            if (myAddress == 0) {
-//
-//                int i;
-//                EV << "logDatabase:" << endl;
-//                for (i = 0; i < logDatabase.size(); i++) {
-//                    EV << "User A: " << logDatabase[i].UserAId << " User A Seq N: " << logDatabase[i].UserASeqNum << " User B: " << logDatabase[i].UserBId << " User B Seq N: " << logDatabase[i].UserBSeqNum
-//                            << " Transac: " << logDatabase[i].transactionValue << endl;
-//                }
-//
-//                char text[128];
-//                sprintf(text, "I am  #%d and i received dissemination #%d #%d <> #%d #%d $#%d ", myAddress, pk->getUserXID(), pk->getUserXSeqNum(), pk->getUserYID(), pk->getUserYSeqNum(), pk->getTransactionValue());
-//                getSimulation()->getActiveEnvir()->alert(text);
-//
-//            }
             int result = verificationDissemination(pk);
             if (result == -1) {
                 LogDatabaseElement *element = new LogDatabaseElement(pk->getUserXID(), pk->getUserXSeqNum(), pk->getUserYID(), pk->getUserYSeqNum(), pk->getTransactionValue());
@@ -269,8 +249,17 @@ void App::createTransactionMessage()
     //Calculate transaction value
     int transactionValue = intuniform(1, chainTotalValue);
 
-    // Sending packet
+    //Decide destination
     int destAddress = randomNodeAddressPicker();
+    if (isNodeEvil()) {
+        while (itIsAlreadyBeenAttacked(destAddress)) {
+            char text[128];
+            sprintf(text, "Evil node: #%d - user #%d already attacked", myAddress, destAddress);
+            EV << text << endl;
+            getSimulation()->getActiveEnvir()->alert(text);
+            destAddress = randomNodeAddressPicker();
+        }
+    }
 
     tempBlockID = destAddress;
     tempBlockTransaction = transactionValue;
@@ -386,7 +375,6 @@ void App::createAckMessage()
 
 bool App::verificationTransactionChain(Packet *pk)
 {
-
     //check if the your local information can be compared to the received informations
     // 1 - same sequence number and user ids number have the same transaction value (chain block replaced with another one)
     // 2 - All the local info regarding a user can be found in the chain (not hiding something)
@@ -590,3 +578,31 @@ bool App::isNodeEvil()
     }
 }
 
+bool App::itIsAlreadyBeenAttacked(int nodeId)
+{
+    int i;
+    for (i = 0; i < victimDestAddresses.size(); i++) {
+        if (victimDestAddresses[i] == nodeId) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+
+//DEBUG CODE
+//            if (myAddress == 0) {
+//
+//                int i;
+//                EV << "logDatabase:" << endl;
+//                for (i = 0; i < logDatabase.size(); i++) {
+//                    EV << "User A: " << logDatabase[i].UserAId << " User A Seq N: " << logDatabase[i].UserASeqNum << " User B: " << logDatabase[i].UserBId << " User B Seq N: " << logDatabase[i].UserBSeqNum
+//                            << " Transac: " << logDatabase[i].transactionValue << endl;
+//                }
+//
+//                char text[128];
+//                sprintf(text, "I am  #%d and i received dissemination #%d #%d <> #%d #%d $#%d ", myAddress, pk->getUserXID(), pk->getUserXSeqNum(), pk->getUserYID(), pk->getUserYSeqNum(), pk->getTransactionValue());
+//                getSimulation()->getActiveEnvir()->alert(text);
+//
+//            }
