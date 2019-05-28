@@ -3,8 +3,9 @@ This repository contains two TrustChain simulations built with OMNeT++, the goal
 
 ## Development Phases
 - [x] Created standard implementation
-- [ ] Implemented malicious node/s (attack)
-- [ ] Develop detenction performance logging system
+- [x] Implemented malicious node/s (attack)
+- [x] Develop detenction performance logging system
+- [ ] Modify and run software for distributed super computer cluster
 - [ ] Modify the standard implementation with defence system
 
 ## Documentation
