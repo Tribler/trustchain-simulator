@@ -263,10 +263,6 @@ void App::createTransactionMessage()
     int destAddress = randomNodeAddressPicker();
     if (isNodeEvil()) {
         while (itIsAlreadyBeenAttacked(destAddress)) {
-            char text[128];
-            sprintf(text, "Evil node: #%d - user #%d already attacked", myAddress, destAddress);
-            EV << text << endl;
-            getSimulation()->getActiveEnvir()->alert(text);
             destAddress = randomNodeAddressPicker();
         }
     }

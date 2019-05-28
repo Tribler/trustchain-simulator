@@ -1,5 +1,5 @@
 E # 0 t 0 m 1 ce -1 msg -1
-SB v 1284 rid General-0-20190528-18:08:46-10220 b 1000
+SB v 1284 rid General-0-20190528-18:11:50-15032 b 1000
 KF p -1 c "" s ""
 MC id 1 c omnetpp::cModule t networks.Net5 n Net5 cm 1
 MS id 1 d ""
@@ -224,9 +224,13 @@ ES t 7.845734178188
 CL id 9 tid 9 eid 9 etid 9 c Packet n "#0 from-0-to-1 $1" l 12000 pe 3 cid 12
 BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 0
 ES t 7.745734178188
+MS id 13 d t=transmitting;p=80,200,row;i=block/queue;q=queue
+MS id 13 d t=transmitting;p=80,200,row;i=block/queue,yellow;q=queue
 
 E # 4 t 7.745734178188 m 13 ce 3 msg 1
 - INFO (L2Queue)Net5.rte[0].queue[0]: Transmission finished.
+MS id 13 d t=idle;p=80,200,row;i=block/queue,yellow;q=queue
+MS id 13 d t=idle;p=80,200,row;i=block/queue;q=queue
 
 E # 5 t 7.845734178188 m 17 ce 3 msg 9
 BS id 9 tid 9 eid 9 etid 9 c Packet n "#0 from-0-to-1 $1" l 12000 pe 5
@@ -269,9 +273,13 @@ ES t 7.947400844855
 CL id 15 tid 15 eid 15 etid 15 c Packet n "#0 from-1-to-0 chain request" l 12000 pe 9 cid 18
 BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n endTxEvent pe 0
 ES t 7.847400844855
+MS id 17 d t=transmitting;p=80,200,row;i=block/queue;q=queue
+MS id 17 d t=transmitting;p=80,200,row;i=block/queue,yellow;q=queue
 
 E # 10 t 7.847400844855 m 17 ce 9 msg 4
 - INFO (L2Queue)Net5.rte[1].queue[0]: Transmission finished.
+MS id 17 d t=idle;p=80,200,row;i=block/queue,yellow;q=queue
+MS id 17 d t=idle;p=80,200,row;i=block/queue;q=queue
 
 E # 11 t 7.947400844855 m 13 ce 9 msg 15
 BS id 15 tid 15 eid 15 etid 15 c Packet n "#0 from-1-to-0 chain request" l 12000 pe 11
@@ -4931,3 +4939,1760 @@ ES t 31.993802367022
 E # 848 t 31.993802367022 m 15 ce 847 msg 3
 BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 848
 ES t 32.001142635378
+
+E # 849 t 32.001142635378 m 15 ce 848 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 849
+ES t 32.005707172712
+
+E # 850 t 32.005707172712 m 15 ce 849 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 850
+ES t 32.01087552448
+
+E # 851 t 32.01087552448 m 15 ce 850 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 851
+ES t 32.016964316249
+
+E # 852 t 32.016964316249 m 15 ce 851 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 852
+ES t 32.025528173067
+
+E # 853 t 32.025528173067 m 15 ce 852 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 853
+ES t 32.028177691623
+
+E # 854 t 32.028177691623 m 15 ce 853 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 854
+ES t 32.031021483477
+
+E # 855 t 32.031021483477 m 15 ce 854 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 855
+ES t 32.03332511334
+
+E # 856 t 32.03332511334 m 15 ce 855 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 856
+ES t 32.035809743183
+
+E # 857 t 32.035809743183 m 15 ce 856 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 857
+ES t 32.041202249744
+
+E # 858 t 32.041202249744 m 15 ce 857 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 858
+ES t 32.043325747292
+
+E # 859 t 32.043325747292 m 15 ce 858 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 859
+ES t 32.047526261907
+
+E # 860 t 32.047526261907 m 15 ce 859 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 860
+ES t 32.055024987854
+
+E # 861 t 32.055024987854 m 15 ce 860 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 861
+ES t 32.064488875418
+
+E # 862 t 32.064488875418 m 15 ce 861 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 862
+ES t 32.06576295211
+
+E # 863 t 32.06576295211 m 15 ce 862 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 863
+ES t 32.073650879382
+
+E # 864 t 32.073650879382 m 15 ce 863 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 864
+ES t 32.081373827521
+
+E # 865 t 32.081373827521 m 15 ce 864 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 865
+ES t 32.089111800142
+
+E # 866 t 32.089111800142 m 15 ce 865 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 866
+ES t 32.09094516557
+
+E # 867 t 32.09094516557 m 15 ce 866 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 867
+ES t 32.100078643226
+
+E # 868 t 32.100078643226 m 15 ce 867 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 868
+ES t 32.103035697676
+
+E # 869 t 32.103035697676 m 15 ce 868 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 869
+ES t 32.104786499589
+
+E # 870 t 32.104786499589 m 15 ce 869 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 870
+ES t 32.112529789339
+
+E # 871 t 32.112529789339 m 15 ce 870 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 871
+ES t 32.118499521582
+
+E # 872 t 32.118499521582 m 15 ce 871 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 872
+ES t 32.126084765408
+
+E # 873 t 32.126084765408 m 15 ce 872 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 873
+ES t 32.132345050059
+
+E # 874 t 32.132345050059 m 15 ce 873 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 874
+ES t 32.133755581783
+
+E # 875 t 32.133755581783 m 15 ce 874 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 875
+ES t 32.143413009235
+
+E # 876 t 32.143413009235 m 15 ce 875 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 876
+ES t 32.146295422487
+
+E # 877 t 32.146295422487 m 15 ce 876 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 877
+ES t 32.149924750263
+
+E # 878 t 32.149924750263 m 15 ce 877 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 878
+ES t 32.153506985672
+
+E # 879 t 32.153506985672 m 15 ce 878 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 879
+ES t 32.156674444667
+
+E # 880 t 32.156674444667 m 15 ce 879 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 880
+ES t 32.163769814427
+
+E # 881 t 32.163769814427 m 15 ce 880 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 881
+ES t 32.165672459928
+
+E # 882 t 32.165672459928 m 15 ce 881 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 882
+ES t 32.167239804561
+
+E # 883 t 32.167239804561 m 15 ce 882 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 883
+ES t 32.168387671242
+
+E # 884 t 32.168387671242 m 15 ce 883 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 884
+ES t 32.174388514377
+
+E # 885 t 32.174388514377 m 15 ce 884 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 885
+ES t 32.18375427824
+
+E # 886 t 32.18375427824 m 15 ce 885 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 886
+ES t 32.184837438871
+
+E # 887 t 32.184837438871 m 15 ce 886 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 887
+ES t 32.191866687751
+
+E # 888 t 32.191866687751 m 15 ce 887 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 888
+ES t 32.200364030603
+
+E # 889 t 32.200364030603 m 15 ce 888 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 889
+ES t 32.208430406795
+
+E # 890 t 32.208430406795 m 15 ce 889 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 890
+ES t 32.2182893717
+
+E # 891 t 32.2182893717 m 15 ce 890 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 891
+ES t 32.221824942638
+
+E # 892 t 32.221824942638 m 15 ce 891 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 892
+ES t 32.229156395706
+
+E # 893 t 32.229156395706 m 15 ce 892 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 893
+ES t 32.235434087236
+
+E # 894 t 32.235434087236 m 15 ce 893 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 894
+ES t 32.238068768086
+
+E # 895 t 32.238068768086 m 15 ce 894 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 895
+ES t 32.239644365478
+
+E # 896 t 32.239644365478 m 15 ce 895 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 896
+ES t 32.245255906667
+
+E # 897 t 32.245255906667 m 15 ce 896 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 897
+ES t 32.250626555008
+
+E # 898 t 32.250626555008 m 15 ce 897 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 898
+ES t 32.256850579183
+
+E # 899 t 32.256850579183 m 15 ce 898 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 899
+ES t 32.2666480354
+
+E # 900 t 32.2666480354 m 15 ce 899 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 900
+ES t 32.27473591478
+
+E # 901 t 32.27473591478 m 15 ce 900 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 901
+ES t 32.283624461962
+
+E # 902 t 32.283624461962 m 15 ce 901 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 902
+ES t 32.290082741122
+
+E # 903 t 32.290082741122 m 15 ce 902 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 903
+ES t 32.294126171726
+
+E # 904 t 32.294126171726 m 15 ce 903 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 904
+ES t 32.297091797359
+
+E # 905 t 32.297091797359 m 15 ce 904 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 905
+ES t 32.306745928778
+
+E # 906 t 32.306745928778 m 15 ce 905 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 906
+ES t 32.311842448133
+
+E # 907 t 32.311842448133 m 15 ce 906 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 907
+ES t 32.314927762763
+
+E # 908 t 32.314927762763 m 15 ce 907 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 908
+ES t 32.323837590413
+
+E # 909 t 32.323837590413 m 15 ce 908 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 909
+ES t 32.333381459809
+
+E # 910 t 32.333381459809 m 15 ce 909 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 910
+ES t 32.338811873968
+
+E # 911 t 32.338811873968 m 15 ce 910 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 911
+ES t 32.348284273313
+
+E # 912 t 32.348284273313 m 15 ce 911 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 912
+ES t 32.355724323685
+
+E # 913 t 32.355724323685 m 15 ce 912 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 913
+ES t 32.363917146947
+
+E # 914 t 32.363917146947 m 15 ce 913 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 914
+ES t 32.369292582973
+
+E # 915 t 32.369292582973 m 15 ce 914 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 915
+ES t 32.375966614393
+
+E # 916 t 32.375966614393 m 15 ce 915 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 916
+ES t 32.383343547733
+
+E # 917 t 32.383343547733 m 15 ce 916 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 917
+ES t 32.392212139462
+
+E # 918 t 32.392212139462 m 15 ce 917 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 918
+ES t 32.397695401518
+
+E # 919 t 32.397695401518 m 15 ce 918 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 919
+ES t 32.401332584074
+
+E # 920 t 32.401332584074 m 15 ce 919 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 920
+ES t 32.409933534774
+
+E # 921 t 32.409933534774 m 15 ce 920 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 921
+ES t 32.418574026761
+
+E # 922 t 32.418574026761 m 15 ce 921 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 922
+ES t 32.421323106737
+
+E # 923 t 32.421323106737 m 15 ce 922 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 923
+ES t 32.427883996965
+
+E # 924 t 32.427883996965 m 15 ce 923 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 924
+ES t 32.435843931099
+
+E # 925 t 32.430605395929 m 11 ce 247 msg 0
+BU id 2 txt "Generating packet..."
+CM id 393 tid 393 eid 393 etid 393 c omnetpp::cMessage n "#28 from-0-to-1 $28" pe -1
+BS id 393 tid 393 eid 393 etid 393 c Packet n "#28 from-0-to-1 $28" l 12000 pe 925
+SH sm 11 sg 3
+ES t 32.430605395929
+CL id 393 tid 393 eid 393 etid 393 c Packet n "#28 from-0-to-1 $28" l 12000 pe 925 cid 394
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n TimerThead pe 925
+ES t 39.166772954631
+
+E # 926 t 32.430605395929 m 12 ce 925 msg 393
+- INFO (Routing)Net5.rte[0].routing: forwarding packet #28 from-0-to-1 $28 on gate index 0
+BS id 393 tid 393 eid 393 etid 393 c Packet n "#28 from-0-to-1 $28" l 12000 pe 926
+SH sm 12 sg 2621440
+ES t 32.430605395929
+CL id 393 tid 393 eid 393 etid 393 c Packet n "#28 from-0-to-1 $28" l 12000 pe 926 cid 395
+
+E # 927 t 32.430605395929 m 13 ce 926 msg 393
+- INFO (L2Queue)Net5.rte[0].queue[0]: Received (Packet)#28 from-0-to-1 $28
+- INFO (L2Queue)Net5.rte[0].queue[0]: Starting transmission of (Packet)#28 from-0-to-1 $28
+BS id 393 tid 393 eid 393 etid 393 c Packet n "#28 from-0-to-1 $28" l 12000 pe 927
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048576
+ES t 32.532272062596
+CL id 393 tid 393 eid 393 etid 393 c Packet n "#28 from-0-to-1 $28" l 12000 pe 927 cid 396
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 371
+ES t 32.432272062596
+
+E # 928 t 32.432272062596 m 13 ce 927 msg 1
+- INFO (L2Queue)Net5.rte[0].queue[0]: Transmission finished.
+
+E # 929 t 32.435843931099 m 15 ce 924 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 929
+ES t 32.444604719125
+
+E # 930 t 32.444604719125 m 15 ce 929 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 930
+ES t 32.446937986865
+
+E # 931 t 32.446937986865 m 15 ce 930 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 931
+ES t 32.454961826707
+
+E # 932 t 32.454961826707 m 15 ce 931 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 932
+ES t 32.464798291189
+
+E # 933 t 32.464798291189 m 15 ce 932 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 933
+ES t 32.474663581713
+
+E # 934 t 32.474663581713 m 15 ce 933 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 934
+ES t 32.479968914472
+
+E # 935 t 32.479968914472 m 15 ce 934 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 935
+ES t 32.487751040913
+
+E # 936 t 32.487751040913 m 15 ce 935 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 936
+ES t 32.493227563221
+
+E # 937 t 32.493227563221 m 15 ce 936 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 937
+ES t 32.494263996171
+
+E # 938 t 32.494263996171 m 15 ce 937 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 938
+ES t 32.501019248819
+
+E # 939 t 32.501019248819 m 15 ce 938 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 939
+ES t 32.504444563746
+
+E # 940 t 32.504444563746 m 15 ce 939 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 940
+ES t 32.508761825174
+
+E # 941 t 32.508761825174 m 15 ce 940 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 941
+ES t 32.513456254447
+
+E # 942 t 32.513456254447 m 15 ce 941 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 942
+ES t 32.515688356914
+
+E # 943 t 32.515688356914 m 15 ce 942 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 943
+ES t 32.520542371356
+
+E # 944 t 32.520542371356 m 15 ce 943 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 944
+ES t 32.52894143097
+
+E # 945 t 32.52894143097 m 15 ce 944 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 945
+ES t 32.532622007366
+
+E # 946 t 32.532272062596 m 17 ce 927 msg 393
+BS id 393 tid 393 eid 393 etid 393 c Packet n "#28 from-0-to-1 $28" l 12000 pe 946
+SH sm 17 sg 3
+ES t 32.532272062596
+CL id 393 tid 393 eid 393 etid 393 c Packet n "#28 from-0-to-1 $28" l 12000 pe 946 cid 397
+
+E # 947 t 32.532272062596 m 16 ce 946 msg 393
+- INFO (Routing)Net5.rte[1].routing: local delivery of packet #28 from-0-to-1 $28
+BS id 393 tid 393 eid 393 etid 393 c Packet n "#28 from-0-to-1 $28" l 12000 pe 947
+SH sm 16 sg 7
+ES t 32.532272062596
+CL id 393 tid 393 eid 393 etid 393 c Packet n "#28 from-0-to-1 $28" l 12000 pe 947 cid 398
+
+E # 948 t 32.532272062596 m 15 ce 947 msg 393
+BU id 3 txt Arrived!
+BU id 3 txt "Generating packet..."
+CM id 399 tid 399 eid 399 etid 399 c omnetpp::cMessage n "#16 from-1-to-0 chain request" pe -1
+BS id 399 tid 399 eid 399 etid 399 c Packet n "#16 from-1-to-0 chain request" l 12000 pe 948
+SH sm 15 sg 3
+ES t 32.532272062596
+CL id 399 tid 399 eid 399 etid 399 c Packet n "#16 from-1-to-0 chain request" l 12000 pe 948 cid 400
+DM id 393 tid 393 eid 393 etid 393 c omnetpp::cMessage n "#28 from-0-to-1 $28" pe 948
+
+E # 949 t 32.532272062596 m 16 ce 948 msg 399
+- INFO (Routing)Net5.rte[1].routing: forwarding packet #16 from-1-to-0 chain request on gate index 0
+BS id 399 tid 399 eid 399 etid 399 c Packet n "#16 from-1-to-0 chain request" l 12000 pe 949
+SH sm 16 sg 2621440
+ES t 32.532272062596
+CL id 399 tid 399 eid 399 etid 399 c Packet n "#16 from-1-to-0 chain request" l 12000 pe 949 cid 401
+
+E # 950 t 32.532272062596 m 17 ce 949 msg 399
+- INFO (L2Queue)Net5.rte[1].queue[0]: Received (Packet)#16 from-1-to-0 chain request
+- INFO (L2Queue)Net5.rte[1].queue[0]: Starting transmission of (Packet)#16 from-1-to-0 chain request
+BS id 399 tid 399 eid 399 etid 399 c Packet n "#16 from-1-to-0 chain request" l 12000 pe 950
+SH sm 17 sg 5
+SH sm 3 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048576
+ES t 32.633938729263
+CL id 399 tid 399 eid 399 etid 399 c Packet n "#16 from-1-to-0 chain request" l 12000 pe 950 cid 402
+BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n endTxEvent pe 335
+ES t 32.533938729263
+
+E # 951 t 32.532622007366 m 15 ce 945 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 951
+ES t 32.53533063859
+
+E # 952 t 32.533938729263 m 17 ce 950 msg 4
+- INFO (L2Queue)Net5.rte[1].queue[0]: Transmission finished.
+
+E # 953 t 32.53533063859 m 15 ce 951 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 953
+ES t 32.539940829663
+
+E # 954 t 32.539940829663 m 15 ce 953 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 954
+ES t 32.545542700504
+
+E # 955 t 32.545542700504 m 15 ce 954 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 955
+ES t 32.547628613472
+
+E # 956 t 32.547628613472 m 15 ce 955 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 956
+ES t 32.550647466688
+
+E # 957 t 32.550647466688 m 15 ce 956 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 957
+ES t 32.56047376375
+
+E # 958 t 32.56047376375 m 15 ce 957 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 958
+ES t 32.562354364125
+
+E # 959 t 32.562354364125 m 15 ce 958 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 959
+ES t 32.567009448512
+
+E # 960 t 32.567009448512 m 15 ce 959 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 960
+ES t 32.575769172139
+
+E # 961 t 32.575769172139 m 15 ce 960 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 961
+ES t 32.581892068948
+
+E # 962 t 32.581892068948 m 15 ce 961 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 962
+ES t 32.59164834436
+
+E # 963 t 32.59164834436 m 15 ce 962 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 963
+ES t 32.595740793855
+
+E # 964 t 32.595740793855 m 15 ce 963 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 964
+ES t 32.605388305746
+
+E # 965 t 32.605388305746 m 15 ce 964 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 965
+ES t 32.613488160712
+
+E # 966 t 32.613488160712 m 15 ce 965 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 966
+ES t 32.622647160194
+
+E # 967 t 32.622647160194 m 15 ce 966 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 967
+ES t 32.627349511931
+
+E # 968 t 32.627349511931 m 15 ce 967 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 968
+ES t 32.635315937958
+
+E # 969 t 32.633938729263 m 13 ce 950 msg 399
+BS id 399 tid 399 eid 399 etid 399 c Packet n "#16 from-1-to-0 chain request" l 12000 pe 969
+SH sm 13 sg 3
+ES t 32.633938729263
+CL id 399 tid 399 eid 399 etid 399 c Packet n "#16 from-1-to-0 chain request" l 12000 pe 969 cid 403
+
+E # 970 t 32.633938729263 m 12 ce 969 msg 399
+- INFO (Routing)Net5.rte[0].routing: local delivery of packet #16 from-1-to-0 chain request
+BS id 399 tid 399 eid 399 etid 399 c Packet n "#16 from-1-to-0 chain request" l 12000 pe 970
+SH sm 12 sg 7
+ES t 32.633938729263
+CL id 399 tid 399 eid 399 etid 399 c Packet n "#16 from-1-to-0 chain request" l 12000 pe 970 cid 404
+
+E # 971 t 32.633938729263 m 11 ce 970 msg 399
+BU id 2 txt Arrived!
+BU id 2 txt "Generating packet..."
+CM id 405 tid 405 eid 405 etid 405 c omnetpp::cMessage n "#29 from-0-to-1 chain log" pe -1
+BS id 405 tid 405 eid 405 etid 405 c Packet n "#29 from-0-to-1 chain log" l 12560 pe 971
+SH sm 11 sg 3
+ES t 32.633938729263
+CL id 405 tid 405 eid 405 etid 405 c Packet n "#29 from-0-to-1 chain log" l 12560 pe 971 cid 406
+DM id 399 tid 399 eid 399 etid 399 c omnetpp::cMessage n "#16 from-1-to-0 chain request" pe 971
+
+E # 972 t 32.633938729263 m 12 ce 971 msg 405
+- INFO (Routing)Net5.rte[0].routing: forwarding packet #29 from-0-to-1 chain log on gate index 0
+BS id 405 tid 405 eid 405 etid 405 c Packet n "#29 from-0-to-1 chain log" l 12560 pe 972
+SH sm 12 sg 2621440
+ES t 32.633938729263
+CL id 405 tid 405 eid 405 etid 405 c Packet n "#29 from-0-to-1 chain log" l 12560 pe 972 cid 407
+
+E # 973 t 32.633938729263 m 13 ce 972 msg 405
+- INFO (L2Queue)Net5.rte[0].queue[0]: Received (Packet)#29 from-0-to-1 chain log
+- INFO (L2Queue)Net5.rte[0].queue[0]: Starting transmission of (Packet)#29 from-0-to-1 chain log
+BS id 405 tid 405 eid 405 etid 405 c Packet n "#29 from-0-to-1 chain log" l 12560 pe 973
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001744444444
+SH sm 3 sg 1048576
+ES t 32.735683173707
+CL id 405 tid 405 eid 405 etid 405 c Packet n "#29 from-0-to-1 chain log" l 12560 pe 973 cid 408
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 928
+ES t 32.635683173707
+
+E # 974 t 32.635315937958 m 15 ce 968 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 974
+ES t 32.639549380712
+
+E # 975 t 32.635683173707 m 13 ce 973 msg 1
+- INFO (L2Queue)Net5.rte[0].queue[0]: Transmission finished.
+
+E # 976 t 32.639549380712 m 15 ce 974 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 976
+ES t 32.643547687118
+
+E # 977 t 32.643547687118 m 15 ce 976 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 977
+ES t 32.64814317737
+
+E # 978 t 32.64814317737 m 15 ce 977 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 978
+ES t 32.649873089902
+
+E # 979 t 32.649873089902 m 15 ce 978 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 979
+ES t 32.653589567771
+
+E # 980 t 32.653589567771 m 15 ce 979 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 980
+ES t 32.658254738281
+
+E # 981 t 32.658254738281 m 15 ce 980 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 981
+ES t 32.666231716321
+
+E # 982 t 32.666231716321 m 15 ce 981 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 982
+ES t 32.669321823595
+
+E # 983 t 32.669321823595 m 15 ce 982 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 983
+ES t 32.678657739989
+
+E # 984 t 32.678657739989 m 15 ce 983 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 984
+ES t 32.680850128686
+
+E # 985 t 32.680850128686 m 15 ce 984 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 985
+ES t 32.684777921469
+
+E # 986 t 32.684777921469 m 15 ce 985 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 986
+ES t 32.686258766066
+
+E # 987 t 32.686258766066 m 15 ce 986 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 987
+ES t 32.695834602107
+
+E # 988 t 32.695834602107 m 15 ce 987 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 988
+ES t 32.70336495142
+
+E # 989 t 32.70336495142 m 15 ce 988 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 989
+ES t 32.704490487004
+
+E # 990 t 32.704490487004 m 15 ce 989 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 990
+ES t 32.7055933341
+
+E # 991 t 32.7055933341 m 15 ce 990 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 991
+ES t 32.711394525186
+
+E # 992 t 32.711394525186 m 15 ce 991 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 992
+ES t 32.719329751925
+
+E # 993 t 32.719329751925 m 15 ce 992 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 993
+ES t 32.723070990198
+
+E # 994 t 32.723070990198 m 15 ce 993 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 994
+ES t 32.725393509973
+
+E # 995 t 32.725393509973 m 15 ce 994 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 995
+ES t 32.734339249958
+
+E # 996 t 32.734339249958 m 15 ce 995 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 996
+ES t 32.736054948739
+
+E # 997 t 32.735683173707 m 17 ce 973 msg 405
+BS id 405 tid 405 eid 405 etid 405 c Packet n "#29 from-0-to-1 chain log" l 12560 pe 997
+SH sm 17 sg 3
+ES t 32.735683173707
+CL id 405 tid 405 eid 405 etid 405 c Packet n "#29 from-0-to-1 chain log" l 12560 pe 997 cid 409
+
+E # 998 t 32.735683173707 m 16 ce 997 msg 405
+- INFO (Routing)Net5.rte[1].routing: local delivery of packet #29 from-0-to-1 chain log
+BS id 405 tid 405 eid 405 etid 405 c Packet n "#29 from-0-to-1 chain log" l 12560 pe 998
+SH sm 16 sg 7
+ES t 32.735683173707
+CL id 405 tid 405 eid 405 etid 405 c Packet n "#29 from-0-to-1 chain log" l 12560 pe 998 cid 410
+
+E # 999 t 32.735683173707 m 15 ce 998 msg 405
+BU id 3 txt Arrived!
+BU id 3 txt "Generating packet..."
+CM id 411 tid 411 eid 411 etid 411 c omnetpp::cMessage n "#17 from-1-to-0 transaction ack" pe -1
+BS id 411 tid 411 eid 411 etid 411 c Packet n "#17 from-1-to-0 transaction ack" l 12000 pe 999
+SH sm 15 sg 3
+ES t 32.735683173707
+CL id 411 tid 411 eid 411 etid 411 c Packet n "#17 from-1-to-0 transaction ack" l 12000 pe 999 cid 412
+DM id 405 tid 405 eid 405 etid 405 c omnetpp::cMessage n "#29 from-0-to-1 chain log" pe 999
+
+E # 1000 t 32.735683173707 m 16 ce 999 msg 411
+KF p 84 c 0:615, s 0:3-51,0:192,0:53-57,0:59-85,0:194,0:87-91,0:195,0:93-119,0:196,0:121-125,0:127-136,4:3,10:3,345:7,925:7,996:1,
+- INFO (Routing)Net5.rte[1].routing: forwarding packet #17 from-1-to-0 transaction ack on gate index 0
+BS id 411 tid 411 eid 411 etid 411 c Packet n "#17 from-1-to-0 transaction ack" l 12000 pe 1000
+SH sm 16 sg 2621440
+ES t 32.735683173707
+CL id 411 tid 411 eid 411 etid 411 c Packet n "#17 from-1-to-0 transaction ack" l 12000 pe 1000 cid 413
+
+E # 1001 t 32.735683173707 m 17 ce 1000 msg 411
+- INFO (L2Queue)Net5.rte[1].queue[0]: Received (Packet)#17 from-1-to-0 transaction ack
+- INFO (L2Queue)Net5.rte[1].queue[0]: Starting transmission of (Packet)#17 from-1-to-0 transaction ack
+BS id 411 tid 411 eid 411 etid 411 c Packet n "#17 from-1-to-0 transaction ack" l 12000 pe 1001
+SH sm 17 sg 5
+SH sm 3 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048576
+ES t 32.837349840374
+CL id 411 tid 411 eid 411 etid 411 c Packet n "#17 from-1-to-0 transaction ack" l 12000 pe 1001 cid 414
+BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n endTxEvent pe 952
+ES t 32.737349840374
+
+E # 1002 t 32.736054948739 m 15 ce 996 msg 3
+- INFO (App)Net5.rte[1].app: Evil node: #1 - starting transaction with #0 of value $2 Time: 32.736054948739 s
+BU id 3 txt "Generating packet..."
+CM id 415 tid 415 eid 415 etid 415 c omnetpp::cMessage n "#18 from-1-to-0 $2" pe -1
+BS id 415 tid 415 eid 415 etid 415 c Packet n "#18 from-1-to-0 $2" l 12000 pe 1002
+SH sm 15 sg 3
+ES t 32.736054948739
+CL id 415 tid 415 eid 415 etid 415 c Packet n "#18 from-1-to-0 $2" l 12000 pe 1002 cid 416
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1002
+ES t 32.743103378966
+MS id 17 d t=transmitting;p=80,200,row;i=block/queue;q=queue
+MS id 17 d t=transmitting;p=80,200,row;i=block/queue,yellow;q=queue
+
+E # 1003 t 32.736054948739 m 16 ce 1002 msg 415
+- INFO (Routing)Net5.rte[1].routing: forwarding packet #18 from-1-to-0 $2 on gate index 0
+BS id 415 tid 415 eid 415 etid 415 c Packet n "#18 from-1-to-0 $2" l 12000 pe 1003
+SH sm 16 sg 2621440
+ES t 32.736054948739
+CL id 415 tid 415 eid 415 etid 415 c Packet n "#18 from-1-to-0 $2" l 12000 pe 1003 cid 417
+
+E # 1004 t 32.736054948739 m 17 ce 1003 msg 415
+- INFO (L2Queue)Net5.rte[1].queue[0]: Received (Packet)#18 from-1-to-0 $2 but transmitter busy: queueing up
+
+E # 1005 t 32.737349840374 m 17 ce 1001 msg 4
+- INFO (L2Queue)Net5.rte[1].queue[0]: Transmission finished.
+- INFO (L2Queue)Net5.rte[1].queue[0]: Starting transmission of (Packet)#18 from-1-to-0 $2
+BS id 415 tid 415 eid 415 etid 415 c Packet n "#18 from-1-to-0 $2" l 12000 pe 1004
+SH sm 17 sg 5
+SH sm 3 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048576
+ES t 32.839016507041
+CL id 415 tid 415 eid 415 etid 415 c Packet n "#18 from-1-to-0 $2" l 12000 pe 1005 cid 418
+BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n endTxEvent pe 1005
+ES t 32.739016507041
+
+E # 1006 t 32.739016507041 m 17 ce 1005 msg 4
+- INFO (L2Queue)Net5.rte[1].queue[0]: Transmission finished.
+MS id 17 d t=idle;p=80,200,row;i=block/queue,yellow;q=queue
+MS id 17 d t=idle;p=80,200,row;i=block/queue;q=queue
+
+E # 1007 t 32.743103378966 m 15 ce 1002 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1007
+ES t 32.751397195821
+
+E # 1008 t 32.751397195821 m 15 ce 1007 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1008
+ES t 32.754605500735
+
+E # 1009 t 32.754605500735 m 15 ce 1008 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1009
+ES t 32.759494833165
+
+E # 1010 t 32.759494833165 m 15 ce 1009 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1010
+ES t 32.764279688321
+
+E # 1011 t 32.764279688321 m 15 ce 1010 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1011
+ES t 32.772048898983
+
+E # 1012 t 32.772048898983 m 15 ce 1011 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1012
+ES t 32.778065218062
+
+E # 1013 t 32.778065218062 m 15 ce 1012 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1013
+ES t 32.786531638242
+
+E # 1014 t 32.786531638242 m 15 ce 1013 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1014
+ES t 32.795276598785
+
+E # 1015 t 32.795276598785 m 15 ce 1014 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1015
+ES t 32.799687902738
+
+E # 1016 t 32.799687902738 m 15 ce 1015 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1016
+ES t 32.807231301113
+
+E # 1017 t 32.807231301113 m 15 ce 1016 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1017
+ES t 32.809100247642
+
+E # 1018 t 32.809100247642 m 15 ce 1017 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1018
+ES t 32.812533198774
+
+E # 1019 t 32.812533198774 m 15 ce 1018 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1019
+ES t 32.815838455021
+
+E # 1020 t 32.815838455021 m 15 ce 1019 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1020
+ES t 32.818021800183
+
+E # 1021 t 32.818021800183 m 15 ce 1020 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1021
+ES t 32.824349216657
+
+E # 1022 t 32.824349216657 m 15 ce 1021 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1022
+ES t 32.825847585509
+
+E # 1023 t 32.825847585509 m 15 ce 1022 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1023
+ES t 32.831135880344
+
+E # 1024 t 32.831135880344 m 15 ce 1023 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1024
+ES t 32.834850268049
+
+E # 1025 t 32.834850268049 m 15 ce 1024 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1025
+ES t 32.840241679192
+
+E # 1026 t 32.837349840374 m 13 ce 1001 msg 411
+BS id 411 tid 411 eid 411 etid 411 c Packet n "#17 from-1-to-0 transaction ack" l 12000 pe 1026
+SH sm 13 sg 3
+ES t 32.837349840374
+CL id 411 tid 411 eid 411 etid 411 c Packet n "#17 from-1-to-0 transaction ack" l 12000 pe 1026 cid 419
+
+E # 1027 t 32.837349840374 m 12 ce 1026 msg 411
+- INFO (Routing)Net5.rte[0].routing: local delivery of packet #17 from-1-to-0 transaction ack
+BS id 411 tid 411 eid 411 etid 411 c Packet n "#17 from-1-to-0 transaction ack" l 12000 pe 1027
+SH sm 12 sg 7
+ES t 32.837349840374
+CL id 411 tid 411 eid 411 etid 411 c Packet n "#17 from-1-to-0 transaction ack" l 12000 pe 1027 cid 420
+
+E # 1028 t 32.837349840374 m 11 ce 1027 msg 411
+BU id 2 txt Arrived!
+BU id 2 txt "Generating packet..."
+CM id 421 tid 421 eid 421 etid 421 c omnetpp::cMessage n "#30 from-0-to-1 dissemination" pe -1
+BS id 421 tid 421 eid 421 etid 421 c Packet n "#30 from-0-to-1 dissemination" l 12000 pe 1028
+SH sm 11 sg 3
+ES t 32.837349840374
+CL id 421 tid 421 eid 421 etid 421 c Packet n "#30 from-0-to-1 dissemination" l 12000 pe 1028 cid 422
+BU id 2 txt "Generating packet..."
+CM id 423 tid 423 eid 423 etid 423 c omnetpp::cMessage n "#31 from-0-to-2 dissemination" pe -1
+BS id 423 tid 423 eid 423 etid 423 c Packet n "#31 from-0-to-2 dissemination" l 12000 pe 1028
+SH sm 11 sg 3
+ES t 32.837349840374
+CL id 423 tid 423 eid 423 etid 423 c Packet n "#31 from-0-to-2 dissemination" l 12000 pe 1028 cid 424
+DM id 411 tid 411 eid 411 etid 411 c omnetpp::cMessage n "#17 from-1-to-0 transaction ack" pe 1028
+
+E # 1029 t 32.837349840374 m 12 ce 1028 msg 421
+- INFO (Routing)Net5.rte[0].routing: forwarding packet #30 from-0-to-1 dissemination on gate index 0
+BS id 421 tid 421 eid 421 etid 421 c Packet n "#30 from-0-to-1 dissemination" l 12000 pe 1029
+SH sm 12 sg 2621440
+ES t 32.837349840374
+CL id 421 tid 421 eid 421 etid 421 c Packet n "#30 from-0-to-1 dissemination" l 12000 pe 1029 cid 425
+
+E # 1030 t 32.837349840374 m 12 ce 1028 msg 423
+- INFO (Routing)Net5.rte[0].routing: forwarding packet #31 from-0-to-2 dissemination on gate index 1
+BS id 423 tid 423 eid 423 etid 423 c Packet n "#31 from-0-to-2 dissemination" l 12000 pe 1030
+SH sm 12 sg 2621441
+ES t 32.837349840374
+CL id 423 tid 423 eid 423 etid 423 c Packet n "#31 from-0-to-2 dissemination" l 12000 pe 1030 cid 426
+
+E # 1031 t 32.837349840374 m 13 ce 1029 msg 421
+- INFO (L2Queue)Net5.rte[0].queue[0]: Received (Packet)#30 from-0-to-1 dissemination
+- INFO (L2Queue)Net5.rte[0].queue[0]: Starting transmission of (Packet)#30 from-0-to-1 dissemination
+BS id 421 tid 421 eid 421 etid 421 c Packet n "#30 from-0-to-1 dissemination" l 12000 pe 1031
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048576
+ES t 32.939016507041
+CL id 421 tid 421 eid 421 etid 421 c Packet n "#30 from-0-to-1 dissemination" l 12000 pe 1031 cid 427
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 975
+ES t 32.839016507041
+MS id 13 d t=transmitting;p=80,200,row;i=block/queue;q=queue
+MS id 13 d t=transmitting;p=80,200,row;i=block/queue,yellow;q=queue
+
+E # 1032 t 32.837349840374 m 14 ce 1030 msg 423
+- INFO (L2Queue)Net5.rte[0].queue[1]: Received (Packet)#31 from-0-to-2 dissemination
+- INFO (L2Queue)Net5.rte[0].queue[1]: Starting transmission of (Packet)#31 from-0-to-2 dissemination
+BS id 423 tid 423 eid 423 etid 423 c Packet n "#31 from-0-to-2 dissemination" l 12000 pe 1032
+SH sm 14 sg 5
+SH sm 2 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048576
+ES t 32.939016507041
+CL id 423 tid 423 eid 423 etid 423 c Packet n "#31 from-0-to-2 dissemination" l 12000 pe 1032 cid 428
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n endTxEvent pe 372
+ES t 32.839016507041
+MS id 14 d t=transmitting;p=80,200,row;i=block/queue;q=queue
+MS id 14 d t=transmitting;p=80,200,row;i=block/queue,yellow;q=queue
+
+E # 1033 t 32.839016507041 m 13 ce 1005 msg 415
+BS id 415 tid 415 eid 415 etid 415 c Packet n "#18 from-1-to-0 $2" l 12000 pe 1033
+SH sm 13 sg 3
+ES t 32.839016507041
+CL id 415 tid 415 eid 415 etid 415 c Packet n "#18 from-1-to-0 $2" l 12000 pe 1033 cid 429
+
+E # 1034 t 32.839016507041 m 13 ce 1031 msg 1
+- INFO (L2Queue)Net5.rte[0].queue[0]: Transmission finished.
+MS id 13 d t=idle;p=80,200,row;i=block/queue,yellow;q=queue
+MS id 13 d t=idle;p=80,200,row;i=block/queue;q=queue
+
+E # 1035 t 32.839016507041 m 14 ce 1032 msg 2
+- INFO (L2Queue)Net5.rte[0].queue[1]: Transmission finished.
+MS id 14 d t=idle;p=80,200,row;i=block/queue,yellow;q=queue
+MS id 14 d t=idle;p=80,200,row;i=block/queue;q=queue
+
+E # 1036 t 32.839016507041 m 12 ce 1033 msg 415
+- INFO (Routing)Net5.rte[0].routing: local delivery of packet #18 from-1-to-0 $2
+BS id 415 tid 415 eid 415 etid 415 c Packet n "#18 from-1-to-0 $2" l 12000 pe 1036
+SH sm 12 sg 7
+ES t 32.839016507041
+CL id 415 tid 415 eid 415 etid 415 c Packet n "#18 from-1-to-0 $2" l 12000 pe 1036 cid 430
+
+E # 1037 t 32.839016507041 m 11 ce 1036 msg 415
+BU id 2 txt Arrived!
+BU id 2 txt "Generating packet..."
+CM id 431 tid 431 eid 431 etid 431 c omnetpp::cMessage n "#32 from-0-to-1 chain request" pe -1
+BS id 431 tid 431 eid 431 etid 431 c Packet n "#32 from-0-to-1 chain request" l 12000 pe 1037
+SH sm 11 sg 3
+ES t 32.839016507041
+CL id 431 tid 431 eid 431 etid 431 c Packet n "#32 from-0-to-1 chain request" l 12000 pe 1037 cid 432
+DM id 415 tid 415 eid 415 etid 415 c omnetpp::cMessage n "#18 from-1-to-0 $2" pe 1037
+
+E # 1038 t 32.839016507041 m 12 ce 1037 msg 431
+- INFO (Routing)Net5.rte[0].routing: forwarding packet #32 from-0-to-1 chain request on gate index 0
+BS id 431 tid 431 eid 431 etid 431 c Packet n "#32 from-0-to-1 chain request" l 12000 pe 1038
+SH sm 12 sg 2621440
+ES t 32.839016507041
+CL id 431 tid 431 eid 431 etid 431 c Packet n "#32 from-0-to-1 chain request" l 12000 pe 1038 cid 433
+
+E # 1039 t 32.839016507041 m 13 ce 1038 msg 431
+- INFO (L2Queue)Net5.rte[0].queue[0]: Received (Packet)#32 from-0-to-1 chain request
+- INFO (L2Queue)Net5.rte[0].queue[0]: Starting transmission of (Packet)#32 from-0-to-1 chain request
+BS id 431 tid 431 eid 431 etid 431 c Packet n "#32 from-0-to-1 chain request" l 12000 pe 1039
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048576
+ES t 32.940683173708
+CL id 431 tid 431 eid 431 etid 431 c Packet n "#32 from-0-to-1 chain request" l 12000 pe 1039 cid 434
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 1034
+ES t 32.840683173708
+MS id 13 d t=transmitting;p=80,200,row;i=block/queue;q=queue
+MS id 13 d t=transmitting;p=80,200,row;i=block/queue,yellow;q=queue
+
+E # 1040 t 32.840241679192 m 15 ce 1025 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1040
+ES t 32.843600742523
+
+E # 1041 t 32.840683173708 m 13 ce 1039 msg 1
+- INFO (L2Queue)Net5.rte[0].queue[0]: Transmission finished.
+MS id 13 d t=idle;p=80,200,row;i=block/queue,yellow;q=queue
+MS id 13 d t=idle;p=80,200,row;i=block/queue;q=queue
+
+E # 1042 t 32.843600742523 m 15 ce 1040 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1042
+ES t 32.848727373507
+
+E # 1043 t 32.848727373507 m 15 ce 1042 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1043
+ES t 32.853832638584
+
+E # 1044 t 32.853832638584 m 15 ce 1043 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1044
+ES t 32.859553972127
+
+E # 1045 t 32.859553972127 m 15 ce 1044 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1045
+ES t 32.866703504132
+
+E # 1046 t 32.866703504132 m 15 ce 1045 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1046
+ES t 32.871681642006
+
+E # 1047 t 32.871681642006 m 15 ce 1046 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1047
+ES t 32.878942271022
+
+E # 1048 t 32.878942271022 m 15 ce 1047 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1048
+ES t 32.887615985334
+
+E # 1049 t 32.887615985334 m 15 ce 1048 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1049
+ES t 32.89116765497
+
+E # 1050 t 32.89116765497 m 15 ce 1049 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1050
+ES t 32.896068605757
+
+E # 1051 t 32.896068605757 m 15 ce 1050 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1051
+ES t 32.900487948319
+
+E # 1052 t 32.900487948319 m 15 ce 1051 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1052
+ES t 32.908929781628
+
+E # 1053 t 32.908929781628 m 15 ce 1052 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1053
+ES t 32.911560140293
+
+E # 1054 t 32.911560140293 m 15 ce 1053 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1054
+ES t 32.917144218885
+
+E # 1055 t 32.917144218885 m 15 ce 1054 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1055
+ES t 32.925241128515
+
+E # 1056 t 32.925241128515 m 15 ce 1055 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1056
+ES t 32.927018521341
+
+E # 1057 t 32.927018521341 m 15 ce 1056 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1057
+ES t 32.928530153997
+
+E # 1058 t 32.928530153997 m 15 ce 1057 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1058
+ES t 32.935470512752
+
+E # 1059 t 32.935470512752 m 15 ce 1058 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1059
+ES t 32.942743487928
+
+E # 1060 t 32.939016507041 m 17 ce 1031 msg 421
+BS id 421 tid 421 eid 421 etid 421 c Packet n "#30 from-0-to-1 dissemination" l 12000 pe 1060
+SH sm 17 sg 3
+ES t 32.939016507041
+CL id 421 tid 421 eid 421 etid 421 c Packet n "#30 from-0-to-1 dissemination" l 12000 pe 1060 cid 435
+
+E # 1061 t 32.939016507041 m 21 ce 1032 msg 423
+BS id 423 tid 423 eid 423 etid 423 c Packet n "#31 from-0-to-2 dissemination" l 12000 pe 1061
+SH sm 21 sg 3
+ES t 32.939016507041
+CL id 423 tid 423 eid 423 etid 423 c Packet n "#31 from-0-to-2 dissemination" l 12000 pe 1061 cid 436
+
+E # 1062 t 32.939016507041 m 16 ce 1060 msg 421
+- INFO (Routing)Net5.rte[1].routing: local delivery of packet #30 from-0-to-1 dissemination
+BS id 421 tid 421 eid 421 etid 421 c Packet n "#30 from-0-to-1 dissemination" l 12000 pe 1062
+SH sm 16 sg 7
+ES t 32.939016507041
+CL id 421 tid 421 eid 421 etid 421 c Packet n "#30 from-0-to-1 dissemination" l 12000 pe 1062 cid 437
+
+E # 1063 t 32.939016507041 m 20 ce 1061 msg 423
+- INFO (Routing)Net5.rte[2].routing: local delivery of packet #31 from-0-to-2 dissemination
+BS id 423 tid 423 eid 423 etid 423 c Packet n "#31 from-0-to-2 dissemination" l 12000 pe 1063
+SH sm 20 sg 7
+ES t 32.939016507041
+CL id 423 tid 423 eid 423 etid 423 c Packet n "#31 from-0-to-2 dissemination" l 12000 pe 1063 cid 438
+
+E # 1064 t 32.939016507041 m 15 ce 1062 msg 421
+BU id 3 txt Arrived!
+DM id 421 tid 421 eid 421 etid 421 c omnetpp::cMessage n "#30 from-0-to-1 dissemination" pe 1064
+
+E # 1065 t 32.939016507041 m 19 ce 1063 msg 423
+BU id 4 txt Arrived!
+DM id 423 tid 423 eid 423 etid 423 c omnetpp::cMessage n "#31 from-0-to-2 dissemination" pe 1065
+
+E # 1066 t 32.940683173708 m 17 ce 1039 msg 431
+BS id 431 tid 431 eid 431 etid 431 c Packet n "#32 from-0-to-1 chain request" l 12000 pe 1066
+SH sm 17 sg 3
+ES t 32.940683173708
+CL id 431 tid 431 eid 431 etid 431 c Packet n "#32 from-0-to-1 chain request" l 12000 pe 1066 cid 439
+
+E # 1067 t 32.940683173708 m 16 ce 1066 msg 431
+- INFO (Routing)Net5.rte[1].routing: local delivery of packet #32 from-0-to-1 chain request
+BS id 431 tid 431 eid 431 etid 431 c Packet n "#32 from-0-to-1 chain request" l 12000 pe 1067
+SH sm 16 sg 7
+ES t 32.940683173708
+CL id 431 tid 431 eid 431 etid 431 c Packet n "#32 from-0-to-1 chain request" l 12000 pe 1067 cid 440
+
+E # 1068 t 32.940683173708 m 15 ce 1067 msg 431
+BU id 3 txt Arrived!
+BU id 3 txt "Generating packet..."
+CM id 441 tid 441 eid 441 etid 441 c omnetpp::cMessage n "#19 from-1-to-0 chain log" pe -1
+BS id 441 tid 441 eid 441 etid 441 c Packet n "#19 from-1-to-0 chain log" l 12400 pe 1068
+SH sm 15 sg 3
+ES t 32.940683173708
+CL id 441 tid 441 eid 441 etid 441 c Packet n "#19 from-1-to-0 chain log" l 12400 pe 1068 cid 442
+DM id 431 tid 431 eid 431 etid 431 c omnetpp::cMessage n "#32 from-0-to-1 chain request" pe 1068
+
+E # 1069 t 32.940683173708 m 16 ce 1068 msg 441
+- INFO (Routing)Net5.rte[1].routing: forwarding packet #19 from-1-to-0 chain log on gate index 0
+BS id 441 tid 441 eid 441 etid 441 c Packet n "#19 from-1-to-0 chain log" l 12400 pe 1069
+SH sm 16 sg 2621440
+ES t 32.940683173708
+CL id 441 tid 441 eid 441 etid 441 c Packet n "#19 from-1-to-0 chain log" l 12400 pe 1069 cid 443
+
+E # 1070 t 32.940683173708 m 17 ce 1069 msg 441
+- INFO (L2Queue)Net5.rte[1].queue[0]: Received (Packet)#19 from-1-to-0 chain log
+- INFO (L2Queue)Net5.rte[1].queue[0]: Starting transmission of (Packet)#19 from-1-to-0 chain log
+BS id 441 tid 441 eid 441 etid 441 c Packet n "#19 from-1-to-0 chain log" l 12400 pe 1070
+SH sm 17 sg 5
+SH sm 3 sg 1572864 pd 0.1 td 0.001722222222
+SH sm 2 sg 1048576
+ES t 33.04240539593
+CL id 441 tid 441 eid 441 etid 441 c Packet n "#19 from-1-to-0 chain log" l 12400 pe 1070 cid 444
+BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n endTxEvent pe 1006
+ES t 32.94240539593
+
+E # 1071 t 32.94240539593 m 17 ce 1070 msg 4
+- INFO (L2Queue)Net5.rte[1].queue[0]: Transmission finished.
+
+E # 1072 t 32.942743487928 m 15 ce 1059 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1072
+ES t 32.945602839379
+
+E # 1073 t 32.945602839379 m 15 ce 1072 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1073
+ES t 32.953611097951
+
+E # 1074 t 32.953611097951 m 15 ce 1073 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1074
+ES t 32.962236575801
+
+E # 1075 t 32.962236575801 m 15 ce 1074 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1075
+ES t 32.970233243822
+
+E # 1076 t 32.970233243822 m 15 ce 1075 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1076
+ES t 32.977365476023
+
+E # 1077 t 32.977365476023 m 15 ce 1076 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1077
+ES t 32.980700279113
+
+E # 1078 t 32.980700279113 m 15 ce 1077 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1078
+ES t 32.983305585295
+
+E # 1079 t 32.983305585295 m 15 ce 1078 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1079
+ES t 32.987669903551
+
+E # 1080 t 32.987669903551 m 15 ce 1079 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1080
+ES t 32.989298634707
+
+E # 1081 t 32.989298634707 m 15 ce 1080 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1081
+ES t 32.995587031438
+
+E # 1082 t 32.995587031438 m 15 ce 1081 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1082
+ES t 32.996674225001
+
+E # 1083 t 32.996674225001 m 15 ce 1082 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1083
+ES t 33.000129622073
+
+E # 1084 t 33.000129622073 m 15 ce 1083 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1084
+ES t 33.00915806903
+
+E # 1085 t 33.00915806903 m 15 ce 1084 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1085
+ES t 33.013495744231
+
+E # 1086 t 33.013495744231 m 15 ce 1085 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1086
+ES t 33.015696931127
+
+E # 1087 t 33.015696931127 m 15 ce 1086 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1087
+ES t 33.018470419626
+
+E # 1088 t 33.018470419626 m 15 ce 1087 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1088
+ES t 33.026483147363
+
+E # 1089 t 33.026483147363 m 15 ce 1088 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1089
+ES t 33.031621850272
+
+E # 1090 t 33.031621850272 m 15 ce 1089 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1090
+ES t 33.040948321141
+
+E # 1091 t 33.040948321141 m 15 ce 1090 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1091
+ES t 33.042349831817
+
+E # 1092 t 33.042349831817 m 15 ce 1091 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1092
+ES t 33.049786440556
+
+E # 1093 t 33.04240539593 m 13 ce 1070 msg 441
+BS id 441 tid 441 eid 441 etid 441 c Packet n "#19 from-1-to-0 chain log" l 12400 pe 1093
+SH sm 13 sg 3
+ES t 33.04240539593
+CL id 441 tid 441 eid 441 etid 441 c Packet n "#19 from-1-to-0 chain log" l 12400 pe 1093 cid 445
+
+E # 1094 t 33.04240539593 m 12 ce 1093 msg 441
+- INFO (Routing)Net5.rte[0].routing: local delivery of packet #19 from-1-to-0 chain log
+BS id 441 tid 441 eid 441 etid 441 c Packet n "#19 from-1-to-0 chain log" l 12400 pe 1094
+SH sm 12 sg 7
+ES t 33.04240539593
+CL id 441 tid 441 eid 441 etid 441 c Packet n "#19 from-1-to-0 chain log" l 12400 pe 1094 cid 446
+
+E # 1095 t 33.04240539593 m 11 ce 1094 msg 441
+BU id 2 txt Arrived!
+BU id 2 txt "Generating packet..."
+CM id 447 tid 447 eid 447 etid 447 c omnetpp::cMessage n "#33 from-0-to-1 transaction ack" pe -1
+BS id 447 tid 447 eid 447 etid 447 c Packet n "#33 from-0-to-1 transaction ack" l 12000 pe 1095
+SH sm 11 sg 3
+ES t 33.04240539593
+CL id 447 tid 447 eid 447 etid 447 c Packet n "#33 from-0-to-1 transaction ack" l 12000 pe 1095 cid 448
+BU id 2 txt "Generating packet..."
+CM id 449 tid 449 eid 449 etid 449 c omnetpp::cMessage n "#34 from-0-to-1 dissemination" pe -1
+BS id 449 tid 449 eid 449 etid 449 c Packet n "#34 from-0-to-1 dissemination" l 12000 pe 1095
+SH sm 11 sg 3
+ES t 33.04240539593
+CL id 449 tid 449 eid 449 etid 449 c Packet n "#34 from-0-to-1 dissemination" l 12000 pe 1095 cid 450
+BU id 2 txt "Generating packet..."
+CM id 451 tid 451 eid 451 etid 451 c omnetpp::cMessage n "#35 from-0-to-2 dissemination" pe -1
+BS id 451 tid 451 eid 451 etid 451 c Packet n "#35 from-0-to-2 dissemination" l 12000 pe 1095
+SH sm 11 sg 3
+ES t 33.04240539593
+CL id 451 tid 451 eid 451 etid 451 c Packet n "#35 from-0-to-2 dissemination" l 12000 pe 1095 cid 452
+DM id 441 tid 441 eid 441 etid 441 c omnetpp::cMessage n "#19 from-1-to-0 chain log" pe 1095
+
+E # 1096 t 33.04240539593 m 12 ce 1095 msg 447
+- INFO (Routing)Net5.rte[0].routing: forwarding packet #33 from-0-to-1 transaction ack on gate index 0
+BS id 447 tid 447 eid 447 etid 447 c Packet n "#33 from-0-to-1 transaction ack" l 12000 pe 1096
+SH sm 12 sg 2621440
+ES t 33.04240539593
+CL id 447 tid 447 eid 447 etid 447 c Packet n "#33 from-0-to-1 transaction ack" l 12000 pe 1096 cid 453
+
+E # 1097 t 33.04240539593 m 12 ce 1095 msg 449
+- INFO (Routing)Net5.rte[0].routing: forwarding packet #34 from-0-to-1 dissemination on gate index 0
+BS id 449 tid 449 eid 449 etid 449 c Packet n "#34 from-0-to-1 dissemination" l 12000 pe 1097
+SH sm 12 sg 2621440
+ES t 33.04240539593
+CL id 449 tid 449 eid 449 etid 449 c Packet n "#34 from-0-to-1 dissemination" l 12000 pe 1097 cid 454
+
+E # 1098 t 33.04240539593 m 12 ce 1095 msg 451
+- INFO (Routing)Net5.rte[0].routing: forwarding packet #35 from-0-to-2 dissemination on gate index 1
+BS id 451 tid 451 eid 451 etid 451 c Packet n "#35 from-0-to-2 dissemination" l 12000 pe 1098
+SH sm 12 sg 2621441
+ES t 33.04240539593
+CL id 451 tid 451 eid 451 etid 451 c Packet n "#35 from-0-to-2 dissemination" l 12000 pe 1098 cid 455
+
+E # 1099 t 33.04240539593 m 13 ce 1096 msg 447
+- INFO (L2Queue)Net5.rte[0].queue[0]: Received (Packet)#33 from-0-to-1 transaction ack
+- INFO (L2Queue)Net5.rte[0].queue[0]: Starting transmission of (Packet)#33 from-0-to-1 transaction ack
+BS id 447 tid 447 eid 447 etid 447 c Packet n "#33 from-0-to-1 transaction ack" l 12000 pe 1099
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048576
+ES t 33.144072062597
+CL id 447 tid 447 eid 447 etid 447 c Packet n "#33 from-0-to-1 transaction ack" l 12000 pe 1099 cid 456
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 1041
+ES t 33.044072062597
+
+E # 1100 t 33.04240539593 m 13 ce 1097 msg 449
+- INFO (L2Queue)Net5.rte[0].queue[0]: Received (Packet)#34 from-0-to-1 dissemination but transmitter busy: queueing up
+
+E # 1101 t 33.04240539593 m 14 ce 1098 msg 451
+- INFO (L2Queue)Net5.rte[0].queue[1]: Received (Packet)#35 from-0-to-2 dissemination
+- INFO (L2Queue)Net5.rte[0].queue[1]: Starting transmission of (Packet)#35 from-0-to-2 dissemination
+BS id 451 tid 451 eid 451 etid 451 c Packet n "#35 from-0-to-2 dissemination" l 12000 pe 1101
+SH sm 14 sg 5
+SH sm 2 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048576
+ES t 33.144072062597
+CL id 451 tid 451 eid 451 etid 451 c Packet n "#35 from-0-to-2 dissemination" l 12000 pe 1101 cid 457
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n endTxEvent pe 1035
+ES t 33.044072062597
+
+E # 1102 t 33.044072062597 m 13 ce 1099 msg 1
+- INFO (L2Queue)Net5.rte[0].queue[0]: Transmission finished.
+- INFO (L2Queue)Net5.rte[0].queue[0]: Starting transmission of (Packet)#34 from-0-to-1 dissemination
+BS id 449 tid 449 eid 449 etid 449 c Packet n "#34 from-0-to-1 dissemination" l 12000 pe 1100
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048576
+ES t 33.145738729264
+CL id 449 tid 449 eid 449 etid 449 c Packet n "#34 from-0-to-1 dissemination" l 12000 pe 1102 cid 458
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 1102
+ES t 33.045738729264
+
+E # 1103 t 33.044072062597 m 14 ce 1101 msg 2
+- INFO (L2Queue)Net5.rte[0].queue[1]: Transmission finished.
+
+E # 1104 t 33.045738729264 m 13 ce 1102 msg 1
+- INFO (L2Queue)Net5.rte[0].queue[0]: Transmission finished.
+
+E # 1105 t 33.049786440556 m 15 ce 1092 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1105
+ES t 33.057984603505
+
+E # 1106 t 33.057984603505 m 15 ce 1105 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1106
+ES t 33.063401971055
+
+E # 1107 t 33.063401971055 m 15 ce 1106 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1107
+ES t 33.065094579051
+
+E # 1108 t 33.065094579051 m 15 ce 1107 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1108
+ES t 33.070320063799
+
+E # 1109 t 33.070320063799 m 15 ce 1108 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1109
+ES t 33.075989580127
+
+E # 1110 t 33.075989580127 m 15 ce 1109 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1110
+ES t 33.084933963711
+
+E # 1111 t 33.084933963711 m 15 ce 1110 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1111
+ES t 33.088695254614
+
+E # 1112 t 33.088695254614 m 15 ce 1111 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1112
+ES t 33.094090945169
+
+E # 1113 t 33.094090945169 m 15 ce 1112 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1113
+ES t 33.10028883171
+
+E # 1114 t 33.10028883171 m 15 ce 1113 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1114
+ES t 33.105019939012
+
+E # 1115 t 33.105019939012 m 15 ce 1114 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1115
+ES t 33.114654839108
+
+E # 1116 t 33.114654839108 m 15 ce 1115 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1116
+ES t 33.117221846647
+
+E # 1117 t 33.117221846647 m 15 ce 1116 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1117
+ES t 33.124031978817
+
+E # 1118 t 33.124031978817 m 15 ce 1117 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1118
+ES t 33.129309583817
+
+E # 1119 t 33.129309583817 m 15 ce 1118 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1119
+ES t 33.130627845743
+
+E # 1120 t 33.130627845743 m 15 ce 1119 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1120
+ES t 33.138680677453
+
+E # 1121 t 33.138680677453 m 15 ce 1120 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1121
+ES t 33.143554299409
+
+E # 1122 t 33.143554299409 m 15 ce 1121 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1122
+ES t 33.149562164247
+
+E # 1123 t 33.144072062597 m 17 ce 1099 msg 447
+BS id 447 tid 447 eid 447 etid 447 c Packet n "#33 from-0-to-1 transaction ack" l 12000 pe 1123
+SH sm 17 sg 3
+ES t 33.144072062597
+CL id 447 tid 447 eid 447 etid 447 c Packet n "#33 from-0-to-1 transaction ack" l 12000 pe 1123 cid 459
+
+E # 1124 t 33.144072062597 m 21 ce 1101 msg 451
+BS id 451 tid 451 eid 451 etid 451 c Packet n "#35 from-0-to-2 dissemination" l 12000 pe 1124
+SH sm 21 sg 3
+ES t 33.144072062597
+CL id 451 tid 451 eid 451 etid 451 c Packet n "#35 from-0-to-2 dissemination" l 12000 pe 1124 cid 460
+
+E # 1125 t 33.144072062597 m 16 ce 1123 msg 447
+- INFO (Routing)Net5.rte[1].routing: local delivery of packet #33 from-0-to-1 transaction ack
+BS id 447 tid 447 eid 447 etid 447 c Packet n "#33 from-0-to-1 transaction ack" l 12000 pe 1125
+SH sm 16 sg 7
+ES t 33.144072062597
+CL id 447 tid 447 eid 447 etid 447 c Packet n "#33 from-0-to-1 transaction ack" l 12000 pe 1125 cid 461
+
+E # 1126 t 33.144072062597 m 20 ce 1124 msg 451
+- INFO (Routing)Net5.rte[2].routing: local delivery of packet #35 from-0-to-2 dissemination
+BS id 451 tid 451 eid 451 etid 451 c Packet n "#35 from-0-to-2 dissemination" l 12000 pe 1126
+SH sm 20 sg 7
+ES t 33.144072062597
+CL id 451 tid 451 eid 451 etid 451 c Packet n "#35 from-0-to-2 dissemination" l 12000 pe 1126 cid 462
+
+E # 1127 t 33.144072062597 m 15 ce 1125 msg 447
+BU id 3 txt Arrived!
+- INFO (App)Net5.rte[1].app: Evil node: #1 - completed transaction with #0 of value $2 distant: 1 Time: 33.144072062597 s
+DM id 447 tid 447 eid 447 etid 447 c omnetpp::cMessage n "#33 from-0-to-1 transaction ack" pe 1127
+
+E # 1128 t 33.144072062597 m 19 ce 1126 msg 451
+BU id 4 txt Arrived!
+DM id 451 tid 451 eid 451 etid 451 c omnetpp::cMessage n "#35 from-0-to-2 dissemination" pe 1128
+
+E # 1129 t 33.145738729264 m 17 ce 1102 msg 449
+BS id 449 tid 449 eid 449 etid 449 c Packet n "#34 from-0-to-1 dissemination" l 12000 pe 1129
+SH sm 17 sg 3
+ES t 33.145738729264
+CL id 449 tid 449 eid 449 etid 449 c Packet n "#34 from-0-to-1 dissemination" l 12000 pe 1129 cid 463
+
+E # 1130 t 33.145738729264 m 16 ce 1129 msg 449
+- INFO (Routing)Net5.rte[1].routing: local delivery of packet #34 from-0-to-1 dissemination
+BS id 449 tid 449 eid 449 etid 449 c Packet n "#34 from-0-to-1 dissemination" l 12000 pe 1130
+SH sm 16 sg 7
+ES t 33.145738729264
+CL id 449 tid 449 eid 449 etid 449 c Packet n "#34 from-0-to-1 dissemination" l 12000 pe 1130 cid 464
+
+E # 1131 t 33.145738729264 m 15 ce 1130 msg 449
+BU id 3 txt Arrived!
+DM id 449 tid 449 eid 449 etid 449 c omnetpp::cMessage n "#34 from-0-to-1 dissemination" pe 1131
+
+E # 1132 t 33.149562164247 m 15 ce 1122 msg 3
+- INFO (App)Net5.rte[1].app: Evil node: #1 - user #0 already attacked
+- INFO (App)Net5.rte[1].app: Evil node: #1 - starting transaction with #2 of value $10 Time: 33.149562164247 s
+BU id 3 txt "Generating packet..."
+CM id 465 tid 465 eid 465 etid 465 c omnetpp::cMessage n "#20 from-1-to-2 $10" pe -1
+BS id 465 tid 465 eid 465 etid 465 c Packet n "#20 from-1-to-2 $10" l 12000 pe 1132
+SH sm 15 sg 3
+ES t 33.149562164247
+CL id 465 tid 465 eid 465 etid 465 c Packet n "#20 from-1-to-2 $10" l 12000 pe 1132 cid 466
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1132
+ES t 33.151721909356
+
+E # 1133 t 33.149562164247 m 16 ce 1132 msg 465
+- INFO (Routing)Net5.rte[1].routing: forwarding packet #20 from-1-to-2 $10 on gate index 1
+BS id 465 tid 465 eid 465 etid 465 c Packet n "#20 from-1-to-2 $10" l 12000 pe 1133
+SH sm 16 sg 2621441
+ES t 33.149562164247
+CL id 465 tid 465 eid 465 etid 465 c Packet n "#20 from-1-to-2 $10" l 12000 pe 1133 cid 467
+
+E # 1134 t 33.149562164247 m 18 ce 1133 msg 465
+- INFO (L2Queue)Net5.rte[1].queue[1]: Received (Packet)#20 from-1-to-2 $10
+- INFO (L2Queue)Net5.rte[1].queue[1]: Starting transmission of (Packet)#20 from-1-to-2 $10
+BS id 465 tid 465 eid 465 etid 465 c Packet n "#20 from-1-to-2 $10" l 12000 pe 1134
+SH sm 18 sg 5
+SH sm 3 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048577
+ES t 33.251228830914
+CL id 465 tid 465 eid 465 etid 465 c Packet n "#20 from-1-to-2 $10" l 12000 pe 1134 cid 468
+BS id 5 tid 5 eid 5 etid 5 c omnetpp::cMessage n endTxEvent pe 336
+ES t 33.151228830914
+
+E # 1135 t 33.151228830914 m 18 ce 1134 msg 5
+- INFO (L2Queue)Net5.rte[1].queue[1]: Transmission finished.
+
+E # 1136 t 33.151721909356 m 15 ce 1132 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1136
+ES t 33.155653072255
+
+E # 1137 t 33.155653072255 m 15 ce 1136 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1137
+ES t 33.160187153386
+
+E # 1138 t 33.160187153386 m 15 ce 1137 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1138
+ES t 33.162510278407
+
+E # 1139 t 33.162510278407 m 15 ce 1138 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1139
+ES t 33.17211792995
+
+E # 1140 t 33.17211792995 m 15 ce 1139 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1140
+ES t 33.17455676055
+
+E # 1141 t 33.17455676055 m 15 ce 1140 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1141
+ES t 33.177240938586
+
+E # 1142 t 33.177240938586 m 15 ce 1141 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1142
+ES t 33.179405649625
+
+E # 1143 t 33.179405649625 m 15 ce 1142 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1143
+ES t 33.188541505189
+
+E # 1144 t 33.188541505189 m 15 ce 1143 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1144
+ES t 33.194751806676
+
+E # 1145 t 33.194751806676 m 15 ce 1144 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1145
+ES t 33.200646060258
+
+E # 1146 t 33.200646060258 m 15 ce 1145 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1146
+ES t 33.202476401788
+
+E # 1147 t 33.202476401788 m 15 ce 1146 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1147
+ES t 33.207588604585
+
+E # 1148 t 33.207588604585 m 15 ce 1147 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1148
+ES t 33.216783507055
+
+E # 1149 t 33.216783507055 m 15 ce 1148 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1149
+ES t 33.22572187979
+
+E # 1150 t 33.22572187979 m 15 ce 1149 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1150
+ES t 33.227468625492
+
+E # 1151 t 33.227468625492 m 15 ce 1150 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1151
+ES t 33.232596061101
+
+E # 1152 t 33.232596061101 m 15 ce 1151 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1152
+ES t 33.24079946723
+
+E # 1153 t 33.24079946723 m 15 ce 1152 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1153
+ES t 33.248316975955
+
+E # 1154 t 33.248316975955 m 15 ce 1153 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1154
+ES t 33.257211154669
+
+E # 1155 t 33.251228830914 m 22 ce 1134 msg 465
+BS id 465 tid 465 eid 465 etid 465 c Packet n "#20 from-1-to-2 $10" l 12000 pe 1155
+SH sm 22 sg 3
+ES t 33.251228830914
+CL id 465 tid 465 eid 465 etid 465 c Packet n "#20 from-1-to-2 $10" l 12000 pe 1155 cid 469
+
+E # 1156 t 33.251228830914 m 20 ce 1155 msg 465
+- INFO (Routing)Net5.rte[2].routing: local delivery of packet #20 from-1-to-2 $10
+BS id 465 tid 465 eid 465 etid 465 c Packet n "#20 from-1-to-2 $10" l 12000 pe 1156
+SH sm 20 sg 7
+ES t 33.251228830914
+CL id 465 tid 465 eid 465 etid 465 c Packet n "#20 from-1-to-2 $10" l 12000 pe 1156 cid 470
+
+E # 1157 t 33.251228830914 m 19 ce 1156 msg 465
+BU id 4 txt Arrived!
+BU id 4 txt "Generating packet..."
+CM id 471 tid 471 eid 471 etid 471 c omnetpp::cMessage n "#20 from-2-to-1 chain request" pe -1
+BS id 471 tid 471 eid 471 etid 471 c Packet n "#20 from-2-to-1 chain request" l 12000 pe 1157
+SH sm 19 sg 3
+ES t 33.251228830914
+CL id 471 tid 471 eid 471 etid 471 c Packet n "#20 from-2-to-1 chain request" l 12000 pe 1157 cid 472
+DM id 465 tid 465 eid 465 etid 465 c omnetpp::cMessage n "#20 from-1-to-2 $10" pe 1157
+
+E # 1158 t 33.251228830914 m 20 ce 1157 msg 471
+- INFO (Routing)Net5.rte[2].routing: forwarding packet #20 from-2-to-1 chain request on gate index 1
+BS id 471 tid 471 eid 471 etid 471 c Packet n "#20 from-2-to-1 chain request" l 12000 pe 1158
+SH sm 20 sg 2621441
+ES t 33.251228830914
+CL id 471 tid 471 eid 471 etid 471 c Packet n "#20 from-2-to-1 chain request" l 12000 pe 1158 cid 473
+
+E # 1159 t 33.251228830914 m 22 ce 1158 msg 471
+- INFO (L2Queue)Net5.rte[2].queue[1]: Received (Packet)#20 from-2-to-1 chain request
+- INFO (L2Queue)Net5.rte[2].queue[1]: Starting transmission of (Packet)#20 from-2-to-1 chain request
+BS id 471 tid 471 eid 471 etid 471 c Packet n "#20 from-2-to-1 chain request" l 12000 pe 1159
+SH sm 22 sg 5
+SH sm 4 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048577
+ES t 33.352895497581
+CL id 471 tid 471 eid 471 etid 471 c Packet n "#20 from-2-to-1 chain request" l 12000 pe 1159 cid 474
+BS id 8 tid 8 eid 8 etid 8 c omnetpp::cMessage n endTxEvent pe 385
+ES t 33.252895497581
+
+E # 1160 t 33.252895497581 m 22 ce 1159 msg 8
+- INFO (L2Queue)Net5.rte[2].queue[1]: Transmission finished.
+
+E # 1161 t 33.257211154669 m 15 ce 1154 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1161
+ES t 33.261802382613
+
+E # 1162 t 33.261802382613 m 15 ce 1161 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1162
+ES t 33.263643517706
+
+E # 1163 t 33.263643517706 m 15 ce 1162 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1163
+ES t 33.27277991726
+
+E # 1164 t 33.27277991726 m 15 ce 1163 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1164
+ES t 33.277616670162
+
+E # 1165 t 33.277616670162 m 15 ce 1164 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1165
+ES t 33.284826895343
+
+E # 1166 t 33.284826895343 m 15 ce 1165 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1166
+ES t 33.290085881366
+
+E # 1167 t 33.290085881366 m 15 ce 1166 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1167
+ES t 33.29738247987
+
+E # 1168 t 33.29738247987 m 15 ce 1167 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1168
+ES t 33.30360425384
+
+E # 1169 t 33.30360425384 m 15 ce 1168 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1169
+ES t 33.307553737419
+
+E # 1170 t 33.307553737419 m 15 ce 1169 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1170
+ES t 33.314999934966
+
+E # 1171 t 33.314999934966 m 15 ce 1170 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1171
+ES t 33.322810942782
+
+E # 1172 t 33.322810942782 m 15 ce 1171 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1172
+ES t 33.324054563663
+
+E # 1173 t 33.324054563663 m 15 ce 1172 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1173
+ES t 33.330779113172
+
+E # 1174 t 33.330779113172 m 15 ce 1173 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1174
+ES t 33.338361689247
+
+E # 1175 t 33.338361689247 m 15 ce 1174 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1175
+ES t 33.34152187171
+
+E # 1176 t 33.34152187171 m 15 ce 1175 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1176
+ES t 33.349424543265
+
+E # 1177 t 33.349424543265 m 15 ce 1176 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1177
+ES t 33.351869392667
+
+E # 1178 t 33.351869392667 m 15 ce 1177 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1178
+ES t 33.352957290555
+
+E # 1179 t 33.352895497581 m 18 ce 1159 msg 471
+BS id 471 tid 471 eid 471 etid 471 c Packet n "#20 from-2-to-1 chain request" l 12000 pe 1179
+SH sm 18 sg 3
+ES t 33.352895497581
+CL id 471 tid 471 eid 471 etid 471 c Packet n "#20 from-2-to-1 chain request" l 12000 pe 1179 cid 475
+
+E # 1180 t 33.352895497581 m 16 ce 1179 msg 471
+- INFO (Routing)Net5.rte[1].routing: local delivery of packet #20 from-2-to-1 chain request
+BS id 471 tid 471 eid 471 etid 471 c Packet n "#20 from-2-to-1 chain request" l 12000 pe 1180
+SH sm 16 sg 7
+ES t 33.352895497581
+CL id 471 tid 471 eid 471 etid 471 c Packet n "#20 from-2-to-1 chain request" l 12000 pe 1180 cid 476
+
+E # 1181 t 33.352895497581 m 15 ce 1180 msg 471
+BU id 3 txt Arrived!
+BU id 3 txt "Generating packet..."
+CM id 477 tid 477 eid 477 etid 477 c omnetpp::cMessage n "#21 from-1-to-2 chain log" pe -1
+BS id 477 tid 477 eid 477 etid 477 c Packet n "#21 from-1-to-2 chain log" l 12400 pe 1181
+SH sm 15 sg 3
+ES t 33.352895497581
+CL id 477 tid 477 eid 477 etid 477 c Packet n "#21 from-1-to-2 chain log" l 12400 pe 1181 cid 478
+DM id 471 tid 471 eid 471 etid 471 c omnetpp::cMessage n "#20 from-2-to-1 chain request" pe 1181
+
+E # 1182 t 33.352895497581 m 16 ce 1181 msg 477
+- INFO (Routing)Net5.rte[1].routing: forwarding packet #21 from-1-to-2 chain log on gate index 1
+BS id 477 tid 477 eid 477 etid 477 c Packet n "#21 from-1-to-2 chain log" l 12400 pe 1182
+SH sm 16 sg 2621441
+ES t 33.352895497581
+CL id 477 tid 477 eid 477 etid 477 c Packet n "#21 from-1-to-2 chain log" l 12400 pe 1182 cid 479
+
+E # 1183 t 33.352895497581 m 18 ce 1182 msg 477
+- INFO (L2Queue)Net5.rte[1].queue[1]: Received (Packet)#21 from-1-to-2 chain log
+- INFO (L2Queue)Net5.rte[1].queue[1]: Starting transmission of (Packet)#21 from-1-to-2 chain log
+BS id 477 tid 477 eid 477 etid 477 c Packet n "#21 from-1-to-2 chain log" l 12400 pe 1183
+SH sm 18 sg 5
+SH sm 3 sg 1572865 pd 0.1 td 0.001722222222
+SH sm 4 sg 1048577
+ES t 33.454617719803
+CL id 477 tid 477 eid 477 etid 477 c Packet n "#21 from-1-to-2 chain log" l 12400 pe 1183 cid 480
+BS id 5 tid 5 eid 5 etid 5 c omnetpp::cMessage n endTxEvent pe 1135
+ES t 33.354617719803
+
+E # 1184 t 33.352957290555 m 15 ce 1178 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1184
+ES t 33.361124813828
+
+E # 1185 t 33.354617719803 m 18 ce 1183 msg 5
+- INFO (L2Queue)Net5.rte[1].queue[1]: Transmission finished.
+
+E # 1186 t 33.361124813828 m 15 ce 1184 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1186
+ES t 33.364899389297
+
+E # 1187 t 33.364899389297 m 15 ce 1186 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1187
+ES t 33.374531888723
+
+E # 1188 t 33.374531888723 m 15 ce 1187 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1188
+ES t 33.377627677995
+
+E # 1189 t 33.377627677995 m 15 ce 1188 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1189
+ES t 33.382750927419
+
+E # 1190 t 33.382750927419 m 15 ce 1189 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1190
+ES t 33.388281774258
+
+E # 1191 t 33.388281774258 m 15 ce 1190 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1191
+ES t 33.394600631726
+
+E # 1192 t 33.394600631726 m 15 ce 1191 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1192
+ES t 33.404184124157
+
+E # 1193 t 33.404184124157 m 15 ce 1192 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1193
+ES t 33.412903627949
+
+E # 1194 t 33.412903627949 m 15 ce 1193 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1194
+ES t 33.418923929645
+
+E # 1195 t 33.418923929645 m 15 ce 1194 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1195
+ES t 33.424038940731
+
+E # 1196 t 33.424038940731 m 15 ce 1195 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1196
+ES t 33.42591615891
+
+E # 1197 t 33.42591615891 m 15 ce 1196 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1197
+ES t 33.435483029183
+
+E # 1198 t 33.435483029183 m 15 ce 1197 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1198
+ES t 33.442078135599
+
+E # 1199 t 33.442078135599 m 15 ce 1198 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1199
+ES t 33.448259896014
+
+E # 1200 t 33.448259896014 m 15 ce 1199 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 1200
+ES t 33.457027099568
+
+E # 1201 t 33.454617719803 m 22 ce 1183 msg 477
+BS id 477 tid 477 eid 477 etid 477 c Packet n "#21 from-1-to-2 chain log" l 12400 pe 1201
+SH sm 22 sg 3
+ES t 33.454617719803
+CL id 477 tid 477 eid 477 etid 477 c Packet n "#21 from-1-to-2 chain log" l 12400 pe 1201 cid 481
+
+E # 1202 t 33.454617719803 m 20 ce 1201 msg 477
+- INFO (Routing)Net5.rte[2].routing: local delivery of packet #21 from-1-to-2 chain log
+BS id 477 tid 477 eid 477 etid 477 c Packet n "#21 from-1-to-2 chain log" l 12400 pe 1202
+SH sm 20 sg 7
+ES t 33.454617719803
+CL id 477 tid 477 eid 477 etid 477 c Packet n "#21 from-1-to-2 chain log" l 12400 pe 1202 cid 482
+
+E # 1203 t 33.454617719803 m 19 ce 1202 msg 477
+BU id 4 txt Arrived!
+- INFO (App)Net5.rte[2].app: Node: #2 - detected double spending in verification done by #1 distant: 1 Time: 33.454617719803 s
+SE e 0 c 14 m "Simulation stopped with endSimulation() -- in module (App) Net5.rte[2].app (id=19), at t=33.454617719803s, event #1203"
