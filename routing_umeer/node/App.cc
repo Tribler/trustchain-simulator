@@ -95,25 +95,35 @@ void App::threadFunction()
     if (tempBlockID == -1) { //No transaction are pending
         calculateChainValue();
         if (chainTotalValue > 0) {
-            createTransactionMessage();
+            if (isNodeEvil() && totalEvilTransactions >= EVIL_NUMBER_OF_TRANSACTION) {
+                return;
+            }
+            else {
+                createTransactionMessage();
+            }
         }
     }
 
-    if (!isNodeEvil()) {
-        scheduleAt(simTime() + sendIATime->doubleValue(), timerThread);
+    if (isNodeEvil()) {
+        sendIATime = sendIaTimeEvil;
     }
-    else {
-        if (totalEvilTransactions + 1 < EVIL_NUMBER_OF_TRANSACTION) {
-            scheduleAt(simTime() + sendIaTimeEvil->doubleValue(), timerThread);
-        }
-        else {
-            char text[128];
-            sprintf(text, "Evil node #%d is now performing his last transaction Time: %s s", myAddress, SIMTIME_STR(simTime()));
-            EV << text << endl;
-            getSimulation()->getActiveEnvir()->alert(text);
-            // what if that is busy?
-        }
-    }
+    scheduleAt(simTime() + sendIATime->doubleValue(), timerThread);
+
+//    if (!isNodeEvil()) {
+//        scheduleAt(simTime() + sendIATime->doubleValue(), timerThread);
+//    }
+//    else {
+//        if (totalEvilTransactions + 1 < EVIL_NUMBER_OF_TRANSACTION) {
+//            scheduleAt(simTime() + sendIaTimeEvil->doubleValue(), timerThread);
+//        }
+//        else {
+//            char text[128];
+//            sprintf(text, "Evil node #%d is now performing his last transaction Time: %s s", myAddress, SIMTIME_STR(simTime()));
+//            EV << text << endl;
+//            getSimulation()->getActiveEnvir()->alert(text);
+//            // what if that is busy?
+//        }
+//    }
 }
 
 void App::receiveMessage(cMessage *msg)
@@ -588,8 +598,6 @@ bool App::itIsAlreadyBeenAttacked(int nodeId)
     }
     return false;
 }
-
-
 
 //DEBUG CODE
 //            if (myAddress == 0) {
