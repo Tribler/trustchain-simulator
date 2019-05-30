@@ -1,0 +1,2391 @@
+E # 0 t 0 m 1 ce -1 msg -1
+SB v 1284 rid General-11-20190529-16:32:56-9908 b 1000
+KF p -1 c "" s ""
+MC id 1 c omnetpp::cModule t networks.Net5 n Net5 cm 1
+MS id 1 d ""
+MC id 2 c omnetpp::cModule t node.Node pid 1 n rte[0] cm 1
+MS id 2 d i=misc/node_vs,gold
+MC id 3 c omnetpp::cModule t node.Node pid 1 n rte[1] cm 1
+MS id 3 d i=misc/node_vs,gold
+MC id 4 c omnetpp::cModule t node.Node pid 1 n rte[2] cm 1
+MS id 4 d i=misc/node_vs,gold
+GC m 2 g 1048576 n port$i i 0 o 0
+GC m 2 g 1572864 n port$o i 0 o 1
+GC m 3 g 1048576 n port$i i 0 o 0
+GC m 3 g 1572864 n port$o i 0 o 1
+CC sm 2 sg 1572864 dm 3 dg 1048576
+CS sm 2 sg 1572864 d ""
+CC sm 3 sg 1572864 dm 2 dg 1048576
+CS sm 3 sg 1572864 d ""
+GC m 2 g 1048577 n port$i i 1 o 0
+GC m 2 g 1572865 n port$o i 1 o 1
+GC m 4 g 1048576 n port$i i 0 o 0
+GC m 4 g 1572864 n port$o i 0 o 1
+CC sm 2 sg 1572865 dm 4 dg 1048576
+CS sm 2 sg 1572865 d ""
+CC sm 4 sg 1572864 dm 2 dg 1048577
+CS sm 4 sg 1572864 d ""
+GC m 3 g 1048577 n port$i i 1 o 0
+GC m 3 g 1572865 n port$o i 1 o 1
+GC m 4 g 1048577 n port$i i 1 o 0
+GC m 4 g 1572865 n port$o i 1 o 1
+CC sm 3 sg 1572865 dm 4 dg 1048577
+CS sm 3 sg 1572865 d ""
+CC sm 4 sg 1572865 dm 3 dg 1048577
+CS sm 4 sg 1572865 d ""
+MC id 11 c App t node.App pid 2 n app
+GC m 11 g 0 n in o 0
+GC m 11 g 3 n out o 1
+MS id 11 d p=140,60;i=block/browser
+MC id 12 c Routing t node.Routing pid 2 n routing
+GC m 12 g 4 n localIn o 0
+GC m 12 g 7 n localOut o 1
+MS id 12 d p=140,130;i=block/switch
+GC m 12 g 1048576 n in i 0 o 0
+GC m 12 g 1048577 n in i 1 o 0
+GC m 12 g 2621440 n out i 0 o 1
+GC m 12 g 2621441 n out i 1 o 1
+MC id 13 c L2Queue t node.L2Queue pid 2 n queue[0]
+GC m 13 g 0 n in o 0
+GC m 13 g 3 n out o 1
+GC m 13 g 4 n line$i o 0
+GC m 13 g 5 n line$o o 1
+MS id 13 d p=80,200,row;i=block/queue;q=queue
+MC id 14 c L2Queue t node.L2Queue pid 2 n queue[1]
+GC m 14 g 0 n in o 0
+GC m 14 g 3 n out o 1
+GC m 14 g 4 n line$i o 0
+GC m 14 g 5 n line$o o 1
+MS id 14 d p=80,200,row;i=block/queue;q=queue
+CC sm 12 sg 7 dm 11 dg 0
+CC sm 11 sg 3 dm 12 dg 4
+CC sm 12 sg 2621440 dm 13 dg 0
+CC sm 13 sg 3 dm 12 dg 1048576
+CC sm 13 sg 5 dm 2 dg 1572864
+CC sm 2 sg 1048576 dm 13 dg 4
+CC sm 12 sg 2621441 dm 14 dg 0
+CC sm 14 sg 3 dm 12 dg 1048577
+CC sm 14 sg 5 dm 2 dg 1572865
+CC sm 2 sg 1048577 dm 14 dg 4
+MC id 15 c App t node.App pid 3 n app
+GC m 15 g 0 n in o 0
+GC m 15 g 3 n out o 1
+MS id 15 d p=140,60;i=block/browser
+MC id 16 c Routing t node.Routing pid 3 n routing
+GC m 16 g 4 n localIn o 0
+GC m 16 g 7 n localOut o 1
+MS id 16 d p=140,130;i=block/switch
+GC m 16 g 1048576 n in i 0 o 0
+GC m 16 g 1048577 n in i 1 o 0
+GC m 16 g 2621440 n out i 0 o 1
+GC m 16 g 2621441 n out i 1 o 1
+MC id 17 c L2Queue t node.L2Queue pid 3 n queue[0]
+GC m 17 g 0 n in o 0
+GC m 17 g 3 n out o 1
+GC m 17 g 4 n line$i o 0
+GC m 17 g 5 n line$o o 1
+MS id 17 d p=80,200,row;i=block/queue;q=queue
+MC id 18 c L2Queue t node.L2Queue pid 3 n queue[1]
+GC m 18 g 0 n in o 0
+GC m 18 g 3 n out o 1
+GC m 18 g 4 n line$i o 0
+GC m 18 g 5 n line$o o 1
+MS id 18 d p=80,200,row;i=block/queue;q=queue
+CC sm 16 sg 7 dm 15 dg 0
+CC sm 15 sg 3 dm 16 dg 4
+CC sm 16 sg 2621440 dm 17 dg 0
+CC sm 17 sg 3 dm 16 dg 1048576
+CC sm 17 sg 5 dm 3 dg 1572864
+CC sm 3 sg 1048576 dm 17 dg 4
+CC sm 16 sg 2621441 dm 18 dg 0
+CC sm 18 sg 3 dm 16 dg 1048577
+CC sm 18 sg 5 dm 3 dg 1572865
+CC sm 3 sg 1048577 dm 18 dg 4
+MC id 19 c App t node.App pid 4 n app
+GC m 19 g 0 n in o 0
+GC m 19 g 3 n out o 1
+MS id 19 d p=140,60;i=block/browser
+MC id 20 c Routing t node.Routing pid 4 n routing
+GC m 20 g 4 n localIn o 0
+GC m 20 g 7 n localOut o 1
+MS id 20 d p=140,130;i=block/switch
+GC m 20 g 1048576 n in i 0 o 0
+GC m 20 g 1048577 n in i 1 o 0
+GC m 20 g 2621440 n out i 0 o 1
+GC m 20 g 2621441 n out i 1 o 1
+MC id 21 c L2Queue t node.L2Queue pid 4 n queue[0]
+GC m 21 g 0 n in o 0
+GC m 21 g 3 n out o 1
+GC m 21 g 4 n line$i o 0
+GC m 21 g 5 n line$o o 1
+MS id 21 d p=80,200,row;i=block/queue;q=queue
+MC id 22 c L2Queue t node.L2Queue pid 4 n queue[1]
+GC m 22 g 0 n in o 0
+GC m 22 g 3 n out o 1
+GC m 22 g 4 n line$i o 0
+GC m 22 g 5 n line$o o 1
+MS id 22 d p=80,200,row;i=block/queue;q=queue
+CC sm 20 sg 7 dm 19 dg 0
+CC sm 19 sg 3 dm 20 dg 4
+CC sm 20 sg 2621440 dm 21 dg 0
+CC sm 21 sg 3 dm 20 dg 1048576
+CC sm 21 sg 5 dm 4 dg 1572864
+CC sm 4 sg 1048576 dm 21 dg 4
+CC sm 20 sg 2621441 dm 22 dg 0
+CC sm 22 sg 3 dm 20 dg 1048577
+CC sm 22 sg 5 dm 4 dg 1572865
+CC sm 4 sg 1048577 dm 22 dg 4
+MB sm 1 tm 2 m initialize(0)
+ME
+MB sm 1 tm 11 m initialize(0)
+CM id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n TimerThead pe -1
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n TimerThead pe 0
+ES t 5.901348470943
+ME
+MB sm 1 tm 12 m initialize(0)
+ME
+MB sm 1 tm 13 m initialize(0)
+CM id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe -1
+ME
+MB sm 1 tm 14 m initialize(0)
+CM id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n endTxEvent pe -1
+ME
+MB sm 1 tm 3 m initialize(0)
+ME
+MB sm 1 tm 15 m initialize(0)
+CM id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe -1
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 0
+ES t 5.34153424087
+ME
+MB sm 1 tm 16 m initialize(0)
+ME
+MB sm 1 tm 17 m initialize(0)
+CM id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n endTxEvent pe -1
+ME
+MB sm 1 tm 18 m initialize(0)
+CM id 5 tid 5 eid 5 etid 5 c omnetpp::cMessage n endTxEvent pe -1
+ME
+MB sm 1 tm 4 m initialize(0)
+ME
+MB sm 1 tm 19 m initialize(0)
+CM id 6 tid 6 eid 6 etid 6 c omnetpp::cMessage n TimerThead pe -1
+BS id 6 tid 6 eid 6 etid 6 c omnetpp::cMessage n TimerThead pe 0
+ES t 5.097376201302
+ME
+MB sm 1 tm 20 m initialize(0)
+ME
+MB sm 1 tm 21 m initialize(0)
+CM id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n endTxEvent pe -1
+ME
+MB sm 1 tm 22 m initialize(0)
+CM id 8 tid 8 eid 8 etid 8 c omnetpp::cMessage n endTxEvent pe -1
+ME
+
+E # 1 t 5.097376201302 m 19 ce 0 msg 6
+CM id 9 tid 9 eid 9 etid 9 c omnetpp::cMessage n "#0 from-2-to-1 $2" pe -1
+BS id 9 tid 9 eid 9 etid 9 c Packet n "#0 from-2-to-1 $2" l 12000 pe 1
+SH sm 19 sg 3
+ES t 5.097376201302
+BS id 6 tid 6 eid 6 etid 6 c omnetpp::cMessage n TimerThead pe 1
+ES t 14.728791001253
+
+E # 2 t 5.097376201302 m 20 ce 1 msg 9
+BS id 9 tid 9 eid 9 etid 9 c Packet n "#0 from-2-to-1 $2" l 12000 pe 2
+SH sm 20 sg 2621441
+ES t 5.097376201302
+
+E # 3 t 5.097376201302 m 22 ce 2 msg 9
+BS id 9 tid 9 eid 9 etid 9 c Packet n "#0 from-2-to-1 $2" l 12000 pe 3
+SH sm 22 sg 5
+SH sm 4 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048577
+ES t 5.199042867969
+BS id 8 tid 8 eid 8 etid 8 c omnetpp::cMessage n endTxEvent pe 0
+ES t 5.099042867969
+
+E # 4 t 5.099042867969 m 22 ce 3 msg 8
+
+E # 5 t 5.199042867969 m 18 ce 3 msg 9
+BS id 9 tid 9 eid 9 etid 9 c Packet n "#0 from-2-to-1 $2" l 12000 pe 5
+SH sm 18 sg 3
+ES t 5.199042867969
+
+E # 6 t 5.199042867969 m 16 ce 5 msg 9
+BS id 9 tid 9 eid 9 etid 9 c Packet n "#0 from-2-to-1 $2" l 12000 pe 6
+SH sm 16 sg 7
+ES t 5.199042867969
+
+E # 7 t 5.199042867969 m 15 ce 6 msg 9
+CM id 10 tid 10 eid 10 etid 10 c omnetpp::cMessage n "#0 from-1-to-2 chain request" pe -1
+BS id 10 tid 10 eid 10 etid 10 c Packet n "#0 from-1-to-2 chain request" l 12000 pe 7
+SH sm 15 sg 3
+ES t 5.199042867969
+DM id 9 tid 9 eid 9 etid 9 c omnetpp::cMessage n "#0 from-2-to-1 $2" pe 7
+
+E # 8 t 5.199042867969 m 16 ce 7 msg 10
+BS id 10 tid 10 eid 10 etid 10 c Packet n "#0 from-1-to-2 chain request" l 12000 pe 8
+SH sm 16 sg 2621441
+ES t 5.199042867969
+
+E # 9 t 5.199042867969 m 18 ce 8 msg 10
+BS id 10 tid 10 eid 10 etid 10 c Packet n "#0 from-1-to-2 chain request" l 12000 pe 9
+SH sm 18 sg 5
+SH sm 3 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048577
+ES t 5.300709534636
+BS id 5 tid 5 eid 5 etid 5 c omnetpp::cMessage n endTxEvent pe 0
+ES t 5.200709534636
+
+E # 10 t 5.200709534636 m 18 ce 9 msg 5
+
+E # 11 t 5.300709534636 m 22 ce 9 msg 10
+BS id 10 tid 10 eid 10 etid 10 c Packet n "#0 from-1-to-2 chain request" l 12000 pe 11
+SH sm 22 sg 3
+ES t 5.300709534636
+
+E # 12 t 5.300709534636 m 20 ce 11 msg 10
+BS id 10 tid 10 eid 10 etid 10 c Packet n "#0 from-1-to-2 chain request" l 12000 pe 12
+SH sm 20 sg 7
+ES t 5.300709534636
+
+E # 13 t 5.300709534636 m 19 ce 12 msg 10
+CM id 11 tid 11 eid 11 etid 11 c omnetpp::cMessage n "#1 from-2-to-1 chain log" pe -1
+BS id 11 tid 11 eid 11 etid 11 c Packet n "#1 from-2-to-1 chain log" l 12000 pe 13
+SH sm 19 sg 3
+ES t 5.300709534636
+DM id 10 tid 10 eid 10 etid 10 c omnetpp::cMessage n "#0 from-1-to-2 chain request" pe 13
+
+E # 14 t 5.300709534636 m 20 ce 13 msg 11
+BS id 11 tid 11 eid 11 etid 11 c Packet n "#1 from-2-to-1 chain log" l 12000 pe 14
+SH sm 20 sg 2621441
+ES t 5.300709534636
+
+E # 15 t 5.300709534636 m 22 ce 14 msg 11
+BS id 11 tid 11 eid 11 etid 11 c Packet n "#1 from-2-to-1 chain log" l 12000 pe 15
+SH sm 22 sg 5
+SH sm 4 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048577
+ES t 5.402376201303
+BS id 8 tid 8 eid 8 etid 8 c omnetpp::cMessage n endTxEvent pe 4
+ES t 5.302376201303
+
+E # 16 t 5.302376201303 m 22 ce 15 msg 8
+
+E # 17 t 5.34153424087 m 15 ce 0 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 17
+ES t 12.442552261055
+
+E # 18 t 5.402376201303 m 18 ce 15 msg 11
+BS id 11 tid 11 eid 11 etid 11 c Packet n "#1 from-2-to-1 chain log" l 12000 pe 18
+SH sm 18 sg 3
+ES t 5.402376201303
+
+E # 19 t 5.402376201303 m 16 ce 18 msg 11
+BS id 11 tid 11 eid 11 etid 11 c Packet n "#1 from-2-to-1 chain log" l 12000 pe 19
+SH sm 16 sg 7
+ES t 5.402376201303
+
+E # 20 t 5.402376201303 m 15 ce 19 msg 11
+CM id 12 tid 12 eid 12 etid 12 c omnetpp::cMessage n "#1 from-1-to-2 transaction ack" pe -1
+BS id 12 tid 12 eid 12 etid 12 c Packet n "#1 from-1-to-2 transaction ack" l 12000 pe 20
+SH sm 15 sg 3
+ES t 5.402376201303
+CM id 13 tid 13 eid 13 etid 13 c omnetpp::cMessage n "#2 from-1-to-0 dissemination" pe -1
+BS id 13 tid 13 eid 13 etid 13 c Packet n "#2 from-1-to-0 dissemination" l 12000 pe 20
+SH sm 15 sg 3
+ES t 5.402376201303
+CM id 14 tid 14 eid 14 etid 14 c omnetpp::cMessage n "#3 from-1-to-2 dissemination" pe -1
+BS id 14 tid 14 eid 14 etid 14 c Packet n "#3 from-1-to-2 dissemination" l 12000 pe 20
+SH sm 15 sg 3
+ES t 5.402376201303
+DM id 11 tid 11 eid 11 etid 11 c omnetpp::cMessage n "#1 from-2-to-1 chain log" pe 20
+
+E # 21 t 5.402376201303 m 16 ce 20 msg 12
+BS id 12 tid 12 eid 12 etid 12 c Packet n "#1 from-1-to-2 transaction ack" l 12000 pe 21
+SH sm 16 sg 2621441
+ES t 5.402376201303
+
+E # 22 t 5.402376201303 m 16 ce 20 msg 13
+BS id 13 tid 13 eid 13 etid 13 c Packet n "#2 from-1-to-0 dissemination" l 12000 pe 22
+SH sm 16 sg 2621440
+ES t 5.402376201303
+
+E # 23 t 5.402376201303 m 16 ce 20 msg 14
+BS id 14 tid 14 eid 14 etid 14 c Packet n "#3 from-1-to-2 dissemination" l 12000 pe 23
+SH sm 16 sg 2621441
+ES t 5.402376201303
+
+E # 24 t 5.402376201303 m 18 ce 21 msg 12
+BS id 12 tid 12 eid 12 etid 12 c Packet n "#1 from-1-to-2 transaction ack" l 12000 pe 24
+SH sm 18 sg 5
+SH sm 3 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048577
+ES t 5.50404286797
+BS id 5 tid 5 eid 5 etid 5 c omnetpp::cMessage n endTxEvent pe 10
+ES t 5.40404286797
+
+E # 25 t 5.402376201303 m 17 ce 22 msg 13
+BS id 13 tid 13 eid 13 etid 13 c Packet n "#2 from-1-to-0 dissemination" l 12000 pe 25
+SH sm 17 sg 5
+SH sm 3 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048576
+ES t 5.50404286797
+BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n endTxEvent pe 0
+ES t 5.40404286797
+
+E # 26 t 5.402376201303 m 18 ce 23 msg 14
+
+E # 27 t 5.40404286797 m 18 ce 24 msg 5
+BS id 14 tid 14 eid 14 etid 14 c Packet n "#3 from-1-to-2 dissemination" l 12000 pe 26
+SH sm 18 sg 5
+SH sm 3 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048577
+ES t 5.505709534637
+BS id 5 tid 5 eid 5 etid 5 c omnetpp::cMessage n endTxEvent pe 27
+ES t 5.405709534637
+
+E # 28 t 5.40404286797 m 17 ce 25 msg 4
+
+E # 29 t 5.405709534637 m 18 ce 27 msg 5
+
+E # 30 t 5.50404286797 m 22 ce 24 msg 12
+BS id 12 tid 12 eid 12 etid 12 c Packet n "#1 from-1-to-2 transaction ack" l 12000 pe 30
+SH sm 22 sg 3
+ES t 5.50404286797
+
+E # 31 t 5.50404286797 m 13 ce 25 msg 13
+BS id 13 tid 13 eid 13 etid 13 c Packet n "#2 from-1-to-0 dissemination" l 12000 pe 31
+SH sm 13 sg 3
+ES t 5.50404286797
+
+E # 32 t 5.50404286797 m 20 ce 30 msg 12
+BS id 12 tid 12 eid 12 etid 12 c Packet n "#1 from-1-to-2 transaction ack" l 12000 pe 32
+SH sm 20 sg 7
+ES t 5.50404286797
+
+E # 33 t 5.50404286797 m 12 ce 31 msg 13
+BS id 13 tid 13 eid 13 etid 13 c Packet n "#2 from-1-to-0 dissemination" l 12000 pe 33
+SH sm 12 sg 7
+ES t 5.50404286797
+
+E # 34 t 5.50404286797 m 19 ce 32 msg 12
+CM id 15 tid 15 eid 15 etid 15 c omnetpp::cMessage n "#2 from-2-to-0 dissemination" pe -1
+BS id 15 tid 15 eid 15 etid 15 c Packet n "#2 from-2-to-0 dissemination" l 12000 pe 34
+SH sm 19 sg 3
+ES t 5.50404286797
+CM id 16 tid 16 eid 16 etid 16 c omnetpp::cMessage n "#3 from-2-to-1 dissemination" pe -1
+BS id 16 tid 16 eid 16 etid 16 c Packet n "#3 from-2-to-1 dissemination" l 12000 pe 34
+SH sm 19 sg 3
+ES t 5.50404286797
+DM id 12 tid 12 eid 12 etid 12 c omnetpp::cMessage n "#1 from-1-to-2 transaction ack" pe 34
+
+E # 35 t 5.50404286797 m 11 ce 33 msg 13
+DM id 13 tid 13 eid 13 etid 13 c omnetpp::cMessage n "#2 from-1-to-0 dissemination" pe 35
+
+E # 36 t 5.50404286797 m 20 ce 34 msg 15
+BS id 15 tid 15 eid 15 etid 15 c Packet n "#2 from-2-to-0 dissemination" l 12000 pe 36
+SH sm 20 sg 2621440
+ES t 5.50404286797
+
+E # 37 t 5.50404286797 m 20 ce 34 msg 16
+BS id 16 tid 16 eid 16 etid 16 c Packet n "#3 from-2-to-1 dissemination" l 12000 pe 37
+SH sm 20 sg 2621441
+ES t 5.50404286797
+
+E # 38 t 5.50404286797 m 21 ce 36 msg 15
+BS id 15 tid 15 eid 15 etid 15 c Packet n "#2 from-2-to-0 dissemination" l 12000 pe 38
+SH sm 21 sg 5
+SH sm 4 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048577
+ES t 5.605709534637
+BS id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n endTxEvent pe 0
+ES t 5.505709534637
+
+E # 39 t 5.50404286797 m 22 ce 37 msg 16
+BS id 16 tid 16 eid 16 etid 16 c Packet n "#3 from-2-to-1 dissemination" l 12000 pe 39
+SH sm 22 sg 5
+SH sm 4 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048577
+ES t 5.605709534637
+BS id 8 tid 8 eid 8 etid 8 c omnetpp::cMessage n endTxEvent pe 16
+ES t 5.505709534637
+
+E # 40 t 5.505709534637 m 22 ce 27 msg 14
+BS id 14 tid 14 eid 14 etid 14 c Packet n "#3 from-1-to-2 dissemination" l 12000 pe 40
+SH sm 22 sg 3
+ES t 5.505709534637
+
+E # 41 t 5.505709534637 m 21 ce 38 msg 7
+
+E # 42 t 5.505709534637 m 22 ce 39 msg 8
+
+E # 43 t 5.505709534637 m 20 ce 40 msg 14
+BS id 14 tid 14 eid 14 etid 14 c Packet n "#3 from-1-to-2 dissemination" l 12000 pe 43
+SH sm 20 sg 7
+ES t 5.505709534637
+
+E # 44 t 5.505709534637 m 19 ce 43 msg 14
+DM id 14 tid 14 eid 14 etid 14 c omnetpp::cMessage n "#3 from-1-to-2 dissemination" pe 44
+
+E # 45 t 5.605709534637 m 14 ce 38 msg 15
+BS id 15 tid 15 eid 15 etid 15 c Packet n "#2 from-2-to-0 dissemination" l 12000 pe 45
+SH sm 14 sg 3
+ES t 5.605709534637
+
+E # 46 t 5.605709534637 m 18 ce 39 msg 16
+BS id 16 tid 16 eid 16 etid 16 c Packet n "#3 from-2-to-1 dissemination" l 12000 pe 46
+SH sm 18 sg 3
+ES t 5.605709534637
+
+E # 47 t 5.605709534637 m 12 ce 45 msg 15
+BS id 15 tid 15 eid 15 etid 15 c Packet n "#2 from-2-to-0 dissemination" l 12000 pe 47
+SH sm 12 sg 7
+ES t 5.605709534637
+
+E # 48 t 5.605709534637 m 16 ce 46 msg 16
+BS id 16 tid 16 eid 16 etid 16 c Packet n "#3 from-2-to-1 dissemination" l 12000 pe 48
+SH sm 16 sg 7
+ES t 5.605709534637
+
+E # 49 t 5.605709534637 m 11 ce 47 msg 15
+DM id 15 tid 15 eid 15 etid 15 c omnetpp::cMessage n "#2 from-2-to-0 dissemination" pe 49
+
+E # 50 t 5.605709534637 m 15 ce 48 msg 16
+DM id 16 tid 16 eid 16 etid 16 c omnetpp::cMessage n "#3 from-2-to-1 dissemination" pe 50
+
+E # 51 t 5.901348470943 m 11 ce 0 msg 0
+CM id 17 tid 17 eid 17 etid 17 c omnetpp::cMessage n "#0 from-0-to-2 $8" pe -1
+BS id 17 tid 17 eid 17 etid 17 c Packet n "#0 from-0-to-2 $8" l 12000 pe 51
+SH sm 11 sg 3
+ES t 5.901348470943
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n TimerThead pe 51
+ES t 12.02991208178
+
+E # 52 t 5.901348470943 m 12 ce 51 msg 17
+BS id 17 tid 17 eid 17 etid 17 c Packet n "#0 from-0-to-2 $8" l 12000 pe 52
+SH sm 12 sg 2621441
+ES t 5.901348470943
+
+E # 53 t 5.901348470943 m 14 ce 52 msg 17
+BS id 17 tid 17 eid 17 etid 17 c Packet n "#0 from-0-to-2 $8" l 12000 pe 53
+SH sm 14 sg 5
+SH sm 2 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048576
+ES t 6.00301513761
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n endTxEvent pe 0
+ES t 5.90301513761
+
+E # 54 t 5.90301513761 m 14 ce 53 msg 2
+
+E # 55 t 6.00301513761 m 21 ce 53 msg 17
+BS id 17 tid 17 eid 17 etid 17 c Packet n "#0 from-0-to-2 $8" l 12000 pe 55
+SH sm 21 sg 3
+ES t 6.00301513761
+
+E # 56 t 6.00301513761 m 20 ce 55 msg 17
+BS id 17 tid 17 eid 17 etid 17 c Packet n "#0 from-0-to-2 $8" l 12000 pe 56
+SH sm 20 sg 7
+ES t 6.00301513761
+
+E # 57 t 6.00301513761 m 19 ce 56 msg 17
+CM id 18 tid 18 eid 18 etid 18 c omnetpp::cMessage n "#4 from-2-to-0 chain request" pe -1
+BS id 18 tid 18 eid 18 etid 18 c Packet n "#4 from-2-to-0 chain request" l 12000 pe 57
+SH sm 19 sg 3
+ES t 6.00301513761
+DM id 17 tid 17 eid 17 etid 17 c omnetpp::cMessage n "#0 from-0-to-2 $8" pe 57
+
+E # 58 t 6.00301513761 m 20 ce 57 msg 18
+BS id 18 tid 18 eid 18 etid 18 c Packet n "#4 from-2-to-0 chain request" l 12000 pe 58
+SH sm 20 sg 2621440
+ES t 6.00301513761
+
+E # 59 t 6.00301513761 m 21 ce 58 msg 18
+BS id 18 tid 18 eid 18 etid 18 c Packet n "#4 from-2-to-0 chain request" l 12000 pe 59
+SH sm 21 sg 5
+SH sm 4 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048577
+ES t 6.104681804277
+BS id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n endTxEvent pe 41
+ES t 6.004681804277
+
+E # 60 t 6.004681804277 m 21 ce 59 msg 7
+
+E # 61 t 6.104681804277 m 14 ce 59 msg 18
+BS id 18 tid 18 eid 18 etid 18 c Packet n "#4 from-2-to-0 chain request" l 12000 pe 61
+SH sm 14 sg 3
+ES t 6.104681804277
+
+E # 62 t 6.104681804277 m 12 ce 61 msg 18
+BS id 18 tid 18 eid 18 etid 18 c Packet n "#4 from-2-to-0 chain request" l 12000 pe 62
+SH sm 12 sg 7
+ES t 6.104681804277
+
+E # 63 t 6.104681804277 m 11 ce 62 msg 18
+CM id 19 tid 19 eid 19 etid 19 c omnetpp::cMessage n "#1 from-0-to-2 chain log" pe -1
+BS id 19 tid 19 eid 19 etid 19 c Packet n "#1 from-0-to-2 chain log" l 12000 pe 63
+SH sm 11 sg 3
+ES t 6.104681804277
+DM id 18 tid 18 eid 18 etid 18 c omnetpp::cMessage n "#4 from-2-to-0 chain request" pe 63
+
+E # 64 t 6.104681804277 m 12 ce 63 msg 19
+BS id 19 tid 19 eid 19 etid 19 c Packet n "#1 from-0-to-2 chain log" l 12000 pe 64
+SH sm 12 sg 2621441
+ES t 6.104681804277
+
+E # 65 t 6.104681804277 m 14 ce 64 msg 19
+BS id 19 tid 19 eid 19 etid 19 c Packet n "#1 from-0-to-2 chain log" l 12000 pe 65
+SH sm 14 sg 5
+SH sm 2 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048576
+ES t 6.206348470944
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n endTxEvent pe 54
+ES t 6.106348470944
+
+E # 66 t 6.106348470944 m 14 ce 65 msg 2
+
+E # 67 t 6.206348470944 m 21 ce 65 msg 19
+BS id 19 tid 19 eid 19 etid 19 c Packet n "#1 from-0-to-2 chain log" l 12000 pe 67
+SH sm 21 sg 3
+ES t 6.206348470944
+
+E # 68 t 6.206348470944 m 20 ce 67 msg 19
+BS id 19 tid 19 eid 19 etid 19 c Packet n "#1 from-0-to-2 chain log" l 12000 pe 68
+SH sm 20 sg 7
+ES t 6.206348470944
+
+E # 69 t 6.206348470944 m 19 ce 68 msg 19
+CM id 20 tid 20 eid 20 etid 20 c omnetpp::cMessage n "#5 from-2-to-0 transaction ack" pe -1
+BS id 20 tid 20 eid 20 etid 20 c Packet n "#5 from-2-to-0 transaction ack" l 12000 pe 69
+SH sm 19 sg 3
+ES t 6.206348470944
+CM id 21 tid 21 eid 21 etid 21 c omnetpp::cMessage n "#6 from-2-to-0 dissemination" pe -1
+BS id 21 tid 21 eid 21 etid 21 c Packet n "#6 from-2-to-0 dissemination" l 12000 pe 69
+SH sm 19 sg 3
+ES t 6.206348470944
+CM id 22 tid 22 eid 22 etid 22 c omnetpp::cMessage n "#7 from-2-to-1 dissemination" pe -1
+BS id 22 tid 22 eid 22 etid 22 c Packet n "#7 from-2-to-1 dissemination" l 12000 pe 69
+SH sm 19 sg 3
+ES t 6.206348470944
+DM id 19 tid 19 eid 19 etid 19 c omnetpp::cMessage n "#1 from-0-to-2 chain log" pe 69
+
+E # 70 t 6.206348470944 m 20 ce 69 msg 20
+BS id 20 tid 20 eid 20 etid 20 c Packet n "#5 from-2-to-0 transaction ack" l 12000 pe 70
+SH sm 20 sg 2621440
+ES t 6.206348470944
+
+E # 71 t 6.206348470944 m 20 ce 69 msg 21
+BS id 21 tid 21 eid 21 etid 21 c Packet n "#6 from-2-to-0 dissemination" l 12000 pe 71
+SH sm 20 sg 2621440
+ES t 6.206348470944
+
+E # 72 t 6.206348470944 m 20 ce 69 msg 22
+BS id 22 tid 22 eid 22 etid 22 c Packet n "#7 from-2-to-1 dissemination" l 12000 pe 72
+SH sm 20 sg 2621441
+ES t 6.206348470944
+
+E # 73 t 6.206348470944 m 21 ce 70 msg 20
+BS id 20 tid 20 eid 20 etid 20 c Packet n "#5 from-2-to-0 transaction ack" l 12000 pe 73
+SH sm 21 sg 5
+SH sm 4 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048577
+ES t 6.308015137611
+BS id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n endTxEvent pe 60
+ES t 6.208015137611
+
+E # 74 t 6.206348470944 m 21 ce 71 msg 21
+
+E # 75 t 6.206348470944 m 22 ce 72 msg 22
+BS id 22 tid 22 eid 22 etid 22 c Packet n "#7 from-2-to-1 dissemination" l 12000 pe 75
+SH sm 22 sg 5
+SH sm 4 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048577
+ES t 6.308015137611
+BS id 8 tid 8 eid 8 etid 8 c omnetpp::cMessage n endTxEvent pe 42
+ES t 6.208015137611
+
+E # 76 t 6.208015137611 m 21 ce 73 msg 7
+BS id 21 tid 21 eid 21 etid 21 c Packet n "#6 from-2-to-0 dissemination" l 12000 pe 74
+SH sm 21 sg 5
+SH sm 4 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048577
+ES t 6.309681804278
+BS id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n endTxEvent pe 76
+ES t 6.209681804278
+
+E # 77 t 6.208015137611 m 22 ce 75 msg 8
+
+E # 78 t 6.209681804278 m 21 ce 76 msg 7
+
+E # 79 t 6.308015137611 m 14 ce 73 msg 20
+BS id 20 tid 20 eid 20 etid 20 c Packet n "#5 from-2-to-0 transaction ack" l 12000 pe 79
+SH sm 14 sg 3
+ES t 6.308015137611
+
+E # 80 t 6.308015137611 m 18 ce 75 msg 22
+BS id 22 tid 22 eid 22 etid 22 c Packet n "#7 from-2-to-1 dissemination" l 12000 pe 80
+SH sm 18 sg 3
+ES t 6.308015137611
+
+E # 81 t 6.308015137611 m 12 ce 79 msg 20
+BS id 20 tid 20 eid 20 etid 20 c Packet n "#5 from-2-to-0 transaction ack" l 12000 pe 81
+SH sm 12 sg 7
+ES t 6.308015137611
+
+E # 82 t 6.308015137611 m 16 ce 80 msg 22
+BS id 22 tid 22 eid 22 etid 22 c Packet n "#7 from-2-to-1 dissemination" l 12000 pe 82
+SH sm 16 sg 7
+ES t 6.308015137611
+
+E # 83 t 6.308015137611 m 11 ce 81 msg 20
+CM id 23 tid 23 eid 23 etid 23 c omnetpp::cMessage n "#2 from-0-to-1 dissemination" pe -1
+BS id 23 tid 23 eid 23 etid 23 c Packet n "#2 from-0-to-1 dissemination" l 12000 pe 83
+SH sm 11 sg 3
+ES t 6.308015137611
+CM id 24 tid 24 eid 24 etid 24 c omnetpp::cMessage n "#3 from-0-to-2 dissemination" pe -1
+BS id 24 tid 24 eid 24 etid 24 c Packet n "#3 from-0-to-2 dissemination" l 12000 pe 83
+SH sm 11 sg 3
+ES t 6.308015137611
+DM id 20 tid 20 eid 20 etid 20 c omnetpp::cMessage n "#5 from-2-to-0 transaction ack" pe 83
+
+E # 84 t 6.308015137611 m 15 ce 82 msg 22
+DM id 22 tid 22 eid 22 etid 22 c omnetpp::cMessage n "#7 from-2-to-1 dissemination" pe 84
+
+E # 85 t 6.308015137611 m 12 ce 83 msg 23
+BS id 23 tid 23 eid 23 etid 23 c Packet n "#2 from-0-to-1 dissemination" l 12000 pe 85
+SH sm 12 sg 2621440
+ES t 6.308015137611
+
+E # 86 t 6.308015137611 m 12 ce 83 msg 24
+BS id 24 tid 24 eid 24 etid 24 c Packet n "#3 from-0-to-2 dissemination" l 12000 pe 86
+SH sm 12 sg 2621441
+ES t 6.308015137611
+
+E # 87 t 6.308015137611 m 13 ce 85 msg 23
+BS id 23 tid 23 eid 23 etid 23 c Packet n "#2 from-0-to-1 dissemination" l 12000 pe 87
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048576
+ES t 6.409681804278
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 0
+ES t 6.309681804278
+
+E # 88 t 6.308015137611 m 14 ce 86 msg 24
+BS id 24 tid 24 eid 24 etid 24 c Packet n "#3 from-0-to-2 dissemination" l 12000 pe 88
+SH sm 14 sg 5
+SH sm 2 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048576
+ES t 6.409681804278
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n endTxEvent pe 66
+ES t 6.309681804278
+
+E # 89 t 6.309681804278 m 14 ce 76 msg 21
+BS id 21 tid 21 eid 21 etid 21 c Packet n "#6 from-2-to-0 dissemination" l 12000 pe 89
+SH sm 14 sg 3
+ES t 6.309681804278
+
+E # 90 t 6.309681804278 m 13 ce 87 msg 1
+
+E # 91 t 6.309681804278 m 14 ce 88 msg 2
+
+E # 92 t 6.309681804278 m 12 ce 89 msg 21
+BS id 21 tid 21 eid 21 etid 21 c Packet n "#6 from-2-to-0 dissemination" l 12000 pe 92
+SH sm 12 sg 7
+ES t 6.309681804278
+
+E # 93 t 6.309681804278 m 11 ce 92 msg 21
+DM id 21 tid 21 eid 21 etid 21 c omnetpp::cMessage n "#6 from-2-to-0 dissemination" pe 93
+
+E # 94 t 6.409681804278 m 17 ce 87 msg 23
+BS id 23 tid 23 eid 23 etid 23 c Packet n "#2 from-0-to-1 dissemination" l 12000 pe 94
+SH sm 17 sg 3
+ES t 6.409681804278
+
+E # 95 t 6.409681804278 m 21 ce 88 msg 24
+BS id 24 tid 24 eid 24 etid 24 c Packet n "#3 from-0-to-2 dissemination" l 12000 pe 95
+SH sm 21 sg 3
+ES t 6.409681804278
+
+E # 96 t 6.409681804278 m 16 ce 94 msg 23
+BS id 23 tid 23 eid 23 etid 23 c Packet n "#2 from-0-to-1 dissemination" l 12000 pe 96
+SH sm 16 sg 7
+ES t 6.409681804278
+
+E # 97 t 6.409681804278 m 20 ce 95 msg 24
+BS id 24 tid 24 eid 24 etid 24 c Packet n "#3 from-0-to-2 dissemination" l 12000 pe 97
+SH sm 20 sg 7
+ES t 6.409681804278
+
+E # 98 t 6.409681804278 m 15 ce 96 msg 23
+DM id 23 tid 23 eid 23 etid 23 c omnetpp::cMessage n "#2 from-0-to-1 dissemination" pe 98
+
+E # 99 t 6.409681804278 m 19 ce 97 msg 24
+DM id 24 tid 24 eid 24 etid 24 c omnetpp::cMessage n "#3 from-0-to-2 dissemination" pe 99
+
+E # 100 t 12.02991208178 m 11 ce 51 msg 0
+CM id 25 tid 25 eid 25 etid 25 c omnetpp::cMessage n "#4 from-0-to-1 $2" pe -1
+BS id 25 tid 25 eid 25 etid 25 c Packet n "#4 from-0-to-1 $2" l 12000 pe 100
+SH sm 11 sg 3
+ES t 12.02991208178
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n TimerThead pe 100
+ES t 21.738945340039
+
+E # 101 t 12.02991208178 m 12 ce 100 msg 25
+BS id 25 tid 25 eid 25 etid 25 c Packet n "#4 from-0-to-1 $2" l 12000 pe 101
+SH sm 12 sg 2621440
+ES t 12.02991208178
+
+E # 102 t 12.02991208178 m 13 ce 101 msg 25
+BS id 25 tid 25 eid 25 etid 25 c Packet n "#4 from-0-to-1 $2" l 12000 pe 102
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048576
+ES t 12.131578748447
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 90
+ES t 12.031578748447
+
+E # 103 t 12.031578748447 m 13 ce 102 msg 1
+
+E # 104 t 12.131578748447 m 17 ce 102 msg 25
+BS id 25 tid 25 eid 25 etid 25 c Packet n "#4 from-0-to-1 $2" l 12000 pe 104
+SH sm 17 sg 3
+ES t 12.131578748447
+
+E # 105 t 12.131578748447 m 16 ce 104 msg 25
+BS id 25 tid 25 eid 25 etid 25 c Packet n "#4 from-0-to-1 $2" l 12000 pe 105
+SH sm 16 sg 7
+ES t 12.131578748447
+
+E # 106 t 12.131578748447 m 15 ce 105 msg 25
+CM id 26 tid 26 eid 26 etid 26 c omnetpp::cMessage n "#4 from-1-to-0 chain request" pe -1
+BS id 26 tid 26 eid 26 etid 26 c Packet n "#4 from-1-to-0 chain request" l 12000 pe 106
+SH sm 15 sg 3
+ES t 12.131578748447
+DM id 25 tid 25 eid 25 etid 25 c omnetpp::cMessage n "#4 from-0-to-1 $2" pe 106
+
+E # 107 t 12.131578748447 m 16 ce 106 msg 26
+BS id 26 tid 26 eid 26 etid 26 c Packet n "#4 from-1-to-0 chain request" l 12000 pe 107
+SH sm 16 sg 2621440
+ES t 12.131578748447
+
+E # 108 t 12.131578748447 m 17 ce 107 msg 26
+BS id 26 tid 26 eid 26 etid 26 c Packet n "#4 from-1-to-0 chain request" l 12000 pe 108
+SH sm 17 sg 5
+SH sm 3 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048576
+ES t 12.233245415114
+BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n endTxEvent pe 28
+ES t 12.133245415114
+
+E # 109 t 12.133245415114 m 17 ce 108 msg 4
+
+E # 110 t 12.233245415114 m 13 ce 108 msg 26
+BS id 26 tid 26 eid 26 etid 26 c Packet n "#4 from-1-to-0 chain request" l 12000 pe 110
+SH sm 13 sg 3
+ES t 12.233245415114
+
+E # 111 t 12.233245415114 m 12 ce 110 msg 26
+BS id 26 tid 26 eid 26 etid 26 c Packet n "#4 from-1-to-0 chain request" l 12000 pe 111
+SH sm 12 sg 7
+ES t 12.233245415114
+
+E # 112 t 12.233245415114 m 11 ce 111 msg 26
+CM id 27 tid 27 eid 27 etid 27 c omnetpp::cMessage n "#5 from-0-to-1 chain log" pe -1
+BS id 27 tid 27 eid 27 etid 27 c Packet n "#5 from-0-to-1 chain log" l 12080 pe 112
+SH sm 11 sg 3
+ES t 12.233245415114
+DM id 26 tid 26 eid 26 etid 26 c omnetpp::cMessage n "#4 from-1-to-0 chain request" pe 112
+
+E # 113 t 12.233245415114 m 12 ce 112 msg 27
+BS id 27 tid 27 eid 27 etid 27 c Packet n "#5 from-0-to-1 chain log" l 12080 pe 113
+SH sm 12 sg 2621440
+ES t 12.233245415114
+
+E # 114 t 12.233245415114 m 13 ce 113 msg 27
+BS id 27 tid 27 eid 27 etid 27 c Packet n "#5 from-0-to-1 chain log" l 12080 pe 114
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001677777778
+SH sm 3 sg 1048576
+ES t 12.334923192892
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 103
+ES t 12.234923192892
+
+E # 115 t 12.234923192892 m 13 ce 114 msg 1
+
+E # 116 t 12.334923192892 m 17 ce 114 msg 27
+BS id 27 tid 27 eid 27 etid 27 c Packet n "#5 from-0-to-1 chain log" l 12080 pe 116
+SH sm 17 sg 3
+ES t 12.334923192892
+
+E # 117 t 12.334923192892 m 16 ce 116 msg 27
+BS id 27 tid 27 eid 27 etid 27 c Packet n "#5 from-0-to-1 chain log" l 12080 pe 117
+SH sm 16 sg 7
+ES t 12.334923192892
+
+E # 118 t 12.334923192892 m 15 ce 117 msg 27
+CM id 28 tid 28 eid 28 etid 28 c omnetpp::cMessage n "#5 from-1-to-0 transaction ack" pe -1
+BS id 28 tid 28 eid 28 etid 28 c Packet n "#5 from-1-to-0 transaction ack" l 12000 pe 118
+SH sm 15 sg 3
+ES t 12.334923192892
+CM id 29 tid 29 eid 29 etid 29 c omnetpp::cMessage n "#6 from-1-to-0 dissemination" pe -1
+BS id 29 tid 29 eid 29 etid 29 c Packet n "#6 from-1-to-0 dissemination" l 12000 pe 118
+SH sm 15 sg 3
+ES t 12.334923192892
+CM id 30 tid 30 eid 30 etid 30 c omnetpp::cMessage n "#7 from-1-to-2 dissemination" pe -1
+BS id 30 tid 30 eid 30 etid 30 c Packet n "#7 from-1-to-2 dissemination" l 12000 pe 118
+SH sm 15 sg 3
+ES t 12.334923192892
+DM id 27 tid 27 eid 27 etid 27 c omnetpp::cMessage n "#5 from-0-to-1 chain log" pe 118
+
+E # 119 t 12.334923192892 m 16 ce 118 msg 28
+BS id 28 tid 28 eid 28 etid 28 c Packet n "#5 from-1-to-0 transaction ack" l 12000 pe 119
+SH sm 16 sg 2621440
+ES t 12.334923192892
+
+E # 120 t 12.334923192892 m 16 ce 118 msg 29
+BS id 29 tid 29 eid 29 etid 29 c Packet n "#6 from-1-to-0 dissemination" l 12000 pe 120
+SH sm 16 sg 2621440
+ES t 12.334923192892
+
+E # 121 t 12.334923192892 m 16 ce 118 msg 30
+BS id 30 tid 30 eid 30 etid 30 c Packet n "#7 from-1-to-2 dissemination" l 12000 pe 121
+SH sm 16 sg 2621441
+ES t 12.334923192892
+
+E # 122 t 12.334923192892 m 17 ce 119 msg 28
+BS id 28 tid 28 eid 28 etid 28 c Packet n "#5 from-1-to-0 transaction ack" l 12000 pe 122
+SH sm 17 sg 5
+SH sm 3 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048576
+ES t 12.436589859559
+BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n endTxEvent pe 109
+ES t 12.336589859559
+
+E # 123 t 12.334923192892 m 17 ce 120 msg 29
+
+E # 124 t 12.334923192892 m 18 ce 121 msg 30
+BS id 30 tid 30 eid 30 etid 30 c Packet n "#7 from-1-to-2 dissemination" l 12000 pe 124
+SH sm 18 sg 5
+SH sm 3 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048577
+ES t 12.436589859559
+BS id 5 tid 5 eid 5 etid 5 c omnetpp::cMessage n endTxEvent pe 29
+ES t 12.336589859559
+
+E # 125 t 12.336589859559 m 17 ce 122 msg 4
+BS id 29 tid 29 eid 29 etid 29 c Packet n "#6 from-1-to-0 dissemination" l 12000 pe 123
+SH sm 17 sg 5
+SH sm 3 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048576
+ES t 12.438256526226
+BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n endTxEvent pe 125
+ES t 12.338256526226
+
+E # 126 t 12.336589859559 m 18 ce 124 msg 5
+
+E # 127 t 12.338256526226 m 17 ce 125 msg 4
+
+E # 128 t 12.436589859559 m 13 ce 122 msg 28
+BS id 28 tid 28 eid 28 etid 28 c Packet n "#5 from-1-to-0 transaction ack" l 12000 pe 128
+SH sm 13 sg 3
+ES t 12.436589859559
+
+E # 129 t 12.436589859559 m 22 ce 124 msg 30
+BS id 30 tid 30 eid 30 etid 30 c Packet n "#7 from-1-to-2 dissemination" l 12000 pe 129
+SH sm 22 sg 3
+ES t 12.436589859559
+
+E # 130 t 12.436589859559 m 12 ce 128 msg 28
+BS id 28 tid 28 eid 28 etid 28 c Packet n "#5 from-1-to-0 transaction ack" l 12000 pe 130
+SH sm 12 sg 7
+ES t 12.436589859559
+
+E # 131 t 12.436589859559 m 20 ce 129 msg 30
+BS id 30 tid 30 eid 30 etid 30 c Packet n "#7 from-1-to-2 dissemination" l 12000 pe 131
+SH sm 20 sg 7
+ES t 12.436589859559
+
+E # 132 t 12.436589859559 m 11 ce 130 msg 28
+CM id 31 tid 31 eid 31 etid 31 c omnetpp::cMessage n "#6 from-0-to-1 dissemination" pe -1
+BS id 31 tid 31 eid 31 etid 31 c Packet n "#6 from-0-to-1 dissemination" l 12000 pe 132
+SH sm 11 sg 3
+ES t 12.436589859559
+CM id 32 tid 32 eid 32 etid 32 c omnetpp::cMessage n "#7 from-0-to-2 dissemination" pe -1
+BS id 32 tid 32 eid 32 etid 32 c Packet n "#7 from-0-to-2 dissemination" l 12000 pe 132
+SH sm 11 sg 3
+ES t 12.436589859559
+DM id 28 tid 28 eid 28 etid 28 c omnetpp::cMessage n "#5 from-1-to-0 transaction ack" pe 132
+
+E # 133 t 12.436589859559 m 19 ce 131 msg 30
+DM id 30 tid 30 eid 30 etid 30 c omnetpp::cMessage n "#7 from-1-to-2 dissemination" pe 133
+
+E # 134 t 12.436589859559 m 12 ce 132 msg 31
+BS id 31 tid 31 eid 31 etid 31 c Packet n "#6 from-0-to-1 dissemination" l 12000 pe 134
+SH sm 12 sg 2621440
+ES t 12.436589859559
+
+E # 135 t 12.436589859559 m 12 ce 132 msg 32
+BS id 32 tid 32 eid 32 etid 32 c Packet n "#7 from-0-to-2 dissemination" l 12000 pe 135
+SH sm 12 sg 2621441
+ES t 12.436589859559
+
+E # 136 t 12.436589859559 m 13 ce 134 msg 31
+BS id 31 tid 31 eid 31 etid 31 c Packet n "#6 from-0-to-1 dissemination" l 12000 pe 136
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048576
+ES t 12.538256526226
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 115
+ES t 12.438256526226
+
+E # 137 t 12.436589859559 m 14 ce 135 msg 32
+BS id 32 tid 32 eid 32 etid 32 c Packet n "#7 from-0-to-2 dissemination" l 12000 pe 137
+SH sm 14 sg 5
+SH sm 2 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048576
+ES t 12.538256526226
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n endTxEvent pe 91
+ES t 12.438256526226
+
+E # 138 t 12.438256526226 m 13 ce 125 msg 29
+BS id 29 tid 29 eid 29 etid 29 c Packet n "#6 from-1-to-0 dissemination" l 12000 pe 138
+SH sm 13 sg 3
+ES t 12.438256526226
+
+E # 139 t 12.438256526226 m 13 ce 136 msg 1
+
+E # 140 t 12.438256526226 m 14 ce 137 msg 2
+
+E # 141 t 12.438256526226 m 12 ce 138 msg 29
+BS id 29 tid 29 eid 29 etid 29 c Packet n "#6 from-1-to-0 dissemination" l 12000 pe 141
+SH sm 12 sg 7
+ES t 12.438256526226
+
+E # 142 t 12.438256526226 m 11 ce 141 msg 29
+DM id 29 tid 29 eid 29 etid 29 c omnetpp::cMessage n "#6 from-1-to-0 dissemination" pe 142
+
+E # 143 t 12.442552261055 m 15 ce 17 msg 3
+CM id 33 tid 33 eid 33 etid 33 c omnetpp::cMessage n "#8 from-1-to-0 $14" pe -1
+BS id 33 tid 33 eid 33 etid 33 c Packet n "#8 from-1-to-0 $14" l 12000 pe 143
+SH sm 15 sg 3
+ES t 12.442552261055
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 143
+ES t 21.891093213344
+
+E # 144 t 12.442552261055 m 16 ce 143 msg 33
+BS id 33 tid 33 eid 33 etid 33 c Packet n "#8 from-1-to-0 $14" l 12000 pe 144
+SH sm 16 sg 2621440
+ES t 12.442552261055
+
+E # 145 t 12.442552261055 m 17 ce 144 msg 33
+BS id 33 tid 33 eid 33 etid 33 c Packet n "#8 from-1-to-0 $14" l 12000 pe 145
+SH sm 17 sg 5
+SH sm 3 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048576
+ES t 12.544218927722
+BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n endTxEvent pe 127
+ES t 12.444218927722
+
+E # 146 t 12.444218927722 m 17 ce 145 msg 4
+
+E # 147 t 12.538256526226 m 17 ce 136 msg 31
+BS id 31 tid 31 eid 31 etid 31 c Packet n "#6 from-0-to-1 dissemination" l 12000 pe 147
+SH sm 17 sg 3
+ES t 12.538256526226
+
+E # 148 t 12.538256526226 m 21 ce 137 msg 32
+BS id 32 tid 32 eid 32 etid 32 c Packet n "#7 from-0-to-2 dissemination" l 12000 pe 148
+SH sm 21 sg 3
+ES t 12.538256526226
+
+E # 149 t 12.538256526226 m 16 ce 147 msg 31
+BS id 31 tid 31 eid 31 etid 31 c Packet n "#6 from-0-to-1 dissemination" l 12000 pe 149
+SH sm 16 sg 7
+ES t 12.538256526226
+
+E # 150 t 12.538256526226 m 20 ce 148 msg 32
+BS id 32 tid 32 eid 32 etid 32 c Packet n "#7 from-0-to-2 dissemination" l 12000 pe 150
+SH sm 20 sg 7
+ES t 12.538256526226
+
+E # 151 t 12.538256526226 m 15 ce 149 msg 31
+DM id 31 tid 31 eid 31 etid 31 c omnetpp::cMessage n "#6 from-0-to-1 dissemination" pe 151
+
+E # 152 t 12.538256526226 m 19 ce 150 msg 32
+DM id 32 tid 32 eid 32 etid 32 c omnetpp::cMessage n "#7 from-0-to-2 dissemination" pe 152
+
+E # 153 t 12.544218927722 m 13 ce 145 msg 33
+BS id 33 tid 33 eid 33 etid 33 c Packet n "#8 from-1-to-0 $14" l 12000 pe 153
+SH sm 13 sg 3
+ES t 12.544218927722
+
+E # 154 t 12.544218927722 m 12 ce 153 msg 33
+BS id 33 tid 33 eid 33 etid 33 c Packet n "#8 from-1-to-0 $14" l 12000 pe 154
+SH sm 12 sg 7
+ES t 12.544218927722
+
+E # 155 t 12.544218927722 m 11 ce 154 msg 33
+CM id 34 tid 34 eid 34 etid 34 c omnetpp::cMessage n "#8 from-0-to-1 chain request" pe -1
+BS id 34 tid 34 eid 34 etid 34 c Packet n "#8 from-0-to-1 chain request" l 12000 pe 155
+SH sm 11 sg 3
+ES t 12.544218927722
+DM id 33 tid 33 eid 33 etid 33 c omnetpp::cMessage n "#8 from-1-to-0 $14" pe 155
+
+E # 156 t 12.544218927722 m 12 ce 155 msg 34
+BS id 34 tid 34 eid 34 etid 34 c Packet n "#8 from-0-to-1 chain request" l 12000 pe 156
+SH sm 12 sg 2621440
+ES t 12.544218927722
+
+E # 157 t 12.544218927722 m 13 ce 156 msg 34
+BS id 34 tid 34 eid 34 etid 34 c Packet n "#8 from-0-to-1 chain request" l 12000 pe 157
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048576
+ES t 12.645885594389
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 139
+ES t 12.545885594389
+
+E # 158 t 12.545885594389 m 13 ce 157 msg 1
+
+E # 159 t 12.645885594389 m 17 ce 157 msg 34
+BS id 34 tid 34 eid 34 etid 34 c Packet n "#8 from-0-to-1 chain request" l 12000 pe 159
+SH sm 17 sg 3
+ES t 12.645885594389
+
+E # 160 t 12.645885594389 m 16 ce 159 msg 34
+BS id 34 tid 34 eid 34 etid 34 c Packet n "#8 from-0-to-1 chain request" l 12000 pe 160
+SH sm 16 sg 7
+ES t 12.645885594389
+
+E # 161 t 12.645885594389 m 15 ce 160 msg 34
+CM id 35 tid 35 eid 35 etid 35 c omnetpp::cMessage n "#9 from-1-to-0 chain log" pe -1
+BS id 35 tid 35 eid 35 etid 35 c Packet n "#9 from-1-to-0 chain log" l 12160 pe 161
+SH sm 15 sg 3
+ES t 12.645885594389
+DM id 34 tid 34 eid 34 etid 34 c omnetpp::cMessage n "#8 from-0-to-1 chain request" pe 161
+
+E # 162 t 12.645885594389 m 16 ce 161 msg 35
+BS id 35 tid 35 eid 35 etid 35 c Packet n "#9 from-1-to-0 chain log" l 12160 pe 162
+SH sm 16 sg 2621440
+ES t 12.645885594389
+
+E # 163 t 12.645885594389 m 17 ce 162 msg 35
+BS id 35 tid 35 eid 35 etid 35 c Packet n "#9 from-1-to-0 chain log" l 12160 pe 163
+SH sm 17 sg 5
+SH sm 3 sg 1572864 pd 0.1 td 0.001688888889
+SH sm 2 sg 1048576
+ES t 12.747574483278
+BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n endTxEvent pe 146
+ES t 12.647574483278
+
+E # 164 t 12.647574483278 m 17 ce 163 msg 4
+
+E # 165 t 12.747574483278 m 13 ce 163 msg 35
+BS id 35 tid 35 eid 35 etid 35 c Packet n "#9 from-1-to-0 chain log" l 12160 pe 165
+SH sm 13 sg 3
+ES t 12.747574483278
+
+E # 166 t 12.747574483278 m 12 ce 165 msg 35
+BS id 35 tid 35 eid 35 etid 35 c Packet n "#9 from-1-to-0 chain log" l 12160 pe 166
+SH sm 12 sg 7
+ES t 12.747574483278
+
+E # 167 t 12.747574483278 m 11 ce 166 msg 35
+CM id 36 tid 36 eid 36 etid 36 c omnetpp::cMessage n "#9 from-0-to-1 transaction ack" pe -1
+BS id 36 tid 36 eid 36 etid 36 c Packet n "#9 from-0-to-1 transaction ack" l 12000 pe 167
+SH sm 11 sg 3
+ES t 12.747574483278
+CM id 37 tid 37 eid 37 etid 37 c omnetpp::cMessage n "#10 from-0-to-1 dissemination" pe -1
+BS id 37 tid 37 eid 37 etid 37 c Packet n "#10 from-0-to-1 dissemination" l 12000 pe 167
+SH sm 11 sg 3
+ES t 12.747574483278
+CM id 38 tid 38 eid 38 etid 38 c omnetpp::cMessage n "#11 from-0-to-2 dissemination" pe -1
+BS id 38 tid 38 eid 38 etid 38 c Packet n "#11 from-0-to-2 dissemination" l 12000 pe 167
+SH sm 11 sg 3
+ES t 12.747574483278
+DM id 35 tid 35 eid 35 etid 35 c omnetpp::cMessage n "#9 from-1-to-0 chain log" pe 167
+
+E # 168 t 12.747574483278 m 12 ce 167 msg 36
+BS id 36 tid 36 eid 36 etid 36 c Packet n "#9 from-0-to-1 transaction ack" l 12000 pe 168
+SH sm 12 sg 2621440
+ES t 12.747574483278
+
+E # 169 t 12.747574483278 m 12 ce 167 msg 37
+BS id 37 tid 37 eid 37 etid 37 c Packet n "#10 from-0-to-1 dissemination" l 12000 pe 169
+SH sm 12 sg 2621440
+ES t 12.747574483278
+
+E # 170 t 12.747574483278 m 12 ce 167 msg 38
+BS id 38 tid 38 eid 38 etid 38 c Packet n "#11 from-0-to-2 dissemination" l 12000 pe 170
+SH sm 12 sg 2621441
+ES t 12.747574483278
+
+E # 171 t 12.747574483278 m 13 ce 168 msg 36
+BS id 36 tid 36 eid 36 etid 36 c Packet n "#9 from-0-to-1 transaction ack" l 12000 pe 171
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048576
+ES t 12.849241149945
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 158
+ES t 12.749241149945
+
+E # 172 t 12.747574483278 m 13 ce 169 msg 37
+
+E # 173 t 12.747574483278 m 14 ce 170 msg 38
+BS id 38 tid 38 eid 38 etid 38 c Packet n "#11 from-0-to-2 dissemination" l 12000 pe 173
+SH sm 14 sg 5
+SH sm 2 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048576
+ES t 12.849241149945
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n endTxEvent pe 140
+ES t 12.749241149945
+
+E # 174 t 12.749241149945 m 13 ce 171 msg 1
+BS id 37 tid 37 eid 37 etid 37 c Packet n "#10 from-0-to-1 dissemination" l 12000 pe 172
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048576
+ES t 12.850907816612
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 174
+ES t 12.750907816612
+
+E # 175 t 12.749241149945 m 14 ce 173 msg 2
+
+E # 176 t 12.750907816612 m 13 ce 174 msg 1
+
+E # 177 t 12.849241149945 m 17 ce 171 msg 36
+BS id 36 tid 36 eid 36 etid 36 c Packet n "#9 from-0-to-1 transaction ack" l 12000 pe 177
+SH sm 17 sg 3
+ES t 12.849241149945
+
+E # 178 t 12.849241149945 m 21 ce 173 msg 38
+BS id 38 tid 38 eid 38 etid 38 c Packet n "#11 from-0-to-2 dissemination" l 12000 pe 178
+SH sm 21 sg 3
+ES t 12.849241149945
+
+E # 179 t 12.849241149945 m 16 ce 177 msg 36
+BS id 36 tid 36 eid 36 etid 36 c Packet n "#9 from-0-to-1 transaction ack" l 12000 pe 179
+SH sm 16 sg 7
+ES t 12.849241149945
+
+E # 180 t 12.849241149945 m 20 ce 178 msg 38
+BS id 38 tid 38 eid 38 etid 38 c Packet n "#11 from-0-to-2 dissemination" l 12000 pe 180
+SH sm 20 sg 7
+ES t 12.849241149945
+
+E # 181 t 12.849241149945 m 15 ce 179 msg 36
+CM id 39 tid 39 eid 39 etid 39 c omnetpp::cMessage n "#10 from-1-to-0 dissemination" pe -1
+BS id 39 tid 39 eid 39 etid 39 c Packet n "#10 from-1-to-0 dissemination" l 12000 pe 181
+SH sm 15 sg 3
+ES t 12.849241149945
+CM id 40 tid 40 eid 40 etid 40 c omnetpp::cMessage n "#11 from-1-to-2 dissemination" pe -1
+BS id 40 tid 40 eid 40 etid 40 c Packet n "#11 from-1-to-2 dissemination" l 12000 pe 181
+SH sm 15 sg 3
+ES t 12.849241149945
+DM id 36 tid 36 eid 36 etid 36 c omnetpp::cMessage n "#9 from-0-to-1 transaction ack" pe 181
+
+E # 182 t 12.849241149945 m 19 ce 180 msg 38
+DM id 38 tid 38 eid 38 etid 38 c omnetpp::cMessage n "#11 from-0-to-2 dissemination" pe 182
+
+E # 183 t 12.849241149945 m 16 ce 181 msg 39
+BS id 39 tid 39 eid 39 etid 39 c Packet n "#10 from-1-to-0 dissemination" l 12000 pe 183
+SH sm 16 sg 2621440
+ES t 12.849241149945
+
+E # 184 t 12.849241149945 m 16 ce 181 msg 40
+BS id 40 tid 40 eid 40 etid 40 c Packet n "#11 from-1-to-2 dissemination" l 12000 pe 184
+SH sm 16 sg 2621441
+ES t 12.849241149945
+
+E # 185 t 12.849241149945 m 17 ce 183 msg 39
+BS id 39 tid 39 eid 39 etid 39 c Packet n "#10 from-1-to-0 dissemination" l 12000 pe 185
+SH sm 17 sg 5
+SH sm 3 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048576
+ES t 12.950907816612
+BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n endTxEvent pe 164
+ES t 12.850907816612
+
+E # 186 t 12.849241149945 m 18 ce 184 msg 40
+BS id 40 tid 40 eid 40 etid 40 c Packet n "#11 from-1-to-2 dissemination" l 12000 pe 186
+SH sm 18 sg 5
+SH sm 3 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048577
+ES t 12.950907816612
+BS id 5 tid 5 eid 5 etid 5 c omnetpp::cMessage n endTxEvent pe 126
+ES t 12.850907816612
+
+E # 187 t 12.850907816612 m 17 ce 174 msg 37
+BS id 37 tid 37 eid 37 etid 37 c Packet n "#10 from-0-to-1 dissemination" l 12000 pe 187
+SH sm 17 sg 3
+ES t 12.850907816612
+
+E # 188 t 12.850907816612 m 17 ce 185 msg 4
+
+E # 189 t 12.850907816612 m 18 ce 186 msg 5
+
+E # 190 t 12.850907816612 m 16 ce 187 msg 37
+BS id 37 tid 37 eid 37 etid 37 c Packet n "#10 from-0-to-1 dissemination" l 12000 pe 190
+SH sm 16 sg 7
+ES t 12.850907816612
+
+E # 191 t 12.850907816612 m 15 ce 190 msg 37
+DM id 37 tid 37 eid 37 etid 37 c omnetpp::cMessage n "#10 from-0-to-1 dissemination" pe 191
+
+E # 192 t 12.950907816612 m 13 ce 185 msg 39
+BS id 39 tid 39 eid 39 etid 39 c Packet n "#10 from-1-to-0 dissemination" l 12000 pe 192
+SH sm 13 sg 3
+ES t 12.950907816612
+
+E # 193 t 12.950907816612 m 22 ce 186 msg 40
+BS id 40 tid 40 eid 40 etid 40 c Packet n "#11 from-1-to-2 dissemination" l 12000 pe 193
+SH sm 22 sg 3
+ES t 12.950907816612
+
+E # 194 t 12.950907816612 m 12 ce 192 msg 39
+BS id 39 tid 39 eid 39 etid 39 c Packet n "#10 from-1-to-0 dissemination" l 12000 pe 194
+SH sm 12 sg 7
+ES t 12.950907816612
+
+E # 195 t 12.950907816612 m 20 ce 193 msg 40
+BS id 40 tid 40 eid 40 etid 40 c Packet n "#11 from-1-to-2 dissemination" l 12000 pe 195
+SH sm 20 sg 7
+ES t 12.950907816612
+
+E # 196 t 12.950907816612 m 11 ce 194 msg 39
+DM id 39 tid 39 eid 39 etid 39 c omnetpp::cMessage n "#10 from-1-to-0 dissemination" pe 196
+
+E # 197 t 12.950907816612 m 19 ce 195 msg 40
+DM id 40 tid 40 eid 40 etid 40 c omnetpp::cMessage n "#11 from-1-to-2 dissemination" pe 197
+
+E # 198 t 14.728791001253 m 19 ce 1 msg 6
+CM id 41 tid 41 eid 41 etid 41 c omnetpp::cMessage n "#8 from-2-to-0 $5" pe -1
+BS id 41 tid 41 eid 41 etid 41 c Packet n "#8 from-2-to-0 $5" l 12000 pe 198
+SH sm 19 sg 3
+ES t 14.728791001253
+BS id 6 tid 6 eid 6 etid 6 c omnetpp::cMessage n TimerThead pe 198
+ES t 22.318283651257
+
+E # 199 t 14.728791001253 m 20 ce 198 msg 41
+BS id 41 tid 41 eid 41 etid 41 c Packet n "#8 from-2-to-0 $5" l 12000 pe 199
+SH sm 20 sg 2621440
+ES t 14.728791001253
+
+E # 200 t 14.728791001253 m 21 ce 199 msg 41
+BS id 41 tid 41 eid 41 etid 41 c Packet n "#8 from-2-to-0 $5" l 12000 pe 200
+SH sm 21 sg 5
+SH sm 4 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048577
+ES t 14.83045766792
+BS id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n endTxEvent pe 78
+ES t 14.73045766792
+
+E # 201 t 14.73045766792 m 21 ce 200 msg 7
+
+E # 202 t 14.83045766792 m 14 ce 200 msg 41
+BS id 41 tid 41 eid 41 etid 41 c Packet n "#8 from-2-to-0 $5" l 12000 pe 202
+SH sm 14 sg 3
+ES t 14.83045766792
+
+E # 203 t 14.83045766792 m 12 ce 202 msg 41
+BS id 41 tid 41 eid 41 etid 41 c Packet n "#8 from-2-to-0 $5" l 12000 pe 203
+SH sm 12 sg 7
+ES t 14.83045766792
+
+E # 204 t 14.83045766792 m 11 ce 203 msg 41
+CM id 42 tid 42 eid 42 etid 42 c omnetpp::cMessage n "#12 from-0-to-2 chain request" pe -1
+BS id 42 tid 42 eid 42 etid 42 c Packet n "#12 from-0-to-2 chain request" l 12000 pe 204
+SH sm 11 sg 3
+ES t 14.83045766792
+DM id 41 tid 41 eid 41 etid 41 c omnetpp::cMessage n "#8 from-2-to-0 $5" pe 204
+
+E # 205 t 14.83045766792 m 12 ce 204 msg 42
+BS id 42 tid 42 eid 42 etid 42 c Packet n "#12 from-0-to-2 chain request" l 12000 pe 205
+SH sm 12 sg 2621441
+ES t 14.83045766792
+
+E # 206 t 14.83045766792 m 14 ce 205 msg 42
+BS id 42 tid 42 eid 42 etid 42 c Packet n "#12 from-0-to-2 chain request" l 12000 pe 206
+SH sm 14 sg 5
+SH sm 2 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048576
+ES t 14.932124334587
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n endTxEvent pe 175
+ES t 14.832124334587
+
+E # 207 t 14.832124334587 m 14 ce 206 msg 2
+
+E # 208 t 14.932124334587 m 21 ce 206 msg 42
+BS id 42 tid 42 eid 42 etid 42 c Packet n "#12 from-0-to-2 chain request" l 12000 pe 208
+SH sm 21 sg 3
+ES t 14.932124334587
+
+E # 209 t 14.932124334587 m 20 ce 208 msg 42
+BS id 42 tid 42 eid 42 etid 42 c Packet n "#12 from-0-to-2 chain request" l 12000 pe 209
+SH sm 20 sg 7
+ES t 14.932124334587
+
+E # 210 t 14.932124334587 m 19 ce 209 msg 42
+CM id 43 tid 43 eid 43 etid 43 c omnetpp::cMessage n "#9 from-2-to-0 chain log" pe -1
+BS id 43 tid 43 eid 43 etid 43 c Packet n "#9 from-2-to-0 chain log" l 12160 pe 210
+SH sm 19 sg 3
+ES t 14.932124334587
+DM id 42 tid 42 eid 42 etid 42 c omnetpp::cMessage n "#12 from-0-to-2 chain request" pe 210
+
+E # 211 t 14.932124334587 m 20 ce 210 msg 43
+BS id 43 tid 43 eid 43 etid 43 c Packet n "#9 from-2-to-0 chain log" l 12160 pe 211
+SH sm 20 sg 2621440
+ES t 14.932124334587
+
+E # 212 t 14.932124334587 m 21 ce 211 msg 43
+BS id 43 tid 43 eid 43 etid 43 c Packet n "#9 from-2-to-0 chain log" l 12160 pe 212
+SH sm 21 sg 5
+SH sm 4 sg 1572864 pd 0.1 td 0.001688888889
+SH sm 2 sg 1048577
+ES t 15.033813223476
+BS id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n endTxEvent pe 201
+ES t 14.933813223476
+
+E # 213 t 14.933813223476 m 21 ce 212 msg 7
+
+E # 214 t 15.033813223476 m 14 ce 212 msg 43
+BS id 43 tid 43 eid 43 etid 43 c Packet n "#9 from-2-to-0 chain log" l 12160 pe 214
+SH sm 14 sg 3
+ES t 15.033813223476
+
+E # 215 t 15.033813223476 m 12 ce 214 msg 43
+BS id 43 tid 43 eid 43 etid 43 c Packet n "#9 from-2-to-0 chain log" l 12160 pe 215
+SH sm 12 sg 7
+ES t 15.033813223476
+
+E # 216 t 15.033813223476 m 11 ce 215 msg 43
+CM id 44 tid 44 eid 44 etid 44 c omnetpp::cMessage n "#13 from-0-to-2 transaction ack" pe -1
+BS id 44 tid 44 eid 44 etid 44 c Packet n "#13 from-0-to-2 transaction ack" l 12000 pe 216
+SH sm 11 sg 3
+ES t 15.033813223476
+CM id 45 tid 45 eid 45 etid 45 c omnetpp::cMessage n "#14 from-0-to-1 dissemination" pe -1
+BS id 45 tid 45 eid 45 etid 45 c Packet n "#14 from-0-to-1 dissemination" l 12000 pe 216
+SH sm 11 sg 3
+ES t 15.033813223476
+CM id 46 tid 46 eid 46 etid 46 c omnetpp::cMessage n "#15 from-0-to-2 dissemination" pe -1
+BS id 46 tid 46 eid 46 etid 46 c Packet n "#15 from-0-to-2 dissemination" l 12000 pe 216
+SH sm 11 sg 3
+ES t 15.033813223476
+DM id 43 tid 43 eid 43 etid 43 c omnetpp::cMessage n "#9 from-2-to-0 chain log" pe 216
+
+E # 217 t 15.033813223476 m 12 ce 216 msg 44
+BS id 44 tid 44 eid 44 etid 44 c Packet n "#13 from-0-to-2 transaction ack" l 12000 pe 217
+SH sm 12 sg 2621441
+ES t 15.033813223476
+
+E # 218 t 15.033813223476 m 12 ce 216 msg 45
+BS id 45 tid 45 eid 45 etid 45 c Packet n "#14 from-0-to-1 dissemination" l 12000 pe 218
+SH sm 12 sg 2621440
+ES t 15.033813223476
+
+E # 219 t 15.033813223476 m 12 ce 216 msg 46
+BS id 46 tid 46 eid 46 etid 46 c Packet n "#15 from-0-to-2 dissemination" l 12000 pe 219
+SH sm 12 sg 2621441
+ES t 15.033813223476
+
+E # 220 t 15.033813223476 m 14 ce 217 msg 44
+BS id 44 tid 44 eid 44 etid 44 c Packet n "#13 from-0-to-2 transaction ack" l 12000 pe 220
+SH sm 14 sg 5
+SH sm 2 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048576
+ES t 15.135479890143
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n endTxEvent pe 207
+ES t 15.035479890143
+
+E # 221 t 15.033813223476 m 13 ce 218 msg 45
+BS id 45 tid 45 eid 45 etid 45 c Packet n "#14 from-0-to-1 dissemination" l 12000 pe 221
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048576
+ES t 15.135479890143
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 176
+ES t 15.035479890143
+
+E # 222 t 15.033813223476 m 14 ce 219 msg 46
+
+E # 223 t 15.035479890143 m 14 ce 220 msg 2
+BS id 46 tid 46 eid 46 etid 46 c Packet n "#15 from-0-to-2 dissemination" l 12000 pe 222
+SH sm 14 sg 5
+SH sm 2 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048576
+ES t 15.13714655681
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n endTxEvent pe 223
+ES t 15.03714655681
+
+E # 224 t 15.035479890143 m 13 ce 221 msg 1
+
+E # 225 t 15.03714655681 m 14 ce 223 msg 2
+
+E # 226 t 15.135479890143 m 21 ce 220 msg 44
+BS id 44 tid 44 eid 44 etid 44 c Packet n "#13 from-0-to-2 transaction ack" l 12000 pe 226
+SH sm 21 sg 3
+ES t 15.135479890143
+
+E # 227 t 15.135479890143 m 17 ce 221 msg 45
+BS id 45 tid 45 eid 45 etid 45 c Packet n "#14 from-0-to-1 dissemination" l 12000 pe 227
+SH sm 17 sg 3
+ES t 15.135479890143
+
+E # 228 t 15.135479890143 m 20 ce 226 msg 44
+BS id 44 tid 44 eid 44 etid 44 c Packet n "#13 from-0-to-2 transaction ack" l 12000 pe 228
+SH sm 20 sg 7
+ES t 15.135479890143
+
+E # 229 t 15.135479890143 m 16 ce 227 msg 45
+BS id 45 tid 45 eid 45 etid 45 c Packet n "#14 from-0-to-1 dissemination" l 12000 pe 229
+SH sm 16 sg 7
+ES t 15.135479890143
+
+E # 230 t 15.135479890143 m 19 ce 228 msg 44
+CM id 47 tid 47 eid 47 etid 47 c omnetpp::cMessage n "#10 from-2-to-0 dissemination" pe -1
+BS id 47 tid 47 eid 47 etid 47 c Packet n "#10 from-2-to-0 dissemination" l 12000 pe 230
+SH sm 19 sg 3
+ES t 15.135479890143
+CM id 48 tid 48 eid 48 etid 48 c omnetpp::cMessage n "#11 from-2-to-1 dissemination" pe -1
+BS id 48 tid 48 eid 48 etid 48 c Packet n "#11 from-2-to-1 dissemination" l 12000 pe 230
+SH sm 19 sg 3
+ES t 15.135479890143
+DM id 44 tid 44 eid 44 etid 44 c omnetpp::cMessage n "#13 from-0-to-2 transaction ack" pe 230
+
+E # 231 t 15.135479890143 m 15 ce 229 msg 45
+DM id 45 tid 45 eid 45 etid 45 c omnetpp::cMessage n "#14 from-0-to-1 dissemination" pe 231
+
+E # 232 t 15.135479890143 m 20 ce 230 msg 47
+BS id 47 tid 47 eid 47 etid 47 c Packet n "#10 from-2-to-0 dissemination" l 12000 pe 232
+SH sm 20 sg 2621440
+ES t 15.135479890143
+
+E # 233 t 15.135479890143 m 20 ce 230 msg 48
+BS id 48 tid 48 eid 48 etid 48 c Packet n "#11 from-2-to-1 dissemination" l 12000 pe 233
+SH sm 20 sg 2621441
+ES t 15.135479890143
+
+E # 234 t 15.135479890143 m 21 ce 232 msg 47
+BS id 47 tid 47 eid 47 etid 47 c Packet n "#10 from-2-to-0 dissemination" l 12000 pe 234
+SH sm 21 sg 5
+SH sm 4 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048577
+ES t 15.23714655681
+BS id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n endTxEvent pe 213
+ES t 15.13714655681
+
+E # 235 t 15.135479890143 m 22 ce 233 msg 48
+BS id 48 tid 48 eid 48 etid 48 c Packet n "#11 from-2-to-1 dissemination" l 12000 pe 235
+SH sm 22 sg 5
+SH sm 4 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048577
+ES t 15.23714655681
+BS id 8 tid 8 eid 8 etid 8 c omnetpp::cMessage n endTxEvent pe 77
+ES t 15.13714655681
+
+E # 236 t 15.13714655681 m 21 ce 223 msg 46
+BS id 46 tid 46 eid 46 etid 46 c Packet n "#15 from-0-to-2 dissemination" l 12000 pe 236
+SH sm 21 sg 3
+ES t 15.13714655681
+
+E # 237 t 15.13714655681 m 21 ce 234 msg 7
+
+E # 238 t 15.13714655681 m 22 ce 235 msg 8
+
+E # 239 t 15.13714655681 m 20 ce 236 msg 46
+BS id 46 tid 46 eid 46 etid 46 c Packet n "#15 from-0-to-2 dissemination" l 12000 pe 239
+SH sm 20 sg 7
+ES t 15.13714655681
+
+E # 240 t 15.13714655681 m 19 ce 239 msg 46
+DM id 46 tid 46 eid 46 etid 46 c omnetpp::cMessage n "#15 from-0-to-2 dissemination" pe 240
+
+E # 241 t 15.23714655681 m 14 ce 234 msg 47
+BS id 47 tid 47 eid 47 etid 47 c Packet n "#10 from-2-to-0 dissemination" l 12000 pe 241
+SH sm 14 sg 3
+ES t 15.23714655681
+
+E # 242 t 15.23714655681 m 18 ce 235 msg 48
+BS id 48 tid 48 eid 48 etid 48 c Packet n "#11 from-2-to-1 dissemination" l 12000 pe 242
+SH sm 18 sg 3
+ES t 15.23714655681
+
+E # 243 t 15.23714655681 m 12 ce 241 msg 47
+BS id 47 tid 47 eid 47 etid 47 c Packet n "#10 from-2-to-0 dissemination" l 12000 pe 243
+SH sm 12 sg 7
+ES t 15.23714655681
+
+E # 244 t 15.23714655681 m 16 ce 242 msg 48
+BS id 48 tid 48 eid 48 etid 48 c Packet n "#11 from-2-to-1 dissemination" l 12000 pe 244
+SH sm 16 sg 7
+ES t 15.23714655681
+
+E # 245 t 15.23714655681 m 11 ce 243 msg 47
+DM id 47 tid 47 eid 47 etid 47 c omnetpp::cMessage n "#10 from-2-to-0 dissemination" pe 245
+
+E # 246 t 15.23714655681 m 15 ce 244 msg 48
+DM id 48 tid 48 eid 48 etid 48 c omnetpp::cMessage n "#11 from-2-to-1 dissemination" pe 246
+
+E # 247 t 21.738945340039 m 11 ce 100 msg 0
+CM id 49 tid 49 eid 49 etid 49 c omnetpp::cMessage n "#16 from-0-to-1 $11" pe -1
+BS id 49 tid 49 eid 49 etid 49 c Packet n "#16 from-0-to-1 $11" l 12000 pe 247
+SH sm 11 sg 3
+ES t 21.738945340039
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n TimerThead pe 247
+ES t 31.024716577958
+
+E # 248 t 21.738945340039 m 12 ce 247 msg 49
+BS id 49 tid 49 eid 49 etid 49 c Packet n "#16 from-0-to-1 $11" l 12000 pe 248
+SH sm 12 sg 2621440
+ES t 21.738945340039
+
+E # 249 t 21.738945340039 m 13 ce 248 msg 49
+BS id 49 tid 49 eid 49 etid 49 c Packet n "#16 from-0-to-1 $11" l 12000 pe 249
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048576
+ES t 21.840612006706
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 224
+ES t 21.740612006706
+
+E # 250 t 21.740612006706 m 13 ce 249 msg 1
+
+E # 251 t 21.840612006706 m 17 ce 249 msg 49
+BS id 49 tid 49 eid 49 etid 49 c Packet n "#16 from-0-to-1 $11" l 12000 pe 251
+SH sm 17 sg 3
+ES t 21.840612006706
+
+E # 252 t 21.840612006706 m 16 ce 251 msg 49
+BS id 49 tid 49 eid 49 etid 49 c Packet n "#16 from-0-to-1 $11" l 12000 pe 252
+SH sm 16 sg 7
+ES t 21.840612006706
+
+E # 253 t 21.840612006706 m 15 ce 252 msg 49
+CM id 50 tid 50 eid 50 etid 50 c omnetpp::cMessage n "#12 from-1-to-0 chain request" pe -1
+BS id 50 tid 50 eid 50 etid 50 c Packet n "#12 from-1-to-0 chain request" l 12000 pe 253
+SH sm 15 sg 3
+ES t 21.840612006706
+DM id 49 tid 49 eid 49 etid 49 c omnetpp::cMessage n "#16 from-0-to-1 $11" pe 253
+
+E # 254 t 21.840612006706 m 16 ce 253 msg 50
+BS id 50 tid 50 eid 50 etid 50 c Packet n "#12 from-1-to-0 chain request" l 12000 pe 254
+SH sm 16 sg 2621440
+ES t 21.840612006706
+
+E # 255 t 21.840612006706 m 17 ce 254 msg 50
+BS id 50 tid 50 eid 50 etid 50 c Packet n "#12 from-1-to-0 chain request" l 12000 pe 255
+SH sm 17 sg 5
+SH sm 3 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048576
+ES t 21.942278673373
+BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n endTxEvent pe 188
+ES t 21.842278673373
+
+E # 256 t 21.842278673373 m 17 ce 255 msg 4
+
+E # 257 t 21.891093213344 m 15 ce 143 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 257
+ES t 29.829422463663
+
+E # 258 t 21.942278673373 m 13 ce 255 msg 50
+BS id 50 tid 50 eid 50 etid 50 c Packet n "#12 from-1-to-0 chain request" l 12000 pe 258
+SH sm 13 sg 3
+ES t 21.942278673373
+
+E # 259 t 21.942278673373 m 12 ce 258 msg 50
+BS id 50 tid 50 eid 50 etid 50 c Packet n "#12 from-1-to-0 chain request" l 12000 pe 259
+SH sm 12 sg 7
+ES t 21.942278673373
+
+E # 260 t 21.942278673373 m 11 ce 259 msg 50
+CM id 51 tid 51 eid 51 etid 51 c omnetpp::cMessage n "#17 from-0-to-1 chain log" pe -1
+BS id 51 tid 51 eid 51 etid 51 c Packet n "#17 from-0-to-1 chain log" l 12320 pe 260
+SH sm 11 sg 3
+ES t 21.942278673373
+DM id 50 tid 50 eid 50 etid 50 c omnetpp::cMessage n "#12 from-1-to-0 chain request" pe 260
+
+E # 261 t 21.942278673373 m 12 ce 260 msg 51
+BS id 51 tid 51 eid 51 etid 51 c Packet n "#17 from-0-to-1 chain log" l 12320 pe 261
+SH sm 12 sg 2621440
+ES t 21.942278673373
+
+E # 262 t 21.942278673373 m 13 ce 261 msg 51
+BS id 51 tid 51 eid 51 etid 51 c Packet n "#17 from-0-to-1 chain log" l 12320 pe 262
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001711111111
+SH sm 3 sg 1048576
+ES t 22.043989784484
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 250
+ES t 21.943989784484
+
+E # 263 t 21.943989784484 m 13 ce 262 msg 1
+
+E # 264 t 22.043989784484 m 17 ce 262 msg 51
+BS id 51 tid 51 eid 51 etid 51 c Packet n "#17 from-0-to-1 chain log" l 12320 pe 264
+SH sm 17 sg 3
+ES t 22.043989784484
+
+E # 265 t 22.043989784484 m 16 ce 264 msg 51
+BS id 51 tid 51 eid 51 etid 51 c Packet n "#17 from-0-to-1 chain log" l 12320 pe 265
+SH sm 16 sg 7
+ES t 22.043989784484
+
+E # 266 t 22.043989784484 m 15 ce 265 msg 51
+CM id 52 tid 52 eid 52 etid 52 c omnetpp::cMessage n "#13 from-1-to-0 transaction ack" pe -1
+BS id 52 tid 52 eid 52 etid 52 c Packet n "#13 from-1-to-0 transaction ack" l 12000 pe 266
+SH sm 15 sg 3
+ES t 22.043989784484
+DM id 51 tid 51 eid 51 etid 51 c omnetpp::cMessage n "#17 from-0-to-1 chain log" pe 266
+
+E # 267 t 22.043989784484 m 16 ce 266 msg 52
+BS id 52 tid 52 eid 52 etid 52 c Packet n "#13 from-1-to-0 transaction ack" l 12000 pe 267
+SH sm 16 sg 2621440
+ES t 22.043989784484
+
+E # 268 t 22.043989784484 m 17 ce 267 msg 52
+BS id 52 tid 52 eid 52 etid 52 c Packet n "#13 from-1-to-0 transaction ack" l 12000 pe 268
+SH sm 17 sg 5
+SH sm 3 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048576
+ES t 22.145656451151
+BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n endTxEvent pe 256
+ES t 22.045656451151
+
+E # 269 t 22.045656451151 m 17 ce 268 msg 4
+
+E # 270 t 22.145656451151 m 13 ce 268 msg 52
+BS id 52 tid 52 eid 52 etid 52 c Packet n "#13 from-1-to-0 transaction ack" l 12000 pe 270
+SH sm 13 sg 3
+ES t 22.145656451151
+
+E # 271 t 22.145656451151 m 12 ce 270 msg 52
+BS id 52 tid 52 eid 52 etid 52 c Packet n "#13 from-1-to-0 transaction ack" l 12000 pe 271
+SH sm 12 sg 7
+ES t 22.145656451151
+
+E # 272 t 22.145656451151 m 11 ce 271 msg 52
+CM id 53 tid 53 eid 53 etid 53 c omnetpp::cMessage n "#18 from-0-to-1 dissemination" pe -1
+BS id 53 tid 53 eid 53 etid 53 c Packet n "#18 from-0-to-1 dissemination" l 12000 pe 272
+SH sm 11 sg 3
+ES t 22.145656451151
+CM id 54 tid 54 eid 54 etid 54 c omnetpp::cMessage n "#19 from-0-to-2 dissemination" pe -1
+BS id 54 tid 54 eid 54 etid 54 c Packet n "#19 from-0-to-2 dissemination" l 12000 pe 272
+SH sm 11 sg 3
+ES t 22.145656451151
+DM id 52 tid 52 eid 52 etid 52 c omnetpp::cMessage n "#13 from-1-to-0 transaction ack" pe 272
+
+E # 273 t 22.145656451151 m 12 ce 272 msg 53
+BS id 53 tid 53 eid 53 etid 53 c Packet n "#18 from-0-to-1 dissemination" l 12000 pe 273
+SH sm 12 sg 2621440
+ES t 22.145656451151
+
+E # 274 t 22.145656451151 m 12 ce 272 msg 54
+BS id 54 tid 54 eid 54 etid 54 c Packet n "#19 from-0-to-2 dissemination" l 12000 pe 274
+SH sm 12 sg 2621441
+ES t 22.145656451151
+
+E # 275 t 22.145656451151 m 13 ce 273 msg 53
+BS id 53 tid 53 eid 53 etid 53 c Packet n "#18 from-0-to-1 dissemination" l 12000 pe 275
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048576
+ES t 22.247323117818
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 263
+ES t 22.147323117818
+
+E # 276 t 22.145656451151 m 14 ce 274 msg 54
+BS id 54 tid 54 eid 54 etid 54 c Packet n "#19 from-0-to-2 dissemination" l 12000 pe 276
+SH sm 14 sg 5
+SH sm 2 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048576
+ES t 22.247323117818
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n endTxEvent pe 225
+ES t 22.147323117818
+
+E # 277 t 22.147323117818 m 13 ce 275 msg 1
+
+E # 278 t 22.147323117818 m 14 ce 276 msg 2
+
+E # 279 t 22.247323117818 m 17 ce 275 msg 53
+BS id 53 tid 53 eid 53 etid 53 c Packet n "#18 from-0-to-1 dissemination" l 12000 pe 279
+SH sm 17 sg 3
+ES t 22.247323117818
+
+E # 280 t 22.247323117818 m 21 ce 276 msg 54
+BS id 54 tid 54 eid 54 etid 54 c Packet n "#19 from-0-to-2 dissemination" l 12000 pe 280
+SH sm 21 sg 3
+ES t 22.247323117818
+
+E # 281 t 22.247323117818 m 16 ce 279 msg 53
+BS id 53 tid 53 eid 53 etid 53 c Packet n "#18 from-0-to-1 dissemination" l 12000 pe 281
+SH sm 16 sg 7
+ES t 22.247323117818
+
+E # 282 t 22.247323117818 m 20 ce 280 msg 54
+BS id 54 tid 54 eid 54 etid 54 c Packet n "#19 from-0-to-2 dissemination" l 12000 pe 282
+SH sm 20 sg 7
+ES t 22.247323117818
+
+E # 283 t 22.247323117818 m 15 ce 281 msg 53
+DM id 53 tid 53 eid 53 etid 53 c omnetpp::cMessage n "#18 from-0-to-1 dissemination" pe 283
+
+E # 284 t 22.247323117818 m 19 ce 282 msg 54
+DM id 54 tid 54 eid 54 etid 54 c omnetpp::cMessage n "#19 from-0-to-2 dissemination" pe 284
+
+E # 285 t 22.318283651257 m 19 ce 198 msg 6
+CM id 55 tid 55 eid 55 etid 55 c omnetpp::cMessage n "#12 from-2-to-1 $5" pe -1
+BS id 55 tid 55 eid 55 etid 55 c Packet n "#12 from-2-to-1 $5" l 12000 pe 285
+SH sm 19 sg 3
+ES t 22.318283651257
+BS id 6 tid 6 eid 6 etid 6 c omnetpp::cMessage n TimerThead pe 285
+ES t 30.479953726754
+
+E # 286 t 22.318283651257 m 20 ce 285 msg 55
+BS id 55 tid 55 eid 55 etid 55 c Packet n "#12 from-2-to-1 $5" l 12000 pe 286
+SH sm 20 sg 2621441
+ES t 22.318283651257
+
+E # 287 t 22.318283651257 m 22 ce 286 msg 55
+BS id 55 tid 55 eid 55 etid 55 c Packet n "#12 from-2-to-1 $5" l 12000 pe 287
+SH sm 22 sg 5
+SH sm 4 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048577
+ES t 22.419950317924
+BS id 8 tid 8 eid 8 etid 8 c omnetpp::cMessage n endTxEvent pe 238
+ES t 22.319950317924
+
+E # 288 t 22.319950317924 m 22 ce 287 msg 8
+
+E # 289 t 22.419950317924 m 18 ce 287 msg 55
+BS id 55 tid 55 eid 55 etid 55 c Packet n "#12 from-2-to-1 $5" l 12000 pe 289
+SH sm 18 sg 3
+ES t 22.419950317924
+
+E # 290 t 22.419950317924 m 16 ce 289 msg 55
+BS id 55 tid 55 eid 55 etid 55 c Packet n "#12 from-2-to-1 $5" l 12000 pe 290
+SH sm 16 sg 7
+ES t 22.419950317924
+
+E # 291 t 22.419950317924 m 15 ce 290 msg 55
+CM id 56 tid 56 eid 56 etid 56 c omnetpp::cMessage n "#14 from-1-to-2 busy" pe -1
+BS id 56 tid 56 eid 56 etid 56 c Packet n "#14 from-1-to-2 busy" l 12000 pe 291
+SH sm 15 sg 3
+ES t 22.419950317924
+DM id 55 tid 55 eid 55 etid 55 c omnetpp::cMessage n "#12 from-2-to-1 $5" pe 291
+
+E # 292 t 22.419950317924 m 16 ce 291 msg 56
+BS id 56 tid 56 eid 56 etid 56 c Packet n "#14 from-1-to-2 busy" l 12000 pe 292
+SH sm 16 sg 2621441
+ES t 22.419950317924
+
+E # 293 t 22.419950317924 m 18 ce 292 msg 56
+BS id 56 tid 56 eid 56 etid 56 c Packet n "#14 from-1-to-2 busy" l 12000 pe 293
+SH sm 18 sg 5
+SH sm 3 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048577
+ES t 22.521616984591
+BS id 5 tid 5 eid 5 etid 5 c omnetpp::cMessage n endTxEvent pe 189
+ES t 22.421616984591
+
+E # 294 t 22.421616984591 m 18 ce 293 msg 5
+
+E # 295 t 22.521616984591 m 22 ce 293 msg 56
+BS id 56 tid 56 eid 56 etid 56 c Packet n "#14 from-1-to-2 busy" l 12000 pe 295
+SH sm 22 sg 3
+ES t 22.521616984591
+
+E # 296 t 22.521616984591 m 20 ce 295 msg 56
+BS id 56 tid 56 eid 56 etid 56 c Packet n "#14 from-1-to-2 busy" l 12000 pe 296
+SH sm 20 sg 7
+ES t 22.521616984591
+
+E # 297 t 22.521616984591 m 19 ce 296 msg 56
+DM id 56 tid 56 eid 56 etid 56 c omnetpp::cMessage n "#14 from-1-to-2 busy" pe 297
+
+E # 298 t 29.829422463663 m 15 ce 257 msg 3
+CM id 57 tid 57 eid 57 etid 57 c omnetpp::cMessage n "#15 from-1-to-0 $9" pe -1
+BS id 57 tid 57 eid 57 etid 57 c Packet n "#15 from-1-to-0 $9" l 12000 pe 298
+SH sm 15 sg 3
+ES t 29.829422463663
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 298
+ES t 29.839422463663
+
+E # 299 t 29.829422463663 m 16 ce 298 msg 57
+BS id 57 tid 57 eid 57 etid 57 c Packet n "#15 from-1-to-0 $9" l 12000 pe 299
+SH sm 16 sg 2621440
+ES t 29.829422463663
+
+E # 300 t 29.829422463663 m 17 ce 299 msg 57
+BS id 57 tid 57 eid 57 etid 57 c Packet n "#15 from-1-to-0 $9" l 12000 pe 300
+SH sm 17 sg 5
+SH sm 3 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 2 sg 1048576
+ES t 29.93108913033
+BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n endTxEvent pe 269
+ES t 29.83108913033
+
+E # 301 t 29.83108913033 m 17 ce 300 msg 4
+
+E # 302 t 29.839422463663 m 15 ce 298 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 302
+ES t 29.849422463663
+
+E # 303 t 29.849422463663 m 15 ce 302 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 303
+ES t 29.859422463663
+
+E # 304 t 29.859422463663 m 15 ce 303 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 304
+ES t 29.869422463663
+
+E # 305 t 29.869422463663 m 15 ce 304 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 305
+ES t 29.879422463663
+
+E # 306 t 29.879422463663 m 15 ce 305 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 306
+ES t 29.889422463663
+
+E # 307 t 29.889422463663 m 15 ce 306 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 307
+ES t 29.899422463663
+
+E # 308 t 29.899422463663 m 15 ce 307 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 308
+ES t 29.909422463663
+
+E # 309 t 29.909422463663 m 15 ce 308 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 309
+ES t 29.919422463663
+
+E # 310 t 29.919422463663 m 15 ce 309 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 310
+ES t 29.929422463663
+
+E # 311 t 29.929422463663 m 15 ce 310 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 311
+ES t 29.939422463663
+
+E # 312 t 29.93108913033 m 13 ce 300 msg 57
+BS id 57 tid 57 eid 57 etid 57 c Packet n "#15 from-1-to-0 $9" l 12000 pe 312
+SH sm 13 sg 3
+ES t 29.93108913033
+
+E # 313 t 29.93108913033 m 12 ce 312 msg 57
+BS id 57 tid 57 eid 57 etid 57 c Packet n "#15 from-1-to-0 $9" l 12000 pe 313
+SH sm 12 sg 7
+ES t 29.93108913033
+
+E # 314 t 29.93108913033 m 11 ce 313 msg 57
+CM id 58 tid 58 eid 58 etid 58 c omnetpp::cMessage n "#20 from-0-to-1 chain request" pe -1
+BS id 58 tid 58 eid 58 etid 58 c Packet n "#20 from-0-to-1 chain request" l 12000 pe 314
+SH sm 11 sg 3
+ES t 29.93108913033
+DM id 57 tid 57 eid 57 etid 57 c omnetpp::cMessage n "#15 from-1-to-0 $9" pe 314
+
+E # 315 t 29.93108913033 m 12 ce 314 msg 58
+BS id 58 tid 58 eid 58 etid 58 c Packet n "#20 from-0-to-1 chain request" l 12000 pe 315
+SH sm 12 sg 2621440
+ES t 29.93108913033
+
+E # 316 t 29.93108913033 m 13 ce 315 msg 58
+BS id 58 tid 58 eid 58 etid 58 c Packet n "#20 from-0-to-1 chain request" l 12000 pe 316
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048576
+ES t 30.032755796997
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 277
+ES t 29.932755796997
+
+E # 317 t 29.932755796997 m 13 ce 316 msg 1
+
+E # 318 t 29.939422463663 m 15 ce 311 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 318
+ES t 29.949422463663
+
+E # 319 t 29.949422463663 m 15 ce 318 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 319
+ES t 29.959422463663
+
+E # 320 t 29.959422463663 m 15 ce 319 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 320
+ES t 29.969422463663
+
+E # 321 t 29.969422463663 m 15 ce 320 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 321
+ES t 29.979422463663
+
+E # 322 t 29.979422463663 m 15 ce 321 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 322
+ES t 29.989422463663
+
+E # 323 t 29.989422463663 m 15 ce 322 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 323
+ES t 29.999422463663
+
+E # 324 t 29.999422463663 m 15 ce 323 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 324
+ES t 30.009422463663
+
+E # 325 t 30.009422463663 m 15 ce 324 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 325
+ES t 30.019422463663
+
+E # 326 t 30.019422463663 m 15 ce 325 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 326
+ES t 30.029422463663
+
+E # 327 t 30.029422463663 m 15 ce 326 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 327
+ES t 30.039422463663
+
+E # 328 t 30.032755796997 m 17 ce 316 msg 58
+BS id 58 tid 58 eid 58 etid 58 c Packet n "#20 from-0-to-1 chain request" l 12000 pe 328
+SH sm 17 sg 3
+ES t 30.032755796997
+
+E # 329 t 30.032755796997 m 16 ce 328 msg 58
+BS id 58 tid 58 eid 58 etid 58 c Packet n "#20 from-0-to-1 chain request" l 12000 pe 329
+SH sm 16 sg 7
+ES t 30.032755796997
+
+E # 330 t 30.032755796997 m 15 ce 329 msg 58
+CM id 59 tid 59 eid 59 etid 59 c omnetpp::cMessage n "#16 from-1-to-0 chain log" pe -1
+BS id 59 tid 59 eid 59 etid 59 c Packet n "#16 from-1-to-0 chain log" l 12320 pe 330
+SH sm 15 sg 3
+ES t 30.032755796997
+DM id 58 tid 58 eid 58 etid 58 c omnetpp::cMessage n "#20 from-0-to-1 chain request" pe 330
+
+E # 331 t 30.032755796997 m 16 ce 330 msg 59
+BS id 59 tid 59 eid 59 etid 59 c Packet n "#16 from-1-to-0 chain log" l 12320 pe 331
+SH sm 16 sg 2621440
+ES t 30.032755796997
+
+E # 332 t 30.032755796997 m 17 ce 331 msg 59
+BS id 59 tid 59 eid 59 etid 59 c Packet n "#16 from-1-to-0 chain log" l 12320 pe 332
+SH sm 17 sg 5
+SH sm 3 sg 1572864 pd 0.1 td 0.001711111111
+SH sm 2 sg 1048576
+ES t 30.134466908108
+BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n endTxEvent pe 301
+ES t 30.034466908108
+
+E # 333 t 30.034466908108 m 17 ce 332 msg 4
+
+E # 334 t 30.039422463663 m 15 ce 327 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 334
+ES t 30.049422463663
+
+E # 335 t 30.049422463663 m 15 ce 334 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 335
+ES t 30.059422463663
+
+E # 336 t 30.059422463663 m 15 ce 335 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 336
+ES t 30.069422463663
+
+E # 337 t 30.069422463663 m 15 ce 336 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 337
+ES t 30.079422463663
+
+E # 338 t 30.079422463663 m 15 ce 337 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 338
+ES t 30.089422463663
+
+E # 339 t 30.089422463663 m 15 ce 338 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 339
+ES t 30.099422463663
+
+E # 340 t 30.099422463663 m 15 ce 339 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 340
+ES t 30.109422463663
+
+E # 341 t 30.109422463663 m 15 ce 340 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 341
+ES t 30.119422463663
+
+E # 342 t 30.119422463663 m 15 ce 341 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 342
+ES t 30.129422463663
+
+E # 343 t 30.129422463663 m 15 ce 342 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 343
+ES t 30.139422463663
+
+E # 344 t 30.134466908108 m 13 ce 332 msg 59
+BS id 59 tid 59 eid 59 etid 59 c Packet n "#16 from-1-to-0 chain log" l 12320 pe 344
+SH sm 13 sg 3
+ES t 30.134466908108
+
+E # 345 t 30.134466908108 m 12 ce 344 msg 59
+BS id 59 tid 59 eid 59 etid 59 c Packet n "#16 from-1-to-0 chain log" l 12320 pe 345
+SH sm 12 sg 7
+ES t 30.134466908108
+
+E # 346 t 30.134466908108 m 11 ce 345 msg 59
+CM id 60 tid 60 eid 60 etid 60 c omnetpp::cMessage n "#21 from-0-to-1 transaction ack" pe -1
+BS id 60 tid 60 eid 60 etid 60 c Packet n "#21 from-0-to-1 transaction ack" l 12000 pe 346
+SH sm 11 sg 3
+ES t 30.134466908108
+CM id 61 tid 61 eid 61 etid 61 c omnetpp::cMessage n "#22 from-0-to-1 dissemination" pe -1
+BS id 61 tid 61 eid 61 etid 61 c Packet n "#22 from-0-to-1 dissemination" l 12000 pe 346
+SH sm 11 sg 3
+ES t 30.134466908108
+CM id 62 tid 62 eid 62 etid 62 c omnetpp::cMessage n "#23 from-0-to-2 dissemination" pe -1
+BS id 62 tid 62 eid 62 etid 62 c Packet n "#23 from-0-to-2 dissemination" l 12000 pe 346
+SH sm 11 sg 3
+ES t 30.134466908108
+DM id 59 tid 59 eid 59 etid 59 c omnetpp::cMessage n "#16 from-1-to-0 chain log" pe 346
+
+E # 347 t 30.134466908108 m 12 ce 346 msg 60
+BS id 60 tid 60 eid 60 etid 60 c Packet n "#21 from-0-to-1 transaction ack" l 12000 pe 347
+SH sm 12 sg 2621440
+ES t 30.134466908108
+
+E # 348 t 30.134466908108 m 12 ce 346 msg 61
+BS id 61 tid 61 eid 61 etid 61 c Packet n "#22 from-0-to-1 dissemination" l 12000 pe 348
+SH sm 12 sg 2621440
+ES t 30.134466908108
+
+E # 349 t 30.134466908108 m 12 ce 346 msg 62
+BS id 62 tid 62 eid 62 etid 62 c Packet n "#23 from-0-to-2 dissemination" l 12000 pe 349
+SH sm 12 sg 2621441
+ES t 30.134466908108
+
+E # 350 t 30.134466908108 m 13 ce 347 msg 60
+BS id 60 tid 60 eid 60 etid 60 c Packet n "#21 from-0-to-1 transaction ack" l 12000 pe 350
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048576
+ES t 30.236133574775
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 317
+ES t 30.136133574775
+
+E # 351 t 30.134466908108 m 13 ce 348 msg 61
+
+E # 352 t 30.134466908108 m 14 ce 349 msg 62
+BS id 62 tid 62 eid 62 etid 62 c Packet n "#23 from-0-to-2 dissemination" l 12000 pe 352
+SH sm 14 sg 5
+SH sm 2 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048576
+ES t 30.236133574775
+BS id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n endTxEvent pe 278
+ES t 30.136133574775
+
+E # 353 t 30.136133574775 m 13 ce 350 msg 1
+BS id 61 tid 61 eid 61 etid 61 c Packet n "#22 from-0-to-1 dissemination" l 12000 pe 351
+SH sm 13 sg 5
+SH sm 2 sg 1572864 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048576
+ES t 30.237800241442
+BS id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n endTxEvent pe 353
+ES t 30.137800241442
+
+E # 354 t 30.136133574775 m 14 ce 352 msg 2
+
+E # 355 t 30.137800241442 m 13 ce 353 msg 1
+
+E # 356 t 30.139422463663 m 15 ce 343 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 356
+ES t 30.149422463663
+
+E # 357 t 30.149422463663 m 15 ce 356 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 357
+ES t 30.159422463663
+
+E # 358 t 30.159422463663 m 15 ce 357 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 358
+ES t 30.169422463663
+
+E # 359 t 30.169422463663 m 15 ce 358 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 359
+ES t 30.179422463663
+
+E # 360 t 30.179422463663 m 15 ce 359 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 360
+ES t 30.189422463663
+
+E # 361 t 30.189422463663 m 15 ce 360 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 361
+ES t 30.199422463663
+
+E # 362 t 30.199422463663 m 15 ce 361 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 362
+ES t 30.209422463663
+
+E # 363 t 30.209422463663 m 15 ce 362 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 363
+ES t 30.219422463663
+
+E # 364 t 30.219422463663 m 15 ce 363 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 364
+ES t 30.229422463663
+
+E # 365 t 30.229422463663 m 15 ce 364 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 365
+ES t 30.239422463663
+
+E # 366 t 30.236133574775 m 17 ce 350 msg 60
+BS id 60 tid 60 eid 60 etid 60 c Packet n "#21 from-0-to-1 transaction ack" l 12000 pe 366
+SH sm 17 sg 3
+ES t 30.236133574775
+
+E # 367 t 30.236133574775 m 21 ce 352 msg 62
+BS id 62 tid 62 eid 62 etid 62 c Packet n "#23 from-0-to-2 dissemination" l 12000 pe 367
+SH sm 21 sg 3
+ES t 30.236133574775
+
+E # 368 t 30.236133574775 m 16 ce 366 msg 60
+BS id 60 tid 60 eid 60 etid 60 c Packet n "#21 from-0-to-1 transaction ack" l 12000 pe 368
+SH sm 16 sg 7
+ES t 30.236133574775
+
+E # 369 t 30.236133574775 m 20 ce 367 msg 62
+BS id 62 tid 62 eid 62 etid 62 c Packet n "#23 from-0-to-2 dissemination" l 12000 pe 369
+SH sm 20 sg 7
+ES t 30.236133574775
+
+E # 370 t 30.236133574775 m 15 ce 368 msg 60
+DM id 60 tid 60 eid 60 etid 60 c omnetpp::cMessage n "#21 from-0-to-1 transaction ack" pe 370
+
+E # 371 t 30.236133574775 m 19 ce 369 msg 62
+DM id 62 tid 62 eid 62 etid 62 c omnetpp::cMessage n "#23 from-0-to-2 dissemination" pe 371
+
+E # 372 t 30.237800241442 m 17 ce 353 msg 61
+BS id 61 tid 61 eid 61 etid 61 c Packet n "#22 from-0-to-1 dissemination" l 12000 pe 372
+SH sm 17 sg 3
+ES t 30.237800241442
+
+E # 373 t 30.237800241442 m 16 ce 372 msg 61
+BS id 61 tid 61 eid 61 etid 61 c Packet n "#22 from-0-to-1 dissemination" l 12000 pe 373
+SH sm 16 sg 7
+ES t 30.237800241442
+
+E # 374 t 30.237800241442 m 15 ce 373 msg 61
+DM id 61 tid 61 eid 61 etid 61 c omnetpp::cMessage n "#22 from-0-to-1 dissemination" pe 374
+
+E # 375 t 30.239422463663 m 15 ce 365 msg 3
+CM id 63 tid 63 eid 63 etid 63 c omnetpp::cMessage n "#17 from-1-to-2 $2" pe -1
+BS id 63 tid 63 eid 63 etid 63 c Packet n "#17 from-1-to-2 $2" l 12000 pe 375
+SH sm 15 sg 3
+ES t 30.239422463663
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 375
+ES t 30.249422463663
+
+E # 376 t 30.239422463663 m 16 ce 375 msg 63
+BS id 63 tid 63 eid 63 etid 63 c Packet n "#17 from-1-to-2 $2" l 12000 pe 376
+SH sm 16 sg 2621441
+ES t 30.239422463663
+
+E # 377 t 30.239422463663 m 18 ce 376 msg 63
+BS id 63 tid 63 eid 63 etid 63 c Packet n "#17 from-1-to-2 $2" l 12000 pe 377
+SH sm 18 sg 5
+SH sm 3 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 4 sg 1048577
+ES t 30.34108913033
+BS id 5 tid 5 eid 5 etid 5 c omnetpp::cMessage n endTxEvent pe 294
+ES t 30.24108913033
+
+E # 378 t 30.24108913033 m 18 ce 377 msg 5
+
+E # 379 t 30.249422463663 m 15 ce 375 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 379
+ES t 30.259422463663
+
+E # 380 t 30.259422463663 m 15 ce 379 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 380
+ES t 30.269422463663
+
+E # 381 t 30.269422463663 m 15 ce 380 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 381
+ES t 30.279422463663
+
+E # 382 t 30.279422463663 m 15 ce 381 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 382
+ES t 30.289422463663
+
+E # 383 t 30.289422463663 m 15 ce 382 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 383
+ES t 30.299422463663
+
+E # 384 t 30.299422463663 m 15 ce 383 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 384
+ES t 30.309422463663
+
+E # 385 t 30.309422463663 m 15 ce 384 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 385
+ES t 30.319422463663
+
+E # 386 t 30.319422463663 m 15 ce 385 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 386
+ES t 30.329422463663
+
+E # 387 t 30.329422463663 m 15 ce 386 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 387
+ES t 30.339422463663
+
+E # 388 t 30.339422463663 m 15 ce 387 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 388
+ES t 30.349422463663
+
+E # 389 t 30.34108913033 m 22 ce 377 msg 63
+BS id 63 tid 63 eid 63 etid 63 c Packet n "#17 from-1-to-2 $2" l 12000 pe 389
+SH sm 22 sg 3
+ES t 30.34108913033
+
+E # 390 t 30.34108913033 m 20 ce 389 msg 63
+BS id 63 tid 63 eid 63 etid 63 c Packet n "#17 from-1-to-2 $2" l 12000 pe 390
+SH sm 20 sg 7
+ES t 30.34108913033
+
+E # 391 t 30.34108913033 m 19 ce 390 msg 63
+CM id 64 tid 64 eid 64 etid 64 c omnetpp::cMessage n "#13 from-2-to-1 chain request" pe -1
+BS id 64 tid 64 eid 64 etid 64 c Packet n "#13 from-2-to-1 chain request" l 12000 pe 391
+SH sm 19 sg 3
+ES t 30.34108913033
+DM id 63 tid 63 eid 63 etid 63 c omnetpp::cMessage n "#17 from-1-to-2 $2" pe 391
+
+E # 392 t 30.34108913033 m 20 ce 391 msg 64
+BS id 64 tid 64 eid 64 etid 64 c Packet n "#13 from-2-to-1 chain request" l 12000 pe 392
+SH sm 20 sg 2621441
+ES t 30.34108913033
+
+E # 393 t 30.34108913033 m 22 ce 392 msg 64
+BS id 64 tid 64 eid 64 etid 64 c Packet n "#13 from-2-to-1 chain request" l 12000 pe 393
+SH sm 22 sg 5
+SH sm 4 sg 1572865 pd 0.1 td 0.001666666667
+SH sm 3 sg 1048577
+ES t 30.442755796997
+BS id 8 tid 8 eid 8 etid 8 c omnetpp::cMessage n endTxEvent pe 288
+ES t 30.342755796997
+
+E # 394 t 30.342755796997 m 22 ce 393 msg 8
+
+E # 395 t 30.349422463663 m 15 ce 388 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 395
+ES t 30.359422463663
+
+E # 396 t 30.359422463663 m 15 ce 395 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 396
+ES t 30.369422463663
+
+E # 397 t 30.369422463663 m 15 ce 396 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 397
+ES t 30.379422463663
+
+E # 398 t 30.379422463663 m 15 ce 397 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 398
+ES t 30.389422463663
+
+E # 399 t 30.389422463663 m 15 ce 398 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 399
+ES t 30.399422463663
+
+E # 400 t 30.399422463663 m 15 ce 399 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 400
+ES t 30.409422463663
+
+E # 401 t 30.409422463663 m 15 ce 400 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 401
+ES t 30.419422463663
+
+E # 402 t 30.419422463663 m 15 ce 401 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 402
+ES t 30.429422463663
+
+E # 403 t 30.429422463663 m 15 ce 402 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 403
+ES t 30.439422463663
+
+E # 404 t 30.439422463663 m 15 ce 403 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 404
+ES t 30.449422463663
+
+E # 405 t 30.442755796997 m 18 ce 393 msg 64
+BS id 64 tid 64 eid 64 etid 64 c Packet n "#13 from-2-to-1 chain request" l 12000 pe 405
+SH sm 18 sg 3
+ES t 30.442755796997
+
+E # 406 t 30.442755796997 m 16 ce 405 msg 64
+BS id 64 tid 64 eid 64 etid 64 c Packet n "#13 from-2-to-1 chain request" l 12000 pe 406
+SH sm 16 sg 7
+ES t 30.442755796997
+
+E # 407 t 30.442755796997 m 15 ce 406 msg 64
+CM id 65 tid 65 eid 65 etid 65 c omnetpp::cMessage n "#18 from-1-to-2 chain log" pe -1
+BS id 65 tid 65 eid 65 etid 65 c Packet n "#18 from-1-to-2 chain log" l 12320 pe 407
+SH sm 15 sg 3
+ES t 30.442755796997
+DM id 64 tid 64 eid 64 etid 64 c omnetpp::cMessage n "#13 from-2-to-1 chain request" pe 407
+
+E # 408 t 30.442755796997 m 16 ce 407 msg 65
+BS id 65 tid 65 eid 65 etid 65 c Packet n "#18 from-1-to-2 chain log" l 12320 pe 408
+SH sm 16 sg 2621441
+ES t 30.442755796997
+
+E # 409 t 30.442755796997 m 18 ce 408 msg 65
+BS id 65 tid 65 eid 65 etid 65 c Packet n "#18 from-1-to-2 chain log" l 12320 pe 409
+SH sm 18 sg 5
+SH sm 3 sg 1572865 pd 0.1 td 0.001711111111
+SH sm 4 sg 1048577
+ES t 30.544466908108
+BS id 5 tid 5 eid 5 etid 5 c omnetpp::cMessage n endTxEvent pe 378
+ES t 30.444466908108
+
+E # 410 t 30.444466908108 m 18 ce 409 msg 5
+
+E # 411 t 30.449422463663 m 15 ce 404 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 411
+ES t 30.459422463663
+
+E # 412 t 30.459422463663 m 15 ce 411 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 412
+ES t 30.469422463663
+
+E # 413 t 30.469422463663 m 15 ce 412 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 413
+ES t 30.479422463663
+
+E # 414 t 30.479422463663 m 15 ce 413 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 414
+ES t 30.489422463663
+
+E # 415 t 30.479953726754 m 19 ce 285 msg 6
+BS id 6 tid 6 eid 6 etid 6 c omnetpp::cMessage n TimerThead pe 415
+ES t 37.061790268636
+
+E # 416 t 30.489422463663 m 15 ce 414 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 416
+ES t 30.499422463663
+
+E # 417 t 30.499422463663 m 15 ce 416 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 417
+ES t 30.509422463663
+
+E # 418 t 30.509422463663 m 15 ce 417 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 418
+ES t 30.519422463663
+
+E # 419 t 30.519422463663 m 15 ce 418 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 419
+ES t 30.529422463663
+
+E # 420 t 30.529422463663 m 15 ce 419 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 420
+ES t 30.539422463663
+
+E # 421 t 30.539422463663 m 15 ce 420 msg 3
+BS id 3 tid 3 eid 3 etid 3 c omnetpp::cMessage n TimerThead pe 421
+ES t 30.549422463663
+
+E # 422 t 30.544466908108 m 22 ce 409 msg 65
+BS id 65 tid 65 eid 65 etid 65 c Packet n "#18 from-1-to-2 chain log" l 12320 pe 422
+SH sm 22 sg 3
+ES t 30.544466908108
+
+E # 423 t 30.544466908108 m 20 ce 422 msg 65
+BS id 65 tid 65 eid 65 etid 65 c Packet n "#18 from-1-to-2 chain log" l 12320 pe 423
+SH sm 20 sg 7
+ES t 30.544466908108
+
+E # 424 t 30.544466908108 m 19 ce 423 msg 65
+SE e 0 c 14 m "Simulation stopped with endSimulation() -- in module (App) Net5.rte[2].app (id=19), at t=30.544466908108s, event #424"

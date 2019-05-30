@@ -1,0 +1,40 @@
+file 3531 1559140380                                            
+version 2
+run General-20-20190529-16:33:00-15992
+attr configname General
+attr datetime 20190529-16:33:00
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network networks.Net5
+attr processid 15992
+attr repetition 20
+attr replication #20
+attr resultdir results
+attr runnumber 20
+attr seedset 20
+param **.appType "\"App\""
+param **.app.packetLength "1500 bytes"
+param **.app.totalNodes 3
+param **.destAddresses "\"0\""
+param **.sendIaTime "uniform(5s, 10s)"
+param **.sendIaTimeEvil 10ms
+
+vector 0 Net5.rte[2].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 1 Net5.rte[0].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 2 Net5.rte[1].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+0	1032 784 7 406 8.042320642487 32.978027592813 21 0.101666666667 0.103333333334 2.138400000007 0.21775522469279
+1	1816 813 13 483 8.143987309154 33.388027592813 22 0.101666666667 0.103333333334 2.240088888896 0.22809585506318
+2	2629 900 34 467 8.347320642488 33.286316481702 24 0.101666666667 0.103333333334 2.445066666675 0.24910522469306
+
