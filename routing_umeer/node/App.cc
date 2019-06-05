@@ -1,7 +1,7 @@
 //TODO LIST
 // - create event logging system
 // - optimize evil node so that do transactions with node far
-// - implement anti busy protection on last transaciton
+// - implement anti busy protection on last transaction
 
 #include "App.h"
 
@@ -9,9 +9,11 @@ using namespace omnetpp;
 
 const int INITIAL_MONEY = 10;
 
-const int EVIL_NODE_ID[] = { 1 }; // [-1 means that there are no evil node]
+const int EVIL_NODE_ID[] = {1}; // [-1 means that there are no evil node]
 const int EVIL_SLEEPING_TRANSACTION = 5; // [1 is MIN]
 const int EVIL_NUMBER_OF_TRANSACTION = 2; // [2 is MIN] total max number of transaction to perform after the first evil transaction
+
+static std::vector<int> idOfEvilNodeDetected;
 
 Define_Module(App);
 
@@ -176,7 +178,7 @@ void App::receiveMessage(cMessage *msg)
                 sprintf(text, "Node: #%d - detected double spending in verification done by #%d distant: %d Time: %s s", myAddress, tempBlockID, pk->getHopCount(), SIMTIME_STR(simTime()));
                 EV << text << endl;
                 getSimulation()->getActiveEnvir()->alert(text);
-                endSimulation();
+                stopSimulation(tempBlockID);
             }
             tempBlockID = -1;
             tempBlockTransaction = 0;
@@ -215,7 +217,7 @@ void App::receiveMessage(cMessage *msg)
                 sprintf(text, "Node: #%d - detected double spending in dissemination done by #%d Time: %s s", myAddress, result, SIMTIME_STR(simTime()));
                 EV << text << endl;
                 getSimulation()->getActiveEnvir()->alert(text);
-                endSimulation();
+                stopSimulation(result);
             }
             break;
         }
@@ -593,6 +595,27 @@ bool App::itIsAlreadyBeenAttacked(int nodeId)
         }
     }
     return false;
+}
+
+void App::stopSimulation(int evilNodeId){
+
+    // Check if it has been already detected or not
+    int i, detected=0;
+    for(i=0; i< idOfEvilNodeDetected.size(); i++){
+        if(idOfEvilNodeDetected[i] == evilNodeId){
+            detected++;
+        }
+    }
+
+    if(detected == 0){
+        idOfEvilNodeDetected.push_back(evilNodeId);
+    }
+
+    // If there has been detected enough nodes equal to the evil node numbers stop simulation
+    if(idOfEvilNodeDetected.size() ==  sizeof(EVIL_NODE_ID) / sizeof(EVIL_NODE_ID[0])){
+        idOfEvilNodeDetected.clear();
+        endSimulation();
+    }
 }
 
 //DEBUG CODE

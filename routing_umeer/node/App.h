@@ -100,4 +100,6 @@ protected:
     virtual bool isAlreadyPresentInDb(LogDatabaseElement *element);
     virtual bool isNodeEvil();
     virtual bool itIsAlreadyBeenAttacked(int nodeId);
+
+    virtual void stopSimulation(int evilNodeId);
 };
