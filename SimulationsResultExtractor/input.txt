@@ -1,0 +1,79 @@
+make: Nothing to be done for `all'.
+OMNeT++ Discrete Event Simulation  (C) 1992-2018 Andras Varga, OpenSim Ltd.
+Version: 5.4.1, build: 180629-5e28390, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from .:  7
+
+Preparing for running configuration General, run #48...
+Assigned runID=General-48-20190605-12:53:50-31649
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.8e-05s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 9   present: 9   in FES: 3
+
+<!> Evil node: #1 - starting transaction with #2 of value $3 Time: 22.781084006419 s
+
+
+<!> Evil node: #1 - completed transaction with #2 of value $3 distant: 1 Time: 23.187795117531 s
+
+
+<!> Evil node: #1 - starting transaction with #0 of value $3 Time: 23.191084006419 s
+
+
+<!> Node: #0 - detected double spending in verification done by #1 distant: 1 Time: 23.496128450864 s
+
+** Event #421   t=23.496128450864   Elapsed: 0.002396s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 66   present: 10   in FES: 3
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[0].app (id=11), at t=23.496128450864s, event #421
+
+Calling finish() at end of Run #48...
+undisposed object: (Packet) Net5.rte[0].app.#18 from-1-to-0 chain log -- check module destructor
+
+End.
+OMNeT++ Discrete Event Simulation  (C) 1992-2018 Andras Varga, OpenSim Ltd.
+Version: 5.4.1, build: 180629-5e28390, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from .:  7
+
+Preparing for running configuration General, run #49...
+Assigned runID=General-49-20190605-12:53:50-31650
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.3e-05s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 9   present: 9   in FES: 3
+
+<!> Evil node: #1 - starting transaction with #0 of value $2 Time: 25.200057211331 s
+
+
+<!> Evil node: #1 - completed transaction with #0 of value $2 distant: 1 Time: 25.606768322443 s
+
+
+<!> Evil node: #1 - starting transaction with #2 of value $2 Time: 25.610057211331 s
+
+
+<!> Node: #2 - detected double spending in verification done by #1 distant: 1 Time: 25.915101655776 s
+
+** Event #519   t=25.915101655776   Elapsed: 0.002176s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 82   present: 10   in FES: 3
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[2].app (id=19), at t=25.915101655776s, event #519
+
+Calling finish() at end of Run #49...
+undisposed object: (Packet) Net5.rte[2].app.#19 from-1-to-2 chain log -- check module destructor
+
+End.

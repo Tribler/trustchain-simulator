@@ -1,0 +1,12 @@
+ 
+Preparing for running configuration General, run #48...
+<!> Evil node: #1 - starting transaction with #2 of value $3 Time: 22.781084006419 s
+<!> Evil node: #1 - completed transaction with #2 of value $3 distant: 1 Time: 23.187795117531 s
+<!> Evil node: #1 - starting transaction with #0 of value $3 Time: 23.191084006419 s
+<!> Node: #0 - detected double spending in verification done by #1 distant: 1 Time: 23.496128450864 s
+ 
+Preparing for running configuration General, run #49...
+<!> Evil node: #1 - starting transaction with #0 of value $2 Time: 25.200057211331 s
+<!> Evil node: #1 - completed transaction with #0 of value $2 distant: 1 Time: 25.606768322443 s
+<!> Evil node: #1 - starting transaction with #2 of value $2 Time: 25.610057211331 s
+<!> Node: #2 - detected double spending in verification done by #1 distant: 1 Time: 25.915101655776 s
