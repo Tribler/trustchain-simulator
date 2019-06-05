@@ -1,7 +1,5 @@
 //TODO LIST
-// - create event logging system
 // - optimize evil node so that do transactions with node far
-// - implement anti busy protection on last transaction
 
 #include "App.h"
 
