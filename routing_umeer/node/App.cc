@@ -5,13 +5,14 @@
 
 using namespace omnetpp;
 
-const int INITIAL_MONEY = 10;
+const int INITIAL_MONEY = 100;
 
-const int EVIL_NODE_ID[] = {1}; // [-1 means that there are no evil node]
-const int EVIL_SLEEPING_TRANSACTION = 5; // [1 is MIN]
+const int EVIL_NODE_ID[] = { 1 }; // [-1 means that there are no evil node]
+const int EVIL_SLEEPING_TRANSACTION = 10; // [1 is MIN]
 const int EVIL_NUMBER_OF_TRANSACTION = 2; // [2 is MIN] total max number of transaction to perform after the first evil transaction
 
 static std::vector<int> idOfEvilNodeDetected;
+static simtime_t evilNode2ndTransactionTime;
 
 Define_Module(App);
 
@@ -265,6 +266,7 @@ void App::createTransactionMessage()
         while (itIsAlreadyBeenAttacked(destAddress)) {
             destAddress = randomNodeAddressPicker();
         }
+        evilNode2ndTransactionTime = simTime();
     }
 
     tempBlockID = destAddress;
@@ -595,23 +597,27 @@ bool App::itIsAlreadyBeenAttacked(int nodeId)
     return false;
 }
 
-void App::stopSimulation(int evilNodeId){
+void App::stopSimulation(int evilNodeId)
+{
 
     // Check if it has been already detected or not
-    int i, detected=0;
-    for(i=0; i< idOfEvilNodeDetected.size(); i++){
-        if(idOfEvilNodeDetected[i] == evilNodeId){
+    int i, detected = 0;
+    for (i = 0; i < idOfEvilNodeDetected.size(); i++) {
+        if (idOfEvilNodeDetected[i] == evilNodeId) {
             detected++;
         }
     }
 
-    if(detected == 0){
+    if (detected == 0) {
         idOfEvilNodeDetected.push_back(evilNodeId);
     }
 
     // If there has been detected enough nodes equal to the evil node numbers stop simulation
-    if(idOfEvilNodeDetected.size() ==  sizeof(EVIL_NODE_ID) / sizeof(EVIL_NODE_ID[0])){
+    if (idOfEvilNodeDetected.size() == sizeof(EVIL_NODE_ID) / sizeof(EVIL_NODE_ID[0])) {
         idOfEvilNodeDetected.clear();
+        char text[128];
+        sprintf(text, "Simulation: delta detection time: %s s ", SIMTIME_STR(simTime()-evilNode2ndTransactionTime));
+        getSimulation()->getActiveEnvir()->alert(text);
         endSimulation();
     }
 }

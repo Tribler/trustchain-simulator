@@ -29,9 +29,13 @@ public class SimulationsResultExtractor {
                 if(linea.contains("Preparing") || linea.contains("<!>") && !(linea.contains("<!> Simulation stopped"))){
                     if(linea.contains("Preparing")){
                     System.out.println(" ");
-                    writer.println(" ");
                     }
                     System.out.println(linea);
+                }
+                
+              
+                
+                if(linea.contains("delta detection time")){
                     writer.println(linea);
                 }
             }
