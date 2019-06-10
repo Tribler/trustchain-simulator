@@ -6,13 +6,9 @@
 using namespace omnetpp;
 
 const int INITIAL_MONEY = 100;
-
 const int EVIL_NODE_ID[] = { 1 }; // [-1 means that there are no evil node]
 const int EVIL_SLEEPING_TRANSACTION = 10; // [1 is MIN]
 const int EVIL_NUMBER_OF_TRANSACTION = 2; // [2 is MIN] total max number of transaction to perform after the first evil transaction
-
-static std::vector<int> idOfEvilNodeDetected;
-static simtime_t evilNode2ndTransactionTime;
 
 Define_Module(App);
 
@@ -266,7 +262,7 @@ void App::createTransactionMessage()
         while (itIsAlreadyBeenAttacked(destAddress)) {
             destAddress = randomNodeAddressPicker();
         }
-        evilNode2ndTransactionTime = simTime();
+        simulationRegisterTransactionTime(myAddress);
     }
 
     tempBlockID = destAddress;
@@ -586,7 +582,7 @@ bool App::isNodeEvil()
     }
 }
 
-bool App::itIsAlreadyBeenAttacked(int nodeId)
+bool App::itIsAlreadyBeenAttacked(int nodeId)    // The evil node can check here if a node as been already addressed or not
 {
     int i;
     for (i = 0; i < victimDestAddresses.size(); i++) {
@@ -597,27 +593,57 @@ bool App::itIsAlreadyBeenAttacked(int nodeId)
     return false;
 }
 
-void App::stopSimulation(int evilNodeId)
+void App::simulationRegisterTransactionTime(int nodeId) // Here are recorded the transaction starting times for all evil nodes
 {
+    int i = 0, alreadyRegistered = 0;
 
-    // Check if it has been already detected or not
-    int i, detected = 0;
-    for (i = 0; i < idOfEvilNodeDetected.size(); i++) {
-        if (idOfEvilNodeDetected[i] == evilNodeId) {
-            detected++;
+    for (i = 0; i < simulationTiming.size(); i++) {
+        if (simulationTiming[i].nodeId == nodeId) {
+            alreadyRegistered = 1;
+            simulationTiming[i].transactionTime = simTime();
         }
     }
 
-    if (detected == 0) {
-        idOfEvilNodeDetected.push_back(evilNodeId);
+    if (alreadyRegistered == 0) {
+        SimulationTiming *timeLog = new SimulationTiming(nodeId, simTime(), 0);
+        simulationTiming.push_back(*timeLog);
+    }
+}
+
+void App::simulationRegisterDetectionTime(int nodeId) // Here are logged the evil nodes detection times
+{
+    int i = 0;
+
+    for (i = 0; i < simulationTiming.size(); i++) {
+        if (simulationTiming[i].nodeId == nodeId) {
+            if (simulationTiming[i].detectionTime == 0) { // In case of multiple detection caused by dissemination_detection we just need the quickest time
+                simulationTiming[i].detectionTime = simTime();
+            }
+        }
+    }
+}
+
+void App::stopSimulation(int evilNodeId) // This function is being called when ever an evil node is being detected
+{
+    simulationRegisterDetectionTime(evilNodeId);
+
+    int i, nodesDetected = 0;
+    for (i = 0; i < simulationTiming.size(); i++) {
+        if (simulationTiming[i].detectionTime != 0) {
+            nodesDetected++;
+        }
     }
 
     // If there has been detected enough nodes equal to the evil node numbers stop simulation
-    if (idOfEvilNodeDetected.size() == sizeof(EVIL_NODE_ID) / sizeof(EVIL_NODE_ID[0])) {
-        idOfEvilNodeDetected.clear();
+    if (nodesDetected == sizeof(EVIL_NODE_ID) / sizeof(EVIL_NODE_ID[0])) {
+
         char text[128];
-        sprintf(text, "Simulation: delta detection time: %s s ", SIMTIME_STR(simTime()-evilNode2ndTransactionTime));
-        getSimulation()->getActiveEnvir()->alert(text);
+        for (i = 0; i < simulationTiming.size(); i++) {
+            sprintf(text, "Simulation: evil node #%d delta detection time: %s s ", simulationTiming[i].nodeId, SIMTIME_STR(simulationTiming[i].detectionTime - simulationTiming[i].transactionTime));
+            getSimulation()->getActiveEnvir()->alert(text);
+        }
+
+        simulationTiming.clear();
         endSimulation();
     }
 }

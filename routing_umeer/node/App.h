@@ -37,6 +37,22 @@ public:
     }
 };
 
+class SimulationTiming
+{
+public:
+    int nodeId;
+    simtime_t transactionTime, detectionTime;
+
+    SimulationTiming(int nodeId, simtime_t transactionTime, simtime_t detectionTime)
+    {
+        this->nodeId = nodeId;
+        this->transactionTime = transactionTime;
+        this->detectionTime = detectionTime;
+    }
+};
+
+static std::vector<SimulationTiming> simulationTiming; // This variable contains the evil nodes last transaction and detection timing
+
 class App : public omnetpp::cSimpleModule
 {
 private:
@@ -68,8 +84,8 @@ private:
     simsignal_t sourceAddressSignal;
 
     //TrustChain Storage
-    std::vector<TrustChainElement> trustChain;
-    std::vector<LogDatabaseElement> logDatabase;
+    std::vector<TrustChainElement> trustChain; // This variable contains the personal chain
+    std::vector<LogDatabaseElement> logDatabase; // This variable contains the chain knowledge received by the network
 
 public:
     App();
@@ -101,5 +117,7 @@ protected:
     virtual bool isNodeEvil();
     virtual bool itIsAlreadyBeenAttacked(int nodeId);
 
+    virtual void simulationRegisterTransactionTime(int idNode);
+    virtual void simulationRegisterDetectionTime(int idNode);
     virtual void stopSimulation(int evilNodeId);
 };
