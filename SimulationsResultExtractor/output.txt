@@ -1,1 +1,1 @@
-<!> Simulation: delta detection time: 0.305100000001 s 
+0.305100000001

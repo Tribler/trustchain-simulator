@@ -1,0 +1,75 @@
+file 52043 1560182645                                           
+version 2
+run General-42-20190610-18:04:05-2040
+attr configname General
+attr datetime 20190610-18:04:05
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network networks.Net5
+attr processid 2040
+attr repetition 42
+attr replication #42
+attr resultdir results
+attr runnumber 42
+attr seedset 42
+param **.appType "\"App\""
+param **.app.packetLength "1500 bytes"
+param **.app.totalNodes 10
+param **.destAddresses "\"0\""
+param **.sendIaTime "uniform(5s, 10s)"
+param **.sendIaTimeEvil 10ms
+
+vector 0 Net5.rte[6].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 1 Net5.rte[7].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 2 Net5.rte[3].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 3 Net5.rte[8].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 4 Net5.rte[5].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 5 Net5.rte[4].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 6 Net5.rte[0].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 7 Net5.rte[9].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 8 Net5.rte[1].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+vector 9 Net5.rte[2].app endToEndDelay:vector ETV
+attr interpolationmode none
+attr title "end-to-end delay of arrived packets, vector"
+attr unit s
+0	2088 5057 23 13602 6.08509319259 54.596853038595 130 0.101666666667 0.318333333337 33.758086068814 9.3832173423012
+1	7145 5059 29 13567 6.120507271694 54.405852016094 130 0.101666666667 0.320000000004 33.662988889134 9.3030811851972
+2	12204 5022 47 13461 6.323840605028 54.195852016092 129 0.101666666667 0.315000000003 22.025855555699 4.3007975678324
+3	17226 4914 53 13530 6.390093192591 54.305852016094 127 0.101666666667 0.318333333337 26.564444444672 6.3333358410988
+4	22140 4926 128 13519 6.638840605031 54.300852016093 127 0.101666666667 0.215000000003 20.300222222401 3.5662309857374
+5	27066 4904 221 13658 6.738840605031 54.803885349421 126 0.101666666667 0.311666666669 23.221919255659 4.7957016420158
+6	31970 5011 280 13406 6.832173938363 54.089185349424 129 0.101666666667 0.415000000003 33.939655555677 9.9019878846397
+7	36981 4977 283 13533 6.832173938363 54.307518682761 128 0.101666666667 0.320000000004 26.779022222458 6.3907567114798
+8	41958 5028 304 13634 6.835507271697 54.702118682754 129 0.101666666667 0.408333333335 32.242000000125 9.3311578499498
+9	46986 5055 311 13557 6.837173938364 54.397518682759 130 0.101666666667 0.311666666669 26.792755555689 6.5876981109305
+

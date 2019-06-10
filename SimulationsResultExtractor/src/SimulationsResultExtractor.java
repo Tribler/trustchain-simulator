@@ -36,7 +36,7 @@ public class SimulationsResultExtractor {
               
                 
                 if(linea.contains("delta detection time")){
-                    writer.println(linea);
+                    writer.println(linea.substring(linea.length()-14));
                 }
             }
             input.close();
@@ -46,7 +46,5 @@ public class SimulationsResultExtractor {
             System.out.println("Simulation Results Extractor: The input file can not be found or it is corrupted");
             System.exit(0);
         }
-
     }
-
 }

@@ -33,7 +33,7 @@ Running simulation...
 <!> Node: #4 - detected double spending in verification done by #1 distant: 1 Time: 65.582761083751 s
 
 
-<!> Simulation: delta detection time: 0.305100000001 s 
+<!> Simulation: delta detection time: 0.305100000001
 
 ** Event #16000   t=65.582761083751   Elapsed: 0.052002s (0m 00s)  0% completed  (0% total)
      Speed:     ev/sec=307710   simsec/sec=1261.28   ev/simsec=243.967

@@ -639,7 +639,7 @@ void App::stopSimulation(int evilNodeId) // This function is being called when e
 
         char text[128];
         for (i = 0; i < simulationTiming.size(); i++) {
-            sprintf(text, "Simulation: evil node #%d delta detection time: %s s ", simulationTiming[i].nodeId, SIMTIME_STR(simulationTiming[i].detectionTime - simulationTiming[i].transactionTime));
+            sprintf(text, "Simulation: evil node #%d delta detection time:  %s", simulationTiming[i].nodeId, SIMTIME_STR(simulationTiming[i].detectionTime - simulationTiming[i].transactionTime));
             getSimulation()->getActiveEnvir()->alert(text);
         }
 

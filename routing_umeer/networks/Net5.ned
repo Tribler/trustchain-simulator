@@ -21,17 +21,19 @@ network Net5
         }
     connections:
              
-    rte[0].port++ <--> C <--> rte[3].port++;
-    rte[1].port++ <--> C <--> rte[4].port++;
-    rte[1].port++ <--> C <--> rte[8].port++;
-    rte[1].port++ <--> C <--> rte[9].port++;
-    rte[2].port++ <--> C <--> rte[4].port++;
-    rte[3].port++ <--> C <--> rte[6].port++;
-    rte[3].port++ <--> C <--> rte[7].port++;
-    rte[4].port++ <--> C <--> rte[5].port++;
-    rte[4].port++ <--> C <--> rte[6].port++;
-    rte[6].port++ <--> C <--> rte[7].port++;
-    rte[6].port++ <--> C <--> rte[9].port++;
+rte[0].port++ <--> C <--> rte[3].port++;
+rte[1].port++ <--> C <--> rte[2].port++;
+rte[1].port++ <--> C <--> rte[4].port++;
+rte[2].port++ <--> C <--> rte[4].port++;
+rte[2].port++ <--> C <--> rte[8].port++;
+rte[2].port++ <--> C <--> rte[9].port++;
+rte[3].port++ <--> C <--> rte[5].port++;
+rte[3].port++ <--> C <--> rte[8].port++;
+rte[3].port++ <--> C <--> rte[9].port++;
+rte[4].port++ <--> C <--> rte[5].port++;
+rte[5].port++ <--> C <--> rte[6].port++;
+rte[5].port++ <--> C <--> rte[7].port++;
+   
 
 }
 

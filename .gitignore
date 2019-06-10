@@ -19,3 +19,4 @@ routing_umeer/routing_umeer.exe
 /SimulationsResultExtractor/nbproject/private/
 /SimulationsResultExtractor/build/
 /SimulationsResultExtractor/dist/
+*.vec
