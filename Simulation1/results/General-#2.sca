@@ -1,14 +1,14 @@
 version 2
-run General-2-20190610-18:03:48-8544
+run General-2-20190612-00:33:51-18268
 attr configname General
-attr datetime 20190610-18:03:48
+attr datetime 20190612-00:33:51
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network networks.Net5
-attr processid 8544
+attr processid 18268
 attr repetition 2
 attr replication #2
 attr resultdir results
