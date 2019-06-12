@@ -1,0 +1,47 @@
+Starting...
+
+$ cd C:/sim/omnetpp-5.4.1/samples/TrustChain-Simulator/routing_umeer
+$ routing_umeer.exe -r 1 -m -u Cmdenv -c General omnetpp.ini
+
+OMNeT++ Discrete Event Simulation  (C) 1992-2018 Andras Varga, OpenSim Ltd.
+Version: 5.4.1, build: 180629-5e28390, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from .:  7
+
+Preparing for running configuration General, run #1...
+Assigned runID=General-1-20190607-15:48:19-22828
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-006s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 32   present: 32   in FES: 10
+
+<!> Evil node: #1 - starting transaction with #3 of value $6 Time: 64.04766108375 s
+
+
+<!> Evil node: #1 - completed transaction with #3 of value $6 distant: 3 Time: 65.269161143158 s
+
+
+<!> Evil node: #1 - starting transaction with #4 of value $3 Time: 65.27766108375 s
+
+
+<!> Node: #4 - detected double spending in verification done by #1 distant: 1 Time: 65.582761083751 s
+
+
+<!> Simulation: delta detection time: 0.305100000001
+
+** Event #16000   t=65.582761083751   Elapsed: 0.052002s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=307710   simsec/sec=1261.28   ev/simsec=243.967
+     Messages:  created: 1452   present: 33   in FES: 10
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[4].app (id=50), at t=65.582761083751s, event #16000
+
+Calling finish() at end of Run #1...
+undisposed object: (Packet) Net5.rte[4].app.#102 from-1-to-4 chain log -- check module destructor
+
+End.
