@@ -1,47 +1,1196 @@
-Starting...
-
-$ cd C:/sim/omnetpp-5.4.1/samples/TrustChain-Simulator/routing_umeer
-$ routing_umeer.exe -r 1 -m -u Cmdenv -c General omnetpp.ini
-
-OMNeT++ Discrete Event Simulation  (C) 1992-2018 Andras Varga, OpenSim Ltd.
-Version: 5.4.1, build: 180629-5e28390, edition: Academic Public License -- NOT FOR COMMERCIAL USE
-See the license for distribution terms and warranty disclaimer
-
-Setting up Cmdenv...
-
-Loading NED files from .:  7
-
+make: Nothing to be done for `all'.
+ 
+Preparing for running configuration General, run #0...
+<!> Evil node: #1 - starting transaction with #46 of value $3 Time: 1669.499578682004 s
+<!> Evil node: #1 - starting transaction with #77 of value $2 Time: 1759.169578682004 s
+<!> Evil node: #1 - starting transaction with #93 of value $1 Time: 1769.429578682004 s
+<!> Evil node: #1 - starting transaction with #89 of value $1 Time: 1863.789578682004 s
+<!> Evil node: #1 - starting transaction with #68 of value $3 Time: 1870.269578682004 s
+<!> Evil node: #1 - starting transaction with #32 of value $2 Time: 1905.639578682004 s
+<!> Evil node: #1 - starting transaction with #68 of value $2 Time: 1911.279578682004 s
+<!> Evil node: #1 - starting transaction with #75 of value $1 Time: 1922.799578682004 s
+<!> Evil node: #1 - starting transaction with #85 of value $2 Time: 1931.669578682004 s
+<!> Evil node: #1 - starting transaction with #90 of value $2 Time: 1949.769578682004 s
+<!> Evil node: #1 - starting transaction with #54 of value $3 Time: 1966.119578682004 s
+<!> Evil node: #1 - starting transaction with #39 of value $2 Time: 1984.229578682004 s
+<!> Evil node: #1 - starting transaction with #95 of value $1 Time: 2022.249578682004 s
+<!> Evil node: #1 - starting transaction with #38 of value $3 Time: 2024.859578682004 s
+<!> Evil node: #1 - starting transaction with #50 of value $2 Time: 2031.049578682004 s
+<!> Evil node: #1 - completed transaction with #50 of value $2 distant: 3 Time: 2051.578589061734 s
+<!> Evil node: #1 - starting transaction with #21 of value $3 Time: 2051.579578682004 s
+<!> Evil node: #1 - starting transaction with #39 of value $1 Time: 2065.089578682004 s
+<!> Evil node: #1 - starting transaction with #31 of value $2 Time: 2075.759578682004 s
+<!> Node: #31 - detected double spending in verification done by #1 distant: 2 Time: 2084.780268566499 s
+<!> Simulation: evil node #1 delta detection time:  9.020689884495
+ 
 Preparing for running configuration General, run #1...
-Assigned runID=General-1-20190607-15:48:19-22828
-Setting up network "networks.Net5"...
-Initializing...
-
-Running simulation...
-** Event #0   t=0   Elapsed: 5e-006s (0m 00s)  0% completed  (0% total)
-     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
-     Messages:  created: 32   present: 32   in FES: 10
-
-<!> Evil node: #1 - starting transaction with #3 of value $6 Time: 64.04766108375 s
-
-
-<!> Evil node: #1 - completed transaction with #3 of value $6 distant: 3 Time: 65.269161143158 s
-
-
-<!> Evil node: #1 - starting transaction with #4 of value $3 Time: 65.27766108375 s
-
-
-<!> Node: #4 - detected double spending in verification done by #1 distant: 1 Time: 65.582761083751 s
-
-
-<!> Simulation: delta detection time: 0.305100000001
-
-** Event #16000   t=65.582761083751   Elapsed: 0.052002s (0m 00s)  0% completed  (0% total)
-     Speed:     ev/sec=307710   simsec/sec=1261.28   ev/simsec=243.967
-     Messages:  created: 1452   present: 33   in FES: 10
-
-<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[4].app (id=50), at t=65.582761083751s, event #16000
-
-Calling finish() at end of Run #1...
-undisposed object: (Packet) Net5.rte[4].app.#102 from-1-to-4 chain log -- check module destructor
-
-End.
+<!> Evil node: #1 - starting transaction with #25 of value $149 Time: 1433.021456163835 s
+<!> Evil node: #1 - starting transaction with #88 of value $160 Time: 1445.811456163835 s
+<!> Evil node: #1 - starting transaction with #65 of value $104 Time: 1481.661456163835 s
+<!> Evil node: #1 - starting transaction with #75 of value $152 Time: 1489.841456163835 s
+<!> Evil node: #1 - completed transaction with #75 of value $152 distant: 3 Time: 1505.657456163835 s
+<!> Evil node: #1 - starting transaction with #98 of value $36 Time: 1505.661456163835 s
+<!> Evil node: #1 - starting transaction with #44 of value $129 Time: 1514.361456163835 s
+<!> Node: #44 - detected double spending in verification done by #1 distant: 2 Time: 1522.475329366814 s
+<!> Simulation: evil node #1 delta detection time:  8.113873202979
+ 
+Preparing for running configuration General, run #2...
+<!> Evil node: #1 - starting transaction with #59 of value $7 Time: 2538.210832315968 s
+<!> Evil node: #1 - completed transaction with #59 of value $7 distant: 1 Time: 2578.161372843251 s
+<!> Evil node: #1 - starting transaction with #43 of value $13 Time: 2578.170832315968 s
+<!> Node: #43 - detected double spending in verification done by #1 distant: 4 Time: 2664.23806144231 s
+<!> Simulation: evil node #1 delta detection time:  86.067229126342
+ 
+Preparing for running configuration General, run #3...
+<!> Evil node: #1 - starting transaction with #37 of value $19 Time: 2177.732000314859 s
+<!> Evil node: #1 - starting transaction with #68 of value $9 Time: 2226.632000314859 s
+<!> Evil node: #1 - starting transaction with #45 of value $68 Time: 2238.132000314859 s
+<!> Evil node: #1 - starting transaction with #57 of value $137 Time: 2241.832000314859 s
+<!> Evil node: #1 - starting transaction with #55 of value $58 Time: 2263.542000314859 s
+<!> Evil node: #1 - starting transaction with #83 of value $174 Time: 2271.352000314859 s
+<!> Evil node: #1 - completed transaction with #83 of value $174 distant: 4 Time: 2394.236096514676 s
+<!> Evil node: #1 - starting transaction with #77 of value $19 Time: 2394.242000314859 s
+<!> Evil node: #1 - starting transaction with #98 of value $93 Time: 2425.302000314859 s
+<!> Evil node: #1 - starting transaction with #92 of value $142 Time: 2433.662000314859 s
+<!> Evil node: #1 - starting transaction with #62 of value $148 Time: 2445.072000314859 s
+<!> Evil node: #1 - starting transaction with #85 of value $2 Time: 2507.172000314859 s
+<!> Evil node: #1 - starting transaction with #95 of value $2 Time: 2551.332000314859 s
+<!> Evil node: #1 - starting transaction with #80 of value $65 Time: 2554.842000314859 s
+<!> Evil node: #1 - starting transaction with #94 of value $21 Time: 2604.002000314859 s
+<!> Evil node: #1 - starting transaction with #23 of value $141 Time: 2614.522000314859 s
+<!> Evil node: #1 - starting transaction with #22 of value $164 Time: 2664.162000314859 s
+<!> Node: #22 - detected double spending in verification done by #1 distant: 4 Time: 2718.232096514676 s
+<!> Simulation: evil node #1 delta detection time:  54.070096199817
+ 
+Preparing for running configuration General, run #4...
+<!> Evil node: #1 - starting transaction with #84 of value $69 Time: 1248.611495512297 s
+<!> Evil node: #1 - starting transaction with #94 of value $35 Time: 1264.771495512297 s
+<!> Evil node: #1 - starting transaction with #43 of value $53 Time: 1306.361495512297 s
+<!> Evil node: #1 - starting transaction with #62 of value $51 Time: 1351.891495512297 s
+<!> Evil node: #1 - starting transaction with #54 of value $29 Time: 1359.931495512297 s
+<!> Evil node: #1 - starting transaction with #32 of value $19 Time: 1370.091495512297 s
+<!> Evil node: #1 - starting transaction with #86 of value $17 Time: 1377.131495512297 s
+<!> Evil node: #1 - starting transaction with #50 of value $70 Time: 1453.311495512297 s
+<!> Evil node: #1 - starting transaction with #40 of value $38 Time: 1471.141495512297 s
+<!> Evil node: #1 - starting transaction with #72 of value $57 Time: 1511.471495512297 s
+<!> Evil node: #1 - starting transaction with #78 of value $48 Time: 1533.641495512297 s
+<!> Evil node: #1 - starting transaction with #70 of value $46 Time: 1537.871495512297 s
+<!> Evil node: #1 - starting transaction with #58 of value $27 Time: 1546.081495512297 s
+<!> Evil node: #1 - starting transaction with #88 of value $29 Time: 1558.741495512297 s
+<!> Evil node: #1 - starting transaction with #18 of value $66 Time: 1563.951495512297 s
+<!> Evil node: #1 - starting transaction with #45 of value $32 Time: 1606.301495512297 s
+<!> Evil node: #1 - starting transaction with #78 of value $13 Time: 1609.361495512297 s
+<!> Evil node: #1 - starting transaction with #52 of value $8 Time: 1611.971495512297 s
+<!> Evil node: #1 - starting transaction with #94 of value $69 Time: 1619.781495512297 s
+<!> Evil node: #1 - starting transaction with #56 of value $57 Time: 1630.061495512297 s
+<!> Evil node: #1 - starting transaction with #41 of value $36 Time: 1669.651495512297 s
+<!> Evil node: #1 - starting transaction with #3 of value $26 Time: 1730.391495512297 s
+<!> Evil node: #1 - starting transaction with #44 of value $44 Time: 1769.461495512297 s
+<!> Evil node: #1 - starting transaction with #36 of value $55 Time: 1784.381495512297 s
+<!> Evil node: #1 - starting transaction with #64 of value $14 Time: 1795.381495512297 s
+<!> Evil node: #1 - starting transaction with #20 of value $67 Time: 1822.571495512297 s
+<!> Evil node: #1 - starting transaction with #42 of value $35 Time: 1860.901495512297 s
+<!> Evil node: #1 - starting transaction with #23 of value $47 Time: 1911.691495512297 s
+<!> Evil node: #1 - starting transaction with #79 of value $22 Time: 1980.321495512297 s
+<!> Evil node: #1 - starting transaction with #89 of value $16 Time: 2032.251495512297 s
+<!> Evil node: #1 - starting transaction with #31 of value $63 Time: 2039.481495512297 s
+<!> Evil node: #1 - starting transaction with #25 of value $19 Time: 2066.291495512297 s
+<!> Evil node: #1 - starting transaction with #57 of value $42 Time: 2072.291495512297 s
+<!> Evil node: #1 - starting transaction with #92 of value $69 Time: 2084.871495512297 s
+<!> Evil node: #1 - starting transaction with #14 of value $4 Time: 2121.821495512297 s
+<!> Evil node: #1 - starting transaction with #64 of value $7 Time: 2171.761495512297 s
+<!> Evil node: #1 - starting transaction with #75 of value $16 Time: 2194.901495512297 s
+<!> Evil node: #1 - starting transaction with #57 of value $18 Time: 2202.711495512297 s
+<!> Evil node: #1 - starting transaction with #88 of value $69 Time: 2236.081495512297 s
+<!> Evil node: #1 - starting transaction with #11 of value $12 Time: 2241.291495512297 s
+<!> Evil node: #1 - starting transaction with #61 of value $2 Time: 2247.541495512297 s
+<!> Evil node: #1 - starting transaction with #80 of value $4 Time: 2276.221495512297 s
+<!> Evil node: #1 - starting transaction with #42 of value $65 Time: 2281.431495512297 s
+<!> Evil node: #1 - starting transaction with #92 of value $22 Time: 2299.341495512297 s
+<!> Evil node: #1 - starting transaction with #17 of value $3 Time: 2333.441495512297 s
+<!> Evil node: #1 - starting transaction with #72 of value $9 Time: 2346.911495512297 s
+<!> Evil node: #1 - starting transaction with #17 of value $34 Time: 2368.251495512297 s
+<!> Evil node: #1 - starting transaction with #39 of value $65 Time: 2386.041495512297 s
+<!> Evil node: #1 - starting transaction with #32 of value $57 Time: 2393.921495512297 s
+<!> Evil node: #1 - starting transaction with #29 of value $52 Time: 2439.621495512297 s
+<!> Evil node: #1 - starting transaction with #47 of value $37 Time: 2450.571495512297 s
+<!> Evil node: #1 - starting transaction with #61 of value $47 Time: 2489.171495512297 s
+<!> Evil node: #1 - starting transaction with #7 of value $18 Time: 2507.141495512297 s
+<!> Evil node: #1 - starting transaction with #9 of value $14 Time: 2542.131495512297 s
+<!> Evil node: #1 - starting transaction with #68 of value $58 Time: 2550.031495512297 s
+<!> Evil node: #1 - starting transaction with #30 of value $33 Time: 2579.071495512297 s
+<!> Evil node: #1 - starting transaction with #69 of value $34 Time: 2625.261495512297 s
+<!> Evil node: #1 - starting transaction with #27 of value $25 Time: 2663.501495512297 s
+<!> Evil node: #1 - starting transaction with #67 of value $32 Time: 2726.471495512297 s
+<!> Evil node: #1 - starting transaction with #39 of value $29 Time: 2772.921495512297 s
+<!> Evil node: #1 - starting transaction with #38 of value $27 Time: 2800.571495512297 s
+<!> Evil node: #1 - starting transaction with #53 of value $27 Time: 2806.051495512297 s
+<!> Evil node: #1 - starting transaction with #41 of value $7 Time: 2825.251495512297 s
+<!> Evil node: #1 - starting transaction with #18 of value $48 Time: 2858.561495512297 s
+<!> Evil node: #1 - starting transaction with #64 of value $19 Time: 2919.801495512297 s
+<!> Evil node: #1 - completed transaction with #64 of value $19 distant: 3 Time: 2936.722617869683 s
+<!> Evil node: #1 - starting transaction with #78 of value $57 Time: 2936.731495512297 s
+<!> Evil node: #1 - starting transaction with #60 of value $10 Time: 2940.331495512297 s
+<!> Node: #60 - detected double spending in verification done by #1 distant: 3 Time: 2954.698617869683 s
+<!> Simulation: evil node #1 delta detection time:  14.367122357386
+ 
+Preparing for running configuration General, run #5...
+<!> Evil node: #1 - starting transaction with #29 of value $18 Time: 2229.349416636399 s
+<!> Evil node: #1 - starting transaction with #82 of value $16 Time: 2244.639416636399 s
+<!> Evil node: #1 - starting transaction with #15 of value $4 Time: 2257.239416636399 s
+<!> Evil node: #1 - starting transaction with #69 of value $7 Time: 2272.829416636399 s
+<!> Evil node: #1 - starting transaction with #25 of value $1 Time: 2288.989416636399 s
+<!> Evil node: #1 - starting transaction with #61 of value $18 Time: 2295.269416636399 s
+<!> Evil node: #1 - completed transaction with #61 of value $18 distant: 3 Time: 2368.199532733071 s
+<!> Evil node: #1 - starting transaction with #92 of value $2 Time: 2368.209416636399 s
+<!> Evil node: #1 - starting transaction with #35 of value $5 Time: 2377.499416636399 s
+<!> Evil node: #1 - starting transaction with #27 of value $11 Time: 2408.439416636399 s
+<!> Evil node: #1 - starting transaction with #77 of value $15 Time: 2413.649416636399 s
+<!> Node: #77 - detected double spending in verification done by #1 distant: 3 Time: 2425.720120769584 s
+<!> Simulation: evil node #1 delta detection time:  12.070704133185
+ 
+Preparing for running configuration General, run #6...
+<!> Evil node: #1 - starting transaction with #99 of value $32 Time: 1377.144043858859 s
+<!> Evil node: #1 - starting transaction with #17 of value $9 Time: 1403.584043858859 s
+<!> Evil node: #1 - starting transaction with #96 of value $21 Time: 1444.484043858859 s
+<!> Evil node: #1 - starting transaction with #29 of value $30 Time: 1472.734043858859 s
+<!> Evil node: #1 - starting transaction with #24 of value $29 Time: 1501.274043858859 s
+<!> Evil node: #1 - starting transaction with #95 of value $15 Time: 1509.084043858859 s
+<!> Evil node: #1 - starting transaction with #20 of value $3 Time: 1511.714043858859 s
+<!> Evil node: #1 - starting transaction with #38 of value $22 Time: 1529.664043858859 s
+<!> Evil node: #1 - starting transaction with #27 of value $14 Time: 1546.044043858859 s
+<!> Evil node: #1 - starting transaction with #27 of value $12 Time: 1593.094043858859 s
+<!> Evil node: #1 - starting transaction with #95 of value $16 Time: 1630.734043858859 s
+<!> Evil node: #1 - starting transaction with #62 of value $21 Time: 1634.374043858859 s
+<!> Evil node: #1 - starting transaction with #57 of value $25 Time: 1662.384043858859 s
+<!> Evil node: #1 - starting transaction with #51 of value $12 Time: 1687.384043858859 s
+<!> Evil node: #1 - starting transaction with #23 of value $17 Time: 1715.594043858859 s
+<!> Evil node: #1 - starting transaction with #78 of value $21 Time: 1737.564043858859 s
+<!> Evil node: #1 - starting transaction with #44 of value $1 Time: 1740.174043858859 s
+<!> Evil node: #1 - starting transaction with #2 of value $1 Time: 1745.894043858859 s
+<!> Evil node: #1 - starting transaction with #73 of value $32 Time: 1768.314043858859 s
+<!> Evil node: #1 - starting transaction with #25 of value $27 Time: 1804.144043858859 s
+<!> Evil node: #1 - starting transaction with #46 of value $3 Time: 1818.584043858859 s
+<!> Evil node: #1 - starting transaction with #18 of value $12 Time: 1948.834043858859 s
+<!> Evil node: #1 - starting transaction with #69 of value $15 Time: 1956.644043858859 s
+<!> Evil node: #1 - starting transaction with #13 of value $25 Time: 1965.914043858859 s
+<!> Evil node: #1 - starting transaction with #76 of value $30 Time: 1972.224043858859 s
+<!> Evil node: #1 - starting transaction with #11 of value $17 Time: 1986.514043858859 s
+<!> Evil node: #1 - starting transaction with #44 of value $20 Time: 1997.424043858859 s
+<!> Evil node: #1 - starting transaction with #11 of value $6 Time: 2040.524043858859 s
+<!> Evil node: #1 - starting transaction with #64 of value $21 Time: 2082.504043858859 s
+<!> Evil node: #1 - starting transaction with #31 of value $30 Time: 2092.514043858859 s
+<!> Evil node: #1 - starting transaction with #38 of value $8 Time: 2098.124043858859 s
+<!> Evil node: #1 - starting transaction with #91 of value $28 Time: 2104.454043858859 s
+<!> Evil node: #1 - starting transaction with #23 of value $2 Time: 2113.734043858859 s
+<!> Evil node: #1 - starting transaction with #50 of value $4 Time: 2146.124043858859 s
+<!> Evil node: #1 - starting transaction with #0 of value $4 Time: 2189.324043858859 s
+<!> Evil node: #1 - starting transaction with #91 of value $13 Time: 2201.034043858859 s
+<!> Evil node: #1 - starting transaction with #64 of value $25 Time: 2209.324043858859 s
+<!> Evil node: #1 - starting transaction with #6 of value $30 Time: 2243.744043858859 s
+<!> Evil node: #1 - starting transaction with #55 of value $20 Time: 2266.914043858859 s
+<!> Evil node: #1 - starting transaction with #14 of value $12 Time: 2275.344043858859 s
+<!> Evil node: #1 - starting transaction with #33 of value $6 Time: 2298.024043858859 s
+<!> Evil node: #1 - starting transaction with #5 of value $21 Time: 2311.224043858859 s
+<!> Evil node: #1 - starting transaction with #6 of value $14 Time: 2317.214043858859 s
+<!> Evil node: #1 - starting transaction with #6 of value $24 Time: 2327.744043858859 s
+<!> Evil node: #1 - completed transaction with #6 of value $24 distant: 3 Time: 2345.427584290743 s
+<!> Evil node: #1 - starting transaction with #42 of value $4 Time: 2345.434043858859 s
+<!> Evil node: #1 - completed transaction with #42 of value $4 distant: 3 Time: 2362.866883669459 s
+<!> Node: #42 - detected double spending in dissemination done by #1 Time: 2363.881792593691 s
+<!> Simulation: evil node #1 delta detection time:  18.447748734832
+ 
+Preparing for running configuration General, run #7...
+<!> Evil node: #1 - starting transaction with #35 of value $83 Time: 1583.50379950484 s
+<!> Evil node: #1 - starting transaction with #27 of value $81 Time: 1627.83379950484 s
+<!> Evil node: #1 - starting transaction with #55 of value $12 Time: 1665.09379950484 s
+<!> Evil node: #1 - starting transaction with #46 of value $82 Time: 1701.34379950484 s
+<!> Evil node: #1 - starting transaction with #42 of value $27 Time: 1743.91379950484 s
+<!> Evil node: #1 - starting transaction with #19 of value $62 Time: 1812.97379950484 s
+<!> Evil node: #1 - completed transaction with #19 of value $62 distant: 2 Time: 1827.365171755708 s
+<!> Evil node: #1 - starting transaction with #91 of value $40 Time: 1827.37379950484 s
+<!> Evil node: #1 - starting transaction with #72 of value $34 Time: 1836.04379950484 s
+<!> Evil node: #1 - starting transaction with #57 of value $96 Time: 1875.17379950484 s
+<!> Evil node: #1 - starting transaction with #53 of value $96 Time: 1885.58379950484 s
+<!> Evil node: #1 - starting transaction with #2 of value $25 Time: 1924.13379950484 s
+<!> Evil node: #1 - starting transaction with #62 of value $123 Time: 1967.04379950484 s
+<!> Evil node: #1 - starting transaction with #59 of value $48 Time: 1979.05379950484 s
+<!> Evil node: #1 - starting transaction with #89 of value $123 Time: 1981.66379950484 s
+<!> Evil node: #1 - starting transaction with #66 of value $114 Time: 1986.87379950484 s
+<!> Evil node: #1 - starting transaction with #86 of value $116 Time: 2011.30379950484 s
+<!> Evil node: #1 - starting transaction with #91 of value $101 Time: 2023.88379950484 s
+<!> Evil node: #1 - starting transaction with #25 of value $35 Time: 2031.69379950484 s
+<!> Evil node: #1 - starting transaction with #96 of value $28 Time: 2036.90379950484 s
+<!> Evil node: #1 - starting transaction with #55 of value $40 Time: 2042.11379950484 s
+<!> Evil node: #1 - starting transaction with #94 of value $123 Time: 2050.62379950484 s
+<!> Evil node: #1 - starting transaction with #84 of value $114 Time: 2068.08379950484 s
+<!> Evil node: #1 - starting transaction with #4 of value $9 Time: 2091.42379950484 s
+<!> Evil node: #1 - starting transaction with #70 of value $35 Time: 2138.76379950484 s
+<!> Evil node: #1 - starting transaction with #18 of value $96 Time: 2150.31379950484 s
+<!> Evil node: #1 - starting transaction with #89 of value $86 Time: 2179.98379950484 s
+<!> Evil node: #1 - starting transaction with #63 of value $42 Time: 2185.19379950484 s
+<!> Evil node: #1 - starting transaction with #28 of value $9 Time: 2196.33379950484 s
+<!> Evil node: #1 - starting transaction with #49 of value $3 Time: 2236.05379950484 s
+<!> Evil node: #1 - starting transaction with #97 of value $111 Time: 2259.11379950484 s
+<!> Evil node: #1 - starting transaction with #45 of value $41 Time: 2267.66379950484 s
+<!> Evil node: #1 - starting transaction with #88 of value $83 Time: 2270.27379950484 s
+<!> Evil node: #1 - starting transaction with #80 of value $109 Time: 2275.55379950484 s
+<!> Evil node: #1 - starting transaction with #46 of value $34 Time: 2281.55379950484 s
+<!> Evil node: #1 - starting transaction with #7 of value $107 Time: 2289.68379950484 s
+<!> Node: #7 - detected double spending in verification done by #1 distant: 3 Time: 2312.881171755708 s
+<!> Simulation: evil node #1 delta detection time:  23.197372250868
+ 
+Preparing for running configuration General, run #8...
+<!> Evil node: #1 - starting transaction with #38 of value $2 Time: 2347.028460939181 s
+<!> Evil node: #1 - starting transaction with #2 of value $1 Time: 2393.788460939181 s
+<!> Evil node: #1 - starting transaction with #62 of value $5 Time: 2422.478460939181 s
+<!> Evil node: #1 - starting transaction with #28 of value $5 Time: 2453.988460939181 s
+<!> Evil node: #1 - starting transaction with #77 of value $2 Time: 2503.178460939181 s
+<!> Evil node: #1 - starting transaction with #10 of value $3 Time: 2589.178460939181 s
+<!> Evil node: #1 - starting transaction with #24 of value $6 Time: 2596.988460939181 s
+<!> Evil node: #1 - starting transaction with #7 of value $4 Time: 2604.798460939181 s
+<!> Evil node: #1 - starting transaction with #33 of value $4 Time: 2620.878460939181 s
+<!> Evil node: #1 - starting transaction with #90 of value $5 Time: 2628.688460939181 s
+<!> Evil node: #1 - completed transaction with #90 of value $5 distant: 3 Time: 2767.704705002719 s
+<!> Evil node: #1 - starting transaction with #50 of value $1 Time: 2767.708460939181 s
+<!> Node: #50 - detected double spending in verification done by #1 distant: 3 Time: 2812.656705002719 s
+<!> Simulation: evil node #1 delta detection time:  44.948244063538
+ 
+Preparing for running configuration General, run #9...
+<!> Evil node: #1 - starting transaction with #71 of value $1 Time: 1910.029852500887 s
+<!> Evil node: #1 - starting transaction with #11 of value $1 Time: 1962.199852500887 s
+<!> Evil node: #1 - starting transaction with #36 of value $1 Time: 1978.639852500887 s
+<!> Evil node: #1 - starting transaction with #91 of value $1 Time: 2056.769852500887 s
+<!> Evil node: #1 - starting transaction with #78 of value $1 Time: 2066.399852500887 s
+<!> Evil node: #1 - starting transaction with #0 of value $1 Time: 2069.009852500887 s
+<!> Evil node: #1 - completed transaction with #0 of value $1 distant: 4 Time: 2157.444795502022 s
+<!> Evil node: #1 - starting transaction with #37 of value $1 Time: 2157.449852500887 s
+<!> Evil node: #1 - starting transaction with #12 of value $1 Time: 2165.849852500887 s
+<!> Node: #12 - detected double spending in verification done by #1 distant: 3 Time: 2223.560795502022 s
+<!> Simulation: evil node #1 delta detection time:  57.710943001135
+ 
+Preparing for running configuration General, run #10...
+<!> Evil node: #1 - starting transaction with #98 of value $10 Time: 1412.802364681852 s
+<!> Evil node: #1 - starting transaction with #96 of value $31 Time: 1462.442364681852 s
+<!> Evil node: #1 - starting transaction with #52 of value $57 Time: 1468.232364681852 s
+<!> Evil node: #1 - starting transaction with #33 of value $22 Time: 1477.702364681852 s
+<!> Evil node: #1 - starting transaction with #84 of value $56 Time: 1486.342364681852 s
+<!> Evil node: #1 - starting transaction with #90 of value $44 Time: 1495.212364681852 s
+<!> Evil node: #1 - starting transaction with #99 of value $67 Time: 1575.722364681852 s
+<!> Evil node: #1 - starting transaction with #65 of value $36 Time: 1693.732364681852 s
+<!> Evil node: #1 - starting transaction with #32 of value $35 Time: 1700.102364681852 s
+<!> Evil node: #1 - starting transaction with #41 of value $33 Time: 1705.392364681852 s
+<!> Evil node: #1 - starting transaction with #22 of value $21 Time: 1728.062364681852 s
+<!> Evil node: #1 - starting transaction with #81 of value $91 Time: 1749.192364681852 s
+<!> Evil node: #1 - starting transaction with #99 of value $72 Time: 1758.612364681852 s
+<!> Evil node: #1 - starting transaction with #11 of value $33 Time: 1852.642364681852 s
+<!> Evil node: #1 - starting transaction with #32 of value $17 Time: 1900.492364681852 s
+<!> Evil node: #1 - starting transaction with #73 of value $26 Time: 1910.092364681852 s
+<!> Evil node: #1 - starting transaction with #72 of value $86 Time: 1958.452364681852 s
+<!> Evil node: #1 - starting transaction with #16 of value $84 Time: 1969.142364681852 s
+<!> Evil node: #1 - starting transaction with #77 of value $66 Time: 1982.052364681852 s
+<!> Evil node: #1 - completed transaction with #77 of value $66 distant: 3 Time: 2112.290442011852 s
+<!> Evil node: #1 - starting transaction with #55 of value $79 Time: 2112.292364681852 s
+<!> Evil node: #1 - starting transaction with #65 of value $36 Time: 2121.972364681852 s
+<!> Evil node: #1 - starting transaction with #94 of value $40 Time: 2127.902364681852 s
+<!> Evil node: #1 - starting transaction with #38 of value $91 Time: 2165.072364681852 s
+<!> Evil node: #1 - starting transaction with #57 of value $51 Time: 2170.282364681852 s
+<!> Evil node: #1 - starting transaction with #5 of value $79 Time: 2184.432364681852 s
+<!> Evil node: #1 - starting transaction with #98 of value $23 Time: 2189.642364681852 s
+<!> Evil node: #1 - starting transaction with #9 of value $17 Time: 2231.962364681852 s
+<!> Evil node: #1 - starting transaction with #66 of value $83 Time: 2241.882364681852 s
+<!> Evil node: #1 - starting transaction with #78 of value $92 Time: 2249.612364681852 s
+<!> Evil node: #1 - starting transaction with #23 of value $26 Time: 2263.012364681852 s
+<!> Evil node: #1 - starting transaction with #57 of value $52 Time: 2315.372364681852 s
+<!> Evil node: #1 - starting transaction with #39 of value $36 Time: 2345.162364681852 s
+<!> Node: #39 - detected double spending in verification done by #1 distant: 3 Time: 2370.10537930154 s
+<!> Simulation: evil node #1 delta detection time:  24.943014619688
+ 
+Preparing for running configuration General, run #11...
+<!> Evil node: #1 - starting transaction with #71 of value $23 Time: 1577.830133495144 s
+<!> Evil node: #1 - completed transaction with #71 of value $23 distant: 3 Time: 1664.603576874707 s
+<!> Evil node: #1 - starting transaction with #29 of value $27 Time: 1664.610133495144 s
+<!> Node: #29 - detected double spending in verification done by #1 distant: 3 Time: 1736.631576874707 s
+<!> Simulation: evil node #1 delta detection time:  72.021443379563
+ 
+Preparing for running configuration General, run #12...
+<!> Evil node: #1 - starting transaction with #62 of value $11 Time: 1090.05829899688 s
+<!> Evil node: #1 - starting transaction with #8 of value $42 Time: 1141.77829899688 s
+<!> Evil node: #1 - starting transaction with #90 of value $6 Time: 1167.92829899688 s
+<!> Evil node: #1 - starting transaction with #96 of value $36 Time: 1244.47829899688 s
+<!> Evil node: #1 - starting transaction with #55 of value $2 Time: 1250.08829899688 s
+<!> Evil node: #1 - starting transaction with #48 of value $25 Time: 1289.31829899688 s
+<!> Evil node: #1 - starting transaction with #60 of value $45 Time: 1296.95829899688 s
+<!> Evil node: #1 - starting transaction with #33 of value $47 Time: 1313.91829899688 s
+<!> Evil node: #1 - starting transaction with #97 of value $18 Time: 1348.03829899688 s
+<!> Evil node: #1 - starting transaction with #5 of value $21 Time: 1395.33829899688 s
+<!> Evil node: #1 - starting transaction with #24 of value $18 Time: 1432.19829899688 s
+<!> Evil node: #1 - starting transaction with #77 of value $22 Time: 1475.87829899688 s
+<!> Evil node: #1 - starting transaction with #55 of value $49 Time: 1497.15829899688 s
+<!> Evil node: #1 - completed transaction with #55 of value $49 distant: 3 Time: 1544.060097247144 s
+<!> Evil node: #1 - starting transaction with #10 of value $26 Time: 1544.06829899688 s
+<!> Evil node: #1 - starting transaction with #62 of value $38 Time: 1576.79829899688 s
+<!> Evil node: #1 - starting transaction with #7 of value $40 Time: 1612.76829899688 s
+<!> Evil node: #1 - starting transaction with #46 of value $35 Time: 1629.23829899688 s
+<!> Evil node: #1 - starting transaction with #83 of value $23 Time: 1646.14829899688 s
+<!> Evil node: #1 - starting transaction with #83 of value $37 Time: 1656.55829899688 s
+<!> Evil node: #1 - starting transaction with #94 of value $46 Time: 1679.82829899688 s
+<!> Evil node: #1 - starting transaction with #82 of value $50 Time: 1688.35829899688 s
+<!> Evil node: #1 - starting transaction with #13 of value $15 Time: 1704.69829899688 s
+<!> Evil node: #1 - starting transaction with #80 of value $32 Time: 1718.27829899688 s
+<!> Evil node: #1 - starting transaction with #21 of value $31 Time: 1731.28829899688 s
+<!> Evil node: #1 - starting transaction with #23 of value $48 Time: 1743.00829899688 s
+<!> Evil node: #1 - starting transaction with #82 of value $48 Time: 1902.83829899688 s
+<!> Evil node: #1 - starting transaction with #43 of value $43 Time: 1933.43829899688 s
+<!> Evil node: #1 - starting transaction with #26 of value $33 Time: 1954.43829899688 s
+<!> Evil node: #1 - starting transaction with #20 of value $48 Time: 2001.55829899688 s
+<!> Evil node: #1 - starting transaction with #42 of value $45 Time: 2033.21829899688 s
+<!> Node: #42 - detected double spending in verification done by #1 distant: 3 Time: 2046.51076941315 s
+<!> Simulation: evil node #1 delta detection time:  13.29247041627
+ 
+Preparing for running configuration General, run #13...
+<!> Evil node: #1 - starting transaction with #93 of value $94 Time: 1171.993203082826 s
+<!> Evil node: #1 - completed transaction with #93 of value $94 distant: 4 Time: 1208.598821655757 s
+<!> Evil node: #1 - starting transaction with #77 of value $28 Time: 1208.603203082826 s
+<!> Evil node: #1 - starting transaction with #66 of value $36 Time: 1315.983203082826 s
+<!> Node: #66 - detected double spending in verification done by #1 distant: 2 Time: 1365.951802934889 s
+<!> Simulation: evil node #1 delta detection time:  49.968599852063
+ 
+Preparing for running configuration General, run #14...
+<!> Evil node: #1 - starting transaction with #55 of value $31 Time: 2016.130620081673 s
+<!> Evil node: #1 - starting transaction with #93 of value $2 Time: 2054.120620081673 s
+<!> Evil node: #1 - starting transaction with #66 of value $5 Time: 2122.250620081673 s
+<!> Evil node: #1 - starting transaction with #22 of value $17 Time: 2132.890620081673 s
+<!> Evil node: #1 - starting transaction with #42 of value $16 Time: 2166.710620081673 s
+<!> Evil node: #1 - starting transaction with #97 of value $5 Time: 2179.050620081673 s
+<!> Evil node: #1 - starting transaction with #88 of value $13 Time: 2205.210620081673 s
+<!> Evil node: #1 - completed transaction with #88 of value $13 distant: 2 Time: 2238.709157547677 s
+<!> Evil node: #1 - starting transaction with #48 of value $11 Time: 2238.710620081673 s
+<!> Evil node: #1 - starting transaction with #11 of value $34 Time: 2257.520620081673 s
+<!> Evil node: #1 - starting transaction with #80 of value $16 Time: 2309.550620081673 s
+<!> Evil node: #1 - starting transaction with #57 of value $24 Time: 2341.270620081673 s
+<!> Evil node: #1 - starting transaction with #52 of value $31 Time: 2354.330620081673 s
+<!> Evil node: #1 - starting transaction with #71 of value $8 Time: 2362.160620081673 s
+<!> Evil node: #1 - starting transaction with #50 of value $21 Time: 2371.810620081673 s
+<!> Evil node: #1 - starting transaction with #45 of value $2 Time: 2400.230620081673 s
+<!> Evil node: #1 - starting transaction with #31 of value $13 Time: 2405.030620081673 s
+<!> Evil node: #1 - starting transaction with #18 of value $3 Time: 2410.930620081673 s
+<!> Evil node: #1 - starting transaction with #24 of value $17 Time: 2421.710620081673 s
+<!> Evil node: #1 - starting transaction with #36 of value $10 Time: 2433.580620081673 s
+<!> Evil node: #1 - starting transaction with #26 of value $2 Time: 2446.100620081673 s
+<!> Evil node: #1 - starting transaction with #54 of value $11 Time: 2457.780620081673 s
+<!> Node: #54 - detected double spending in verification done by #1 distant: 3 Time: 2470.641172654655 s
+<!> Simulation: evil node #1 delta detection time:  12.860552572982
+ 
+Preparing for running configuration General, run #15...
+<!> Evil node: #1 - starting transaction with #91 of value $1 Time: 2479.440740493594 s
+<!> Evil node: #1 - starting transaction with #2 of value $1 Time: 2503.100740493594 s
+<!> Evil node: #1 - starting transaction with #73 of value $1 Time: 2526.640740493594 s
+<!> Evil node: #1 - starting transaction with #22 of value $1 Time: 2534.450740493594 s
+<!> Evil node: #1 - completed transaction with #22 of value $1 distant: 4 Time: 2625.974452092646 s
+<!> Evil node: #1 - starting transaction with #46 of value $1 Time: 2625.980740493594 s
+<!> Evil node: #1 - starting transaction with #83 of value $1 Time: 2634.490740493594 s
+<!> Node: #83 - detected double spending in verification done by #1 distant: 4 Time: 2694.885347269417 s
+<!> Simulation: evil node #1 delta detection time:  60.394606775823
+ 
+Preparing for running configuration General, run #16...
+<!> Evil node: #1 - starting transaction with #66 of value $65 Time: 845.853152045752 s
+<!> Evil node: #1 - starting transaction with #98 of value $214 Time: 859.703152045752 s
+<!> Evil node: #1 - starting transaction with #66 of value $83 Time: 890.213152045752 s
+<!> Evil node: #1 - starting transaction with #17 of value $216 Time: 895.423152045752 s
+<!> Evil node: #1 - starting transaction with #50 of value $147 Time: 948.013152045752 s
+<!> Evil node: #1 - starting transaction with #48 of value $47 Time: 959.693152045752 s
+<!> Evil node: #1 - starting transaction with #73 of value $156 Time: 966.033152045752 s
+<!> Evil node: #1 - starting transaction with #96 of value $15 Time: 990.603152045752 s
+<!> Evil node: #1 - starting transaction with #92 of value $69 Time: 1011.843152045752 s
+<!> Evil node: #1 - starting transaction with #31 of value $32 Time: 1069.923152045752 s
+<!> Evil node: #1 - completed transaction with #31 of value $32 distant: 2 Time: 1082.466721380325 s
+<!> Evil node: #1 - starting transaction with #62 of value $124 Time: 1082.473152045752 s
+<!> Evil node: #1 - starting transaction with #7 of value $98 Time: 1128.773152045752 s
+<!> Evil node: #1 - starting transaction with #21 of value $198 Time: 1162.963152045752 s
+<!> Evil node: #1 - starting transaction with #63 of value $43 Time: 1192.463152045752 s
+<!> Evil node: #1 - starting transaction with #36 of value $6 Time: 1201.573152045752 s
+<!> Evil node: #1 - starting transaction with #21 of value $187 Time: 1235.533152045752 s
+<!> Evil node: #1 - starting transaction with #90 of value $61 Time: 1246.563152045752 s
+<!> Evil node: #1 - starting transaction with #53 of value $27 Time: 1277.603152045752 s
+<!> Evil node: #1 - starting transaction with #89 of value $38 Time: 1286.243152045752 s
+<!> Evil node: #1 - starting transaction with #2 of value $182 Time: 1302.253152045752 s
+<!> Evil node: #1 - starting transaction with #74 of value $197 Time: 1313.633152045752 s
+<!> Evil node: #1 - starting transaction with #68 of value $73 Time: 1340.773152045752 s
+<!> Evil node: #1 - starting transaction with #63 of value $165 Time: 1353.203152045752 s
+<!> Evil node: #1 - starting transaction with #76 of value $115 Time: 1368.193152045752 s
+<!> Evil node: #1 - starting transaction with #24 of value $130 Time: 1377.393152045752 s
+<!> Evil node: #1 - starting transaction with #35 of value $55 Time: 1406.233152045752 s
+<!> Evil node: #1 - starting transaction with #37 of value $25 Time: 1427.053152045752 s
+<!> Evil node: #1 - starting transaction with #50 of value $194 Time: 1435.463152045752 s
+<!> Evil node: #1 - starting transaction with #43 of value $84 Time: 1445.933152045752 s
+<!> Evil node: #1 - starting transaction with #94 of value $213 Time: 1516.713152045752 s
+<!> Evil node: #1 - starting transaction with #57 of value $75 Time: 1574.153152045752 s
+<!> Evil node: #1 - starting transaction with #81 of value $64 Time: 1591.013152045752 s
+<!> Evil node: #1 - starting transaction with #70 of value $163 Time: 1599.393152045752 s
+<!> Evil node: #1 - starting transaction with #99 of value $177 Time: 1684.453152045752 s
+<!> Evil node: #1 - starting transaction with #24 of value $185 Time: 1757.903152045752 s
+<!> Node: #24 - detected double spending in verification done by #1 distant: 3 Time: 1797.32925755264 s
+<!> Simulation: evil node #1 delta detection time:  39.426105506888
+ 
+Preparing for running configuration General, run #17...
+<!> Evil node: #1 - starting transaction with #73 of value $146 Time: 1011.501921720332 s
+<!> Evil node: #1 - starting transaction with #68 of value $160 Time: 1020.401921720332 s
+<!> Evil node: #1 - starting transaction with #73 of value $105 Time: 1049.181921720332 s
+<!> Evil node: #1 - starting transaction with #38 of value $128 Time: 1059.911921720332 s
+<!> Evil node: #1 - starting transaction with #38 of value $126 Time: 1098.941921720332 s
+<!> Evil node: #1 - starting transaction with #68 of value $183 Time: 1112.141921720332 s
+<!> Evil node: #1 - starting transaction with #15 of value $27 Time: 1123.521921720332 s
+<!> Evil node: #1 - completed transaction with #15 of value $27 distant: 2 Time: 1134.065921720332 s
+<!> Evil node: #1 - starting transaction with #51 of value $104 Time: 1134.071921720332 s
+<!> Evil node: #1 - starting transaction with #45 of value $90 Time: 1150.121921720332 s
+<!> Node: #45 - detected double spending in verification done by #1 distant: 1 Time: 1154.093921720332 s
+<!> Simulation: evil node #1 delta detection time:  3.972
+ 
+Preparing for running configuration General, run #18...
+<!> Evil node: #1 - starting transaction with #49 of value $144 Time: 1212.868445283962 s
+<!> Evil node: #1 - starting transaction with #35 of value $101 Time: 1218.708445283962 s
+<!> Evil node: #1 - starting transaction with #16 of value $248 Time: 1242.858445283962 s
+<!> Evil node: #1 - starting transaction with #62 of value $168 Time: 1254.938445283962 s
+<!> Evil node: #1 - starting transaction with #79 of value $273 Time: 1286.498445283962 s
+<!> Evil node: #1 - starting transaction with #63 of value $273 Time: 1338.108445283962 s
+<!> Evil node: #1 - starting transaction with #86 of value $237 Time: 1367.458445283962 s
+<!> Evil node: #1 - starting transaction with #31 of value $94 Time: 1429.168445283962 s
+<!> Evil node: #1 - starting transaction with #81 of value $36 Time: 1434.388445283962 s
+<!> Evil node: #1 - starting transaction with #74 of value $158 Time: 1442.658445283962 s
+<!> Evil node: #1 - starting transaction with #89 of value $300 Time: 1454.018445283962 s
+<!> Evil node: #1 - starting transaction with #51 of value $115 Time: 1459.518445283962 s
+<!> Evil node: #1 - starting transaction with #50 of value $237 Time: 1485.928445283962 s
+<!> Evil node: #1 - starting transaction with #29 of value $163 Time: 1503.188445283962 s
+<!> Evil node: #1 - completed transaction with #29 of value $163 distant: 3 Time: 1571.290452713057 s
+<!> Evil node: #1 - starting transaction with #69 of value $314 Time: 1571.298445283962 s
+<!> Evil node: #1 - starting transaction with #24 of value $246 Time: 1587.528445283962 s
+<!> Evil node: #1 - starting transaction with #73 of value $227 Time: 1598.188445283962 s
+<!> Evil node: #1 - starting transaction with #90 of value $195 Time: 1612.158445283962 s
+<!> Evil node: #1 - starting transaction with #38 of value $225 Time: 1743.428445283962 s
+<!> Node: #38 - detected double spending in verification done by #1 distant: 2 Time: 1752.486019158205 s
+<!> Simulation: evil node #1 delta detection time:  9.057573874243
+ 
+Preparing for running configuration General, run #19...
+<!> Evil node: #1 - starting transaction with #51 of value $5 Time: 1208.694747814443 s
+<!> Evil node: #1 - completed transaction with #51 of value $5 distant: 3 Time: 1276.026901032606 s
+<!> Evil node: #1 - starting transaction with #94 of value $2 Time: 1276.034747814443 s
+<!> Node: #7 - detected double spending in dissemination done by #1 Time: 1289.432253546255 s
+<!> Simulation: evil node #1 delta detection time:  13.397505731812
+ 
+Preparing for running configuration General, run #20...
+<!> Evil node: #1 - starting transaction with #78 of value $1 Time: 1416.417561470292 s
+<!> Evil node: #1 - starting transaction with #31 of value $1 Time: 1447.887561470292 s
+<!> Evil node: #1 - starting transaction with #61 of value $3 Time: 1455.197561470292 s
+<!> Evil node: #1 - starting transaction with #82 of value $1 Time: 1472.197561470292 s
+<!> Evil node: #1 - starting transaction with #77 of value $3 Time: 1499.087561470292 s
+<!> Evil node: #1 - starting transaction with #77 of value $2 Time: 1533.787561470292 s
+<!> Evil node: #1 - starting transaction with #46 of value $2 Time: 1551.787561470292 s
+<!> Evil node: #1 - starting transaction with #95 of value $1 Time: 1572.177561470292 s
+<!> Evil node: #1 - starting transaction with #96 of value $2 Time: 1576.947561470292 s
+<!> Evil node: #1 - starting transaction with #48 of value $2 Time: 1582.467561470292 s
+<!> Evil node: #1 - completed transaction with #48 of value $2 distant: 2 Time: 1593.011561470292 s
+<!> Evil node: #1 - starting transaction with #53 of value $2 Time: 1593.017561470292 s
+<!> Evil node: #1 - starting transaction with #28 of value $3 Time: 1610.707561470292 s
+<!> Evil node: #1 - starting transaction with #70 of value $1 Time: 1624.447561470292 s
+<!> Evil node: #1 - starting transaction with #66 of value $1 Time: 1647.637561470292 s
+<!> Evil node: #1 - starting transaction with #57 of value $3 Time: 1653.067561470292 s
+<!> Evil node: #1 - starting transaction with #49 of value $2 Time: 1703.907561470292 s
+<!> Evil node: #1 - starting transaction with #24 of value $2 Time: 1709.997561470292 s
+<!> Evil node: #1 - starting transaction with #68 of value $2 Time: 1717.807561470292 s
+<!> Evil node: #1 - starting transaction with #17 of value $2 Time: 1769.837561470292 s
+<!> Evil node: #1 - starting transaction with #96 of value $3 Time: 1777.647561470292 s
+<!> Evil node: #1 - starting transaction with #92 of value $2 Time: 1783.137561470292 s
+<!> Evil node: #1 - starting transaction with #91 of value $2 Time: 1791.937561470292 s
+<!> Evil node: #1 - starting transaction with #73 of value $1 Time: 1800.967561470292 s
+<!> Evil node: #1 - starting transaction with #27 of value $3 Time: 1815.157561470292 s
+<!> Evil node: #1 - starting transaction with #46 of value $2 Time: 1848.197561470292 s
+<!> Node: #46 - detected double spending in verification done by #1 distant: 3 Time: 1992.132839967421 s
+<!> Simulation: evil node #1 delta detection time:  143.935278497129
+ 
+Preparing for running configuration General, run #21...
+<!> Evil node: #1 - starting transaction with #9 of value $16 Time: 1602.240851690284 s
+<!> Evil node: #1 - starting transaction with #16 of value $6 Time: 1675.690851690284 s
+<!> Evil node: #1 - starting transaction with #85 of value $19 Time: 1713.620851690284 s
+<!> Evil node: #1 - starting transaction with #62 of value $14 Time: 1824.690851690284 s
+<!> Evil node: #1 - starting transaction with #59 of value $7 Time: 1848.120851690284 s
+<!> Evil node: #1 - starting transaction with #29 of value $14 Time: 1850.730851690284 s
+<!> Evil node: #1 - starting transaction with #96 of value $21 Time: 1858.720851690284 s
+<!> Evil node: #1 - starting transaction with #14 of value $2 Time: 1864.630851690284 s
+<!> Evil node: #1 - starting transaction with #46 of value $37 Time: 1905.950851690284 s
+<!> Evil node: #1 - starting transaction with #38 of value $40 Time: 1922.110851690284 s
+<!> Evil node: #1 - starting transaction with #20 of value $23 Time: 1928.350851690284 s
+<!> Evil node: #1 - starting transaction with #13 of value $19 Time: 1956.870851690284 s
+<!> Evil node: #1 - completed transaction with #13 of value $19 distant: 2 Time: 1976.961692733847 s
+<!> Evil node: #1 - starting transaction with #44 of value $26 Time: 1976.970851690284 s
+<!> Node: #44 - detected double spending in verification done by #1 distant: 2 Time: 2032.534405724045 s
+<!> Simulation: evil node #1 delta detection time:  55.563554033761
+ 
+Preparing for running configuration General, run #22...
+<!> Evil node: #1 - starting transaction with #64 of value $47 Time: 976.318257820094 s
+<!> Evil node: #1 - starting transaction with #74 of value $20 Time: 989.028257820094 s
+<!> Evil node: #1 - starting transaction with #5 of value $14 Time: 1031.018257820094 s
+<!> Evil node: #1 - starting transaction with #59 of value $106 Time: 1036.228257820094 s
+<!> Evil node: #1 - starting transaction with #6 of value $101 Time: 1041.018257820094 s
+<!> Evil node: #1 - starting transaction with #21 of value $77 Time: 1051.808257820094 s
+<!> Evil node: #1 - starting transaction with #31 of value $83 Time: 1074.608257820094 s
+<!> Evil node: #1 - starting transaction with #85 of value $19 Time: 1080.258257820094 s
+<!> Evil node: #1 - starting transaction with #50 of value $45 Time: 1142.418257820094 s
+<!> Evil node: #1 - starting transaction with #9 of value $85 Time: 1172.178257820094 s
+<!> Evil node: #1 - starting transaction with #62 of value $30 Time: 1184.298257820094 s
+<!> Evil node: #1 - starting transaction with #4 of value $49 Time: 1196.608257820094 s
+<!> Evil node: #1 - starting transaction with #29 of value $28 Time: 1288.368257820094 s
+<!> Evil node: #1 - starting transaction with #2 of value $105 Time: 1296.178257820094 s
+<!> Evil node: #1 - starting transaction with #13 of value $29 Time: 1326.768257820094 s
+<!> Evil node: #1 - starting transaction with #22 of value $63 Time: 1334.218257820094 s
+<!> Evil node: #1 - starting transaction with #17 of value $43 Time: 1350.808257820094 s
+<!> Evil node: #1 - starting transaction with #11 of value $61 Time: 1378.628257820094 s
+<!> Evil node: #1 - starting transaction with #65 of value $122 Time: 1384.878257820094 s
+<!> Evil node: #1 - starting transaction with #49 of value $59 Time: 1390.088257820094 s
+<!> Evil node: #1 - starting transaction with #22 of value $2 Time: 1395.298257820094 s
+<!> Evil node: #1 - completed transaction with #22 of value $2 distant: 4 Time: 1453.44724580761 s
+<!> Evil node: #1 - starting transaction with #21 of value $39 Time: 1453.448257820094 s
+<!> Evil node: #1 - starting transaction with #48 of value $32 Time: 1498.238257820094 s
+<!> Evil node: #1 - starting transaction with #61 of value $88 Time: 1504.958257820094 s
+<!> Evil node: #1 - starting transaction with #47 of value $112 Time: 1513.608257820094 s
+<!> Evil node: #1 - starting transaction with #0 of value $61 Time: 1557.098257820094 s
+<!> Evil node: #1 - starting transaction with #82 of value $6 Time: 1573.198257820094 s
+<!> Evil node: #1 - starting transaction with #23 of value $35 Time: 1625.998257820094 s
+<!> Evil node: #1 - starting transaction with #51 of value $48 Time: 1657.378257820094 s
+<!> Evil node: #1 - starting transaction with #14 of value $111 Time: 1706.348257820094 s
+<!> Evil node: #1 - starting transaction with #49 of value $25 Time: 1756.138257820094 s
+<!> Evil node: #1 - starting transaction with #4 of value $96 Time: 1801.098257820094 s
+<!> Evil node: #1 - starting transaction with #87 of value $68 Time: 1855.318257820094 s
+<!> Evil node: #1 - starting transaction with #57 of value $44 Time: 1863.658257820094 s
+<!> Node: #57 - detected double spending in verification done by #1 distant: 4 Time: 1957.299054881998 s
+<!> Simulation: evil node #1 delta detection time:  93.640797061904
+ 
+Preparing for running configuration General, run #23...
+<!> Evil node: #1 - starting transaction with #18 of value $1 Time: 1286.718839181117 s
+<!> Evil node: #1 - completed transaction with #18 of value $1 distant: 3 Time: 1360.869842042772 s
+<!> Evil node: #1 - starting transaction with #9 of value $14 Time: 1360.878839181117 s
+<!> Evil node: #1 - starting transaction with #14 of value $5 Time: 1369.178839181117 s
+<!> Evil node: #1 - starting transaction with #17 of value $7 Time: 1408.158839181117 s
+<!> Node: #17 - detected double spending in verification done by #1 distant: 3 Time: 1440.314245998211 s
+<!> Simulation: evil node #1 delta detection time:  32.155406817094
+ 
+Preparing for running configuration General, run #24...
+<!> Evil node: #1 - starting transaction with #85 of value $96 Time: 2478.384866254647 s
+<!> Evil node: #1 - starting transaction with #78 of value $100 Time: 2521.254866254647 s
+<!> Evil node: #1 - starting transaction with #2 of value $78 Time: 2524.964866254647 s
+<!> Evil node: #1 - starting transaction with #75 of value $159 Time: 2591.774866254647 s
+<!> Evil node: #1 - starting transaction with #36 of value $122 Time: 2599.584866254647 s
+<!> Evil node: #1 - starting transaction with #3 of value $146 Time: 2621.284866254647 s
+<!> Evil node: #1 - starting transaction with #51 of value $129 Time: 2640.084866254647 s
+<!> Evil node: #1 - starting transaction with #59 of value $114 Time: 2667.864866254647 s
+<!> Evil node: #1 - starting transaction with #14 of value $22 Time: 2671.214866254647 s
+<!> Evil node: #1 - starting transaction with #90 of value $172 Time: 2701.144866254647 s
+<!> Evil node: #1 - starting transaction with #80 of value $115 Time: 2732.814866254647 s
+<!> Evil node: #1 - starting transaction with #64 of value $162 Time: 2738.814866254647 s
+<!> Evil node: #1 - starting transaction with #5 of value $102 Time: 2746.734866254647 s
+<!> Evil node: #1 - starting transaction with #25 of value $144 Time: 2751.944866254647 s
+<!> Evil node: #1 - starting transaction with #28 of value $211 Time: 2757.154866254647 s
+<!> Evil node: #1 - starting transaction with #69 of value $210 Time: 2824.204866254647 s
+<!> Evil node: #1 - starting transaction with #79 of value $117 Time: 2877.074866254647 s
+<!> Evil node: #1 - starting transaction with #81 of value $40 Time: 2926.084866254647 s
+<!> Evil node: #1 - completed transaction with #81 of value $40 distant: 3 Time: 2965.35992622231 s
+<!> Evil node: #1 - starting transaction with #39 of value $85 Time: 2965.364866254647 s
+<!> Evil node: #1 - starting transaction with #21 of value $173 Time: 2991.414866254647 s
+<!> Evil node: #1 - starting transaction with #77 of value $77 Time: 3006.924866254647 s
+<!> Evil node: #1 - starting transaction with #56 of value $68 Time: 3097.184866254647 s
+<!> Node: #56 - detected double spending in verification done by #1 distant: 3 Time: 3115.356766873872 s
+<!> Simulation: evil node #1 delta detection time:  18.171900619225
+ 
+Preparing for running configuration General, run #25...
+<!> Evil node: #1 - starting transaction with #4 of value $45 Time: 1531.783653068122 s
+<!> Evil node: #1 - completed transaction with #4 of value $45 distant: 4 Time: 1648.7338866386 s
+<!> Evil node: #1 - starting transaction with #62 of value $69 Time: 1648.743653068122 s
+<!> Evil node: #1 - starting transaction with #29 of value $61 Time: 1675.253653068122 s
+<!> Evil node: #1 - starting transaction with #66 of value $2 Time: 1687.733653068122 s
+<!> Node: #66 - detected double spending in verification done by #1 distant: 2 Time: 1697.2658866386 s
+<!> Simulation: evil node #1 delta detection time:  9.532233570478
+ 
+Preparing for running configuration General, run #26...
+<!> Evil node: #1 - starting transaction with #30 of value $18 Time: 1336.984286374642 s
+<!> Evil node: #1 - starting transaction with #25 of value $13 Time: 1467.904286374642 s
+<!> Evil node: #1 - starting transaction with #61 of value $12 Time: 1504.344286374642 s
+<!> Evil node: #1 - starting transaction with #34 of value $3 Time: 1549.714286374642 s
+<!> Evil node: #1 - starting transaction with #80 of value $26 Time: 1554.924286374642 s
+<!> Evil node: #1 - starting transaction with #45 of value $39 Time: 1560.324286374642 s
+<!> Evil node: #1 - starting transaction with #40 of value $18 Time: 1562.934286374642 s
+<!> Evil node: #1 - starting transaction with #86 of value $27 Time: 1570.744286374642 s
+<!> Evil node: #1 - starting transaction with #21 of value $6 Time: 1624.334286374642 s
+<!> Evil node: #1 - starting transaction with #24 of value $4 Time: 1637.394286374642 s
+<!> Evil node: #1 - starting transaction with #4 of value $17 Time: 1654.944286374642 s
+<!> Evil node: #1 - starting transaction with #58 of value $34 Time: 1670.744286374642 s
+<!> Evil node: #1 - starting transaction with #14 of value $1 Time: 1754.794286374642 s
+<!> Evil node: #1 - starting transaction with #97 of value $27 Time: 1764.344286374642 s
+<!> Evil node: #1 - starting transaction with #25 of value $39 Time: 1783.814286374642 s
+<!> Evil node: #1 - completed transaction with #25 of value $39 distant: 2 Time: 1798.560574523397 s
+<!> Evil node: #1 - starting transaction with #53 of value $22 Time: 1798.564286374642 s
+<!> Evil node: #1 - starting transaction with #39 of value $23 Time: 1806.374286374642 s
+<!> Evil node: #1 - starting transaction with #77 of value $10 Time: 1815.264286374642 s
+<!> Evil node: #1 - starting transaction with #69 of value $10 Time: 1864.194286374642 s
+<!> Evil node: #1 - starting transaction with #26 of value $23 Time: 1874.554286374642 s
+<!> Evil node: #1 - starting transaction with #56 of value $11 Time: 1891.794286374642 s
+<!> Evil node: #1 - starting transaction with #83 of value $24 Time: 1913.054286374642 s
+<!> Evil node: #1 - starting transaction with #19 of value $15 Time: 1997.424286374642 s
+<!> Evil node: #1 - starting transaction with #0 of value $16 Time: 2014.144286374642 s
+<!> Evil node: #1 - starting transaction with #32 of value $29 Time: 2050.824286374642 s
+<!> Evil node: #1 - starting transaction with #58 of value $26 Time: 2056.824286374642 s
+<!> Evil node: #1 - starting transaction with #11 of value $6 Time: 2068.024286374642 s
+<!> Evil node: #1 - starting transaction with #83 of value $30 Time: 2074.034286374642 s
+<!> Evil node: #1 - starting transaction with #94 of value $36 Time: 2087.134286374642 s
+<!> Evil node: #1 - starting transaction with #22 of value $12 Time: 2095.474286374642 s
+<!> Evil node: #1 - starting transaction with #53 of value $9 Time: 2169.444286374642 s
+<!> Evil node: #1 - starting transaction with #18 of value $25 Time: 2213.024286374642 s
+<!> Evil node: #1 - starting transaction with #99 of value $34 Time: 2220.834286374642 s
+<!> Evil node: #1 - starting transaction with #15 of value $35 Time: 2254.624286374642 s
+<!> Evil node: #1 - starting transaction with #58 of value $18 Time: 2264.524286374642 s
+<!> Evil node: #1 - starting transaction with #14 of value $16 Time: 2305.754286374642 s
+<!> Evil node: #1 - starting transaction with #68 of value $27 Time: 2358.904286374642 s
+<!> Evil node: #1 - starting transaction with #30 of value $36 Time: 2376.854286374642 s
+<!> Evil node: #1 - starting transaction with #34 of value $14 Time: 2410.854286374642 s
+<!> Evil node: #1 - starting transaction with #77 of value $36 Time: 2416.854286374642 s
+<!> Evil node: #1 - starting transaction with #22 of value $35 Time: 2475.344286374642 s
+<!> Evil node: #1 - starting transaction with #24 of value $20 Time: 2511.684286374642 s
+<!> Evil node: #1 - starting transaction with #62 of value $14 Time: 2551.254286374642 s
+<!> Evil node: #1 - starting transaction with #20 of value $28 Time: 2587.384286374642 s
+<!> Evil node: #1 - starting transaction with #7 of value $35 Time: 2652.484286374642 s
+<!> Evil node: #1 - starting transaction with #96 of value $8 Time: 2681.644286374642 s
+<!> Evil node: #1 - starting transaction with #10 of value $22 Time: 2692.574286374642 s
+<!> Evil node: #1 - starting transaction with #20 of value $19 Time: 2726.104286374642 s
+<!> Evil node: #1 - starting transaction with #55 of value $24 Time: 2757.654286374642 s
+<!> Node: #55 - detected double spending in verification done by #1 distant: 3 Time: 2770.374526895637 s
+<!> Simulation: evil node #1 delta detection time:  12.720240520995
+ 
+Preparing for running configuration General, run #27...
+<!> Evil node: #1 - starting transaction with #23 of value $37 Time: 1725.726087933877 s
+<!> Evil node: #1 - starting transaction with #7 of value $44 Time: 1773.446087933877 s
+<!> Evil node: #1 - starting transaction with #31 of value $11 Time: 1810.386087933877 s
+<!> Evil node: #1 - starting transaction with #5 of value $17 Time: 1816.666087933877 s
+<!> Evil node: #1 - starting transaction with #5 of value $45 Time: 1822.156087933877 s
+<!> Evil node: #1 - starting transaction with #52 of value $44 Time: 1828.256087933877 s
+<!> Evil node: #1 - starting transaction with #51 of value $31 Time: 1836.156087933877 s
+<!> Evil node: #1 - completed transaction with #51 of value $31 distant: 3 Time: 1858.955208350379 s
+<!> Evil node: #1 - starting transaction with #70 of value $41 Time: 1858.956087933877 s
+<!> Evil node: #1 - starting transaction with #29 of value $39 Time: 1890.396087933877 s
+<!> Evil node: #1 - starting transaction with #88 of value $20 Time: 1900.726087933877 s
+<!> Evil node: #1 - starting transaction with #46 of value $48 Time: 1905.936087933877 s
+<!> Evil node: #1 - starting transaction with #2 of value $24 Time: 1915.686087933877 s
+<!> Evil node: #1 - starting transaction with #67 of value $31 Time: 1935.726087933877 s
+<!> Evil node: #1 - starting transaction with #63 of value $5 Time: 1974.376087933877 s
+<!> Evil node: #1 - starting transaction with #7 of value $11 Time: 2002.386087933877 s
+<!> Evil node: #1 - starting transaction with #94 of value $45 Time: 2011.946087933877 s
+<!> Evil node: #1 - starting transaction with #74 of value $45 Time: 2036.806087933877 s
+<!> Evil node: #1 - starting transaction with #31 of value $20 Time: 2086.876087933877 s
+<!> Evil node: #1 - starting transaction with #89 of value $10 Time: 2092.086087933877 s
+<!> Node: #89 - detected double spending in verification done by #1 distant: 2 Time: 2100.416777054259 s
+<!> Simulation: evil node #1 delta detection time:  8.330689120382
+ 
+Preparing for running configuration General, run #28...
+<!> Evil node: #1 - starting transaction with #74 of value $1 Time: 1716.210569298128 s
+<!> Evil node: #1 - starting transaction with #12 of value $15 Time: 1778.920569298128 s
+<!> Evil node: #1 - starting transaction with #70 of value $14 Time: 1820.550569298128 s
+<!> Evil node: #1 - starting transaction with #48 of value $19 Time: 1834.790569298128 s
+<!> Evil node: #1 - starting transaction with #97 of value $17 Time: 1840.970569298128 s
+<!> Evil node: #1 - starting transaction with #98 of value $16 Time: 1872.140569298128 s
+<!> Evil node: #1 - starting transaction with #82 of value $12 Time: 1880.700569298128 s
+<!> Evil node: #1 - starting transaction with #93 of value $6 Time: 1890.970569298128 s
+<!> Evil node: #1 - starting transaction with #41 of value $11 Time: 1993.310569298128 s
+<!> Evil node: #1 - starting transaction with #73 of value $3 Time: 2021.110569298128 s
+<!> Evil node: #1 - starting transaction with #48 of value $11 Time: 2035.290569298128 s
+<!> Evil node: #1 - starting transaction with #17 of value $2 Time: 2051.110569298128 s
+<!> Evil node: #1 - starting transaction with #52 of value $7 Time: 2060.500569298128 s
+<!> Evil node: #1 - starting transaction with #98 of value $1 Time: 2070.720569298128 s
+<!> Evil node: #1 - starting transaction with #94 of value $2 Time: 2084.180569298128 s
+<!> Evil node: #1 - starting transaction with #87 of value $10 Time: 2094.280569298128 s
+<!> Evil node: #1 - starting transaction with #65 of value $7 Time: 2118.580569298128 s
+<!> Evil node: #1 - completed transaction with #65 of value $7 distant: 2 Time: 2174.065989652767 s
+<!> Evil node: #1 - starting transaction with #53 of value $16 Time: 2174.070569298128 s
+<!> Node: #53 - detected double spending in verification done by #1 distant: 3 Time: 2197.655704420889 s
+<!> Simulation: evil node #1 delta detection time:  23.585135122761
+ 
+Preparing for running configuration General, run #29...
+<!> Evil node: #1 - starting transaction with #88 of value $2 Time: 1284.85610777745 s
+<!> Evil node: #1 - starting transaction with #16 of value $5 Time: 1343.36610777745 s
+<!> Evil node: #1 - starting transaction with #91 of value $7 Time: 1370.04610777745 s
+<!> Evil node: #1 - starting transaction with #63 of value $7 Time: 1379.04610777745 s
+<!> Evil node: #1 - starting transaction with #9 of value $3 Time: 1395.07610777745 s
+<!> Evil node: #1 - starting transaction with #58 of value $8 Time: 1427.74610777745 s
+<!> Evil node: #1 - starting transaction with #31 of value $10 Time: 1439.70610777745 s
+<!> Evil node: #1 - starting transaction with #43 of value $2 Time: 1445.87610777745 s
+<!> Evil node: #1 - starting transaction with #21 of value $4 Time: 1518.00610777745 s
+<!> Evil node: #1 - starting transaction with #7 of value $9 Time: 1571.34610777745 s
+<!> Evil node: #1 - completed transaction with #7 of value $9 distant: 3 Time: 1591.831570738322 s
+<!> Evil node: #1 - starting transaction with #0 of value $1 Time: 1591.83610777745 s
+<!> Evil node: #1 - starting transaction with #41 of value $3 Time: 1604.02610777745 s
+<!> Evil node: #1 - starting transaction with #71 of value $8 Time: 1614.90610777745 s
+<!> Evil node: #1 - starting transaction with #25 of value $4 Time: 1631.40610777745 s
+<!> Evil node: #1 - starting transaction with #35 of value $3 Time: 1637.23610777745 s
+<!> Evil node: #1 - starting transaction with #15 of value $4 Time: 1700.20610777745 s
+<!> Evil node: #1 - starting transaction with #43 of value $10 Time: 1720.93610777745 s
+<!> Node: #43 - detected double spending in verification done by #1 distant: 4 Time: 1769.617052988505 s
+<!> Simulation: evil node #1 delta detection time:  48.680945211055
+ 
+Preparing for running configuration General, run #30...
+<!> Evil node: #1 - starting transaction with #4 of value $44 Time: 1330.420690280146 s
+<!> Evil node: #1 - completed transaction with #4 of value $44 distant: 4 Time: 1394.586679183289 s
+<!> Evil node: #1 - starting transaction with #61 of value $191 Time: 1394.590690280146 s
+<!> Evil node: #1 - starting transaction with #12 of value $152 Time: 1410.140690280146 s
+<!> Evil node: #1 - starting transaction with #27 of value $132 Time: 1441.640690280146 s
+<!> Evil node: #1 - starting transaction with #9 of value $199 Time: 1481.710690280146 s
+<!> Evil node: #1 - starting transaction with #73 of value $88 Time: 1499.430690280146 s
+<!> Evil node: #1 - starting transaction with #42 of value $46 Time: 1508.050690280146 s
+<!> Evil node: #1 - starting transaction with #62 of value $172 Time: 1515.860690280146 s
+<!> Evil node: #1 - starting transaction with #73 of value $116 Time: 1559.780690280146 s
+<!> Node: #73 - detected double spending in verification done by #1 distant: 3 Time: 1574.564621456388 s
+<!> Simulation: evil node #1 delta detection time:  14.783931176242
+ 
+Preparing for running configuration General, run #31...
+<!> Evil node: #1 - starting transaction with #3 of value $3 Time: 2044.835371368102 s
+<!> Evil node: #1 - starting transaction with #90 of value $3 Time: 2145.725371368102 s
+<!> Evil node: #1 - starting transaction with #32 of value $2 Time: 2191.595371368102 s
+<!> Evil node: #1 - starting transaction with #77 of value $3 Time: 2197.595371368102 s
+<!> Evil node: #1 - starting transaction with #47 of value $1 Time: 2265.775371368102 s
+<!> Evil node: #1 - starting transaction with #33 of value $2 Time: 2388.575371368102 s
+<!> Evil node: #1 - starting transaction with #35 of value $2 Time: 2397.315371368102 s
+<!> Evil node: #1 - starting transaction with #14 of value $3 Time: 2405.245371368102 s
+<!> Evil node: #1 - starting transaction with #60 of value $2 Time: 2413.545371368102 s
+<!> Evil node: #1 - starting transaction with #12 of value $2 Time: 2449.775371368102 s
+<!> Evil node: #1 - starting transaction with #89 of value $1 Time: 2457.585371368102 s
+<!> Evil node: #1 - completed transaction with #89 of value $1 distant: 2 Time: 2474.322991061311 s
+<!> Evil node: #1 - starting transaction with #12 of value $2 Time: 2474.325371368102 s
+<!> Evil node: #1 - starting transaction with #95 of value $3 Time: 2486.375371368102 s
+<!> Evil node: #1 - starting transaction with #66 of value $3 Time: 2488.985371368102 s
+<!> Evil node: #1 - starting transaction with #19 of value $1 Time: 2494.845371368102 s
+<!> Node: #19 - detected double spending in verification done by #1 distant: 2 Time: 2506.585910639414 s
+<!> Simulation: evil node #1 delta detection time:  11.740539271312
+ 
+Preparing for running configuration General, run #32...
+<!> Evil node: #1 - starting transaction with #36 of value $40 Time: 2018.933336092155 s
+<!> Evil node: #1 - starting transaction with #17 of value $52 Time: 2099.593336092155 s
+<!> Evil node: #1 - starting transaction with #3 of value $29 Time: 2115.823336092155 s
+<!> Evil node: #1 - starting transaction with #57 of value $25 Time: 2166.293336092155 s
+<!> Evil node: #1 - starting transaction with #82 of value $38 Time: 2205.713336092155 s
+<!> Evil node: #1 - starting transaction with #29 of value $23 Time: 2242.373336092155 s
+<!> Evil node: #1 - starting transaction with #33 of value $52 Time: 2273.063336092155 s
+<!> Evil node: #1 - starting transaction with #64 of value $50 Time: 2282.323336092155 s
+<!> Evil node: #1 - starting transaction with #98 of value $35 Time: 2290.293336092155 s
+<!> Evil node: #1 - starting transaction with #32 of value $38 Time: 2299.123336092155 s
+<!> Evil node: #1 - starting transaction with #19 of value $23 Time: 2307.083336092155 s
+<!> Evil node: #1 - starting transaction with #96 of value $36 Time: 2312.293336092155 s
+<!> Evil node: #1 - starting transaction with #90 of value $15 Time: 2317.663336092155 s
+<!> Evil node: #1 - starting transaction with #99 of value $29 Time: 2376.883336092155 s
+<!> Evil node: #1 - starting transaction with #8 of value $53 Time: 2411.873336092155 s
+<!> Evil node: #1 - starting transaction with #59 of value $30 Time: 2417.083336092155 s
+<!> Evil node: #1 - completed transaction with #59 of value $30 distant: 1 Time: 2432.630566008576 s
+<!> Evil node: #1 - starting transaction with #87 of value $18 Time: 2432.633336092155 s
+<!> Evil node: #1 - starting transaction with #32 of value $47 Time: 2471.723336092155 s
+<!> Evil node: #1 - starting transaction with #86 of value $18 Time: 2505.863336092155 s
+<!> Evil node: #1 - starting transaction with #83 of value $21 Time: 2521.803336092155 s
+<!> Evil node: #1 - starting transaction with #91 of value $5 Time: 2534.013336092155 s
+<!> Evil node: #1 - starting transaction with #10 of value $14 Time: 2561.883336092155 s
+<!> Evil node: #1 - starting transaction with #88 of value $51 Time: 2595.883336092155 s
+<!> Node: #88 - detected double spending in verification done by #1 distant: 2 Time: 2605.614212602776 s
+<!> Simulation: evil node #1 delta detection time:  9.730876510621
+ 
+Preparing for running configuration General, run #33...
+<!> Evil node: #1 - starting transaction with #87 of value $1 Time: 1641.507737156934 s
+<!> Evil node: #1 - completed transaction with #87 of value $1 distant: 3 Time: 1668.964672497822 s
+<!> Evil node: #1 - starting transaction with #18 of value $1 Time: 1668.967737156934 s
+<!> Evil node: #1 - starting transaction with #77 of value $1 Time: 1728.917737156934 s
+<!> Evil node: #1 - starting transaction with #67 of value $1 Time: 1772.957737156934 s
+<!> Evil node: #1 - starting transaction with #37 of value $1 Time: 1791.437737156934 s
+<!> Evil node: #1 - starting transaction with #74 of value $1 Time: 1820.197737156934 s
+<!> Evil node: #1 - starting transaction with #57 of value $1 Time: 1844.547737156934 s
+<!> Evil node: #1 - starting transaction with #83 of value $1 Time: 1863.627737156934 s
+<!> Evil node: #1 - starting transaction with #3 of value $1 Time: 1900.307737156934 s
+<!> Evil node: #1 - starting transaction with #8 of value $1 Time: 2012.147737156934 s
+<!> Evil node: #1 - starting transaction with #33 of value $1 Time: 2051.097737156934 s
+<!> Evil node: #1 - starting transaction with #51 of value $1 Time: 2070.877737156934 s
+<!> Evil node: #1 - starting transaction with #2 of value $1 Time: 2128.497737156934 s
+<!> Evil node: #1 - starting transaction with #96 of value $1 Time: 2145.447737156934 s
+<!> Evil node: #1 - starting transaction with #5 of value $1 Time: 2151.207737156934 s
+<!> Evil node: #1 - starting transaction with #89 of value $1 Time: 2163.207737156934 s
+<!> Evil node: #1 - starting transaction with #57 of value $1 Time: 2209.007737156934 s
+<!> Evil node: #1 - starting transaction with #65 of value $1 Time: 2242.987737156934 s
+<!> Evil node: #1 - starting transaction with #33 of value $1 Time: 2248.197737156934 s
+<!> Evil node: #1 - starting transaction with #98 of value $1 Time: 2257.237737156934 s
+<!> Evil node: #1 - starting transaction with #17 of value $1 Time: 2265.047737156934 s
+<!> Evil node: #1 - starting transaction with #33 of value $1 Time: 2272.877737156934 s
+<!> Evil node: #1 - starting transaction with #75 of value $1 Time: 2307.737737156934 s
+<!> Evil node: #1 - starting transaction with #81 of value $1 Time: 2315.547737156934 s
+<!> Node: #81 - detected double spending in verification done by #1 distant: 3 Time: 2328.68617387163 s
+<!> Simulation: evil node #1 delta detection time:  13.138436714696
+ 
+Preparing for running configuration General, run #34...
+<!> Evil node: #1 - starting transaction with #19 of value $29 Time: 879.277678696669 s
+<!> Evil node: #1 - starting transaction with #67 of value $11 Time: 885.687678696669 s
+<!> Evil node: #1 - starting transaction with #16 of value $42 Time: 935.037678696669 s
+<!> Evil node: #1 - starting transaction with #60 of value $40 Time: 956.547678696669 s
+<!> Evil node: #1 - starting transaction with #90 of value $38 Time: 967.487678696669 s
+<!> Evil node: #1 - starting transaction with #94 of value $21 Time: 1025.757678696669 s
+<!> Evil node: #1 - starting transaction with #57 of value $32 Time: 1033.567678696669 s
+<!> Evil node: #1 - starting transaction with #9 of value $16 Time: 1087.057678696669 s
+<!> Evil node: #1 - starting transaction with #17 of value $21 Time: 1123.247678696669 s
+<!> Evil node: #1 - starting transaction with #11 of value $7 Time: 1132.437678696669 s
+<!> Evil node: #1 - starting transaction with #73 of value $21 Time: 1144.717678696669 s
+<!> Evil node: #1 - starting transaction with #56 of value $15 Time: 1152.527678696669 s
+<!> Evil node: #1 - starting transaction with #57 of value $32 Time: 1160.847678696669 s
+<!> Evil node: #1 - starting transaction with #41 of value $38 Time: 1173.057678696669 s
+<!> Evil node: #1 - starting transaction with #25 of value $40 Time: 1194.657678696669 s
+<!> Evil node: #1 - completed transaction with #25 of value $40 distant: 2 Time: 1206.069017488938 s
+<!> Evil node: #1 - starting transaction with #58 of value $37 Time: 1206.077678696669 s
+<!> Evil node: #1 - starting transaction with #6 of value $14 Time: 1238.727678696669 s
+<!> Evil node: #1 - starting transaction with #26 of value $47 Time: 1247.837678696669 s
+<!> Evil node: #1 - starting transaction with #6 of value $24 Time: 1257.767678696669 s
+<!> Evil node: #1 - starting transaction with #13 of value $31 Time: 1267.227678696669 s
+<!> Evil node: #1 - starting transaction with #28 of value $3 Time: 1276.047678696669 s
+<!> Evil node: #1 - starting transaction with #21 of value $25 Time: 1317.007678696669 s
+<!> Evil node: #1 - starting transaction with #59 of value $38 Time: 1328.307678696669 s
+<!> Evil node: #1 - starting transaction with #94 of value $35 Time: 1331.607678696669 s
+<!> Evil node: #1 - starting transaction with #44 of value $10 Time: 1365.927678696669 s
+<!> Evil node: #1 - starting transaction with #66 of value $47 Time: 1375.367678696669 s
+<!> Evil node: #1 - starting transaction with #39 of value $45 Time: 1384.377678696669 s
+<!> Node: #39 - detected double spending in verification done by #1 distant: 3 Time: 1401.34696875649 s
+<!> Simulation: evil node #1 delta detection time:  16.969290059821
+ 
+Preparing for running configuration General, run #35...
+<!> Evil node: #1 - starting transaction with #24 of value $3 Time: 1404.789032598493 s
+<!> Evil node: #1 - completed transaction with #24 of value $3 distant: 3 Time: 1441.747865111451 s
+<!> Evil node: #1 - starting transaction with #55 of value $66 Time: 1441.749032598493 s
+<!> Evil node: #1 - starting transaction with #4 of value $57 Time: 1452.339032598493 s
+<!> Evil node: #1 - starting transaction with #66 of value $26 Time: 1500.759032598493 s
+<!> Node: #66 - detected double spending in verification done by #1 distant: 2 Time: 1508.873725816498 s
+<!> Simulation: evil node #1 delta detection time:  8.114693218005
+ 
+Preparing for running configuration General, run #36...
+<!> Evil node: #1 - starting transaction with #54 of value $12 Time: 949.07051999704 s
+<!> Evil node: #1 - starting transaction with #64 of value $13 Time: 993.11051999704 s
+<!> Evil node: #1 - starting transaction with #51 of value $30 Time: 1006.28051999704 s
+<!> Evil node: #1 - starting transaction with #4 of value $14 Time: 1072.12051999704 s
+<!> Evil node: #1 - starting transaction with #34 of value $10 Time: 1119.85051999704 s
+<!> Evil node: #1 - starting transaction with #2 of value $28 Time: 1131.77051999704 s
+<!> Evil node: #1 - starting transaction with #24 of value $7 Time: 1159.44051999704 s
+<!> Evil node: #1 - starting transaction with #85 of value $14 Time: 1172.31051999704 s
+<!> Evil node: #1 - starting transaction with #71 of value $2 Time: 1195.49051999704 s
+<!> Evil node: #1 - starting transaction with #95 of value $7 Time: 1205.19051999704 s
+<!> Evil node: #1 - starting transaction with #58 of value $13 Time: 1207.80051999704 s
+<!> Evil node: #1 - starting transaction with #72 of value $3 Time: 1256.81051999704 s
+<!> Evil node: #1 - completed transaction with #72 of value $3 distant: 3 Time: 1276.537693969683 s
+<!> Evil node: #1 - starting transaction with #59 of value $16 Time: 1276.54051999704 s
+<!> Evil node: #1 - starting transaction with #11 of value $21 Time: 1279.91051999704 s
+<!> Evil node: #1 - starting transaction with #99 of value $7 Time: 1286.11051999704 s
+<!> Evil node: #1 - starting transaction with #98 of value $30 Time: 1437.05051999704 s
+<!> Evil node: #1 - starting transaction with #36 of value $19 Time: 1447.19051999704 s
+<!> Evil node: #1 - starting transaction with #15 of value $30 Time: 1482.03051999704 s
+<!> Evil node: #1 - starting transaction with #77 of value $9 Time: 1496.93051999704 s
+<!> Evil node: #1 - starting transaction with #78 of value $4 Time: 1560.39051999704 s
+<!> Evil node: #1 - starting transaction with #54 of value $19 Time: 1563.96051999704 s
+<!> Node: #54 - detected double spending in verification done by #1 distant: 3 Time: 1643.961877783897 s
+<!> Simulation: evil node #1 delta detection time:  80.001357786857
+ 
+Preparing for running configuration General, run #37...
+<!> Evil node: #1 - starting transaction with #31 of value $19 Time: 1799.759773266268 s
+<!> Evil node: #1 - starting transaction with #6 of value $14 Time: 1817.229773266268 s
+<!> Evil node: #1 - starting transaction with #49 of value $50 Time: 1881.489773266268 s
+<!> Evil node: #1 - starting transaction with #76 of value $57 Time: 1886.779773266268 s
+<!> Evil node: #1 - starting transaction with #82 of value $58 Time: 1928.229773266268 s
+<!> Evil node: #1 - starting transaction with #88 of value $41 Time: 1938.569773266268 s
+<!> Evil node: #1 - starting transaction with #93 of value $45 Time: 1944.289773266268 s
+<!> Evil node: #1 - starting transaction with #80 of value $11 Time: 1956.329773266268 s
+<!> Evil node: #1 - starting transaction with #35 of value $49 Time: 1961.539773266268 s
+<!> Evil node: #1 - starting transaction with #58 of value $48 Time: 1975.659773266268 s
+<!> Evil node: #1 - starting transaction with #36 of value $41 Time: 1996.609773266268 s
+<!> Evil node: #1 - completed transaction with #36 of value $41 distant: 4 Time: 2073.149335905217 s
+<!> Evil node: #1 - starting transaction with #83 of value $47 Time: 2073.149773266268 s
+<!> Evil node: #1 - starting transaction with #45 of value $41 Time: 2088.469773266268 s
+<!> Evil node: #1 - starting transaction with #13 of value $26 Time: 2091.079773266268 s
+<!> Evil node: #1 - starting transaction with #75 of value $28 Time: 2096.289773266268 s
+<!> Evil node: #1 - starting transaction with #46 of value $41 Time: 2104.099773266268 s
+<!> Evil node: #1 - starting transaction with #7 of value $16 Time: 2112.679773266268 s
+<!> Evil node: #1 - starting transaction with #44 of value $38 Time: 2159.109773266268 s
+<!> Evil node: #1 - starting transaction with #27 of value $52 Time: 2193.979773266268 s
+<!> Node: #27 - detected double spending in verification done by #1 distant: 2 Time: 2252.275975149207 s
+<!> Simulation: evil node #1 delta detection time:  58.296201882939
+ 
+Preparing for running configuration General, run #38...
+<!> Evil node: #1 - starting transaction with #27 of value $1 Time: 1853.930677769239 s
+<!> Evil node: #1 - starting transaction with #71 of value $3 Time: 1869.060677769239 s
+<!> Evil node: #1 - starting transaction with #57 of value $7 Time: 1878.660677769239 s
+<!> Evil node: #1 - starting transaction with #72 of value $3 Time: 1901.770677769239 s
+<!> Evil node: #1 - starting transaction with #82 of value $14 Time: 1928.090677769239 s
+<!> Evil node: #1 - starting transaction with #77 of value $7 Time: 1979.030677769239 s
+<!> Evil node: #1 - starting transaction with #56 of value $1 Time: 2009.720677769239 s
+<!> Evil node: #1 - starting transaction with #81 of value $9 Time: 2018.810677769239 s
+<!> Evil node: #1 - starting transaction with #81 of value $13 Time: 2059.770677769239 s
+<!> Evil node: #1 - starting transaction with #37 of value $14 Time: 2073.590677769239 s
+<!> Evil node: #1 - starting transaction with #7 of value $7 Time: 2090.130677769239 s
+<!> Evil node: #1 - starting transaction with #85 of value $14 Time: 2107.380677769239 s
+<!> Evil node: #1 - starting transaction with #69 of value $3 Time: 2149.380677769239 s
+<!> Evil node: #1 - starting transaction with #95 of value $16 Time: 2160.680677769239 s
+<!> Evil node: #1 - starting transaction with #46 of value $11 Time: 2163.290677769239 s
+<!> Evil node: #1 - completed transaction with #46 of value $11 distant: 3 Time: 2183.636385031821 s
+<!> Evil node: #1 - starting transaction with #62 of value $1 Time: 2183.640677769239 s
+<!> Evil node: #1 - starting transaction with #58 of value $19 Time: 2244.840677769239 s
+<!> Evil node: #1 - starting transaction with #37 of value $15 Time: 2286.210677769239 s
+<!> Evil node: #1 - starting transaction with #18 of value $7 Time: 2297.170677769239 s
+<!> Evil node: #1 - starting transaction with #71 of value $4 Time: 2350.940677769239 s
+<!> Node: #71 - detected double spending in verification done by #1 distant: 3 Time: 2365.375612450224 s
+<!> Simulation: evil node #1 delta detection time:  14.434934680985
+ 
+Preparing for running configuration General, run #39...
+<!> Evil node: #1 - starting transaction with #18 of value $27 Time: 1479.296972512968 s
+<!> Evil node: #1 - starting transaction with #63 of value $77 Time: 1534.336972512968 s
+<!> Evil node: #1 - starting transaction with #78 of value $5 Time: 1546.206972512968 s
+<!> Evil node: #1 - starting transaction with #49 of value $37 Time: 1549.516972512968 s
+<!> Evil node: #1 - starting transaction with #66 of value $84 Time: 1558.916972512968 s
+<!> Evil node: #1 - starting transaction with #13 of value $53 Time: 1570.616972512968 s
+<!> Evil node: #1 - starting transaction with #86 of value $13 Time: 1602.126972512968 s
+<!> Evil node: #1 - starting transaction with #82 of value $11 Time: 1621.446972512968 s
+<!> Evil node: #1 - completed transaction with #82 of value $11 distant: 3 Time: 1696.815853715135 s
+<!> Evil node: #1 - starting transaction with #68 of value $50 Time: 1696.816972512968 s
+<!> Evil node: #1 - starting transaction with #89 of value $81 Time: 1771.846972512968 s
+<!> Evil node: #1 - starting transaction with #78 of value $67 Time: 1778.446972512968 s
+<!> Evil node: #1 - starting transaction with #78 of value $79 Time: 1781.056972512968 s
+<!> Evil node: #1 - starting transaction with #80 of value $35 Time: 1783.666972512968 s
+<!> Evil node: #1 - starting transaction with #52 of value $16 Time: 1847.336972512968 s
+<!> Evil node: #1 - starting transaction with #56 of value $9 Time: 1898.866972512968 s
+<!> Evil node: #1 - starting transaction with #37 of value $62 Time: 1918.586972512968 s
+<!> Evil node: #1 - starting transaction with #57 of value $18 Time: 1925.056972512968 s
+<!> Evil node: #1 - starting transaction with #43 of value $61 Time: 1959.386972512968 s
+<!> Evil node: #1 - starting transaction with #31 of value $71 Time: 1970.306972512968 s
+<!> Evil node: #1 - starting transaction with #68 of value $14 Time: 1975.516972512968 s
+<!> Evil node: #1 - starting transaction with #9 of value $86 Time: 1992.936972512968 s
+<!> Evil node: #1 - starting transaction with #57 of value $76 Time: 2001.686972512968 s
+<!> Evil node: #1 - starting transaction with #39 of value $18 Time: 2037.206972512968 s
+<!> Evil node: #1 - starting transaction with #81 of value $70 Time: 2047.546972512968 s
+<!> Evil node: #1 - starting transaction with #66 of value $23 Time: 2055.896972512968 s
+<!> Node: #66 - detected double spending in verification done by #1 distant: 2 Time: 2064.231229523522 s
+<!> Simulation: evil node #1 delta detection time:  8.334257010554
+ 
+Preparing for running configuration General, run #40...
+<!> Evil node: #1 - starting transaction with #90 of value $90 Time: 2177.624142601859 s
+<!> Evil node: #1 - starting transaction with #65 of value $21 Time: 2202.914142601859 s
+<!> Evil node: #1 - completed transaction with #65 of value $21 distant: 2 Time: 2223.586998138421 s
+<!> Evil node: #1 - starting transaction with #84 of value $95 Time: 2223.594142601859 s
+<!> Evil node: #1 - starting transaction with #40 of value $73 Time: 2257.364142601859 s
+<!> Evil node: #1 - starting transaction with #17 of value $9 Time: 2266.364142601859 s
+<!> Evil node: #1 - starting transaction with #33 of value $71 Time: 2279.964142601859 s
+<!> Evil node: #1 - starting transaction with #73 of value $65 Time: 2290.114142601859 s
+<!> Evil node: #1 - starting transaction with #28 of value $38 Time: 2360.984142601859 s
+<!> Evil node: #1 - starting transaction with #83 of value $105 Time: 2470.314142601859 s
+<!> Evil node: #1 - starting transaction with #49 of value $32 Time: 2484.074142601859 s
+<!> Evil node: #1 - starting transaction with #13 of value $102 Time: 2489.284142601859 s
+<!> Evil node: #1 - starting transaction with #67 of value $31 Time: 2494.494142601859 s
+<!> Evil node: #1 - starting transaction with #60 of value $29 Time: 2530.494142601859 s
+<!> Evil node: #1 - starting transaction with #66 of value $36 Time: 2550.154142601859 s
+<!> Evil node: #1 - starting transaction with #68 of value $48 Time: 2555.364142601859 s
+<!> Evil node: #1 - starting transaction with #26 of value $37 Time: 2566.984142601859 s
+<!> Evil node: #1 - starting transaction with #4 of value $43 Time: 2574.794142601859 s
+<!> Evil node: #1 - starting transaction with #95 of value $115 Time: 2618.194142601859 s
+<!> Evil node: #1 - starting transaction with #67 of value $94 Time: 2620.804142601859 s
+<!> Evil node: #1 - starting transaction with #44 of value $99 Time: 2654.344142601859 s
+<!> Evil node: #1 - starting transaction with #32 of value $84 Time: 2669.064142601859 s
+<!> Evil node: #1 - starting transaction with #72 of value $17 Time: 2678.864142601859 s
+<!> Node: #72 - detected double spending in verification done by #1 distant: 3 Time: 2705.837763690911 s
+<!> Simulation: evil node #1 delta detection time:  26.973621089052
+ 
+Preparing for running configuration General, run #41...
+<!> Evil node: #1 - starting transaction with #32 of value $77 Time: 1238.047111157916 s
+<!> Evil node: #1 - starting transaction with #82 of value $86 Time: 1246.997111157916 s
+<!> Evil node: #1 - starting transaction with #39 of value $112 Time: 1272.967111157916 s
+<!> Evil node: #1 - starting transaction with #42 of value $49 Time: 1297.137111157916 s
+<!> Evil node: #1 - starting transaction with #14 of value $7 Time: 1329.217111157916 s
+<!> Evil node: #1 - starting transaction with #71 of value $2 Time: 1337.027111157916 s
+<!> Evil node: #1 - completed transaction with #71 of value $2 distant: 3 Time: 1432.763143284203 s
+<!> Evil node: #1 - starting transaction with #34 of value $43 Time: 1432.767111157916 s
+<!> Evil node: #1 - starting transaction with #97 of value $124 Time: 1439.977111157916 s
+<!> Evil node: #1 - starting transaction with #74 of value $145 Time: 1456.437111157916 s
+<!> Evil node: #1 - starting transaction with #49 of value $22 Time: 1486.217111157916 s
+<!> Node: #49 - detected double spending in verification done by #1 distant: 2 Time: 1514.82485579644 s
+<!> Simulation: evil node #1 delta detection time:  28.607744638524
+ 
+Preparing for running configuration General, run #42...
+<!> Evil node: #1 - starting transaction with #24 of value $82 Time: 1942.083171842391 s
+<!> Evil node: #1 - starting transaction with #42 of value $8 Time: 2013.893171842391 s
+<!> Evil node: #1 - completed transaction with #42 of value $8 distant: 3 Time: 2031.557069906015 s
+<!> Evil node: #1 - starting transaction with #71 of value $31 Time: 2031.563171842391 s
+<!> Evil node: #1 - starting transaction with #63 of value $3 Time: 2040.023171842391 s
+<!> Evil node: #1 - starting transaction with #49 of value $88 Time: 2048.333171842391 s
+<!> Evil node: #1 - starting transaction with #20 of value $96 Time: 2081.733171842391 s
+<!> Evil node: #1 - starting transaction with #92 of value $71 Time: 2109.333171842391 s
+<!> Evil node: #1 - starting transaction with #8 of value $78 Time: 2118.123171842391 s
+<!> Evil node: #1 - starting transaction with #79 of value $14 Time: 2124.353171842391 s
+<!> Evil node: #1 - starting transaction with #68 of value $55 Time: 2139.693171842391 s
+<!> Evil node: #1 - starting transaction with #29 of value $16 Time: 2152.223171842391 s
+<!> Evil node: #1 - starting transaction with #21 of value $27 Time: 2160.253171842391 s
+<!> Evil node: #1 - starting transaction with #0 of value $1 Time: 2170.663171842391 s
+<!> Evil node: #1 - starting transaction with #17 of value $76 Time: 2181.683171842391 s
+<!> Node: #17 - detected double spending in verification done by #1 distant: 3 Time: 2194.404368380866 s
+<!> Simulation: evil node #1 delta detection time:  12.721196538475
+ 
+Preparing for running configuration General, run #43...
+<!> Evil node: #1 - starting transaction with #28 of value $2 Time: 1977.292602723467 s
+<!> Evil node: #1 - starting transaction with #83 of value $1 Time: 2056.572602723467 s
+<!> Evil node: #1 - starting transaction with #71 of value $2 Time: 2122.602602723467 s
+<!> Evil node: #1 - starting transaction with #86 of value $1 Time: 2170.772602723467 s
+<!> Evil node: #1 - starting transaction with #91 of value $1 Time: 2228.992602723467 s
+<!> Evil node: #1 - starting transaction with #10 of value $2 Time: 2238.452602723467 s
+<!> Evil node: #1 - starting transaction with #27 of value $2 Time: 2274.392602723467 s
+<!> Evil node: #1 - starting transaction with #95 of value $1 Time: 2279.922602723467 s
+<!> Evil node: #1 - starting transaction with #12 of value $2 Time: 2284.022602723467 s
+<!> Evil node: #1 - starting transaction with #50 of value $2 Time: 2296.772602723467 s
+<!> Evil node: #1 - starting transaction with #42 of value $2 Time: 2329.682602723467 s
+<!> Evil node: #1 - starting transaction with #46 of value $1 Time: 2337.492602723467 s
+<!> Evil node: #1 - starting transaction with #71 of value $2 Time: 2395.872602723467 s
+<!> Evil node: #1 - completed transaction with #71 of value $2 distant: 3 Time: 2489.370310032645 s
+<!> Evil node: #1 - starting transaction with #4 of value $2 Time: 2489.372602723467 s
+<!> Evil node: #1 - starting transaction with #34 of value $2 Time: 2540.202602723467 s
+<!> Node: #34 - detected double spending in verification done by #1 distant: 2 Time: 2548.343849694422 s
+<!> Simulation: evil node #1 delta detection time:  8.141246970955
+ 
+Preparing for running configuration General, run #44...
+<!> Evil node: #1 - starting transaction with #96 of value $38 Time: 1706.568234284645 s
+<!> Evil node: #1 - starting transaction with #77 of value $51 Time: 1736.888234284645 s
+<!> Evil node: #1 - starting transaction with #92 of value $33 Time: 1791.888234284645 s
+<!> Evil node: #1 - starting transaction with #44 of value $65 Time: 1801.328234284645 s
+<!> Evil node: #1 - starting transaction with #74 of value $6 Time: 1808.648234284645 s
+<!> Evil node: #1 - starting transaction with #14 of value $20 Time: 1821.758234284645 s
+<!> Evil node: #1 - starting transaction with #63 of value $5 Time: 1830.788234284645 s
+<!> Evil node: #1 - starting transaction with #51 of value $71 Time: 1841.128234284645 s
+<!> Evil node: #1 - starting transaction with #2 of value $32 Time: 1851.358234284645 s
+<!> Evil node: #1 - starting transaction with #22 of value $72 Time: 1862.088234284645 s
+<!> Evil node: #1 - starting transaction with #42 of value $53 Time: 1976.458234284645 s
+<!> Evil node: #1 - starting transaction with #19 of value $63 Time: 1986.098234284645 s
+<!> Evil node: #1 - starting transaction with #17 of value $79 Time: 1991.448234284645 s
+<!> Evil node: #1 - starting transaction with #83 of value $72 Time: 1999.628234284645 s
+<!> Evil node: #1 - starting transaction with #52 of value $3 Time: 2018.118234284645 s
+<!> Evil node: #1 - starting transaction with #28 of value $77 Time: 2036.528234284645 s
+<!> Evil node: #1 - starting transaction with #70 of value $73 Time: 2109.658234284645 s
+<!> Evil node: #1 - starting transaction with #81 of value $29 Time: 2178.438234284645 s
+<!> Evil node: #1 - starting transaction with #37 of value $53 Time: 2195.638234284645 s
+<!> Evil node: #1 - completed transaction with #37 of value $53 distant: 2 Time: 2207.95689113625 s
+<!> Evil node: #1 - starting transaction with #67 of value $77 Time: 2207.958234284645 s
+<!> Evil node: #1 - starting transaction with #15 of value $11 Time: 2238.868234284645 s
+<!> Evil node: #1 - starting transaction with #66 of value $61 Time: 2244.078234284645 s
+<!> Evil node: #1 - starting transaction with #70 of value $32 Time: 2276.358234284645 s
+<!> Evil node: #1 - starting transaction with #70 of value $39 Time: 2316.808234284645 s
+<!> Evil node: #1 - starting transaction with #18 of value $43 Time: 2325.208234284645 s
+<!> Evil node: #1 - starting transaction with #10 of value $78 Time: 2364.048234284645 s
+<!> Evil node: #1 - starting transaction with #71 of value $61 Time: 2388.278234284645 s
+<!> Evil node: #1 - starting transaction with #61 of value $34 Time: 2397.508234284645 s
+<!> Evil node: #1 - starting transaction with #30 of value $24 Time: 2410.958234284645 s
+<!> Node: #30 - detected double spending in verification done by #1 distant: 4 Time: 2434.934626173228 s
+<!> Simulation: evil node #1 delta detection time:  23.976391888583
+ 
+Preparing for running configuration General, run #45...
+<!> Evil node: #1 - starting transaction with #73 of value $13 Time: 1416.410268940959 s
+<!> Evil node: #1 - starting transaction with #95 of value $11 Time: 1441.650268940959 s
+<!> Evil node: #1 - starting transaction with #47 of value $13 Time: 1445.870268940959 s
+<!> Evil node: #1 - starting transaction with #28 of value $2 Time: 1485.030268940959 s
+<!> Evil node: #1 - starting transaction with #36 of value $7 Time: 1573.390268940959 s
+<!> Evil node: #1 - starting transaction with #14 of value $9 Time: 1588.860268940959 s
+<!> Evil node: #1 - starting transaction with #61 of value $1 Time: 1603.650268940959 s
+<!> Evil node: #1 - starting transaction with #84 of value $1 Time: 1640.300268940959 s
+<!> Evil node: #1 - starting transaction with #92 of value $1 Time: 1648.820268940959 s
+<!> Evil node: #1 - starting transaction with #68 of value $4 Time: 1657.730268940959 s
+<!> Evil node: #1 - starting transaction with #64 of value $11 Time: 1681.920268940959 s
+<!> Evil node: #1 - starting transaction with #45 of value $9 Time: 1690.710268940959 s
+<!> Evil node: #1 - starting transaction with #37 of value $3 Time: 1716.340268940959 s
+<!> Evil node: #1 - starting transaction with #91 of value $2 Time: 1723.010268940959 s
+<!> Evil node: #1 - starting transaction with #75 of value $8 Time: 1731.910268940959 s
+<!> Evil node: #1 - starting transaction with #36 of value $13 Time: 1739.720268940959 s
+<!> Evil node: #1 - completed transaction with #36 of value $13 distant: 4 Time: 1804.265186561125 s
+<!> Evil node: #1 - starting transaction with #43 of value $12 Time: 1804.270268940959 s
+<!> Node: #43 - detected double spending in verification done by #1 distant: 4 Time: 1836.93173874698 s
+<!> Simulation: evil node #1 delta detection time:  32.661469806021
+ 
+Preparing for running configuration General, run #46...
+<!> Evil node: #1 - starting transaction with #8 of value $58 Time: 1844.623961333416 s
+<!> Evil node: #1 - starting transaction with #30 of value $30 Time: 1879.693961333416 s
+<!> Evil node: #1 - starting transaction with #71 of value $72 Time: 1939.173961333416 s
+<!> Evil node: #1 - starting transaction with #58 of value $84 Time: 1946.983961333416 s
+<!> Evil node: #1 - starting transaction with #40 of value $10 Time: 1973.953961333416 s
+<!> Evil node: #1 - starting transaction with #73 of value $106 Time: 1981.763961333416 s
+<!> Evil node: #1 - completed transaction with #73 of value $106 distant: 3 Time: 2000.592099240517 s
+<!> Evil node: #1 - starting transaction with #20 of value $78 Time: 2000.593961333416 s
+<!> Evil node: #1 - starting transaction with #59 of value $102 Time: 2009.533961333416 s
+<!> Evil node: #1 - starting transaction with #87 of value $27 Time: 2012.143961333416 s
+<!> Node: #87 - detected double spending in verification done by #1 distant: 3 Time: 2051.911194582541 s
+<!> Simulation: evil node #1 delta detection time:  39.767233249125
+ 
+Preparing for running configuration General, run #47...
+<!> Evil node: #1 - starting transaction with #61 of value $93 Time: 1440.010421556651 s
+<!> Evil node: #1 - starting transaction with #13 of value $37 Time: 1461.330421556651 s
+<!> Evil node: #1 - starting transaction with #62 of value $17 Time: 1466.540421556651 s
+<!> Evil node: #1 - starting transaction with #83 of value $60 Time: 1490.330421556651 s
+<!> Evil node: #1 - starting transaction with #38 of value $109 Time: 1505.520421556651 s
+<!> Evil node: #1 - starting transaction with #33 of value $83 Time: 1511.870421556651 s
+<!> Evil node: #1 - starting transaction with #98 of value $152 Time: 1520.040421556651 s
+<!> Evil node: #1 - starting transaction with #89 of value $96 Time: 1531.350421556651 s
+<!> Evil node: #1 - starting transaction with #92 of value $139 Time: 1536.560421556651 s
+<!> Evil node: #1 - starting transaction with #58 of value $66 Time: 1545.340421556651 s
+<!> Evil node: #1 - completed transaction with #58 of value $66 distant: 4 Time: 1621.758893148552 s
+<!> Evil node: #1 - starting transaction with #83 of value $91 Time: 1621.760421556651 s
+<!> Evil node: #1 - starting transaction with #88 of value $37 Time: 1636.140421556651 s
+<!> Evil node: #1 - completed transaction with #88 of value $37 distant: 2 Time: 1646.684421556651 s
+<!> Node: #4 - detected double spending in dissemination done by #1 Time: 1646.684421556651 s
+<!> Simulation: evil node #1 delta detection time:  10.544
+ 
+Preparing for running configuration General, run #48...
+<!> Evil node: #1 - starting transaction with #4 of value $23 Time: 1763.272252053715 s
+<!> Evil node: #1 - starting transaction with #64 of value $4 Time: 1846.342252053715 s
+<!> Evil node: #1 - starting transaction with #74 of value $47 Time: 1872.672252053715 s
+<!> Evil node: #1 - starting transaction with #57 of value $39 Time: 1957.852252053715 s
+<!> Evil node: #1 - starting transaction with #22 of value $2 Time: 1977.572252053715 s
+<!> Evil node: #1 - starting transaction with #12 of value $22 Time: 2049.742252053715 s
+<!> Evil node: #1 - starting transaction with #69 of value $19 Time: 2069.942252053715 s
+<!> Evil node: #1 - starting transaction with #20 of value $48 Time: 2100.322252053715 s
+<!> Evil node: #1 - starting transaction with #59 of value $25 Time: 2127.852252053715 s
+<!> Evil node: #1 - starting transaction with #82 of value $42 Time: 2130.462252053715 s
+<!> Evil node: #1 - starting transaction with #78 of value $14 Time: 2176.272252053715 s
+<!> Evil node: #1 - starting transaction with #80 of value $42 Time: 2178.882252053715 s
+<!> Evil node: #1 - starting transaction with #62 of value $8 Time: 2185.072252053715 s
+<!> Evil node: #1 - completed transaction with #62 of value $8 distant: 3 Time: 2221.354577586734 s
+<!> Evil node: #1 - starting transaction with #87 of value $16 Time: 2221.362252053715 s
+<!> Evil node: #1 - starting transaction with #21 of value $8 Time: 2231.322252053715 s
+<!> Evil node: #1 - starting transaction with #11 of value $44 Time: 2243.952252053715 s
+<!> Evil node: #1 - starting transaction with #43 of value $26 Time: 2251.152252053715 s
+<!> Evil node: #1 - starting transaction with #3 of value $38 Time: 2323.662252053715 s
+<!> Evil node: #1 - starting transaction with #12 of value $31 Time: 2342.312252053715 s
+<!> Evil node: #1 - starting transaction with #8 of value $48 Time: 2354.862252053715 s
+<!> Evil node: #1 - starting transaction with #46 of value $26 Time: 2360.072252053715 s
+<!> Evil node: #1 - starting transaction with #88 of value $30 Time: 2367.882252053715 s
+<!> Evil node: #1 - starting transaction with #70 of value $48 Time: 2374.232252053715 s
+<!> Node: #70 - detected double spending in verification done by #1 distant: 3 Time: 2388.954412847316 s
+<!> Simulation: evil node #1 delta detection time:  14.722160793601
+ 
+Preparing for running configuration General, run #49...
+<!> Evil node: #1 - starting transaction with #9 of value $2 Time: 1855.492716594595 s
+<!> Evil node: #1 - starting transaction with #15 of value $4 Time: 1915.142716594595 s
+<!> Evil node: #1 - starting transaction with #48 of value $1 Time: 1921.432716594595 s
+<!> Evil node: #1 - starting transaction with #36 of value $2 Time: 1942.842716594595 s
+<!> Evil node: #1 - starting transaction with #53 of value $4 Time: 1954.942716594595 s
+<!> Evil node: #1 - starting transaction with #2 of value $3 Time: 1964.742716594595 s
+<!> Evil node: #1 - starting transaction with #15 of value $2 Time: 1976.562716594595 s
+<!> Evil node: #1 - starting transaction with #86 of value $1 Time: 1991.712716594595 s
+<!> Evil node: #1 - starting transaction with #34 of value $3 Time: 2005.962716594595 s
+<!> Evil node: #1 - starting transaction with #47 of value $2 Time: 2020.112716594595 s
+<!> Evil node: #1 - starting transaction with #63 of value $3 Time: 2033.552716594595 s
+<!> Evil node: #1 - starting transaction with #6 of value $2 Time: 2043.642716594595 s
+<!> Evil node: #1 - starting transaction with #48 of value $2 Time: 2081.552716594595 s
+<!> Evil node: #1 - starting transaction with #49 of value $3 Time: 2088.842716594595 s
+<!> Evil node: #1 - starting transaction with #68 of value $2 Time: 2094.052716594595 s
+<!> Evil node: #1 - starting transaction with #81 of value $4 Time: 2151.402716594595 s
+<!> Evil node: #1 - starting transaction with #21 of value $4 Time: 2166.812716594595 s
+<!> Evil node: #1 - starting transaction with #68 of value $2 Time: 2177.222716594595 s
+<!> Evil node: #1 - starting transaction with #45 of value $1 Time: 2189.402716594595 s
+<!> Evil node: #1 - starting transaction with #22 of value $2 Time: 2192.012716594595 s
+<!> Evil node: #1 - completed transaction with #22 of value $2 distant: 4 Time: 2284.022724476805 s
+<!> Evil node: #1 - starting transaction with #53 of value $2 Time: 2284.032716594595 s
+<!> Evil node: #1 - starting transaction with #86 of value $4 Time: 2312.902716594595 s
+<!> Evil node: #1 - starting transaction with #37 of value $3 Time: 2325.572716594595 s
+<!> Node: #25 - detected double spending in dissemination done by #1 Time: 2336.166724476805 s
+<!> Simulation: evil node #1 delta detection time:  10.59400788221

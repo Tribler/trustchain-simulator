@@ -5,19 +5,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.StringTokenizer;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 public class SimulationsResultExtractor {
 
     /**
-     * @param args the command line arguments
+     * This program is used to filter out informations out of OMNeT++ tests log file
+     * There are two outputs
+     * - Simulations related informations on standard output
+     * - Delta detection times
      */
+    
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
-        ArrayList<Integer> a = new ArrayList<Integer>();
-        ArrayList<Integer> b = new ArrayList<Integer>();
 
         //File reading -> filtering -> output 
         try {
@@ -32,11 +31,12 @@ public class SimulationsResultExtractor {
                     }
                     System.out.println(linea);
                 }
-                
-              
-                
+                        
                 if(linea.contains("delta detection time")){
-                    writer.println(linea.substring(linea.length()-14));
+                    StringTokenizer detenctionTime = new StringTokenizer(linea, ":");
+                    detenctionTime.nextElement();
+                    detenctionTime.nextElement();                                               
+                    writer.println(((String)(detenctionTime.nextElement())).trim());
                 }
             }
             input.close();
