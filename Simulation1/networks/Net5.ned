@@ -13,7 +13,12 @@ network Net5
         channel C extends DatarateChannel
         {
             delay =  100ms;
-            datarate =  7200kbps; //https://www.fastmetrics.com/internet-connection-speed-by-country.php#top-10-worldwide 
+            //https://wondernetwork.com/pings
+            //https://enterprise.verizon.com/terms/latency/
+            //https://www.dotcom-tools.com/internet-backbone-latency.aspx
+            datarate =  7200kbps; 
+            //https://www.akamai.com/us/en/about/news/press/2017-press/akamai-releases-first-quarter-2017-state-of-the-internet-connectivity-report.jsp
+            //https://www.fastmetrics.com/internet-connection-speed-by-country.php#top-10-worldwide 
         }
     submodules:
         rte[10]: Node {
