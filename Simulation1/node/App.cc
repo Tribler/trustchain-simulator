@@ -46,9 +46,8 @@ void App::initialize()
 //    while ((token = tokenizer.nextToken()) != nullptr)
 //        destAddresses.push_back(atoi(token));
 
-//Neighbors definition
-    const int totalNodes = par("totalNodes");
-    for (int i = 0; i < totalNodes; i++) {
+   //Neighbors definition
+    for (int i = 0; i < (int)par("totalNodes"); i++) {
         destAddresses.push_back(i);
     }
 
@@ -57,6 +56,7 @@ void App::initialize()
 
     //TrustChain initialization
     registerNewChainNode(-1, -1, INITIAL_MONEY);
+
 
     //Node status definition
     amIEvil = false;

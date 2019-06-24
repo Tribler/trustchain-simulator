@@ -1,6 +1,6 @@
 [General]
 last-configname=General
-last-runnumber=0
+last-runnumber=1
 
 [RunModeProfiles]
 fast-max-animation-speed=nan
@@ -12,4 +12,4 @@ run-max-animation-speed=nan
 run-max-playback-speed=100
 run-min-animation-speed=nan
 run-min-playback-speed=0.01
-run-playback-speed=1
+run-playback-speed=100

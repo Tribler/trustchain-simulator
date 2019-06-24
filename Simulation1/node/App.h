@@ -63,7 +63,6 @@ private:
     cPar *sendIaTimeEvil;
     cPar *packetLengthBytes;
 
-
     // state
     //cMessage *generatePacket;
     cMessage *timerThread;
