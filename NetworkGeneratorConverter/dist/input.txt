@@ -1,1545 +1,200 @@
-500	540	Directed	1568			1.0
-500	552	Directed	1569			1.0
-500	603	Directed	1570			1.0
-500	715	Directed	1571			1.0
-500	814	Directed	1572			1.0
-500	883	Directed	1573			1.0
-500	891	Directed	1574			1.0
-500	910	Directed	1575			1.0
-500	934	Directed	1576			1.0
-501	520	Directed	1577			1.0
-501	613	Directed	1578			1.0
-501	699	Directed	1579			1.0
-501	702	Directed	1580			1.0
-501	745	Directed	1581			1.0
-501	800	Directed	1582			1.0
-501	897	Directed	1583			1.0
-501	910	Directed	1584			1.0
-501	938	Directed	1585			1.0
-501	942	Directed	1586			1.0
-501	983	Directed	1587			1.0
-501	989	Directed	1588			1.0
-502	676	Directed	1589			1.0
-502	730	Directed	1590			1.0
-502	859	Directed	1591			1.0
-502	982	Directed	1592			1.0
-503	515	Directed	1593			1.0
-503	702	Directed	1594			1.0
-503	757	Directed	1595			1.0
-503	812	Directed	1596			1.0
-503	852	Directed	1597			1.0
-503	965	Directed	1598			1.0
-503	979	Directed	1599			1.0
-504	547	Directed	1600			1.0
-504	660	Directed	1601			1.0
-504	721	Directed	1602			1.0
-504	822	Directed	1603			1.0
-504	916	Directed	1604			1.0
-504	930	Directed	1605			1.0
-505	764	Directed	1606			1.0
-505	808	Directed	1607			1.0
-505	841	Directed	1608			1.0
-505	997	Directed	1609			1.0
-506	604	Directed	1610			1.0
-506	769	Directed	1611			1.0
-506	791	Directed	1612			1.0
-506	944	Directed	1613			1.0
-506	961	Directed	1614			1.0
-506	996	Directed	1615			1.0
-507	525	Directed	1616			1.0
-507	586	Directed	1617			1.0
-507	635	Directed	1618			1.0
-507	681	Directed	1619			1.0
-507	734	Directed	1620			1.0
-507	769	Directed	1621			1.0
-507	890	Directed	1622			1.0
-507	909	Directed	1623			1.0
-507	935	Directed	1624			1.0
-507	943	Directed	1625			1.0
-508	590	Directed	1626			1.0
-508	703	Directed	1627			1.0
-508	874	Directed	1628			1.0
-508	910	Directed	1629			1.0
-508	924	Directed	1630			1.0
-508	992	Directed	1631			1.0
-509	553	Directed	1632			1.0
-509	594	Directed	1633			1.0
-509	653	Directed	1634			1.0
-509	790	Directed	1635			1.0
-509	863	Directed	1636			1.0
-509	909	Directed	1637			1.0
-509	919	Directed	1638			1.0
-510	515	Directed	1639			1.0
-510	612	Directed	1640			1.0
-510	755	Directed	1641			1.0
-510	936	Directed	1642			1.0
-510	999	Directed	1643			1.0
-511	521	Directed	1644			1.0
-511	662	Directed	1645			1.0
-511	672	Directed	1646			1.0
-511	697	Directed	1647			1.0
-511	737	Directed	1648			1.0
-511	787	Directed	1649			1.0
-511	940	Directed	1650			1.0
-511	956	Directed	1651			1.0
-511	962	Directed	1652			1.0
-511	970	Directed	1653			1.0
-512	608	Directed	1654			1.0
-512	853	Directed	1655			1.0
-512	956	Directed	1656			1.0
-513	561	Directed	1657			1.0
-513	614	Directed	1658			1.0
-513	645	Directed	1659			1.0
-513	651	Directed	1660			1.0
-513	729	Directed	1661			1.0
-513	741	Directed	1662			1.0
-513	845	Directed	1663			1.0
-514	626	Directed	1664			1.0
-514	711	Directed	1665			1.0
-514	765	Directed	1666			1.0
-514	816	Directed	1667			1.0
-514	837	Directed	1668			1.0
-514	850	Directed	1669			1.0
-514	882	Directed	1670			1.0
-514	986	Directed	1671			1.0
-515	552	Directed	1672			1.0
-515	614	Directed	1673			1.0
-515	620	Directed	1674			1.0
-515	838	Directed	1675			1.0
-515	860	Directed	1676			1.0
-515	982	Directed	1677			1.0
-516	519	Directed	1678			1.0
-516	550	Directed	1679			1.0
-516	774	Directed	1680			1.0
-516	797	Directed	1681			1.0
-516	809	Directed	1682			1.0
-516	867	Directed	1683			1.0
-516	888	Directed	1684			1.0
-516	979	Directed	1685			1.0
-517	580	Directed	1686			1.0
-517	676	Directed	1687			1.0
-517	726	Directed	1688			1.0
-517	743	Directed	1689			1.0
-517	805	Directed	1690			1.0
-517	830	Directed	1691			1.0
-517	947	Directed	1692			1.0
-518	571	Directed	1693			1.0
-518	832	Directed	1694			1.0
-518	867	Directed	1695			1.0
-518	887	Directed	1696			1.0
-518	943	Directed	1697			1.0
-518	955	Directed	1698			1.0
-519	617	Directed	1699			1.0
-519	666	Directed	1700			1.0
-519	718	Directed	1701			1.0
-519	721	Directed	1702			1.0
-519	803	Directed	1703			1.0
-519	859	Directed	1704			1.0
-520	598	Directed	1705			1.0
-520	683	Directed	1706			1.0
-520	778	Directed	1707			1.0
-520	803	Directed	1708			1.0
-520	806	Directed	1709			1.0
-520	819	Directed	1710			1.0
-520	970	Directed	1711			1.0
-520	992	Directed	1712			1.0
-520	996	Directed	1713			1.0
-521	587	Directed	1714			1.0
-521	637	Directed	1715			1.0
-521	741	Directed	1716			1.0
-521	746	Directed	1717			1.0
-521	780	Directed	1718			1.0
-521	950	Directed	1719			1.0
-522	574	Directed	1720			1.0
-522	665	Directed	1721			1.0
-523	631	Directed	1722			1.0
-523	817	Directed	1723			1.0
-524	873	Directed	1724			1.0
-524	919	Directed	1725			1.0
-524	958	Directed	1726			1.0
-524	971	Directed	1727			1.0
-525	654	Directed	1728			1.0
-525	665	Directed	1729			1.0
-525	668	Directed	1730			1.0
-525	684	Directed	1731			1.0
-525	852	Directed	1732			1.0
-525	943	Directed	1733			1.0
-526	638	Directed	1734			1.0
-526	659	Directed	1735			1.0
-526	710	Directed	1736			1.0
-526	744	Directed	1737			1.0
-526	840	Directed	1738			1.0
-527	636	Directed	1739			1.0
-527	829	Directed	1740			1.0
-527	906	Directed	1741			1.0
-528	554	Directed	1742			1.0
-528	608	Directed	1743			1.0
-528	725	Directed	1744			1.0
-528	757	Directed	1745			1.0
-528	817	Directed	1746			1.0
-528	829	Directed	1747			1.0
-528	841	Directed	1748			1.0
-528	965	Directed	1749			1.0
-529	533	Directed	1750			1.0
-529	608	Directed	1751			1.0
-529	652	Directed	1752			1.0
-529	658	Directed	1753			1.0
-529	708	Directed	1754			1.0
-529	720	Directed	1755			1.0
-529	792	Directed	1756			1.0
-529	917	Directed	1757			1.0
-530	639	Directed	1758			1.0
-530	729	Directed	1759			1.0
-530	865	Directed	1760			1.0
-530	964	Directed	1761			1.0
-530	975	Directed	1762			1.0
-530	998	Directed	1763			1.0
-531	548	Directed	1764			1.0
-531	553	Directed	1765			1.0
-531	576	Directed	1766			1.0
-531	750	Directed	1767			1.0
-531	804	Directed	1768			1.0
-531	905	Directed	1769			1.0
-531	978	Directed	1770			1.0
-532	542	Directed	1771			1.0
-532	741	Directed	1772			1.0
-532	878	Directed	1773			1.0
-533	548	Directed	1774			1.0
-533	635	Directed	1775			1.0
-533	821	Directed	1776			1.0
-533	953	Directed	1777			1.0
-534	576	Directed	1778			1.0
-534	591	Directed	1779			1.0
-534	653	Directed	1780			1.0
-534	687	Directed	1781			1.0
-534	701	Directed	1782			1.0
-534	772	Directed	1783			1.0
-534	774	Directed	1784			1.0
-535	550	Directed	1785			1.0
-535	580	Directed	1786			1.0
-535	701	Directed	1787			1.0
-535	753	Directed	1788			1.0
-535	983	Directed	1789			1.0
-536	546	Directed	1790			1.0
-536	671	Directed	1791			1.0
-536	743	Directed	1792			1.0
-536	746	Directed	1793			1.0
-536	776	Directed	1794			1.0
-536	938	Directed	1795			1.0
-537	688	Directed	1796			1.0
-537	713	Directed	1797			1.0
-537	727	Directed	1798			1.0
-537	816	Directed	1799			1.0
-537	845	Directed	1800			1.0
-538	555	Directed	1801			1.0
-538	575	Directed	1802			1.0
-538	584	Directed	1803			1.0
-538	670	Directed	1804			1.0
-538	686	Directed	1805			1.0
-538	717	Directed	1806			1.0
-538	784	Directed	1807			1.0
-538	803	Directed	1808			1.0
-538	824	Directed	1809			1.0
-538	994	Directed	1810			1.0
-539	781	Directed	1811			1.0
-539	860	Directed	1812			1.0
-539	987	Directed	1813			1.0
-540	594	Directed	1814			1.0
-540	612	Directed	1815			1.0
-540	649	Directed	1816			1.0
-540	683	Directed	1817			1.0
-540	775	Directed	1818			1.0
-540	857	Directed	1819			1.0
-540	858	Directed	1820			1.0
-540	897	Directed	1821			1.0
-540	906	Directed	1822			1.0
-541	566	Directed	1823			1.0
-541	663	Directed	1824			1.0
-541	764	Directed	1825			1.0
-541	829	Directed	1826			1.0
-541	830	Directed	1827			1.0
-541	879	Directed	1828			1.0
-541	974	Directed	1829			1.0
-541	975	Directed	1830			1.0
-542	824	Directed	1831			1.0
-542	863	Directed	1832			1.0
-543	624	Directed	1833			1.0
-543	646	Directed	1834			1.0
-543	700	Directed	1835			1.0
-543	710	Directed	1836			1.0
-543	715	Directed	1837			1.0
-543	739	Directed	1838			1.0
-543	810	Directed	1839			1.0
-543	884	Directed	1840			1.0
-544	569	Directed	1841			1.0
-544	575	Directed	1842			1.0
-544	631	Directed	1843			1.0
-544	645	Directed	1844			1.0
-544	723	Directed	1845			1.0
-544	951	Directed	1846			1.0
-545	748	Directed	1847			1.0
-545	840	Directed	1848			1.0
-546	761	Directed	1849			1.0
-546	851	Directed	1850			1.0
-546	963	Directed	1851			1.0
-547	618	Directed	1852			1.0
-547	650	Directed	1853			1.0
-547	651	Directed	1854			1.0
-547	682	Directed	1855			1.0
-547	696	Directed	1856			1.0
-547	716	Directed	1857			1.0
-548	777	Directed	1858			1.0
-548	854	Directed	1859			1.0
-548	895	Directed	1860			1.0
-548	942	Directed	1861			1.0
-549	620	Directed	1862			1.0
-549	650	Directed	1863			1.0
-549	668	Directed	1864			1.0
-549	930	Directed	1865			1.0
-550	672	Directed	1866			1.0
-550	718	Directed	1867			1.0
-550	923	Directed	1868			1.0
-551	674	Directed	1869			1.0
-551	677	Directed	1870			1.0
-551	694	Directed	1871			1.0
-552	574	Directed	1872			1.0
-552	609	Directed	1873			1.0
-552	655	Directed	1874			1.0
-552	705	Directed	1875			1.0
-552	988	Directed	1876			1.0
-553	610	Directed	1877			1.0
-553	890	Directed	1878			1.0
-553	923	Directed	1879			1.0
-553	967	Directed	1880			1.0
-554	604	Directed	1881			1.0
-554	625	Directed	1882			1.0
-554	673	Directed	1883			1.0
-554	727	Directed	1884			1.0
-554	815	Directed	1885			1.0
-554	856	Directed	1886			1.0
-554	925	Directed	1887			1.0
-554	981	Directed	1888			1.0
-554	995	Directed	1889			1.0
-555	607	Directed	1890			1.0
-555	699	Directed	1891			1.0
-555	895	Directed	1892			1.0
-555	921	Directed	1893			1.0
-555	943	Directed	1894			1.0
-556	655	Directed	1895			1.0
-556	659	Directed	1896			1.0
-556	721	Directed	1897			1.0
-556	743	Directed	1898			1.0
-556	855	Directed	1899			1.0
-556	868	Directed	1900			1.0
-556	963	Directed	1901			1.0
-557	600	Directed	1902			1.0
-557	615	Directed	1903			1.0
-557	628	Directed	1904			1.0
-557	634	Directed	1905			1.0
-557	709	Directed	1906			1.0
-557	837	Directed	1907			1.0
-557	968	Directed	1908			1.0
-557	973	Directed	1909			1.0
-558	624	Directed	1910			1.0
-558	638	Directed	1911			1.0
-558	709	Directed	1912			1.0
-558	734	Directed	1913			1.0
-558	804	Directed	1914			1.0
-558	811	Directed	1915			1.0
-558	819	Directed	1916			1.0
-559	623	Directed	1917			1.0
-559	720	Directed	1918			1.0
-559	749	Directed	1919			1.0
-559	772	Directed	1920			1.0
-559	836	Directed	1921			1.0
-559	978	Directed	1922			1.0
-560	590	Directed	1923			1.0
-560	602	Directed	1924			1.0
-560	606	Directed	1925			1.0
-560	971	Directed	1926			1.0
-560	985	Directed	1927			1.0
-561	722	Directed	1928			1.0
-561	724	Directed	1929			1.0
-561	782	Directed	1930			1.0
-561	808	Directed	1931			1.0
-561	917	Directed	1932			1.0
-562	664	Directed	1933			1.0
-562	700	Directed	1934			1.0
-562	725	Directed	1935			1.0
-562	812	Directed	1936			1.0
-562	815	Directed	1937			1.0
-562	879	Directed	1938			1.0
-562	884	Directed	1939			1.0
-563	644	Directed	1940			1.0
-563	876	Directed	1941			1.0
-563	900	Directed	1942			1.0
-563	913	Directed	1943			1.0
-564	594	Directed	1944			1.0
-564	687	Directed	1945			1.0
-564	690	Directed	1946			1.0
-564	702	Directed	1947			1.0
-564	717	Directed	1948			1.0
-564	817	Directed	1949			1.0
-564	840	Directed	1950			1.0
-564	959	Directed	1951			1.0
-565	590	Directed	1952			1.0
-565	768	Directed	1953			1.0
-565	769	Directed	1954			1.0
-565	845	Directed	1955			1.0
-565	856	Directed	1956			1.0
-565	857	Directed	1957			1.0
-565	872	Directed	1958			1.0
-565	905	Directed	1959			1.0
-565	907	Directed	1960			1.0
-566	643	Directed	1961			1.0
-566	660	Directed	1962			1.0
-566	700	Directed	1963			1.0
-566	731	Directed	1964			1.0
-566	839	Directed	1965			1.0
-566	842	Directed	1966			1.0
-566	868	Directed	1967			1.0
-566	983	Directed	1968			1.0
-567	658	Directed	1969			1.0
-567	692	Directed	1970			1.0
-567	878	Directed	1971			1.0
-568	611	Directed	1972			1.0
-568	668	Directed	1973			1.0
-568	705	Directed	1974			1.0
-568	795	Directed	1975			1.0
-568	827	Directed	1976			1.0
-568	919	Directed	1977			1.0
-568	955	Directed	1978			1.0
-569	574	Directed	1979			1.0
-569	583	Directed	1980			1.0
-569	664	Directed	1981			1.0
-569	721	Directed	1982			1.0
-569	727	Directed	1983			1.0
-569	795	Directed	1984			1.0
-569	857	Directed	1985			1.0
-570	585	Directed	1986			1.0
-570	605	Directed	1987			1.0
-570	649	Directed	1988			1.0
-570	859	Directed	1989			1.0
-571	600	Directed	1990			1.0
-571	688	Directed	1991			1.0
-571	731	Directed	1992			1.0
-571	969	Directed	1993			1.0
-571	972	Directed	1994			1.0
-572	870	Directed	1995			1.0
-572	881	Directed	1996			1.0
-572	906	Directed	1997			1.0
-573	754	Directed	1998			1.0
-574	605	Directed	1999			1.0
-574	627	Directed	2000			1.0
-574	655	Directed	2001			1.0
-574	678	Directed	2002			1.0
-574	682	Directed	2003			1.0
-574	706	Directed	2004			1.0
-574	724	Directed	2005			1.0
-574	806	Directed	2006			1.0
-574	881	Directed	2007			1.0
-574	960	Directed	2008			1.0
-575	576	Directed	2009			1.0
-575	880	Directed	2010			1.0
-575	946	Directed	2011			1.0
-576	594	Directed	2012			1.0
-576	658	Directed	2013			1.0
-576	666	Directed	2014			1.0
-576	667	Directed	2015			1.0
-576	712	Directed	2016			1.0
-576	728	Directed	2017			1.0
-576	768	Directed	2018			1.0
-576	824	Directed	2019			1.0
-576	881	Directed	2020			1.0
-576	960	Directed	2021			1.0
-577	593	Directed	2022			1.0
-577	708	Directed	2023			1.0
-577	711	Directed	2024			1.0
-577	744	Directed	2025			1.0
-577	835	Directed	2026			1.0
-577	859	Directed	2027			1.0
-577	900	Directed	2028			1.0
-578	640	Directed	2029			1.0
-578	692	Directed	2030			1.0
-578	802	Directed	2031			1.0
-578	864	Directed	2032			1.0
-578	997	Directed	2033			1.0
-579	590	Directed	2034			1.0
-579	609	Directed	2035			1.0
-579	649	Directed	2036			1.0
-579	672	Directed	2037			1.0
-579	743	Directed	2038			1.0
-579	776	Directed	2039			1.0
-579	786	Directed	2040			1.0
-579	847	Directed	2041			1.0
-579	970	Directed	2042			1.0
-580	687	Directed	2043			1.0
-580	792	Directed	2044			1.0
-580	866	Directed	2045			1.0
-581	607	Directed	2046			1.0
-581	617	Directed	2047			1.0
-581	655	Directed	2048			1.0
-581	894	Directed	2049			1.0
-581	970	Directed	2050			1.0
-582	630	Directed	2051			1.0
-582	648	Directed	2052			1.0
-582	732	Directed	2053			1.0
-582	832	Directed	2054			1.0
-582	900	Directed	2055			1.0
-582	943	Directed	2056			1.0
-583	671	Directed	2057			1.0
-583	721	Directed	2058			1.0
-583	936	Directed	2059			1.0
-583	944	Directed	2060			1.0
-583	999	Directed	2061			1.0
-584	729	Directed	2062			1.0
-584	735	Directed	2063			1.0
-584	814	Directed	2064			1.0
-584	894	Directed	2065			1.0
-585	646	Directed	2066			1.0
-585	654	Directed	2067			1.0
-585	671	Directed	2068			1.0
-585	743	Directed	2069			1.0
-585	758	Directed	2070			1.0
-585	768	Directed	2071			1.0
-585	944	Directed	2072			1.0
-586	588	Directed	2073			1.0
-586	637	Directed	2074			1.0
-586	657	Directed	2075			1.0
-586	734	Directed	2076			1.0
-586	800	Directed	2077			1.0
-586	845	Directed	2078			1.0
-586	922	Directed	2079			1.0
-586	937	Directed	2080			1.0
-587	670	Directed	2081			1.0
-587	781	Directed	2082			1.0
-587	807	Directed	2083			1.0
-587	918	Directed	2084			1.0
-588	650	Directed	2085			1.0
-588	720	Directed	2086			1.0
-588	763	Directed	2087			1.0
-588	768	Directed	2088			1.0
-588	893	Directed	2089			1.0
-588	904	Directed	2090			1.0
-588	976	Directed	2091			1.0
-589	743	Directed	2092			1.0
-589	802	Directed	2093			1.0
-589	811	Directed	2094			1.0
-589	855	Directed	2095			1.0
-589	917	Directed	2096			1.0
-589	939	Directed	2097			1.0
-590	676	Directed	2098			1.0
-590	939	Directed	2099			1.0
-590	953	Directed	2100			1.0
-591	685	Directed	2101			1.0
-591	768	Directed	2102			1.0
-591	790	Directed	2103			1.0
-591	794	Directed	2104			1.0
-591	798	Directed	2105			1.0
-591	974	Directed	2106			1.0
-591	992	Directed	2107			1.0
-592	963	Directed	2108			1.0
-593	611	Directed	2109			1.0
-593	667	Directed	2110			1.0
-593	718	Directed	2111			1.0
-593	880	Directed	2112			1.0
-593	910	Directed	2113			1.0
-593	923	Directed	2114			1.0
-594	608	Directed	2115			1.0
-594	695	Directed	2116			1.0
-594	753	Directed	2117			1.0
-594	755	Directed	2118			1.0
-594	785	Directed	2119			1.0
-594	790	Directed	2120			1.0
-594	867	Directed	2121			1.0
-594	908	Directed	2122			1.0
-594	961	Directed	2123			1.0
-594	980	Directed	2124			1.0
-594	987	Directed	2125			1.0
-595	944	Directed	2126			1.0
-595	986	Directed	2127			1.0
-596	599	Directed	2128			1.0
-596	619	Directed	2129			1.0
-596	644	Directed	2130			1.0
-596	720	Directed	2131			1.0
-596	763	Directed	2132			1.0
-596	773	Directed	2133			1.0
-596	856	Directed	2134			1.0
-596	934	Directed	2135			1.0
-596	948	Directed	2136			1.0
-597	829	Directed	2137			1.0
-597	910	Directed	2138			1.0
-598	616	Directed	2139			1.0
-598	701	Directed	2140			1.0
-598	723	Directed	2141			1.0
-598	873	Directed	2142			1.0
-599	637	Directed	2143			1.0
-599	863	Directed	2144			1.0
-600	601	Directed	2145			1.0
-600	649	Directed	2146			1.0
-600	688	Directed	2147			1.0
-600	808	Directed	2148			1.0
-600	811	Directed	2149			1.0
-601	628	Directed	2150			1.0
-601	690	Directed	2151			1.0
-601	765	Directed	2152			1.0
-602	643	Directed	2153			1.0
-602	795	Directed	2154			1.0
-602	865	Directed	2155			1.0
-602	885	Directed	2156			1.0
-602	975	Directed	2157			1.0
-603	651	Directed	2158			1.0
-603	747	Directed	2159			1.0
-603	912	Directed	2160			1.0
-603	960	Directed	2161			1.0
-603	998	Directed	2162			1.0
-604	796	Directed	2163			1.0
-604	902	Directed	2164			1.0
-604	966	Directed	2165			1.0
-605	952	Directed	2166			1.0
-606	631	Directed	2167			1.0
-606	778	Directed	2168			1.0
-606	799	Directed	2169			1.0
-606	954	Directed	2170			1.0
-607	612	Directed	2171			1.0
-607	745	Directed	2172			1.0
-607	939	Directed	2173			1.0
-608	705	Directed	2174			1.0
-608	827	Directed	2175			1.0
-608	924	Directed	2176			1.0
-608	926	Directed	2177			1.0
-609	640	Directed	2178			1.0
-609	736	Directed	2179			1.0
-609	778	Directed	2180			1.0
-609	912	Directed	2181			1.0
-609	965	Directed	2182			1.0
-610	746	Directed	2183			1.0
-610	768	Directed	2184			1.0
-610	915	Directed	2185			1.0
-610	929	Directed	2186			1.0
-611	899	Directed	2187			1.0
-611	945	Directed	2188			1.0
-612	663	Directed	2189			1.0
-612	683	Directed	2190			1.0
-612	698	Directed	2191			1.0
-612	699	Directed	2192			1.0
-612	737	Directed	2193			1.0
-612	780	Directed	2194			1.0
-612	889	Directed	2195			1.0
-612	943	Directed	2196			1.0
-613	639	Directed	2197			1.0
-613	771	Directed	2198			1.0
-613	858	Directed	2199			1.0
-613	872	Directed	2200			1.0
-613	946	Directed	2201			1.0
-614	640	Directed	2202			1.0
-614	910	Directed	2203			1.0
-614	922	Directed	2204			1.0
-615	700	Directed	2205			1.0
-615	761	Directed	2206			1.0
-615	805	Directed	2207			1.0
-615	813	Directed	2208			1.0
-615	882	Directed	2209			1.0
-615	920	Directed	2210			1.0
-616	637	Directed	2211			1.0
-616	644	Directed	2212			1.0
-616	835	Directed	2213			1.0
-616	948	Directed	2214			1.0
-616	976	Directed	2215			1.0
-618	639	Directed	2216			1.0
-618	717	Directed	2217			1.0
-618	895	Directed	2218			1.0
-618	908	Directed	2219			1.0
-618	945	Directed	2220			1.0
-619	644	Directed	2221			1.0
-619	645	Directed	2222			1.0
-619	713	Directed	2223			1.0
-619	743	Directed	2224			1.0
-619	854	Directed	2225			1.0
-620	637	Directed	2226			1.0
-620	699	Directed	2227			1.0
-620	730	Directed	2228			1.0
-620	882	Directed	2229			1.0
-620	941	Directed	2230			1.0
-621	740	Directed	2231			1.0
-621	813	Directed	2232			1.0
-621	896	Directed	2233			1.0
-621	926	Directed	2234			1.0
-622	691	Directed	2235			1.0
-622	710	Directed	2236			1.0
-622	903	Directed	2237			1.0
-622	987	Directed	2238			1.0
-623	719	Directed	2239			1.0
-623	746	Directed	2240			1.0
-623	797	Directed	2241			1.0
-623	960	Directed	2242			1.0
-623	964	Directed	2243			1.0
-623	984	Directed	2244			1.0
-624	645	Directed	2245			1.0
-624	786	Directed	2246			1.0
-625	726	Directed	2247			1.0
-625	728	Directed	2248			1.0
-625	737	Directed	2249			1.0
-625	763	Directed	2250			1.0
-625	882	Directed	2251			1.0
-625	908	Directed	2252			1.0
-625	923	Directed	2253			1.0
-625	925	Directed	2254			1.0
-626	636	Directed	2255			1.0
-626	666	Directed	2256			1.0
-626	710	Directed	2257			1.0
-626	784	Directed	2258			1.0
-626	885	Directed	2259			1.0
-627	666	Directed	2260			1.0
-627	820	Directed	2261			1.0
-628	777	Directed	2262			1.0
-628	806	Directed	2263			1.0
-628	947	Directed	2264			1.0
-628	979	Directed	2265			1.0
-628	998	Directed	2266			1.0
-629	726	Directed	2267			1.0
-629	862	Directed	2268			1.0
-629	924	Directed	2269			1.0
-630	658	Directed	2270			1.0
-630	893	Directed	2271			1.0
-630	923	Directed	2272			1.0
-631	742	Directed	2273			1.0
-631	786	Directed	2274			1.0
-631	899	Directed	2275			1.0
-632	666	Directed	2276			1.0
-632	689	Directed	2277			1.0
-632	721	Directed	2278			1.0
-632	744	Directed	2279			1.0
-632	766	Directed	2280			1.0
-632	838	Directed	2281			1.0
-632	921	Directed	2282			1.0
-632	929	Directed	2283			1.0
-633	680	Directed	2284			1.0
-633	793	Directed	2285			1.0
-633	828	Directed	2286			1.0
-633	912	Directed	2287			1.0
-633	987	Directed	2288			1.0
-634	713	Directed	2289			1.0
-634	964	Directed	2290			1.0
-635	743	Directed	2291			1.0
-635	790	Directed	2292			1.0
-635	840	Directed	2293			1.0
-635	874	Directed	2294			1.0
-635	894	Directed	2295			1.0
-636	666	Directed	2296			1.0
-636	813	Directed	2297			1.0
-636	842	Directed	2298			1.0
-636	882	Directed	2299			1.0
-637	870	Directed	2300			1.0
-637	970	Directed	2301			1.0
-637	978	Directed	2302			1.0
-638	697	Directed	2303			1.0
-638	950	Directed	2304			1.0
-638	982	Directed	2305			1.0
-639	797	Directed	2306			1.0
-639	857	Directed	2307			1.0
-639	932	Directed	2308			1.0
-639	995	Directed	2309			1.0
-640	723	Directed	2310			1.0
-640	763	Directed	2311			1.0
-640	870	Directed	2312			1.0
-640	896	Directed	2313			1.0
-640	944	Directed	2314			1.0
-641	653	Directed	2315			1.0
-641	690	Directed	2316			1.0
-641	705	Directed	2317			1.0
-641	753	Directed	2318			1.0
-641	779	Directed	2319			1.0
-641	834	Directed	2320			1.0
-641	950	Directed	2321			1.0
-642	652	Directed	2322			1.0
-642	818	Directed	2323			1.0
-642	867	Directed	2324			1.0
-643	691	Directed	2325			1.0
-643	710	Directed	2326			1.0
-643	812	Directed	2327			1.0
-643	813	Directed	2328			1.0
-643	894	Directed	2329			1.0
-643	994	Directed	2330			1.0
-644	686	Directed	2331			1.0
-644	760	Directed	2332			1.0
-644	859	Directed	2333			1.0
-644	958	Directed	2334			1.0
-645	702	Directed	2335			1.0
-645	858	Directed	2336			1.0
-645	890	Directed	2337			1.0
-645	925	Directed	2338			1.0
-646	655	Directed	2339			1.0
-646	724	Directed	2340			1.0
-646	928	Directed	2341			1.0
-647	731	Directed	2342			1.0
-647	772	Directed	2343			1.0
-647	773	Directed	2344			1.0
-647	833	Directed	2345			1.0
-648	682	Directed	2346			1.0
-648	690	Directed	2347			1.0
-648	746	Directed	2348			1.0
-648	862	Directed	2349			1.0
-649	721	Directed	2350			1.0
-649	770	Directed	2351			1.0
-649	801	Directed	2352			1.0
-650	784	Directed	2353			1.0
-650	854	Directed	2354			1.0
-650	871	Directed	2355			1.0
-650	902	Directed	2356			1.0
-650	981	Directed	2357			1.0
-651	728	Directed	2358			1.0
-651	804	Directed	2359			1.0
-651	834	Directed	2360			1.0
-651	840	Directed	2361			1.0
-652	661	Directed	2362			1.0
-652	746	Directed	2363			1.0
-652	840	Directed	2364			1.0
-652	907	Directed	2365			1.0
-652	986	Directed	2366			1.0
-653	718	Directed	2367			1.0
-653	792	Directed	2368			1.0
-653	806	Directed	2369			1.0
-653	854	Directed	2370			1.0
-654	659	Directed	2371			1.0
-654	805	Directed	2372			1.0
-654	812	Directed	2373			1.0
-654	863	Directed	2374			1.0
-654	915	Directed	2375			1.0
-655	723	Directed	2376			1.0
-655	731	Directed	2377			1.0
-655	770	Directed	2378			1.0
-655	796	Directed	2379			1.0
-655	852	Directed	2380			1.0
-655	856	Directed	2381			1.0
-655	859	Directed	2382			1.0
-655	928	Directed	2383			1.0
-655	942	Directed	2384			1.0
-655	957	Directed	2385			1.0
-655	964	Directed	2386			1.0
-655	966	Directed	2387			1.0
-656	690	Directed	2388			1.0
-656	844	Directed	2389			1.0
-656	974	Directed	2390			1.0
-656	998	Directed	2391			1.0
-657	664	Directed	2392			1.0
-657	808	Directed	2393			1.0
-657	817	Directed	2394			1.0
-657	834	Directed	2395			1.0
-657	860	Directed	2396			1.0
-658	664	Directed	2397			1.0
-658	828	Directed	2398			1.0
-658	974	Directed	2399			1.0
-658	982	Directed	2400			1.0
-659	695	Directed	2401			1.0
-659	728	Directed	2402			1.0
-659	805	Directed	2403			1.0
-659	823	Directed	2404			1.0
-659	894	Directed	2405			1.0
-660	681	Directed	2406			1.0
-660	712	Directed	2407			1.0
-660	753	Directed	2408			1.0
-660	930	Directed	2409			1.0
-661	697	Directed	2410			1.0
-661	704	Directed	2411			1.0
-661	733	Directed	2412			1.0
-661	782	Directed	2413			1.0
-661	846	Directed	2414			1.0
-661	873	Directed	2415			1.0
-661	915	Directed	2416			1.0
-662	719	Directed	2417			1.0
-662	745	Directed	2418			1.0
-662	769	Directed	2419			1.0
-662	960	Directed	2420			1.0
-662	977	Directed	2421			1.0
-663	665	Directed	2422			1.0
-663	822	Directed	2423			1.0
-663	984	Directed	2424			1.0
-664	709	Directed	2425			1.0
-664	732	Directed	2426			1.0
-664	752	Directed	2427			1.0
-665	690	Directed	2428			1.0
-665	810	Directed	2429			1.0
-665	955	Directed	2430			1.0
-666	703	Directed	2431			1.0
-666	805	Directed	2432			1.0
-666	869	Directed	2433			1.0
-666	871	Directed	2434			1.0
-667	786	Directed	2435			1.0
-667	845	Directed	2436			1.0
-667	889	Directed	2437			1.0
-667	905	Directed	2438			1.0
-668	881	Directed	2439			1.0
-668	941	Directed	2440			1.0
-668	983	Directed	2441			1.0
-669	752	Directed	2442			1.0
-669	759	Directed	2443			1.0
-669	974	Directed	2444			1.0
-669	990	Directed	2445			1.0
-670	780	Directed	2446			1.0
-670	787	Directed	2447			1.0
-670	854	Directed	2448			1.0
-670	860	Directed	2449			1.0
-670	931	Directed	2450			1.0
-670	940	Directed	2451			1.0
-671	732	Directed	2452			1.0
-672	873	Directed	2453			1.0
-672	928	Directed	2454			1.0
-672	942	Directed	2455			1.0
-673	761	Directed	2456			1.0
-673	762	Directed	2457			1.0
-673	764	Directed	2458			1.0
-673	766	Directed	2459			1.0
-673	791	Directed	2460			1.0
-673	827	Directed	2461			1.0
-673	898	Directed	2462			1.0
-673	934	Directed	2463			1.0
-674	712	Directed	2464			1.0
-674	809	Directed	2465			1.0
-674	902	Directed	2466			1.0
-674	998	Directed	2467			1.0
-675	720	Directed	2468			1.0
-675	840	Directed	2469			1.0
-676	681	Directed	2470			1.0
-676	929	Directed	2471			1.0
-676	954	Directed	2472			1.0
-676	968	Directed	2473			1.0
-677	816	Directed	2474			1.0
-677	833	Directed	2475			1.0
-677	863	Directed	2476			1.0
-677	868	Directed	2477			1.0
-678	722	Directed	2478			1.0
-678	795	Directed	2479			1.0
-678	917	Directed	2480			1.0
-678	939	Directed	2481			1.0
-678	972	Directed	2482			1.0
-679	714	Directed	2483			1.0
-679	800	Directed	2484			1.0
-679	872	Directed	2485			1.0
-679	938	Directed	2486			1.0
-679	974	Directed	2487			1.0
-680	683	Directed	2488			1.0
-680	707	Directed	2489			1.0
-680	712	Directed	2490			1.0
-680	823	Directed	2491			1.0
-681	726	Directed	2492			1.0
-681	727	Directed	2493			1.0
-681	855	Directed	2494			1.0
-681	892	Directed	2495			1.0
-681	932	Directed	2496			1.0
-681	981	Directed	2497			1.0
-682	718	Directed	2498			1.0
-682	728	Directed	2499			1.0
-682	765	Directed	2500			1.0
-682	780	Directed	2501			1.0
-682	795	Directed	2502			1.0
-682	806	Directed	2503			1.0
-682	833	Directed	2504			1.0
-683	850	Directed	2505			1.0
-683	957	Directed	2506			1.0
-684	689	Directed	2507			1.0
-684	733	Directed	2508			1.0
-684	858	Directed	2509			1.0
-685	693	Directed	2510			1.0
-685	794	Directed	2511			1.0
-685	797	Directed	2512			1.0
-686	773	Directed	2513			1.0
-686	898	Directed	2514			1.0
-686	925	Directed	2515			1.0
-686	984	Directed	2516			1.0
-686	985	Directed	2517			1.0
-687	761	Directed	2518			1.0
-687	853	Directed	2519			1.0
-687	900	Directed	2520			1.0
-687	922	Directed	2521			1.0
-687	926	Directed	2522			1.0
-688	774	Directed	2523			1.0
-688	909	Directed	2524			1.0
-688	987	Directed	2525			1.0
-689	777	Directed	2526			1.0
-690	758	Directed	2527			1.0
-690	859	Directed	2528			1.0
-690	984	Directed	2529			1.0
-691	819	Directed	2530			1.0
-692	764	Directed	2531			1.0
-692	821	Directed	2532			1.0
-692	823	Directed	2533			1.0
-692	919	Directed	2534			1.0
-692	990	Directed	2535			1.0
-693	798	Directed	2536			1.0
-693	824	Directed	2537			1.0
-693	842	Directed	2538			1.0
-693	963	Directed	2539			1.0
-694	866	Directed	2540			1.0
-694	887	Directed	2541			1.0
-695	774	Directed	2542			1.0
-695	791	Directed	2543			1.0
-695	793	Directed	2544			1.0
-695	814	Directed	2545			1.0
-695	871	Directed	2546			1.0
-695	884	Directed	2547			1.0
-695	971	Directed	2548			1.0
-695	983	Directed	2549			1.0
-696	813	Directed	2550			1.0
-696	914	Directed	2551			1.0
-696	928	Directed	2552			1.0
-697	757	Directed	2553			1.0
-697	860	Directed	2554			1.0
-697	869	Directed	2555			1.0
-698	879	Directed	2556			1.0
-698	922	Directed	2557			1.0
-699	752	Directed	2558			1.0
-699	924	Directed	2559			1.0
-699	934	Directed	2560			1.0
-700	732	Directed	2561			1.0
-700	755	Directed	2562			1.0
-700	837	Directed	2563			1.0
-701	724	Directed	2564			1.0
-701	741	Directed	2565			1.0
-701	780	Directed	2566			1.0
-701	810	Directed	2567			1.0
-701	860	Directed	2568			1.0
-701	926	Directed	2569			1.0
-702	729	Directed	2570			1.0
-702	756	Directed	2571			1.0
-702	892	Directed	2572			1.0
-702	902	Directed	2573			1.0
-703	719	Directed	2574			1.0
-703	815	Directed	2575			1.0
-703	890	Directed	2576			1.0
-703	966	Directed	2577			1.0
-703	996	Directed	2578			1.0
-703	997	Directed	2579			1.0
-704	742	Directed	2580			1.0
-704	802	Directed	2581			1.0
-704	858	Directed	2582			1.0
-704	885	Directed	2583			1.0
-705	712	Directed	2584			1.0
-705	830	Directed	2585			1.0
-706	742	Directed	2586			1.0
-706	783	Directed	2587			1.0
-706	857	Directed	2588			1.0
-706	866	Directed	2589			1.0
-706	950	Directed	2590			1.0
-707	752	Directed	2591			1.0
-707	773	Directed	2592			1.0
-707	886	Directed	2593			1.0
-707	936	Directed	2594			1.0
-707	982	Directed	2595			1.0
-707	999	Directed	2596			1.0
-708	722	Directed	2597			1.0
-708	755	Directed	2598			1.0
-708	863	Directed	2599			1.0
-708	896	Directed	2600			1.0
-709	739	Directed	2601			1.0
-709	770	Directed	2602			1.0
-709	795	Directed	2603			1.0
-709	841	Directed	2604			1.0
-709	862	Directed	2605			1.0
-710	727	Directed	2606			1.0
-710	749	Directed	2607			1.0
-710	889	Directed	2608			1.0
-710	906	Directed	2609			1.0
-712	770	Directed	2610			1.0
-712	870	Directed	2611			1.0
-712	949	Directed	2612			1.0
-712	997	Directed	2613			1.0
-713	726	Directed	2614			1.0
-713	923	Directed	2615			1.0
-714	936	Directed	2616			1.0
-714	939	Directed	2617			1.0
-714	993	Directed	2618			1.0
-715	724	Directed	2619			1.0
-715	751	Directed	2620			1.0
-716	722	Directed	2621			1.0
-716	725	Directed	2622			1.0
-716	744	Directed	2623			1.0
-716	850	Directed	2624			1.0
-716	853	Directed	2625			1.0
-716	897	Directed	2626			1.0
-717	779	Directed	2627			1.0
-717	780	Directed	2628			1.0
-717	868	Directed	2629			1.0
-717	949	Directed	2630			1.0
-718	775	Directed	2631			1.0
-718	804	Directed	2632			1.0
-718	863	Directed	2633			1.0
-718	915	Directed	2634			1.0
-718	981	Directed	2635			1.0
-719	781	Directed	2636			1.0
-719	815	Directed	2637			1.0
-719	853	Directed	2638			1.0
-719	877	Directed	2639			1.0
-720	777	Directed	2640			1.0
-720	786	Directed	2641			1.0
-720	791	Directed	2642			1.0
-720	820	Directed	2643			1.0
-720	896	Directed	2644			1.0
-721	937	Directed	2645			1.0
-721	984	Directed	2646			1.0
-722	724	Directed	2647			1.0
-722	784	Directed	2648			1.0
-722	882	Directed	2649			1.0
-722	905	Directed	2650			1.0
-722	969	Directed	2651			1.0
-722	998	Directed	2652			1.0
-723	933	Directed	2653			1.0
-723	940	Directed	2654			1.0
-723	960	Directed	2655			1.0
-724	979	Directed	2656			1.0
-725	843	Directed	2657			1.0
-725	845	Directed	2658			1.0
-725	876	Directed	2659			1.0
-725	982	Directed	2660			1.0
-726	764	Directed	2661			1.0
-727	732	Directed	2662			1.0
-727	742	Directed	2663			1.0
-727	759	Directed	2664			1.0
-727	807	Directed	2665			1.0
-727	812	Directed	2666			1.0
-727	820	Directed	2667			1.0
-727	839	Directed	2668			1.0
-727	850	Directed	2669			1.0
-727	878	Directed	2670			1.0
-727	927	Directed	2671			1.0
-728	817	Directed	2672			1.0
-728	962	Directed	2673			1.0
-728	970	Directed	2674			1.0
-728	978	Directed	2675			1.0
-729	797	Directed	2676			1.0
-729	921	Directed	2677			1.0
-729	991	Directed	2678			1.0
-729	992	Directed	2679			1.0
-730	920	Directed	2680			1.0
-730	985	Directed	2681			1.0
-731	880	Directed	2682			1.0
-731	913	Directed	2683			1.0
-732	984	Directed	2684			1.0
-733	746	Directed	2685			1.0
-733	768	Directed	2686			1.0
-733	844	Directed	2687			1.0
-733	848	Directed	2688			1.0
-734	977	Directed	2689			1.0
-735	751	Directed	2690			1.0
-735	768	Directed	2691			1.0
-735	841	Directed	2692			1.0
-735	934	Directed	2693			1.0
-736	737	Directed	2694			1.0
-736	762	Directed	2695			1.0
-736	769	Directed	2696			1.0
-736	799	Directed	2697			1.0
-736	808	Directed	2698			1.0
-736	859	Directed	2699			1.0
-736	907	Directed	2700			1.0
-737	777	Directed	2701			1.0
-737	790	Directed	2702			1.0
-737	818	Directed	2703			1.0
-738	822	Directed	2704			1.0
-738	841	Directed	2705			1.0
-738	870	Directed	2706			1.0
-739	798	Directed	2707			1.0
-739	811	Directed	2708			1.0
-739	853	Directed	2709			1.0
-739	874	Directed	2710			1.0
-740	871	Directed	2711			1.0
-740	875	Directed	2712			1.0
-740	912	Directed	2713			1.0
-741	846	Directed	2714			1.0
-741	910	Directed	2715			1.0
-741	962	Directed	2716			1.0
-741	967	Directed	2717			1.0
-741	982	Directed	2718			1.0
-742	811	Directed	2719			1.0
-742	880	Directed	2720			1.0
-742	906	Directed	2721			1.0
-742	978	Directed	2722			1.0
-743	932	Directed	2723			1.0
-743	991	Directed	2724			1.0
-744	823	Directed	2725			1.0
-744	825	Directed	2726			1.0
-745	869	Directed	2727			1.0
-745	935	Directed	2728			1.0
-745	968	Directed	2729			1.0
-746	822	Directed	2730			1.0
-746	988	Directed	2731			1.0
-748	831	Directed	2732			1.0
-748	931	Directed	2733			1.0
-748	996	Directed	2734			1.0
-749	830	Directed	2735			1.0
-749	869	Directed	2736			1.0
-749	871	Directed	2737			1.0
-749	980	Directed	2738			1.0
-750	873	Directed	2739			1.0
-751	756	Directed	2740			1.0
-751	856	Directed	2741			1.0
-752	760	Directed	2742			1.0
-752	913	Directed	2743			1.0
-752	992	Directed	2744			1.0
-753	773	Directed	2745			1.0
-753	792	Directed	2746			1.0
-753	813	Directed	2747			1.0
-753	895	Directed	2748			1.0
-753	998	Directed	2749			1.0
-756	826	Directed	2750			1.0
-756	840	Directed	2751			1.0
-756	855	Directed	2752			1.0
-757	766	Directed	2753			1.0
-757	832	Directed	2754			1.0
-757	866	Directed	2755			1.0
-757	936	Directed	2756			1.0
-757	946	Directed	2757			1.0
-757	976	Directed	2758			1.0
-758	935	Directed	2759			1.0
-758	962	Directed	2760			1.0
-759	836	Directed	2761			1.0
-760	832	Directed	2762			1.0
-760	961	Directed	2763			1.0
-761	791	Directed	2764			1.0
-761	811	Directed	2765			1.0
-761	861	Directed	2766			1.0
-761	953	Directed	2767			1.0
-762	797	Directed	2768			1.0
-762	871	Directed	2769			1.0
-762	985	Directed	2770			1.0
-762	990	Directed	2771			1.0
-763	837	Directed	2772			1.0
-763	862	Directed	2773			1.0
-763	978	Directed	2774			1.0
-764	814	Directed	2775			1.0
-764	917	Directed	2776			1.0
-764	952	Directed	2777			1.0
-765	825	Directed	2778			1.0
-765	925	Directed	2779			1.0
-765	965	Directed	2780			1.0
-765	970	Directed	2781			1.0
-767	924	Directed	2782			1.0
-768	830	Directed	2783			1.0
-768	864	Directed	2784			1.0
-769	916	Directed	2785			1.0
-769	957	Directed	2786			1.0
-770	865	Directed	2787			1.0
-770	870	Directed	2788			1.0
-771	795	Directed	2789			1.0
-771	801	Directed	2790			1.0
-771	854	Directed	2791			1.0
-772	800	Directed	2792			1.0
-772	875	Directed	2793			1.0
-773	915	Directed	2794			1.0
-773	939	Directed	2795			1.0
-773	947	Directed	2796			1.0
-774	802	Directed	2797			1.0
-774	811	Directed	2798			1.0
-774	946	Directed	2799			1.0
-774	979	Directed	2800			1.0
-774	990	Directed	2801			1.0
-776	777	Directed	2802			1.0
-776	800	Directed	2803			1.0
-776	931	Directed	2804			1.0
-776	983	Directed	2805			1.0
-777	856	Directed	2806			1.0
-778	896	Directed	2807			1.0
-779	910	Directed	2808			1.0
-779	988	Directed	2809			1.0
-780	840	Directed	2810			1.0
-780	911	Directed	2811			1.0
-780	932	Directed	2812			1.0
-781	868	Directed	2813			1.0
-781	892	Directed	2814			1.0
-782	785	Directed	2815			1.0
-782	861	Directed	2816			1.0
-782	884	Directed	2817			1.0
-782	908	Directed	2818			1.0
-782	975	Directed	2819			1.0
-783	967	Directed	2820			1.0
-784	814	Directed	2821			1.0
-784	820	Directed	2822			1.0
-785	836	Directed	2823			1.0
-785	849	Directed	2824			1.0
-785	877	Directed	2825			1.0
-786	982	Directed	2826			1.0
-787	852	Directed	2827			1.0
-787	924	Directed	2828			1.0
-787	956	Directed	2829			1.0
-787	983	Directed	2830			1.0
-787	995	Directed	2831			1.0
-787	997	Directed	2832			1.0
-788	896	Directed	2833			1.0
-788	940	Directed	2834			1.0
-789	870	Directed	2835			1.0
-789	883	Directed	2836			1.0
-789	964	Directed	2837			1.0
-790	868	Directed	2838			1.0
-790	893	Directed	2839			1.0
-790	937	Directed	2840			1.0
-790	974	Directed	2841			1.0
-791	834	Directed	2842			1.0
-791	907	Directed	2843			1.0
-791	929	Directed	2844			1.0
-791	945	Directed	2845			1.0
-792	870	Directed	2846			1.0
-792	942	Directed	2847			1.0
-792	953	Directed	2848			1.0
-793	913	Directed	2849			1.0
-794	853	Directed	2850			1.0
-794	911	Directed	2851			1.0
-794	918	Directed	2852			1.0
-794	927	Directed	2853			1.0
-794	989	Directed	2854			1.0
-794	998	Directed	2855			1.0
-795	836	Directed	2856			1.0
-795	864	Directed	2857			1.0
-795	969	Directed	2858			1.0
-796	856	Directed	2859			1.0
-796	961	Directed	2860			1.0
-796	981	Directed	2861			1.0
-797	958	Directed	2862			1.0
-797	987	Directed	2863			1.0
-798	953	Directed	2864			1.0
-798	961	Directed	2865			1.0
-799	848	Directed	2866			1.0
-799	980	Directed	2867			1.0
-800	912	Directed	2868			1.0
-800	975	Directed	2869			1.0
-801	892	Directed	2870			1.0
-801	918	Directed	2871			1.0
-802	980	Directed	2872			1.0
-803	808	Directed	2873			1.0
-803	865	Directed	2874			1.0
-803	975	Directed	2875			1.0
-803	992	Directed	2876			1.0
-804	856	Directed	2877			1.0
-804	857	Directed	2878			1.0
-804	897	Directed	2879			1.0
-804	973	Directed	2880			1.0
-805	821	Directed	2881			1.0
-805	826	Directed	2882			1.0
-805	833	Directed	2883			1.0
-805	841	Directed	2884			1.0
-805	842	Directed	2885			1.0
-805	905	Directed	2886			1.0
-806	822	Directed	2887			1.0
-806	845	Directed	2888			1.0
-806	889	Directed	2889			1.0
-806	904	Directed	2890			1.0
-806	984	Directed	2891			1.0
-807	841	Directed	2892			1.0
-807	862	Directed	2893			1.0
-807	990	Directed	2894			1.0
-808	837	Directed	2895			1.0
-808	923	Directed	2896			1.0
-809	823	Directed	2897			1.0
-809	863	Directed	2898			1.0
-809	915	Directed	2899			1.0
-809	943	Directed	2900			1.0
-810	825	Directed	2901			1.0
-810	971	Directed	2902			1.0
-811	830	Directed	2903			1.0
-811	901	Directed	2904			1.0
-812	905	Directed	2905			1.0
-812	916	Directed	2906			1.0
-812	972	Directed	2907			1.0
-812	997	Directed	2908			1.0
-813	974	Directed	2909			1.0
-815	830	Directed	2910			1.0
-815	856	Directed	2911			1.0
-815	910	Directed	2912			1.0
-818	851	Directed	2913			1.0
-818	912	Directed	2914			1.0
-819	824	Directed	2915			1.0
-819	829	Directed	2916			1.0
-819	867	Directed	2917			1.0
-819	920	Directed	2918			1.0
-820	843	Directed	2919			1.0
-821	994	Directed	2920			1.0
-822	909	Directed	2921			1.0
-823	888	Directed	2922			1.0
-824	858	Directed	2923			1.0
-824	888	Directed	2924			1.0
-824	905	Directed	2925			1.0
-824	939	Directed	2926			1.0
-825	899	Directed	2927			1.0
-825	968	Directed	2928			1.0
-826	833	Directed	2929			1.0
-826	948	Directed	2930			1.0
-826	984	Directed	2931			1.0
-829	869	Directed	2932			1.0
-829	979	Directed	2933			1.0
-830	918	Directed	2934			1.0
-830	954	Directed	2935			1.0
-830	991	Directed	2936			1.0
-831	847	Directed	2937			1.0
-831	979	Directed	2938			1.0
-832	894	Directed	2939			1.0
-832	898	Directed	2940			1.0
-832	913	Directed	2941			1.0
-833	881	Directed	2942			1.0
-833	982	Directed	2943			1.0
-834	938	Directed	2944			1.0
-835	854	Directed	2945			1.0
-835	870	Directed	2946			1.0
-836	918	Directed	2947			1.0
-837	909	Directed	2948			1.0
-837	949	Directed	2949			1.0
-837	965	Directed	2950			1.0
-838	938	Directed	2951			1.0
-838	964	Directed	2952			1.0
-838	999	Directed	2953			1.0
-839	925	Directed	2954			1.0
-839	972	Directed	2955			1.0
-839	993	Directed	2956			1.0
-841	886	Directed	2957			1.0
-841	942	Directed	2958			1.0
-843	869	Directed	2959			1.0
-843	929	Directed	2960			1.0
-844	860	Directed	2961			1.0
-844	873	Directed	2962			1.0
-844	905	Directed	2963			1.0
-845	972	Directed	2964			1.0
-846	853	Directed	2965			1.0
-846	883	Directed	2966			1.0
-846	899	Directed	2967			1.0
-848	993	Directed	2968			1.0
-849	867	Directed	2969			1.0
-849	893	Directed	2970			1.0
-849	903	Directed	2971			1.0
-849	923	Directed	2972			1.0
-849	933	Directed	2973			1.0
-849	995	Directed	2974			1.0
-850	924	Directed	2975			1.0
-851	901	Directed	2976			1.0
-851	911	Directed	2977			1.0
-851	939	Directed	2978			1.0
-853	901	Directed	2979			1.0
-853	911	Directed	2980			1.0
-853	986	Directed	2981			1.0
-854	868	Directed	2982			1.0
-854	916	Directed	2983			1.0
-854	938	Directed	2984			1.0
-854	960	Directed	2985			1.0
-855	893	Directed	2986			1.0
-855	922	Directed	2987			1.0
-855	978	Directed	2988			1.0
-856	873	Directed	2989			1.0
-856	981	Directed	2990			1.0
-857	875	Directed	2991			1.0
-857	898	Directed	2992			1.0
-857	911	Directed	2993			1.0
-858	933	Directed	2994			1.0
-858	940	Directed	2995			1.0
-859	883	Directed	2996			1.0
-859	902	Directed	2997			1.0
-859	917	Directed	2998			1.0
-859	932	Directed	2999			1.0
-859	973	Directed	3000			1.0
-859	987	Directed	3001			1.0
-861	876	Directed	3002			1.0
-861	919	Directed	3003			1.0
-861	983	Directed	3004			1.0
-861	992	Directed	3005			1.0
-862	888	Directed	3006			1.0
-862	926	Directed	3007			1.0
-863	987	Directed	3008			1.0
-863	989	Directed	3009			1.0
-863	993	Directed	3010			1.0
-863	998	Directed	3011			1.0
-866	901	Directed	3012			1.0
-867	881	Directed	3013			1.0
-867	967	Directed	3014			1.0
-867	979	Directed	3015			1.0
-868	988	Directed	3016			1.0
-869	880	Directed	3017			1.0
-869	949	Directed	3018			1.0
-870	978	Directed	3019			1.0
-871	924	Directed	3020			1.0
-872	899	Directed	3021			1.0
-872	924	Directed	3022			1.0
-872	982	Directed	3023			1.0
-873	948	Directed	3024			1.0
-874	900	Directed	3025			1.0
-874	937	Directed	3026			1.0
-874	941	Directed	3027			1.0
-874	993	Directed	3028			1.0
-876	924	Directed	3029			1.0
-877	886	Directed	3030			1.0
-878	891	Directed	3031			1.0
-879	902	Directed	3032			1.0
-880	976	Directed	3033			1.0
-883	924	Directed	3034			1.0
-883	970	Directed	3035			1.0
-884	943	Directed	3036			1.0
-884	985	Directed	3037			1.0
-886	934	Directed	3038			1.0
-887	911	Directed	3039			1.0
-887	932	Directed	3040			1.0
-887	964	Directed	3041			1.0
-889	972	Directed	3042			1.0
-889	987	Directed	3043			1.0
-890	994	Directed	3044			1.0
-891	892	Directed	3045			1.0
-892	935	Directed	3046			1.0
-893	938	Directed	3047			1.0
-893	987	Directed	3048			1.0
-895	919	Directed	3049			1.0
-895	990	Directed	3050			1.0
-896	932	Directed	3051			1.0
-897	935	Directed	3052			1.0
-897	987	Directed	3053			1.0
-897	991	Directed	3054			1.0
-899	948	Directed	3055			1.0
-900	969	Directed	3056			1.0
-901	956	Directed	3057			1.0
-901	963	Directed	3058			1.0
-902	916	Directed	3059			1.0
-902	992	Directed	3060			1.0
-903	981	Directed	3061			1.0
-906	980	Directed	3062			1.0
-908	923	Directed	3063			1.0
-908	924	Directed	3064			1.0
-909	918	Directed	3065			1.0
-912	964	Directed	3066			1.0
-914	936	Directed	3067			1.0
-916	922	Directed	3068			1.0
-916	961	Directed	3069			1.0
-920	936	Directed	3070			1.0
-920	982	Directed	3071			1.0
-921	997	Directed	3072			1.0
-925	985	Directed	3073			1.0
-925	996	Directed	3074			1.0
-926	957	Directed	3075			1.0
-926	991	Directed	3076			1.0
-927	950	Directed	3077			1.0
-927	991	Directed	3078			1.0
-929	963	Directed	3079			1.0
-930	950	Directed	3080			1.0
-931	998	Directed	3081			1.0
-936	977	Directed	3082			1.0
-936	989	Directed	3083			1.0
-937	938	Directed	3084			1.0
-939	977	Directed	3085			1.0
-942	984	Directed	3086			1.0
-944	969	Directed	3087			1.0
-945	949	Directed	3088			1.0
-948	993	Directed	3089			1.0
-950	964	Directed	3090			1.0
-953	960	Directed	3091			1.0
-954	993	Directed	3092			1.0
-956	961	Directed	3093			1.0
-956	985	Directed	3094			1.0
-959	990	Directed	3095			1.0
-960	970	Directed	3096			1.0
-962	978	Directed	3097			1.0
-964	999	Directed	3098			1.0
-965	978	Directed	3099			1.0
-967	968	Directed	3100			1.0
-967	984	Directed	3101			1.0
-971	974	Directed	3102			1.0
-971	994	Directed	3103			1.0
-972	980	Directed	3104			1.0
-973	992	Directed	3105			1.0
-977	984	Directed	3106			1.0
-978	991	Directed	3107			1.0
-979	986	Directed	3108			1.0
-984	998	Directed	3109			1.0
-988	995	Directed	3110			1.0
-989	993	Directed	3111			1.0
-995	997	Directed	3112			1.0
+1	2
+1	3
+1	62
+1	99
+1	100
+2	3
+2	4
+2	100
+3	5
+3	43
+4	5
+4	6
+5	6
+5	7
+6	7
+6	85
+7	8
+7	9
+7	93
+8	9
+8	10
+9	10
+9	11
+10	11
+10	12
+11	12
+11	13
+11	60
+12	13
+12	14
+13	15
+13	70
+14	15
+14	16
+15	16
+15	17
+15	50
+16	17
+16	18
+17	18
+17	19
+18	19
+18	20
+19	20
+19	21
+19	56
+20	21
+20	22
+21	22
+21	23
+22	23
+22	24
+23	25
+23	86
+24	25
+24	54
+25	26
+25	27
+26	27
+26	28
+27	28
+27	29
+28	29
+28	30
+29	30
+29	31
+30	31
+30	32
+31	32
+31	33
+32	33
+32	34
+33	34
+33	35
+33	77
+34	35
+34	36
+35	36
+35	37
+35	44
+36	37
+36	38
+37	38
+37	39
+38	39
+38	40
+39	40
+39	41
+40	41
+40	42
+41	42
+41	43
+42	43
+42	44
+43	44
+43	45
+44	46
+45	46
+45	47
+46	47
+46	48
+47	48
+47	49
+48	49
+48	50
+49	50
+49	51
+50	52
+51	52
+51	53
+52	53
+52	54
+53	54
+53	55
+54	55
+54	56
+55	56
+55	57
+56	58
+57	58
+57	59
+58	59
+58	60
+59	60
+59	61
+60	62
+61	62
+61	63
+62	63
+63	64
+63	65
+64	65
+64	66
+65	66
+65	67
+66	67
+66	68
+67	68
+67	69
+67	92
+68	69
+68	70
+69	70
+69	71
+70	71
+70	72
+71	72
+71	73
+72	73
+72	74
+73	74
+73	75
+74	75
+74	76
+75	76
+75	77
+76	77
+76	78
+77	79
+78	79
+78	80
+79	80
+79	81
+80	81
+80	82
+81	82
+81	91
+82	83
+82	84
+83	84
+83	85
+84	85
+84	86
+85	86
+85	87
+86	87
+86	88
+87	88
+87	89
+88	89
+88	90
+89	90
+89	91
+90	91
+90	92
+91	92
+91	93
+92	94
+93	94
+94	95
+94	96
+95	96
+95	97
+96	97
+96	98
+97	98
+97	99
+98	99
+98	100
+99	100
