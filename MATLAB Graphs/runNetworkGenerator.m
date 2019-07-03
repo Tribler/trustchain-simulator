@@ -1,18 +1,21 @@
-graph = WattsStrogatz(500,2,0.05);
+clear h2
+clear graph
+
+
+graph = WattsStrogatz(500,5,0.01);
 
 disp("AvgPathLength:");
 disp(mean(mean(distances(graph))));
 disp("VariancePathLength: ");
 disp(mean(var(distances(graph))));
 
-figure('name','Graph with $N = 500$ nodes');
+figure('name','Graph');
 
 colormap hsv
 deg = degree(graph);
 nSizes = 2*sqrt(deg-min(deg)+0.2);
 nColors = deg;
 plot(graph,'MarkerSize',nSizes,'NodeCData',nColors,'EdgeAlpha',0.1)
-title('Watts-Strogatz Graph with $N = 500$ nodes, $K = 25$, and $\beta = 0.15$','Interpreter','latex')
 colorbar
 
 clear ans
