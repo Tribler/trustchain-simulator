@@ -108,7 +108,7 @@ void L2Queue::handleMessage(cMessage *msg)
             startTransmitting(msg);
         }
     }
-    else if (msg->arrivedOn("line$i")) {
+    else if (msg->arrivedOn("line$i") || msg->arrivedOn("direct")) {
         // pass up
         emit(rxBytesSignal, (long)check_and_cast<cPacket *>(msg)->getByteLength());
         send(msg, "out");

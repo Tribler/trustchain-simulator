@@ -34,8 +34,8 @@ void App::initialize()
     WATCH(myAddress);
     WATCH(chainTotalValue);
 
-   //Neighbors definition
-    for (int i = 0; i < (int)par("totalNodes"); i++) {
+    //Neighbors definition
+    for (int i = 0; i < (int) par("totalNodes"); i++) {
         destAddresses.push_back(i);
     }
 
@@ -43,16 +43,14 @@ void App::initialize()
         throw cRuntimeError("At least one address must be specified in the destAddresses parameter!");
 
     //TrustChain initialization
-    registerNewChainNode(-1, -1, (int)par("initialMoney"));
-
+    registerNewChainNode(-1, -1, (int) par("initialMoney"));
 
     //Node status definition
     const char *evilNodeIdsPar = par("evilNodeIds");
-      cStringTokenizer tokenizer(evilNodeIdsPar);
-      const char *token;
-      while ((token = tokenizer.nextToken()) != nullptr)
-          evilNodeIds.push_back(atoi(token));
-
+    cStringTokenizer tokenizer(evilNodeIdsPar);
+    const char *token;
+    while ((token = tokenizer.nextToken()) != nullptr)
+        evilNodeIds.push_back(atoi(token));
 
     amIEvil = false;
     int i = 0;
@@ -287,6 +285,23 @@ void App::createTransactionMessage()
     pk->setMyChainSeqNum(trustChain.size() + 1);
 
     send(pk, "out");
+
+// DIRECT MESSAGES
+//    char pkname2[40];
+//    sprintf(pkname2, "#%ld from-%d-to-%d $%d", pkCounter++, myAddress, 2, transactionValue);
+//    Packet *pk2 = new Packet(pkname2);
+//    pk2->setByteLength(packetLengthBytes->intValue());
+//    pk2->setSrcAddr(myAddress);
+//    pk2->setDestAddr(2);
+//    pk2->setPacketType(0);
+//    pk2->setTransactionValue(transactionValue);
+//    pk2->setMyChainSeqNum(trustChain.size() + 1);
+//
+//    cModule *target =getParentModule()->getParentModule()->getSubmodule("rte",2)->getSubmodule("queue",0);
+//    cMessage *dataCopy = pk2->dup();
+//    sendDirect(dataCopy, target, "direct");
+//
+
 }
 
 void App::createChainRequestMessage()
@@ -569,7 +584,7 @@ void App::calculateChainValue()
 
 bool App::isNodeEvil()
 {
-    if (amIEvil && trustChain.size() >= (int)par("evilNumberOfSleepingTransaction")) {
+    if (amIEvil && trustChain.size() >= (int) par("evilNumberOfSleepingTransaction")) {
         return true;
     }
     else {

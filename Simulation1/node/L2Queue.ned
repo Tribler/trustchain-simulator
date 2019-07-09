@@ -46,6 +46,7 @@ simple L2Queue
         input in;
         output out;
         inout line;
+        input direct @directIn;       
 }
 
 
