@@ -6,8 +6,6 @@
 using namespace omnetpp;
 
 const int EVIL_NODE_ID[] = { 1 }; // [-1 means that there are no evil node]
-const int EVIL_SLEEPING_TRANSACTION = 10; // [1 is MIN]
-const int EVIL_NUMBER_OF_TRANSACTION = 2; // [2 is MIN] total max number of transaction to perform after the first evil transaction
 
 Define_Module(App);
 
@@ -91,7 +89,7 @@ void App::threadFunction()
     if (tempBlockID == -1) { //No transaction are pending
         calculateChainValue();
         if (chainTotalValue > 0) {
-            if (isNodeEvil() && totalEvilTransactions >= EVIL_NUMBER_OF_TRANSACTION) {
+            if (isNodeEvil() && totalEvilTransactions >= (int) par("evilNumberOfTransaction")) {
                 return;
             }
             else {
@@ -573,7 +571,7 @@ void App::calculateChainValue()
 
 bool App::isNodeEvil()
 {
-    if (amIEvil && trustChain.size() >= EVIL_SLEEPING_TRANSACTION) {
+    if (amIEvil && trustChain.size() >= (int)par("evilNumberOfSleepingTransaction")) {
         return true;
     }
     else {
