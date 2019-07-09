@@ -71,6 +71,7 @@ private:
     bool amIEvil;
     std::vector<int> victimDestAddresses; //used to keep track of whom the evil node has attacked
     int totalEvilTransactions;
+    std::vector<int> evilNodeIds;
 
     //Transactions related par
     int tempBlockID;

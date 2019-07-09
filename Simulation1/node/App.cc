@@ -5,8 +5,6 @@
 
 using namespace omnetpp;
 
-const int EVIL_NODE_ID[] = { 1 }; // [-1 means that there are no evil node]
-
 Define_Module(App);
 
 App::App()
@@ -36,13 +34,6 @@ void App::initialize()
     WATCH(myAddress);
     WATCH(chainTotalValue);
 
-    //Obsolete
-//    const char *destAddressesPar = par("destAddresses");
-//    cStringTokenizer tokenizer(destAddressesPar);
-//    const char *token;
-//    while ((token = tokenizer.nextToken()) != nullptr)
-//        destAddresses.push_back(atoi(token));
-
    //Neighbors definition
     for (int i = 0; i < (int)par("totalNodes"); i++) {
         destAddresses.push_back(i);
@@ -56,10 +47,17 @@ void App::initialize()
 
 
     //Node status definition
+    const char *evilNodeIdsPar = par("evilNodeIds");
+      cStringTokenizer tokenizer(evilNodeIdsPar);
+      const char *token;
+      while ((token = tokenizer.nextToken()) != nullptr)
+          evilNodeIds.push_back(atoi(token));
+
+
     amIEvil = false;
     int i = 0;
-    for (i = 0; i < sizeof(EVIL_NODE_ID) / sizeof(EVIL_NODE_ID[0]); i++) {
-        if (myAddress == EVIL_NODE_ID[i]) {
+    for (i = 0; i < evilNodeIds.size(); i++) {
+        if (myAddress == evilNodeIds[i]) {
             amIEvil = true;
         }
     }
@@ -632,8 +630,7 @@ void App::stopSimulation(int evilNodeId) // This function is being called when e
     }
 
     // If there has been detected enough nodes equal to the evil node numbers stop simulation
-    if (nodesDetected == sizeof(EVIL_NODE_ID) / sizeof(EVIL_NODE_ID[0])) {
-
+    if (nodesDetected == evilNodeIds.size()) {
         char text[128];
         for (i = 0; i < simulationTiming.size(); i++) {
             sprintf(text, "Simulation: evil node #%d delta detection time:  %s", simulationTiming[i].nodeId, SIMTIME_STR(simulationTiming[i].detectionTime - simulationTiming[i].transactionTime));
