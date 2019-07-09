@@ -1,25 +1,27 @@
 version 2
-run General-0-20190709-11:22:51-7212
+run General-0-20190709-11:49:13-24528
 attr configname General
-attr datetime 20190709-11:22:51
+attr datetime 20190709-11:49:13
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
 attr iterationvarsf ""
 attr measurement ""
 attr network networks.Net5
-attr processid 7212
+attr processid 24528
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
+param **.totalNodes 100
 param **.appType "\"App\""
 param **.app.packetLength "1500 bytes"
-param **.app.totalNodes 100
 param **.destAddresses "\"0\""
 param **.sendIaTime "uniform(5s, 10s)"
 param **.sendIaTimeEvil 10ms
+param Net5.delay 100ms
+param Net5.datarate 7200kbps
 
 scalar Net5.rte[0].app hopCount:mean 3.3333333333333
 attr interpolationmode none
