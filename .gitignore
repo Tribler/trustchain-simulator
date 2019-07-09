@@ -24,3 +24,5 @@ Simulation1/out/clang-release/node/App.o
 *.vci
 *.sca
 *.o
+Simulation1/out/clang-release/Simulation1.exe
+Simulation1/Simulation1.exe
