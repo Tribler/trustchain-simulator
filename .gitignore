@@ -16,3 +16,11 @@ routing_umeer/routing_umeer.exe
 *.vec
 *.sca
 *.vci
+Simulation1/Simulation1.exe
+Simulation1/results/General-#0.vci
+Simulation1/out/clang-release/Simulation1.exe
+Simulation1/out/clang-release/node/L2Queue.o
+Simulation1/out/clang-release/node/App.o
+*.vci
+*.sca
+*.o
