@@ -5,7 +5,6 @@
 
 using namespace omnetpp;
 
-const int INITIAL_MONEY = 100;
 const int EVIL_NODE_ID[] = { 1 }; // [-1 means that there are no evil node]
 const int EVIL_SLEEPING_TRANSACTION = 10; // [1 is MIN]
 const int EVIL_NUMBER_OF_TRANSACTION = 2; // [2 is MIN] total max number of transaction to perform after the first evil transaction
@@ -55,7 +54,7 @@ void App::initialize()
         throw cRuntimeError("At least one address must be specified in the destAddresses parameter!");
 
     //TrustChain initialization
-    registerNewChainNode(-1, -1, INITIAL_MONEY);
+    registerNewChainNode(-1, -1, (int)par("initialMoney"));
 
 
     //Node status definition

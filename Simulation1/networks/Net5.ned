@@ -10,19 +10,13 @@ network Net5
      int totalNodes;
      double delay @unit(s);
      double datarate @unit(kbps);
-     
-    
+         
     types:
         //here it set the connection speed and dealy (eventualy also packet drop)
         channel C extends DatarateChannel
         {
-            delay =  delay;
-            //https://wondernetwork.com/pings
-            //https://enterprise.verizon.com/terms/latency/
-            //https://www.dotcom-tools.com/internet-backbone-latency.aspx
-            datarate =  datarate; 
-            //https://www.akamai.com/us/en/about/news/press/2017-press/akamai-releases-first-quarter-2017-state-of-the-internet-connectivity-report.jsp
-            //https://www.fastmetrics.com/internet-connection-speed-by-country.php#top-10-worldwide 
+            delay =  delay;            
+            datarate =  datarate;  
         }
     submodules:
         rte[totalNodes]: Node {
