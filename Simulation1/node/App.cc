@@ -101,22 +101,6 @@ void App::threadFunction()
         sendIATime = sendIaTimeEvil;
     }
     scheduleAt(simTime() + sendIATime->doubleValue(), timerThread);
-
-//    if (!isNodeEvil()) {
-//        scheduleAt(simTime() + sendIATime->doubleValue(), timerThread);
-//    }
-//    else {
-//        if (totalEvilTransactions + 1 < EVIL_NUMBER_OF_TRANSACTION) {
-//            scheduleAt(simTime() + sendIaTimeEvil->doubleValue(), timerThread);
-//        }
-//        else {
-//            char text[128];
-//            sprintf(text, "Evil node #%d is now performing his last transaction Time: %s s", myAddress, SIMTIME_STR(simTime()));
-//            EV << text << endl;
-//            getSimulation()->getActiveEnvir()->alert(text);
-//            // what if that is busy?
-//        }
-//    }
 }
 
 void App::receiveMessage(cMessage *msg)
@@ -290,20 +274,29 @@ void App::createTransactionMessage()
     send(pk, "out");
 
 // DIRECT MESSAGES
-//    char pkname2[40];
-//    sprintf(pkname2, "#%ld from-%d-to-%d $%d", pkCounter++, myAddress, 2, transactionValue);
-//    Packet *pk2 = new Packet(pkname2);
-//    pk2->setByteLength(packetLengthBytes->intValue());
-//    pk2->setSrcAddr(myAddress);
-//    pk2->setDestAddr(2);
-//    pk2->setPacketType(0);
-//    pk2->setTransactionValue(transactionValue);
-//    pk2->setMyChainSeqNum(trustChain.size() + 1);
-//
-//    cModule *target =getParentModule()->getParentModule()->getSubmodule("rte",2)->getSubmodule("queue",0);
-//    cMessage *dataCopy = pk2->dup();
-//    sendDirect(dataCopy, target, "direct");
-//
+    char pkname2[40];
+    sprintf(pkname2, "#%ld from-%d-to-%d $%d", pkCounter++, myAddress, 2, transactionValue);
+    Packet *pk2 = new Packet(pkname2);
+    pk2->setByteLength(packetLengthBytes->intValue());
+    pk2->setSrcAddr(myAddress);
+    pk2->setDestAddr(2);
+    pk2->setPacketType(0);
+    pk2->setTransactionValue(transactionValue);
+    pk2->setMyChainSeqNum(trustChain.size() + 1);
+
+    cModule *target =getParentModule()->getParentModule()->getSubmodule("rte",2)->getSubmodule("queue",0);
+    cMessage *dataCopy = pk2->dup();
+
+    cChannelType *channelType = cChannelType::get("ned.DatarateChannel");
+    cDatarateChannel *channel = cDatarateChannel::create("channel");
+    channel->setDelay(0.01);
+    channel->setDatarate(100000);
+    this->gate("direct")->connectTo(target->gate("direct"), channel);
+    sendDelayed(dataCopy, 0, "direct");
+    //sendDirect(dataCopy, target, "direct");
+
+
+
 
 }
 

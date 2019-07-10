@@ -34,6 +34,7 @@ simple App like IApp
     gates:
         input in;
         output out;
+        output direct;
 }
 
 
