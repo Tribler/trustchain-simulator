@@ -45,12 +45,15 @@ void App::initialize()
     //TrustChain initialization
     registerNewChainNode(-1, -1, (int) par("initialMoney"));
 
-    //Node status definition
+    //Evil node marking
     const char *evilNodeIdsPar = par("evilNodeIds");
     cStringTokenizer tokenizer(evilNodeIdsPar);
     const char *token;
     while ((token = tokenizer.nextToken()) != nullptr)
         evilNodeIds.push_back(atoi(token));
+    if (evilNodeIds.size() == 0) {
+        evilNodeIds.push_back((int) getParentModule()->getParentModule()->par("evilNodeIdSingle"));
+    }
 
     amIEvil = false;
     int i = 0;

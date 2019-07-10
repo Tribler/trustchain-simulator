@@ -8,6 +8,7 @@ network Net5
 {
    parameters:
      int totalNodes;
+     int evilNodeIdSingle = intuniform(0, totalNodes-1);
      double delay @unit(s);
      double datarate @unit(kbps);
          
