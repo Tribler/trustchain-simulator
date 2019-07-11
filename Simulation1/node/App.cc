@@ -130,12 +130,10 @@ void App::receiveMessage(cMessage *msg)
             tempBlockID = pk->getSrcAddr();
             tempPartnerSeqNum = pk->getMyChainSeqNum();
             tempBlockTransaction = pk->getTransactionValue();
-            createDirectChannel(tempBlockID);
             createChainRequestMessage();
             break;
         }
         case 1: { // Chain Request Received
-            createDirectChannel(tempBlockID);
             createChainLogMessage();
             break;
         }
@@ -159,7 +157,6 @@ void App::receiveMessage(cMessage *msg)
             }
             tempBlockID = -1;
             tempBlockTransaction = 0;
-            closeDirectChannel();
             break;
         }
         case 3: { // Ack Received
@@ -179,7 +176,6 @@ void App::receiveMessage(cMessage *msg)
 
                 tempBlockID = -1;
                 tempBlockTransaction = 0;
-                closeDirectChannel();
             }
             break;
         }
@@ -320,7 +316,9 @@ void App::createChainRequestMessage()
 
     pk->setPacketType(1);
 
+    createDirectChannel(tempBlockID);
     send(pk, "direct");
+    closeDirectChannel();
 }
 
 void App::createChainLogMessage()
@@ -360,7 +358,10 @@ void App::createChainLogMessage()
         pk->setTransactionArraySize(0);
     }
 
+    createDirectChannel(tempBlockID);
     send(pk, "direct");
+    closeDirectChannel();
+
 }
 
 void App::createAckMessage()
@@ -382,7 +383,9 @@ void App::createAckMessage()
     pk->setPacketType(3);
     pk->setMyChainSeqNum(trustChain.size());
 
+    createDirectChannel(tempBlockID);
     send(pk, "direct");
+    closeDirectChannel();
 }
 
 bool App::verificationTransactionChain(Packet *pk)
