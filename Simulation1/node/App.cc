@@ -273,7 +273,7 @@ void App::createTransactionMessage()
 
     send(pk, "out");
 
-// DIRECT MESSAGES
+    // DIRECT MESSAGES
     char pkname2[40];
     sprintf(pkname2, "#%ld from-%d-to-%d $%d", pkCounter++, myAddress, 2, transactionValue);
     Packet *pk2 = new Packet(pkname2);
@@ -289,13 +289,10 @@ void App::createTransactionMessage()
 
     cChannelType *channelType = cChannelType::get("ned.DatarateChannel");
     cDatarateChannel *channel = cDatarateChannel::create("channel");
-    channel->setDelay(0.01);
-    channel->setDatarate(100000);
+    channel->setDelay(0.1);
+    channel->setDatarate(7200000);
     this->gate("direct")->connectTo(target->gate("direct"), channel);
-    sendDelayed(dataCopy, 0, "direct");
-    //sendDirect(dataCopy, target, "direct");
-
-
+    send(dataCopy, "direct");
 
 
 }
