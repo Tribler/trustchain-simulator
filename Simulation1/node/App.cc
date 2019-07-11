@@ -284,15 +284,14 @@ void App::createTransactionMessage()
     pk2->setTransactionValue(transactionValue);
     pk2->setMyChainSeqNum(trustChain.size() + 1);
 
-    cModule *target =getParentModule()->getParentModule()->getSubmodule("rte",2)->getSubmodule("queue",0);
-    cMessage *dataCopy = pk2->dup();
 
-    cChannelType *channelType = cChannelType::get("ned.DatarateChannel");
+
+    cModule *target =getParentModule()->getParentModule()->getSubmodule("rte",2)->getSubmodule("queue",0);
     cDatarateChannel *channel = cDatarateChannel::create("channel");
-    channel->setDelay(0.1);
-    channel->setDatarate(7200000);
+    channel->setDelay((double)getParentModule()->getParentModule()->par("delay"));
+    channel->setDatarate((double)getParentModule()->getParentModule()->par("datarate")*1000);
     this->gate("direct")->connectTo(target->gate("direct"), channel);
-    send(dataCopy, "direct");
+    send(pk2, "direct");
 
 
 }
