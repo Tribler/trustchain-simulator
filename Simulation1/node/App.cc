@@ -284,18 +284,21 @@ void App::createTransactionMessage()
     pk2->setTransactionValue(transactionValue);
     pk2->setMyChainSeqNum(trustChain.size() + 1);
 
-
-
-    cModule *target =getParentModule()->getParentModule()->getSubmodule("rte",2)->getSubmodule("queue",0);
-    cDatarateChannel *channel = cDatarateChannel::create("channel");
-    channel->setDelay((double)getParentModule()->getParentModule()->par("delay"));
-    channel->setDatarate((double)getParentModule()->getParentModule()->par("datarate")*1000);
-    this->gate("direct")->connectTo(target->gate("direct"), channel);
+    createDirectChannel(2);
     send(pk2, "direct");
-
-
+    closeDirectChannel();
 }
-
+void App::createDirectChannel(int nodeId)
+{
+    cModule *target = getParentModule()->getParentModule()->getSubmodule("rte", nodeId)->getSubmodule("queue", 0);
+    cDatarateChannel *channel = cDatarateChannel::create("channel");
+    channel->setDelay((double) getParentModule()->getParentModule()->par("delay"));
+    channel->setDatarate((double) getParentModule()->getParentModule()->par("datarate") * 1000);
+    this->gate("direct")->connectTo(target->gate("direct"), channel);
+}
+void App::closeDirectChannel(){
+    this->gate("direct")->disconnect();
+}
 void App::createChainRequestMessage()
 {
     int destAddress = tempBlockID;

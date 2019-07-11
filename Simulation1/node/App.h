@@ -110,6 +110,9 @@ protected:
     virtual void createDisseminationMessage(int userXID, int userXSeqNum, int userYID, int userYSeqNum, int transactionValue);
     virtual void createBusyMessage(int destAddress);
 
+    virtual void createDirectChannel(int nodeId);
+    virtual void closeDirectChannel();
+
     virtual bool verificationTransactionChain(Packet *pk);
     virtual int verificationDissemination(Packet *pk); //return -1 if all good otherwise return the id of the evil node
     virtual void logTransactionChain(Packet *pk);
