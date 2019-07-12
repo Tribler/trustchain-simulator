@@ -5,10 +5,10 @@ cd omnetpp-5.4.1/samples/Simulation1/results
 rm General-*
 rm Net*
 
-cd ..
+cd ../../../../
 rm -I slurm*
 
-cd ../../../result
+cd ./result
 rm output.txt
 rm outputVerbose.txt
 #javac SimulationsResultExtractor.java 

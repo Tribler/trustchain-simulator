@@ -1,0 +1,12 @@
+#!/bin/bash
+#SBATCH --time=00:15:00
+#SBATCH -N 1
+#SBATCH --ntasks-per-node=8
+
+. /etc/bashrc
+. /etc/profile.d/modules.sh
+module load openmpi/gcc/64
+
+cd omnetpp-5.4.1/samples/Simulation1
+./Simulation1 -r '0.. 1' -m -u Cmdenv omnetpp.ini  > ../../../result/$1
+

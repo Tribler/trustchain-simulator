@@ -8,5 +8,6 @@ rm -r gcc-release
 cd ..
 make
 
-sbatch clusterJob.job
+cd ../../../
+sbatch clusterJob.job $1
 squeue
