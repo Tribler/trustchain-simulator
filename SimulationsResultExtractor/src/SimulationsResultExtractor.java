@@ -20,7 +20,7 @@ public class SimulationsResultExtractor {
 
         //File reading -> filtering -> output 
         try {
-            FileReader input = new FileReader("input.txt");
+            FileReader input = new FileReader(args[0]);
             PrintWriter writer = new PrintWriter("output.txt", "UTF-8");
             BufferedReader inputbufferizzato = new BufferedReader(input);
             String linea;
