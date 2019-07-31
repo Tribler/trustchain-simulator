@@ -428,9 +428,7 @@ bool App::verificationTransactionChain(Packet *pk)
                 //EV << "****There aren't enough transactions in the received chain B" << endl;
                 return false;
             }
-
         }
-
     }
 
     return true;
@@ -476,7 +474,6 @@ int App::verificationDissemination(Packet *pk)
                 return logDatabase[i].UserBId;
             }
         }
-
     }
 
     return -1;
@@ -515,11 +512,9 @@ bool App::isAlreadyPresentInDb(LogDatabaseElement *element)
 
 void App::createDisseminationMessage(int userXID, int userXSeqNum, int userYID, int userYSeqNum, int transactionValue)
 {
-
     int i;
     for (i = 0; i < destAddresses.size(); i++) {
-
-// Sending packet
+// User selection
         int destAddress = destAddresses[i];
         if (destAddress == myAddress) {
             continue;
@@ -546,7 +541,6 @@ void App::createDisseminationMessage(int userXID, int userXSeqNum, int userYID, 
         pk->setTransactionValue(transactionValue);
 
         send(pk, "out");
-
     }
 }
 
