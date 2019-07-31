@@ -25,6 +25,7 @@ private:
 protected:
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
+    virtual void sendOut(Packet *pk);
 };
 
 Define_Module(Routing);
@@ -70,23 +71,29 @@ void Routing::initialize() {
             neighbourNodeAddresses.push_back(i);
         }
     }
+    for (int i = 0; i < neighbourNodeAddresses.size(); i++) {
+        EV << "Hi to My neighbour " << neighbourNodeAddresses[i] << endl;
+    }
     delete topo;
 }
 
 void Routing::handleMessage(cMessage *msg) {
     Packet *pk = check_and_cast<Packet *>(msg);
-    int destAddr = pk->getDestAddr();
 
-    if (destAddr == myAddress) {
+    if (pk->getDestAddr() == myAddress) {
         EV << "local delivery of packet " << pk->getName() << endl;
         send(pk, "localOut");
         emit(outputIfSignal, -1);  // -1: local
         return;
+    } else {
+        sendOut(pk);
     }
+}
 
-    RoutingTable::iterator it = rtable.find(destAddr);
+void Routing::sendOut(Packet *pk) {
+    RoutingTable::iterator it = rtable.find(pk->getDestAddr());
     if (it == rtable.end()) {
-        EV << "address " << destAddr << " unreachable, discarding packet "
+        EV << "address " << pk->getDestAddr() << " unreachable, discarding packet "
                   << pk->getName() << endl;
         emit(dropSignal, (long) pk->getByteLength());
         delete pk;
