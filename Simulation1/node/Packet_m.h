@@ -20,7 +20,7 @@
 
 class Packet;
 /**
- * Class generated from <tt>node/Packet.msg:15</tt> by nedtool.
+ * Class generated from <tt>node/Packet.msg:5</tt> by nedtool.
  * <pre>
  * //
  * // Represents a packet in the network.
@@ -56,8 +56,6 @@ class Packet;
  *     int userXSeqNum \@packetData;
  *     int userYID \@packetData;
  *     int userYSeqNum \@packetData;
- * 
- * 
  * }
  * </pre>
  */
