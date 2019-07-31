@@ -11,9 +11,8 @@ using namespace omnetpp;
 /**
  * Demonstrates static routing, utilizing the cTopology class.
  */
-class Routing : public cSimpleModule
-{
-  private:
+class Routing: public cSimpleModule {
+private:
     int myAddress;
 
     typedef std::map<int, int> RoutingTable;  // destaddr -> gateindex
@@ -21,16 +20,16 @@ class Routing : public cSimpleModule
 
     simsignal_t dropSignal;
     simsignal_t outputIfSignal;
+    std::vector<int> neighbourNodeAddresses;
 
-  protected:
+protected:
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
 };
 
 Define_Module(Routing);
 
-void Routing::initialize()
-{
+void Routing::initialize() {
     myAddress = getParentModule()->par("address");
 
     dropSignal = registerSignal("drop");
@@ -64,13 +63,17 @@ void Routing::initialize()
         int gateIndex = parentModuleGate->getIndex();
         int address = topo->getNode(i)->getModule()->par("address");
         rtable[address] = gateIndex;
-        EV << "  towards address " << address << " gateIndex is " << gateIndex << endl;
+        EV << "  towards address " << address << " gateIndex is " << gateIndex
+                  << endl;
+
+        if (thisNode->getDistanceToTarget() == 1) {
+            neighbourNodeAddresses.push_back(i);
+        }
     }
     delete topo;
 }
 
-void Routing::handleMessage(cMessage *msg)
-{
+void Routing::handleMessage(cMessage *msg) {
     Packet *pk = check_and_cast<Packet *>(msg);
     int destAddr = pk->getDestAddr();
 
@@ -83,15 +86,17 @@ void Routing::handleMessage(cMessage *msg)
 
     RoutingTable::iterator it = rtable.find(destAddr);
     if (it == rtable.end()) {
-        EV << "address " << destAddr << " unreachable, discarding packet " << pk->getName() << endl;
-        emit(dropSignal, (long)pk->getByteLength());
+        EV << "address " << destAddr << " unreachable, discarding packet "
+                  << pk->getName() << endl;
+        emit(dropSignal, (long) pk->getByteLength());
         delete pk;
         return;
     }
 
     int outGateIndex = (*it).second;
-    EV << "forwarding packet " << pk->getName() << " on gate index " << outGateIndex << endl;
-    pk->setHopCount(pk->getHopCount()+1);
+    EV << "forwarding packet " << pk->getName() << " on gate index "
+              << outGateIndex << endl;
+    pk->setHopCount(pk->getHopCount() + 1);
     emit(outputIfSignal, outGateIndex);
 
     send(pk, "out", outGateIndex);
