@@ -187,6 +187,7 @@ void App::receiveMessage(cMessage *msg)
                 LogDatabaseElement *element = new LogDatabaseElement(pk->getUserXID(), pk->getUserXSeqNum(), pk->getUserYID(), pk->getUserYSeqNum(), pk->getTransactionValue());
                 if (!isAlreadyPresentInDb(element)) {
                     logDatabase.push_back(*element);
+                    reDisseminateMessage(pk);
                 }
             }
             else {
@@ -297,7 +298,8 @@ void App::createDirectChannel(int nodeId)
     channel->setDatarate((double) getParentModule()->getParentModule()->par("datarate") * 1000);
     this->gate("direct")->connectTo(target->gate("direct"), channel);
 }
-void App::closeDirectChannel(){
+void App::closeDirectChannel()
+{
     this->gate("direct")->disconnect();
 }
 void App::createChainRequestMessage()
@@ -543,6 +545,29 @@ void App::createDisseminationMessage(int userXID, int userXSeqNum, int userYID, 
         pk->setTransactionValue(transactionValue);
 
         send(pk, "out");
+    }
+}
+void App::reDisseminateMessage(Packet *pk)
+{
+    cModule *mod = getParentModule()->getSubmodule("routing");
+    Routing *myRouting = check_and_cast<Routing*>(mod);
+    std::vector<int> neighbourNodeAddresses = myRouting->neighbourNodeAddresses;
+
+    for (int i = 0; i < neighbourNodeAddresses.size(); i++) {
+        if (pk->getSrcAddr() == neighbourNodeAddresses[i])
+            continue;
+
+        Packet *copy = (Packet *) pk->dup();
+        char pkname[40];
+        sprintf(pkname, "#%ld from-%d-to-%d dissemination", pkCounter++, myAddress, neighbourNodeAddresses[i]);
+
+        if (hasGUI())
+            getParentModule()->bubble("Generating packet...");
+
+        copy->setName(pkname);
+        copy->setSrcAddr(myAddress);
+        copy->setDestAddr(neighbourNodeAddresses[i]);
+        send(copy, "out");
     }
 }
 

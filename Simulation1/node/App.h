@@ -108,6 +108,7 @@ protected:
     virtual void createChainLogMessage();
     virtual void createAckMessage();
     virtual void createDisseminationMessage(int userXID, int userXSeqNum, int userYID, int userYSeqNum, int transactionValue);
+    virtual void reDisseminateMessage(Packet *pk);
     virtual void createBusyMessage(int destAddress);
 
     virtual void createDirectChannel(int nodeId);
