@@ -1,6 +1,12 @@
 //
 // Represents a packet in the network.
 //
+cplusplus {{
+#include "PacketType.h"
+}}
+
+enum PacketType;
+
 packet Packet
 {
     int srcAddr @packetData;
@@ -14,7 +20,8 @@ packet Packet
    // 3 - Ack of Transaction
    // 4 - Information Dissemination
    // 5 - Busy Message
-    int packetType @packetData;
+    int packetType @packetData;  
+    //int packetType @enum(PacketType);
     
     //Send Transaction
     int transactionValue @packetData;
@@ -33,4 +40,4 @@ packet Packet
     int userYID @packetData;
     int userYSeqNum @packetData;
 }
-
+    

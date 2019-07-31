@@ -1,5 +1,6 @@
 //TODO LIST
 // - optimize evil node so that do transactions with node far
+// - refactoring: implement enum to mark type of packets
 
 #include "App.h"
 

@@ -19,12 +19,13 @@
 
 
 class Packet;
+// cplusplus {{
+#include "PacketType.h"
+// }}
+
 /**
- * Class generated from <tt>node/Packet.msg:5</tt> by nedtool.
+ * Class generated from <tt>node/Packet.msg:11</tt> by nedtool.
  * <pre>
- * //
- * // Represents a packet in the network.
- * //
  * packet Packet
  * {
  *     int srcAddr \@packetData;
@@ -39,6 +40,7 @@ class Packet;
  *     // 4 - Information Dissemination
  *     // 5 - Busy Message
  *     int packetType \@packetData;
+ *     //int packetType \@enum(PacketType);
  * 
  *     //Send Transaction
  *     int transactionValue \@packetData;
