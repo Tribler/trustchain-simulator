@@ -3,6 +3,7 @@
 // - refactoring: implement enum to mark type of packets
 
 #include "App.h"
+#include "Routing.h"
 
 using namespace omnetpp;
 
@@ -513,13 +514,13 @@ bool App::isAlreadyPresentInDb(LogDatabaseElement *element)
 
 void App::createDisseminationMessage(int userXID, int userXSeqNum, int userYID, int userYSeqNum, int transactionValue)
 {
-    int i;
-    for (i = 0; i < destAddresses.size(); i++) {
+    cModule *mod = getParentModule()->getSubmodule("routing");
+    Routing *myRouting = check_and_cast<Routing*>(mod);
+    std::vector<int> neighbourNodeAddresses = myRouting->neighbourNodeAddresses;
+
+    for (int i = 0; i < neighbourNodeAddresses.size(); i++) {
 // User selection
-        int destAddress = destAddresses[i];
-        if (destAddress == myAddress) {
-            continue;
-        }
+        int destAddress = neighbourNodeAddresses[i];
 
         char pkname[40];
         sprintf(pkname, "#%ld from-%d-to-%d dissemination", pkCounter++, myAddress, destAddress);

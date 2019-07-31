@@ -61,8 +61,6 @@ void Routing::handleMessage(cMessage *msg) {
         send(pk, "localOut");
         emit(outputIfSignal, -1);  // -1: local
         return;
-    } else if (pk->getPacketType() == 4 && pk->getDestAddr() == -1) {
-        disseminatePacket(pk);
     } else {
         sendOut(pk);
     }
@@ -87,13 +85,3 @@ void Routing::sendOut(Packet *pk) {
 
     send(pk, "out", outGateIndex);
 }
-
-void Routing::disseminatePacket(Packet *pk) {
-    for (int i = 0; i < neighbourNodeAddresses.size(); i++) {
-        Packet *copy = (Packet *) pk->dup();
-        copy->setDestAddr(neighbourNodeAddresses[i]);
-        sendOut(copy);
-    }
-    delete pk;
-}
-
