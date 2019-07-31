@@ -26,6 +26,7 @@ protected:
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
     virtual void sendOut(Packet *pk);
+    virtual void disseminatePacket(Packet *pk);
 };
 
 Define_Module(Routing);
@@ -71,9 +72,7 @@ void Routing::initialize() {
             neighbourNodeAddresses.push_back(i);
         }
     }
-    for (int i = 0; i < neighbourNodeAddresses.size(); i++) {
-        EV << "Hi to My neighbour " << neighbourNodeAddresses[i] << endl;
-    }
+
     delete topo;
 }
 
@@ -85,6 +84,8 @@ void Routing::handleMessage(cMessage *msg) {
         send(pk, "localOut");
         emit(outputIfSignal, -1);  // -1: local
         return;
+    } else if (pk->getPacketType() == 4 && pk->getDestAddr() == -1) {
+        disseminatePacket(pk);
     } else {
         sendOut(pk);
     }
@@ -93,8 +94,9 @@ void Routing::handleMessage(cMessage *msg) {
 void Routing::sendOut(Packet *pk) {
     RoutingTable::iterator it = rtable.find(pk->getDestAddr());
     if (it == rtable.end()) {
-        EV << "address " << pk->getDestAddr() << " unreachable, discarding packet "
-                  << pk->getName() << endl;
+        EV << "address " << pk->getDestAddr()
+                  << " unreachable, discarding packet " << pk->getName()
+                  << endl;
         emit(dropSignal, (long) pk->getByteLength());
         delete pk;
         return;
@@ -107,5 +109,14 @@ void Routing::sendOut(Packet *pk) {
     emit(outputIfSignal, outGateIndex);
 
     send(pk, "out", outGateIndex);
+}
+
+void Routing::disseminatePacket(Packet *pk) {
+    for (int i = 0; i < neighbourNodeAddresses.size(); i++) {
+        Packet *copy = (Packet *) pk->dup();
+        copy->setDestAddr(neighbourNodeAddresses[i]);
+        sendOut(copy);
+    }
+    delete pk;
 }
 
