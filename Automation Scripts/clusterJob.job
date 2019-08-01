@@ -10,3 +10,6 @@ module load openmpi/gcc/64
 cd omnetpp-5.5.1/samples/Simulation1
 
 ./Simulation1 -r '0.. 99' -m -u Cmdenv omnetpp.ini  > ../../../result/$1
+
+#parallel runs
+#opp_runall -j24 -V ./Simulation1 -u Cmdenv -c General -r '0..3' omnetpp.ini  > ../../../result/$1
