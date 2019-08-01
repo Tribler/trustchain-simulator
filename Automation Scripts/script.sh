@@ -1,4 +1,5 @@
 #!/bin/bash
+#to remove DOS line endind: sed -i -e 's/\r$//' fileName.sh
 clear
 
 cd omnetpp-5.4.1/samples/Simulation1/out
