@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 
-cd omnetpp-5.4.1/samples/Simulation1/results
+cd omnetpp-5.5.1/samples/Simulation1/results
 rm General-*
 rm Net*
 

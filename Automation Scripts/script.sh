@@ -2,12 +2,13 @@
 #to remove DOS line endind: sed -i -e 's/\r$//' fileName.sh
 clear
 
-cd omnetpp-5.4.1/samples/Simulation1/out
+cd omnetpp-5.5.1/samples/Simulation1/out
 rm -r clang-release
 rm -r gcc-debug
 rm -r gcc-release
 cd ..
-make
+make clean
+make MODE=release all
 chmod 755 Simulation1
 
 cd ../../../
