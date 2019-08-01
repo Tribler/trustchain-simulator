@@ -7,6 +7,7 @@ rm -r gcc-debug
 rm -r gcc-release
 cd ..
 make
+chmod 755 Simulation1
 
 cd ../../../
 sbatch clusterJob.job $1
