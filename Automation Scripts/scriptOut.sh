@@ -9,11 +9,23 @@ cd ../../../../
 rm -I slurm*
 
 cd ./result
-rm output.txt
-rm outputVerbose.txt
-#javac SimulationsResultExtractor.java 
-java SimulationsResultExtractor $1 > outputVerbose.txt
-rm $1
 
-echo "Data from $1 converted to output.txt:"
-cat output.txt
+if [ ! -f SimulationsResultExtractor.class ];
+then
+    echo "Simulation result extractor compiled"
+    javac SimulationsResultExtractor.java
+fi
+
+
+if [ -f $1 ]
+then
+    rm output.txt
+    rm outputVerbose.txt
+    java SimulationsResultExtractor $1 > outputVerbose.txt
+    rm $1
+
+    echo "Data from $1 converted to output.txt and outputVerbose.txt:"
+    cat output.txt
+else
+    echo "The $1 file not exists."
+fi
