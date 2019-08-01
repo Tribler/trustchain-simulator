@@ -29,3 +29,9 @@ Simulation1/Simulation1.exe
 Simulation1/.qtenvrc
 MATLAB Graphs/~$Graphs.xlsx
 ~$Data Collection.xlsx
+NetworkGeneratorConverter/dist/output.txt
+NetworkGeneratorConverter/dist/input.txt
+NetworkGeneratorConverter/build/classes/networkgeneratorconverter/FileParser.class
+NetworkGeneratorConverter/build/classes/networkgeneratorconverter/FileWriter.class
+NetworkGeneratorConverter/build/classes/networkgeneratorconverter/NetworkGeneratorConverter.class
+SimulationsResultExtractor/build/classes/SimulationsResultExtractor.class
