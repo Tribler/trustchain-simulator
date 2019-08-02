@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --time=00:60:00
-#SBATCH -N 1
+#SBATCH -N 3
 #SBATCH --ntasks-per-node=8
 
 . /etc/bashrc
@@ -9,7 +9,9 @@ module load openmpi/gcc/64
 
 cd omnetpp-5.5.1/samples/Simulation1
 
-./Simulation1 -r '0.. 99' -m -u Cmdenv omnetpp.ini  > ../../../result/$1
+#./Simulation1 -r '0.. 2' -m -u Cmdenv omnetpp.ini  > ../../../result/$1
 
-#parallel runs
-#opp_runall -j24 -V ./Simulation1 -u Cmdenv -c General -r '0..3' omnetpp.ini  > ../../../result/$1
+
+opp_runall -j24 -V ./Simulation1 -u Cmdenv -c General -r '0..3' omnetpp.ini  > ../../../result/$1Log
+cd results
+cat General-#* > ../../../../result/$1

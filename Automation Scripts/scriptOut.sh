@@ -1,18 +1,16 @@
 #!/bin/bash
 clear
 
-cd omnetpp-5.5.1/samples/Simulation1/results
-rm General-*
-rm Net*
-
-cd ../../../../
-rm -I slurm*
+if [ -f slurm* ]
+then
+  rm -I slurm*
+fi
 
 cd ./result
 
 if [ ! -f SimulationsResultExtractor.class ];
 then
-    echo "Simulation result extractor compiled"
+    echo "Simulation result extractor compiledX"
     javac SimulationsResultExtractor.java
 fi
 
@@ -23,6 +21,11 @@ then
     rm outputVerbose.txt
     java SimulationsResultExtractor $1 > outputVerbose.txt
     rm $1
+
+    if [ -f $1Log ]
+    then
+      rm $1Log
+    fi
 
     echo "Data from $1 converted to output.txt and outputVerbose.txt:"
     cat output.txt
