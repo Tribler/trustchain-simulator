@@ -9,7 +9,11 @@ This repository contains two TrustChain simulations built with OMNeT++, the goal
 - [x] Implemented malicious node/s (attack)
 - [x] Develop detenction performance logging system
 - [x] Modify and run software on distributed super computer cluster
-- [ ] Update the standard implementation with defence system
+- [x] Test simulator in different scenarios and analyse data
+- [x] Update the simulator to replicate the TrustChain testing done on [Tribler](https://github.com/Tribler/tribler)
+- [ ] Study efficient algorithms and methodology to improve the performance of detection time
+- [ ] Validate on paper the solution/s
+- [ ] Update the standard implementation with new defence system
 
 ## Documentation
 [OMNeT++ Website](https://omnetpp.org/)
