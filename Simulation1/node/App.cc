@@ -151,11 +151,9 @@ void App::receiveMessage(cMessage *msg)
                 }
             }
             else {
-                char text[128];
-                sprintf(text, "Node: #%d - detected double spending in verification done by #%d distant: %d Time: %s s", myAddress, tempBlockID, pk->getHopCount(), SIMTIME_STR(simTime()));
-                EV << text << endl;
-                getSimulation()->getActiveEnvir()->alert(text);
-                stopSimulation(tempBlockID);
+                printInformation(myAddress, tempBlockID, 0);
+                simulationRegisterDetectionTime(tempBlockID);
+                stopSimulation();
             }
             tempBlockID = -1;
             tempBlockTransaction = 0;
@@ -169,7 +167,7 @@ void App::receiveMessage(cMessage *msg)
                 }
                 else {
                     char text[128];
-                    sprintf(text, "Evil node: #%d - completed transaction with #%d of value $%d distant: %d Time: %s s", myAddress, tempBlockID, tempBlockTransaction, pk->getHopCount(), SIMTIME_STR(simTime()));
+                    sprintf(text, "Evil node: #%d - completed transaction with #%d of value $%d Time: %s s", myAddress, tempBlockID, tempBlockTransaction, SIMTIME_STR(simTime()));
                     EV << text << endl;
                     getSimulation()->getActiveEnvir()->alert(text);
                     totalEvilTransactions = totalEvilTransactions + 1;
@@ -187,15 +185,13 @@ void App::receiveMessage(cMessage *msg)
                 LogDatabaseElement *element = new LogDatabaseElement(pk->getUserXID(), pk->getUserXSeqNum(), pk->getUserYID(), pk->getUserYSeqNum(), pk->getTransactionValue());
                 if (!isAlreadyPresentInDb(element)) {
                     logDatabase.push_back(*element);
-                    reDisseminateMessage(pk);
+                    //reDisseminateMessage(pk);
                 }
             }
             else {
-                char text[128];
-                sprintf(text, "Node: #%d - detected double spending in dissemination done by #%d Time: %s s", myAddress, result, SIMTIME_STR(simTime()));
-                EV << text << endl;
-                getSimulation()->getActiveEnvir()->alert(text);
-                stopSimulation(result);
+                printInformation(myAddress, result, 1);
+                simulationRegisterDetectionTime(result);
+                stopSimulation();
             }
             break;
         }
@@ -394,10 +390,11 @@ void App::createAckMessage()
 
 bool App::verificationTransactionChain(Packet *pk)
 {
+    bool result = true;
+
     //check if the your local information can be compared to the received informations
     // 1 - same sequence number and user ids number have the same transaction value (chain block replaced with another one)
     // 2 - All the local info regarding a user can be found in the chain (not hiding something)
-
     int i;
     for (i = 0; i < logDatabase.size(); i++) {
 
@@ -435,9 +432,40 @@ bool App::verificationTransactionChain(Packet *pk)
         }
     }
 
-    return true;
-}
+    // 3 - Check people with which the other user had transactions with and verify those too
+    for (int j = 0; j < pk->getTransactionArraySize(); j++) {
+        for (i = 0; i < logDatabase.size(); i++) {
+            if (logDatabase[i].UserAId == pk->getUserBID(j) && logDatabase[i].UserASeqNum == pk->getUserBSeqNum(j)) {
+                if (!(logDatabase[i].UserBId == pk->getSrcAddr() && logDatabase[i].UserBSeqNum == (j + 1) && (logDatabase[i].transactionValue == pk->getTransaction(j) || -logDatabase[i].transactionValue == pk->getTransaction(j)))) {
+                    simulationRegisterDetectionTime(pk->getUserBID(j));
+                    printInformation(myAddress, pk->getUserBID(j), 0);
+                    result = false;
+                }
+            }
+            else if (logDatabase[i].UserBId == pk->getUserBID(j) && logDatabase[i].UserBSeqNum == pk->getUserBSeqNum(j)) {
+                if (!(logDatabase[i].UserAId == pk->getSrcAddr() && logDatabase[i].UserASeqNum == (j + 1) && (logDatabase[i].transactionValue == pk->getTransaction(j) || -logDatabase[i].transactionValue == pk->getTransaction(j)))) {
+                    simulationRegisterDetectionTime(pk->getUserBID(j));
+                    printInformation(myAddress, pk->getUserBID(j), 0);
+                    result = false;
+                }
+            }
+        }
+    }
 
+    return result;
+}
+void App::printInformation(int nodeId, int evilNodeId, int location)
+{
+    char text[128];
+    if (location == 0) {
+        sprintf(text, "Node: #%d - detected double spending during chain verification done by: #%d Time: %s s", nodeId, evilNodeId, SIMTIME_STR(simTime()));
+    }
+    else {
+        sprintf(text, "Node: #%d - detected double spending during dissemination verification done by: #%d Time: %s s", nodeId, evilNodeId, SIMTIME_STR(simTime()));
+    }
+    EV << text << endl;
+    getSimulation()->getActiveEnvir()->alert(text);
+}
 int App::verificationDissemination(Packet *pk)
 {
     int i;
@@ -655,10 +683,8 @@ void App::simulationRegisterDetectionTime(int nodeId) // Here are logged the evi
     }
 }
 
-void App::stopSimulation(int evilNodeId) // This function is being called when ever an evil node is being detected
+void App::stopSimulation() // This function is being called when ever an evil node is being detected
 {
-    simulationRegisterDetectionTime(evilNodeId);
-
     int i, nodesDetected = 0;
     for (i = 0; i < simulationTiming.size(); i++) {
         if (simulationTiming[i].detectionTime != 0) {

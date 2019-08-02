@@ -101,6 +101,7 @@ protected:
     virtual int randomNodeAddressPicker();
     virtual void registerNewChainNode(int id, int seqNum, int value);
     virtual void calculateChainValue();
+    virtual void printInformation(int nodeId, int evilNodeId, int location);
 
     //Messaging
     virtual void createTransactionMessage();
@@ -123,5 +124,6 @@ protected:
 
     virtual void simulationRegisterTransactionTime(int idNode);
     virtual void simulationRegisterDetectionTime(int idNode);
-    virtual void stopSimulation(int evilNodeId);
+    virtual void stopSimulation();
+
 };
