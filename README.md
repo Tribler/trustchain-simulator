@@ -1,5 +1,9 @@
 # TrustChain Simulator
-This repository contains two TrustChain simulations built with OMNeT++, the goal of these simulations is to study and evaluate a better defence system against double-spending attack. The two simulations and the results collected will be used to write my master thesis.
+This repository (will) contains three TrustChain simulations built with OMNeT++.
+
+## The goal
+The goal of these simulations is to study and evaluate a better defence system against double-spending attack.  
+The simulations and the results collected will be used to write my master thesis at TuDelft.
 
 ![alt text](https://raw.githubusercontent.com/umeer/TrustChain-Simulator/master/MATLAB%20Graphs/network_graph_image.JPG)
 
