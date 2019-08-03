@@ -18,6 +18,15 @@ This is enabled by a network composed of individual semi-independent ledger (eve
 
 A transaction between two parties creates a new element in both the participant’s ledger and this new element contains some pieces of information like the value of transaction itself, details of the previous element in the ledger and signatures of both the parties.
  
+## Double-Spending Attack
+A double spending attack allows the attacker to utilize resources already consumed before, allowing him to fraud two or more node with the same resource set.   
+
+Let's consider a real-world example to better understand the problem.   
+You decide to go to a restaurant to order a pizza :pizza: worth 10 euro, you pay in cash and the note goes into the shop's cash desk. Now by no means you can spend that note somewhere else that day. This constriction is easy to understand in the real world, but in TrustChain things are a bit different, here using many parallel ledgers it is possible to double spent your 10 euro somewhere else multiple times before being caught by a cashier, which can take quite some time.  
+
+This is possible because the defence system against these attacks is not very efficient.
+The key idea is that soon or later an adversarial node will enter in contact with a node that has knowledge of his previous transactions, in such a situation attempting a double spending attack will result in failure. 
+In a low-entropy transactions system, behaviour such as this can take a long time before being detected and this can result in chains correction increasingly complicated.   
 
 ## Development Phases
 - [x] Develop on paper system architecture
