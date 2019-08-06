@@ -78,7 +78,7 @@ private:
     int tempPartnerSeqNum;
     int tempBlockTransaction;
 
-    // signals
+    //Signals
     simsignal_t endToEndDelaySignal;
     simsignal_t hopCountSignal;
     simsignal_t sourceAddressSignal;
@@ -115,6 +115,8 @@ protected:
     virtual void createDirectChannel(int nodeId);
     virtual void closeDirectChannel();
 
+
+    //Ledger management
     virtual bool verificationTransactionChain(Packet *pk);
     virtual int verificationDissemination(Packet *pk); //return -1 if all good otherwise return the id of the evil node
     virtual void logTransactionChain(Packet *pk);
@@ -122,6 +124,7 @@ protected:
     virtual bool isNodeEvil();
     virtual bool itIsAlreadyBeenAttacked(int nodeId);
 
+    //Data logging
     virtual void simulationRegisterTransactionTime(int idNode);
     virtual void simulationRegisterDetectionTime(int idNode);
     virtual void stopSimulation();

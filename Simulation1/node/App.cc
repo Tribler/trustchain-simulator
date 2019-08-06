@@ -270,21 +270,6 @@ void App::createTransactionMessage()
     pk->setMyChainSeqNum(trustChain.size() + 1);
 
     send(pk, "out");
-
-//    // DIRECT MESSAGES
-//    char pkname2[40];
-//    sprintf(pkname2, "#%ld from-%d-to-%d $%d", pkCounter++, myAddress, 2, transactionValue);
-//    Packet *pk2 = new Packet(pkname2);
-//    pk2->setByteLength(packetLengthBytes->intValue());
-//    pk2->setSrcAddr(myAddress);
-//    pk2->setDestAddr(2);
-//    pk2->setPacketType(0);
-//    pk2->setTransactionValue(transactionValue);
-//    pk2->setMyChainSeqNum(trustChain.size() + 1);
-//
-//    createDirectChannel(2);
-//    send(pk2, "direct");
-//    closeDirectChannel();
 }
 void App::createDirectChannel(int nodeId)
 {
@@ -361,7 +346,6 @@ void App::createChainLogMessage()
     createDirectChannel(tempBlockID);
     send(pk, "direct");
     closeDirectChannel();
-
 }
 
 void App::createAckMessage()
