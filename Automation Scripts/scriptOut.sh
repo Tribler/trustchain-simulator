@@ -1,10 +1,7 @@
 #!/bin/bash
 clear
 
-if [ -f slurm* ]
-then
-  rm -I slurm*
-fi
+rm -I slurm*
 
 cd ./result
 
