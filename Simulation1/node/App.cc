@@ -185,7 +185,7 @@ void App::receiveMessage(cMessage *msg)
                 LogDatabaseElement *element = new LogDatabaseElement(pk->getUserXID(), pk->getUserXSeqNum(), pk->getUserYID(), pk->getUserYSeqNum(), pk->getTransactionValue());
                 if (!isAlreadyPresentInDb(element)) {
                     logDatabase.push_back(*element);
-                    //reDisseminateMessage(pk);
+                    reDisseminateMessage(pk);
                 }
             }
             else {
@@ -533,11 +533,6 @@ void App::createDisseminationMessage(int userXID, int userXSeqNum, int userYID, 
     std::vector<int> neighbourNodeAddresses = myRouting->neighbourNodeAddresses;
 
     for (int i = 0; i < neighbourNodeAddresses.size(); i++) {
-
-// Max 20 dissemination
-        if(i == 20)
-            return;
-
 // User selection
         int destAddress = neighbourNodeAddresses[i];
 
