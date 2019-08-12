@@ -531,10 +531,11 @@ void App::createDisseminationMessage(int userXID, int userXSeqNum, int userYID, 
     cModule *mod = getParentModule()->getSubmodule("routing");
     Routing *myRouting = check_and_cast<Routing*>(mod);
     std::vector<int> neighbourNodeAddresses = myRouting->neighbourNodeAddresses;
+    RandomDistinctPicker *rand = new RandomDistinctPicker(0, neighbourNodeAddresses.size()-1, par("randomSeed"));
 
     for (int i = 0; i < neighbourNodeAddresses.size(); i++) {
 // User selection
-        int destAddress = neighbourNodeAddresses[i];
+        int destAddress = neighbourNodeAddresses[rand->getRandomNumber()];
 
         char pkname[40];
         sprintf(pkname, "#%ld from-%d-to-%d dissemination", pkCounter++, myAddress, destAddress);
@@ -558,6 +559,7 @@ void App::createDisseminationMessage(int userXID, int userXSeqNum, int userYID, 
 
         send(pk, "out");
     }
+    delete rand;
 }
 void App::reDisseminateMessage(Packet *pk)
 {
