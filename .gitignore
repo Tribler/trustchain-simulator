@@ -16,6 +16,7 @@ routing_umeer/routing_umeer.exe
 *.vec
 *.sca
 *.vci
+*.out
 Simulation1/Simulation1.exe
 Simulation1/results/General-#0.vci
 Simulation1/out/clang-release/Simulation1.exe
@@ -37,3 +38,4 @@ NetworkGeneratorConverter/build/classes/networkgeneratorconverter/NetworkGenerat
 SimulationsResultExtractor/build/classes/SimulationsResultExtractor.class
 Gephi Graphs/~$node_conversion.xlsx
 ~$Data Collection Sim 0.xlsx
+*.exe
