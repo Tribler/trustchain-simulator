@@ -2,6 +2,7 @@
 #pragma warning(disable:4786)
 #endif
 
+#include <bits/stdc++.h>
 #include <vector>
 #include <cstdlib>
 #include <omnetpp.h>
@@ -49,6 +50,48 @@ public:
         this->transactionTime = transactionTime;
         this->detectionTime = detectionTime;
     }
+};
+
+class RandomDistinctPicker
+{
+public:
+    int seedIncremental;
+    int seedCore;
+    int min, max;
+    std::unordered_set<int> intSet;
+    int resultProided;
+
+    RandomDistinctPicker(int min, int max, int seedCore)
+    {
+        this->min = min;
+        this->max = max;
+        this->seedCore = seedCore;
+        seedIncremental = 0;
+        resultProided = 0;
+    }
+
+    int getRandomNumber()
+    {
+        if (resultProided >= (max - min + 1))
+            return min;
+
+        int posibleRandomNum = rand();
+        while (intSet.find(posibleRandomNum) != intSet.end()) {
+            posibleRandomNum = rand();
+        }
+        intSet.insert(posibleRandomNum);
+        resultProided++;
+        return posibleRandomNum;
+    }
+private:
+    int rand()
+    {
+        seedIncremental++;
+        std::mt19937 gen(seedIncremental + seedCore);
+        std::uniform_int_distribution<> dis(min, max);
+        return dis(gen);
+    }
+
 };
 
 static std::vector<SimulationTiming> simulationTiming; // This variable contains the evil nodes last transaction and detection timing
@@ -114,7 +157,6 @@ protected:
 
     virtual void createDirectChannel(int nodeId);
     virtual void closeDirectChannel();
-
 
     //Ledger management
     virtual bool verificationTransactionChain(Packet *pk);

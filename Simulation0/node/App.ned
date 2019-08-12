@@ -11,7 +11,8 @@ simple App like IApp
         int initialMoney;
         int evilNumberOfSleepingTransaction;
         int evilNumberOfTransaction;
-        string evilNodeIds; 
+        string evilNodeIds;
+        int randomSeed = intuniform(0, 1000000);
         volatile double sendIaTime @unit(s) = default(exponential(1s)); // time between generating packets
         volatile double sendIaTimeEvil @unit(s);
         volatile int packetLength @unit(byte);  // length of one message (fixed! no "volatile" modifier)
@@ -19,9 +20,9 @@ simple App like IApp
         @signal[endToEndDelay](type="simtime_t");
         @signal[hopCount](type="long");
         @signal[sourceAddress](type="long");
-        @statistic[endToEndDelay](title="end-to-end delay of arrived packets";unit=s;record=vector,mean,max;interpolationmode=none);
-        @statistic[hopCount](title="hop count of arrived packets";interpolationmode=none;record=vector?,mean,max);
-        @statistic[sourceAddress](title="source address of arrived packets";interpolationmode=none;record=vector?);
+        @statistic[endToEndDelay](title="end-to-end delay of arrived packets"; unit=s; record=vector,mean,max; interpolationmode=none);
+        @statistic[hopCount](title="hop count of arrived packets"; interpolationmode=none; record=vector?,mean,max);
+        @statistic[sourceAddress](title="source address of arrived packets"; interpolationmode=none; record=vector?);
     gates:
         input in;
         output out;
