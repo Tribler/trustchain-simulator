@@ -6,7 +6,7 @@ The programs present in this repository are used simulate the TrustChain technol
 The goal of these simulations is to study and evaluate a better defence system against double-spending attack.  
 The simulations and the results collected will be used to write and defend my master thesis at TuDelft.
 
-![alt text](https://raw.githubusercontent.com/umeer/TrustChain-Simulator/master/MATLAB%20Graphs/network_graph_image.JPG)  
+![alt text](https://raw.githubusercontent.com/umeer/TrustChain-Simulator/master/Graphs/MATLAB%20Graphs/network_graph_image.JPG)  
 *This is one of the networks used to perform behavioural analyses with super connected nodes. (Based on the [Watts Strogatz](http://www.stats.ox.ac.uk/~reinert/talks/swtalkparis.pdf) model.)*
 
 ## TrustChain Description
