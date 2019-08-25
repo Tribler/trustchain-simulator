@@ -17,12 +17,14 @@ then
     rm output.txt
     rm outputVerbose.txt
     java SimulationsResultExtractor $1 > outputVerbose.txt
-    rm $1
+    ./statCalculator.r >> output.txt
 
-    if [ -f $1Log ]
-    then
-      rm $1Log
-    fi
+    #rm $1
+
+    #if [ -f $1Log ]
+    #then
+      #rm $1Log
+    #fi
 
     echo "Data from $1 converted to output.txt and outputVerbose.txt:"
     cat output.txt

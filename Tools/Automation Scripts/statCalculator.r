@@ -1,13 +1,26 @@
 #!/usr/bin/env Rscript
 
-invisible(x <- read.table("result/output.txt", header = FALSE))
+cat("\n")
+
+invisible(x <- read.table("output.txt", header = FALSE))
 invisible(unlist(x))
 
+# Average
 result.mean <- mean(x$V1)
-print(result.mean)
+cat(result.mean)
+cat("\n")
 
+# Standard Dev
 s<- sd(x$V1)
-print(s)
+cat(s)
+cat("\n")
 
+# Normal
 error <- qnorm(0.975)*s/sqrt(100)
-error
+cat(error)
+cat("\n")
+
+# T-Student
+#error2 <- qt(0.975,df=100-1)*s/sqrt(100)
+#cat(error2)
+#cat("\n")
