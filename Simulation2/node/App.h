@@ -22,6 +22,17 @@ public:
     }
 };
 
+class AnonymizerWaitListElement
+{
+public:
+    int requesterId, targetId;
+    AnonymizerWaitListElement(int requesterId, int targetId)
+    {
+        this->requesterId = requesterId;
+        this->targetId = targetId;
+    }
+};
+
 class TrustChainElement
 {
 public:
@@ -144,6 +155,7 @@ private:
 
     //Anonymizer Tracking
     std::vector<AnonymizerTrackingElement> anonymizersTracking;
+    std::vector<AnonymizerWaitListElement> anonymizerWaitList;
 
 public:
     App();

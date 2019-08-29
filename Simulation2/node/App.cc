@@ -144,9 +144,8 @@ void App::receiveMessage(cMessage *msg)
             }
             else { // this is an anonymization request
                 sendAnonymizerConfirmation(pk->getSrcAddr());
-                //register target in await list
-                //
-
+                anonymizerWaitList.push_back(*new AnonymizerWaitListElement(pk->getSrcAddr(), pk->getUserXID()));
+                createChainRequestMessage(pk->getUserXID(), pk->getUserXID());
             }
 
             break;
@@ -345,7 +344,7 @@ void App::sendAnonymizerConfirmation(int destAddress)
 void App::markAnonymizerNodeAsActive(int nodeAddress)
 {
     for (int i = 0; i < anonymizersTracking.size(); i++) {
-        if(anonymizersTracking[i].anonymizerId == nodeAddress)
+        if (anonymizersTracking[i].anonymizerId == nodeAddress)
             anonymizersTracking[i].status = 1;
     }
 }
