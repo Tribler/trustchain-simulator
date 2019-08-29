@@ -143,14 +143,16 @@ void App::receiveMessage(cMessage *msg)
                 createChainLogMessage();
             }
             else { // this is an anonymization request
-                    //send confirmation
-                    sendAnonymizerConfirmation(pk->getSrcAddr());
-                    //register target in await list
-                    //
-
+                sendAnonymizerConfirmation(pk->getSrcAddr());
+                //register target in await list
+                //
 
             }
 
+            break;
+        }
+        case 11: { // Anonymizer Confirmation Received
+            markAnonymizerNodeAsActive(pk->getSrcAddr());
             break;
         }
         case 2: { // Partner Chain Received
@@ -325,7 +327,7 @@ void App::contactAnonymizers()
 void App::sendAnonymizerConfirmation(int destAddress)
 {
     char pkname[40];
-    sprintf(pkname, "#%ld from-%d-to-%d busy", pkCounter++, myAddress, destAddress);
+    sprintf(pkname, "#%ld from-%d-to-%d anonymiser confirmation", pkCounter++, myAddress, destAddress);
 
     if (hasGUI())
         getParentModule()->bubble("Generating packet...");
@@ -339,6 +341,13 @@ void App::sendAnonymizerConfirmation(int destAddress)
     pk->setPacketType(11);
 
     send(pk, "out");
+}
+void App::markAnonymizerNodeAsActive(int nodeAddress)
+{
+    for (int i = 0; i < anonymizersTracking.size(); i++) {
+        if(anonymizersTracking[i].anonymizerId == nodeAddress)
+            anonymizersTracking[i].status = 1;
+    }
 }
 void App::createChainRequestMessage(int destination, int target)
 {

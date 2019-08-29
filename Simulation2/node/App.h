@@ -171,6 +171,7 @@ protected:
     virtual void createBusyMessage(int destAddress);
     virtual void contactAnonymizers();
     virtual void sendAnonymizerConfirmation(int destAddress);
+    virtual void markAnonymizerNodeAsActive(int nodeAddress);
 
     virtual void createDirectChannel(int nodeId);
     virtual void closeDirectChannel();
