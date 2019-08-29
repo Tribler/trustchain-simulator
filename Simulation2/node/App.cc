@@ -140,7 +140,7 @@ void App::receiveMessage(cMessage *msg)
         }
         case 1: { // Chain Request Received
             if (pk->getUserXID() == myAddress) {
-                createChainLogMessage();
+                createChainLogMessage(pk-> getSrcAddr());
             }
             else { // this is an anonymization request
                 sendAnonymizerConfirmation(pk->getSrcAddr());
@@ -156,22 +156,22 @@ void App::receiveMessage(cMessage *msg)
         }
         case 2: { // Partner Chain Received
 
-            if (verificationTransactionChain(pk)) {
-                logTransactionChain(pk);
-
-                registerNewChainNode(tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
-                createAckMessage();
-                if (!isNodeEvil()) {
-                    createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
-                }
-            }
-            else {
-                printInformation(myAddress, tempBlockID, 0);
-                simulationRegisterDetectionTime(tempBlockID);
-                stopSimulation();
-            }
-            tempBlockID = -1;
-            tempBlockTransaction = 0;
+//            if (verificationTransactionChain(pk)) {
+//                logTransactionChain(pk);
+//
+//                registerNewChainNode(tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
+//                createAckMessage();
+//                if (!isNodeEvil()) {
+//                    createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
+//                }
+//            }
+//            else {
+//                printInformation(myAddress, tempBlockID, 0);
+//                simulationRegisterDetectionTime(tempBlockID);
+//                stopSimulation();
+//            }
+//            tempBlockID = -1;
+//            tempBlockTransaction = 0;
             break;
         }
         case 3: { // Ack Received
@@ -369,10 +369,8 @@ void App::createChainRequestMessage(int destination, int target)
 
     send(pk, "out");
 }
-void App::createChainLogMessage()
+void App::createChainLogMessage(int destAddress)
 {
-    int destAddress = tempBlockID;
-
     char pkname[40];
     sprintf(pkname, "#%ld from-%d-to-%d chain log", pkCounter++, myAddress, destAddress);
 

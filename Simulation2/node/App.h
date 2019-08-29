@@ -176,7 +176,7 @@ protected:
     //Messaging
     virtual void createTransactionMessage();
     virtual void createChainRequestMessage(int destination, int target);
-    virtual void createChainLogMessage();
+    virtual void createChainLogMessage(int destAddress);
     virtual void createAckMessage();
     virtual void createDisseminationMessage(int userXID, int userXSeqNum, int userYID, int userYSeqNum, int transactionValue);
     virtual void reDisseminateMessage(Packet *pk);
