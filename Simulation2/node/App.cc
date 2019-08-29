@@ -140,7 +140,7 @@ void App::receiveMessage(cMessage *msg)
         }
         case 1: { // Chain Request Received
             if (pk->getUserXID() == myAddress) {
-                createChainLogMessage(pk-> getSrcAddr());
+                createChainLogMessage(pk->getSrcAddr());
             }
             else { // this is an anonymization request
                 sendAnonymizerConfirmation(pk->getSrcAddr());
@@ -155,6 +155,31 @@ void App::receiveMessage(cMessage *msg)
             break;
         }
         case 2: { // Partner Chain Received
+
+            //I'm anonymizer receiving a reply from a target
+            int positionIndex = getRequesterIdFromAnonymizerWaitList(pk->getSrcAddr());
+            if (positionIndex != -1) {
+                // verify chain
+                // store log
+                forwardReceivedChainToRequester(anonymizerWaitList[positionIndex].requesterId, pk);
+                anonymizerWaitList.erase(anonymizerWaitList.begin() + positionIndex);
+            }
+
+            //I'm a node receiving reply from anonymiser
+            if (pk->getSrcAddr() != pk->getUserXID()) {
+                // verify chain
+                // store log
+                // log anonymiser information + hash of chain
+            }
+
+
+            //I'm in the dissemination phase
+            // verify chain
+            // store log
+            if(tempBlockID != -1){
+                // send back my chain
+            }
+
 
 //            if (verificationTransactionChain(pk)) {
 //                logTransactionChain(pk);
@@ -172,6 +197,7 @@ void App::receiveMessage(cMessage *msg)
 //            }
 //            tempBlockID = -1;
 //            tempBlockTransaction = 0;
+
             break;
         }
         case 3: { // Ack Received
@@ -384,6 +410,7 @@ void App::createChainLogMessage(int destAddress)
     pk->setDestAddr(destAddress);
 
     pk->setPacketType(2);
+    pk->setUserXID(myAddress);
 
     //Add chain to the block
 
