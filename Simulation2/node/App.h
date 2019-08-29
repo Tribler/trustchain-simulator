@@ -184,6 +184,7 @@ protected:
     virtual void contactAnonymizers();
     virtual void sendAnonymizerConfirmation(int destAddress);
     virtual void markAnonymizerNodeAsActive(int nodeAddress);
+    virtual void getRequesterIdFromAnonymizerWaitList(int nodeAddress);
 
     virtual void createDirectChannel(int nodeId);
     virtual void closeDirectChannel();
