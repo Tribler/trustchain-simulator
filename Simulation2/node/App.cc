@@ -132,11 +132,25 @@ void App::receiveMessage(cMessage *msg)
             tempBlockID = pk->getSrcAddr();
             tempPartnerSeqNum = pk->getMyChainSeqNum();
             tempBlockTransaction = pk->getTransactionValue();
-            createChainRequestMessage();
+
+            contactAnonymizers();
+            //createChainRequestMessage();
+
             break;
         }
         case 1: { // Chain Request Received
-            createChainLogMessage();
+            if (pk->getUserXID() == myAddress) {
+                createChainLogMessage();
+            }
+            else { // this is an anonymization request
+                    //send confirmation
+                    sendAnonymizerConfirmation(pk->getSrcAddr());
+                    //register target in await list
+                    //
+
+
+            }
+
             break;
         }
         case 2: { // Partner Chain Received
@@ -228,7 +242,6 @@ void App::createBusyMessage(int destAddress)
 
     send(pk, "out");
 }
-
 void App::createTransactionMessage()
 {
     //Calculate transaction value
@@ -283,9 +296,53 @@ void App::closeDirectChannel()
 {
     this->gate("direct")->disconnect();
 }
-void App::createChainRequestMessage()
+
+void App::contactAnonymizers()
 {
-    int destAddress = tempBlockID;
+    int numberOfAnonymizer = (int) par("numberOfAnonymizer");
+    int numberOfNodes = (int) par("totalNodes");
+    if (numberOfAnonymizer > numberOfNodes - 2) {
+        numberOfAnonymizer = numberOfNodes - 2;
+    }
+
+    anonymizersTracking.clear();
+
+    RandomDistinctPicker *rand = new RandomDistinctPicker(0, numberOfNodes - 1, par("randomSeed"));
+
+    for (int i = 0; i < numberOfAnonymizer; i++) {
+        int destAddresses = rand->getRandomNumber();
+        if (destAddresses == myAddress || destAddresses == tempBlockID) {
+            destAddresses = rand->getRandomNumber();
+            if (destAddresses == myAddress || destAddresses == tempBlockID) {
+
+                destAddresses = rand->getRandomNumber(); // worse case can mistake two time in row
+            }
+        }
+        anonymizersTracking.push_back(*new AnonymizerTrackingElement(destAddresses, 0));
+        createChainRequestMessage(destAddresses, tempBlockID);
+    }
+}
+void App::sendAnonymizerConfirmation(int destAddress)
+{
+    char pkname[40];
+    sprintf(pkname, "#%ld from-%d-to-%d busy", pkCounter++, myAddress, destAddress);
+
+    if (hasGUI())
+        getParentModule()->bubble("Generating packet...");
+
+    //Packet Creation
+    Packet *pk = new Packet(pkname);
+    pk->setByteLength(packetLengthBytes->intValue());
+    pk->setSrcAddr(myAddress);
+    pk->setDestAddr(destAddress);
+
+    pk->setPacketType(11);
+
+    send(pk, "out");
+}
+void App::createChainRequestMessage(int destination, int target)
+{
+    int destAddress = destination;
 
     char pkname[40];
     sprintf(pkname, "#%ld from-%d-to-%d chain request", pkCounter++, myAddress, destAddress);
@@ -300,12 +357,10 @@ void App::createChainRequestMessage()
     pk->setDestAddr(destAddress);
 
     pk->setPacketType(1);
+    pk->setUserXID(target);
 
-    createDirectChannel(tempBlockID);
-    send(pk, "direct");
-    closeDirectChannel();
+    send(pk, "out");
 }
-
 void App::createChainLogMessage()
 {
     int destAddress = tempBlockID;
@@ -343,9 +398,7 @@ void App::createChainLogMessage()
         pk->setTransactionArraySize(0);
     }
 
-    createDirectChannel(tempBlockID);
-    send(pk, "direct");
-    closeDirectChannel();
+    send(pk, "out");
 }
 
 void App::createAckMessage()
@@ -531,7 +584,7 @@ void App::createDisseminationMessage(int userXID, int userXSeqNum, int userYID, 
     cModule *mod = getParentModule()->getSubmodule("routing");
     Routing *myRouting = check_and_cast<Routing*>(mod);
     std::vector<int> neighbourNodeAddresses = myRouting->neighbourNodeAddresses;
-    RandomDistinctPicker *rand = new RandomDistinctPicker(0, neighbourNodeAddresses.size()-1, par("randomSeed"));
+    RandomDistinctPicker *rand = new RandomDistinctPicker(0, neighbourNodeAddresses.size() - 1, par("randomSeed"));
 
     for (int i = 0; i < neighbourNodeAddresses.size(); i++) {
 // User selection
