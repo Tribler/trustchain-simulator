@@ -156,7 +156,7 @@ void App::receiveMessage(cMessage *msg)
 
             //I'm anonymizer receiving a reply from a target
             int positionIndex = getIndexFromAnonymizerWaitList(pk->getSrcAddr());
-            if (positionIndex != -1) {
+            if (pk->getSrcAddr() == pk->getUserXID() && positionIndex != -1) {
                 // verify chain
                 // store log
                 forwardReceivedChainToRequester(anonymizerWaitList[positionIndex].requesterId, pk);
@@ -165,10 +165,11 @@ void App::receiveMessage(cMessage *msg)
 
             //I'm a node receiving reply from anonymizer
             if (pk->getSrcAddr() != pk->getUserXID() && isAnAuditedAnonymizer(pk->getSrcAddr())) {
-                if (verificationTransactionChain(pk)) {
-                    //check if chain position is free
+                if (verificationTransactionChain(pk) && pk->getTransactionArraySize() < tempPartnerSeqNum) {
                     logTransactionChain(pk);
                     logAnonymiserReply(pk->getSrcAddr());
+                }else{
+                    //report error
                 }
             }
 
