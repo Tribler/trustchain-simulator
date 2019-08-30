@@ -157,10 +157,16 @@ void App::receiveMessage(cMessage *msg)
             //I'm anonymizer receiving a reply from a target
             int positionIndex = getIndexFromAnonymizerWaitList(pk->getSrcAddr());
             if (pk->getSrcAddr() == pk->getUserXID() && positionIndex != -1) {
-                // verify chain
-                // store log
-                forwardReceivedChainToRequester(anonymizerWaitList[positionIndex].requesterId, pk);
-                anonymizerWaitList.erase(anonymizerWaitList.begin() + positionIndex);
+                if (verificationTransactionChain(pk)) {
+                    logTransactionChain(pk);
+                    forwardReceivedChainToRequester(anonymizerWaitList[positionIndex].requesterId, pk);
+                    anonymizerWaitList.erase(anonymizerWaitList.begin() + positionIndex);
+                }
+                else {
+                    printInformation(myAddress, pk->getSrcAddr(), 0);
+                    simulationRegisterDetectionTime(pk->getSrcAddr());
+                    stopSimulation();
+                }
             }
 
             //I'm a node receiving reply from anonymizer
@@ -168,8 +174,11 @@ void App::receiveMessage(cMessage *msg)
                 if (verificationTransactionChain(pk) && pk->getTransactionArraySize() < tempPartnerSeqNum) {
                     logTransactionChain(pk);
                     logAnonymiserReply(pk->getSrcAddr());
-                }else{
-                    //report error
+                }
+                else {
+                    printInformation(myAddress, tempBlockID, 0);
+                    simulationRegisterDetectionTime(tempBlockID);
+                    stopSimulation();
                 }
             }
 
@@ -234,7 +243,7 @@ void App::receiveMessage(cMessage *msg)
                 }
             }
             else {
-                printInformation(myAddress, result, 1);
+                printInformation(myAddress, result, 2);
                 simulationRegisterDetectionTime(result);
                 stopSimulation();
             }
@@ -519,7 +528,7 @@ bool App::verificationTransactionChain(Packet *pk)
     int i;
     for (i = 0; i < logDatabase.size(); i++) {
 
-        if (logDatabase[i].UserAId == pk->getSrcAddr()) {
+        if (logDatabase[i].UserAId == pk->getUserXID()) {
             int index = logDatabase[i].UserASeqNum - 1;
             if (pk->getUserBIDArraySize() > index) {
                 if (pk->getUserBID(index) == logDatabase[i].UserBId && pk->getUserBSeqNum(index) == logDatabase[i].UserBSeqNum && pk->getTransaction(index) == logDatabase[i].transactionValue) {
@@ -535,7 +544,7 @@ bool App::verificationTransactionChain(Packet *pk)
                 return false;
             }
         }
-        else if (logDatabase[i].UserBId == pk->getSrcAddr()) {
+        else if (logDatabase[i].UserBId == pk->getUserXID()) {
             int index = logDatabase[i].UserBSeqNum - 1;
             if (pk->getUserBIDArraySize() > index) {
                 if (pk->getUserBID(index) == logDatabase[i].UserAId && pk->getUserBSeqNum(index) == logDatabase[i].UserASeqNum && pk->getTransaction(index) == -logDatabase[i].transactionValue) {
@@ -557,14 +566,14 @@ bool App::verificationTransactionChain(Packet *pk)
     for (int j = 0; j < pk->getTransactionArraySize(); j++) {
         for (i = 0; i < logDatabase.size(); i++) {
             if (logDatabase[i].UserAId == pk->getUserBID(j) && logDatabase[i].UserASeqNum == pk->getUserBSeqNum(j)) {
-                if (!(logDatabase[i].UserBId == pk->getSrcAddr() && logDatabase[i].UserBSeqNum == (j + 1) && (logDatabase[i].transactionValue == pk->getTransaction(j) || -logDatabase[i].transactionValue == pk->getTransaction(j)))) {
+                if (!(logDatabase[i].UserBId == pk->getUserXID() && logDatabase[i].UserBSeqNum == (j + 1) && (logDatabase[i].transactionValue == pk->getTransaction(j) || -logDatabase[i].transactionValue == pk->getTransaction(j)))) {
                     simulationRegisterDetectionTime(pk->getUserBID(j));
                     printInformation(myAddress, pk->getUserBID(j), 0);
                     result = false;
                 }
             }
             else if (logDatabase[i].UserBId == pk->getUserBID(j) && logDatabase[i].UserBSeqNum == pk->getUserBSeqNum(j)) {
-                if (!(logDatabase[i].UserAId == pk->getSrcAddr() && logDatabase[i].UserASeqNum == (j + 1) && (logDatabase[i].transactionValue == pk->getTransaction(j) || -logDatabase[i].transactionValue == pk->getTransaction(j)))) {
+                if (!(logDatabase[i].UserAId == pk->getUserXID() && logDatabase[i].UserASeqNum == (j + 1) && (logDatabase[i].transactionValue == pk->getTransaction(j) || -logDatabase[i].transactionValue == pk->getTransaction(j)))) {
                     simulationRegisterDetectionTime(pk->getUserBID(j));
                     printInformation(myAddress, pk->getUserBID(j), 0);
                     result = false;
@@ -637,7 +646,7 @@ void App::logTransactionChain(Packet *pk)
     if (pk->getUserBIDArraySize() != 0) {
         int i;
         for (i = 1; i < pk->getUserBIDArraySize(); i++) {
-            LogDatabaseElement *element = new LogDatabaseElement(pk->getSrcAddr(), i + 1, pk->getUserBID(i), pk->getUserBSeqNum(i), pk->getTransaction(i));
+            LogDatabaseElement *element = new LogDatabaseElement(pk->getUserXID(), i + 1, pk->getUserBID(i), pk->getUserBSeqNum(i), pk->getTransaction(i));
             if (!isAlreadyPresentInDb(element)) {
                 logDatabase.push_back(*element);
                 //EV << " **************new element" << endl;
