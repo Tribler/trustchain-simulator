@@ -184,7 +184,10 @@ protected:
     virtual void contactAnonymizers();
     virtual void sendAnonymizerConfirmation(int destAddress);
     virtual void markAnonymizerNodeAsActive(int nodeAddress);
-    virtual void getRequesterIdFromAnonymizerWaitList(int nodeAddress);
+    virtual int getIndexFromAnonymizerWaitList(int targetNodeAddress);
+    virtual void forwardReceivedChainToRequester(int requesterAddress, Packet *pk);
+    virtual bool isAnAuditedAnonymizer(int anonymizerNodeAddress);
+    virtual void logAnonymiserReply(int anonymizerNodeAddress);
 
     virtual void createDirectChannel(int nodeId);
     virtual void closeDirectChannel();

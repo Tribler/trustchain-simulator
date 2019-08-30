@@ -84,7 +84,6 @@ void App::handleMessage(cMessage *msg)
         receiveMessage(msg);
     }
 }
-
 void App::threadFunction()
 {
     if (tempBlockID == -1) { //No transaction are pending
@@ -104,7 +103,6 @@ void App::threadFunction()
     }
     scheduleAt(simTime() + sendIATime->doubleValue(), timerThread);
 }
-
 void App::receiveMessage(cMessage *msg)
 {
     if (hasGUI())
@@ -157,7 +155,7 @@ void App::receiveMessage(cMessage *msg)
         case 2: { // Partner Chain Received
 
             //I'm anonymizer receiving a reply from a target
-            int positionIndex = getRequesterIdFromAnonymizerWaitList(pk->getSrcAddr());
+            int positionIndex = getIndexFromAnonymizerWaitList(pk->getSrcAddr());
             if (positionIndex != -1) {
                 // verify chain
                 // store log
@@ -165,21 +163,21 @@ void App::receiveMessage(cMessage *msg)
                 anonymizerWaitList.erase(anonymizerWaitList.begin() + positionIndex);
             }
 
-            //I'm a node receiving reply from anonymiser
-            if (pk->getSrcAddr() != pk->getUserXID()) {
-                // verify chain
-                // store log
-                // log anonymiser information + hash of chain
+            //I'm a node receiving reply from anonymizer
+            if (pk->getSrcAddr() != pk->getUserXID() && isAnAuditedAnonymizer(pk->getSrcAddr())) {
+                if (verificationTransactionChain(pk)) {
+                    //check if chain position is free
+                    logTransactionChain(pk);
+                    logAnonymiserReply(pk->getSrcAddr());
+                }
             }
-
 
             //I'm in the dissemination phase
             // verify chain
             // store log
-            if(tempBlockID != -1){
+            if (tempBlockID != -1) {
                 // send back my chain
             }
-
 
 //            if (verificationTransactionChain(pk)) {
 //                logTransactionChain(pk);
@@ -197,6 +195,11 @@ void App::receiveMessage(cMessage *msg)
 //            }
 //            tempBlockID = -1;
 //            tempBlockTransaction = 0;
+
+//            char text[128];
+//            sprintf(text, "Ciao mamma Time: %s s", SIMTIME_STR(simTime()));
+//            EV << text << endl;
+//            getSimulation()->getActiveEnvir()->alert(text);
 
             break;
         }
@@ -379,7 +382,12 @@ void App::createChainRequestMessage(int destination, int target)
     int destAddress = destination;
 
     char pkname[40];
-    sprintf(pkname, "#%ld from-%d-to-%d chain request", pkCounter++, myAddress, destAddress);
+    if (destination != target) {
+        sprintf(pkname, "#%ld from-%d-to-%d chain request to anonymizer", pkCounter++, myAddress, destAddress);
+    }
+    else {
+        sprintf(pkname, "#%ld from-%d-to-%d chain request", pkCounter++, myAddress, destAddress);
+    }
 
     if (hasGUI())
         getParentModule()->bubble("Generating packet...");
@@ -432,6 +440,48 @@ void App::createChainLogMessage(int destAddress)
     }
 
     send(pk, "out");
+}
+int App::getIndexFromAnonymizerWaitList(int targetNodeAddress)
+{
+    for (int i = 0; i < anonymizerWaitList.size(); i++) {
+        if (anonymizerWaitList[i].targetId == targetNodeAddress) {
+            return i;
+        }
+    }
+    return -1;
+}
+void App::forwardReceivedChainToRequester(int requesterAddress, Packet *pk)
+{
+    Packet *copy = (Packet *) pk->dup();
+
+    char pkname[40];
+    sprintf(pkname, "#%ld from-%d-to-%d chain log from anonmizer", pkCounter++, myAddress, requesterAddress);
+    if (hasGUI())
+        getParentModule()->bubble("Generating packet...");
+    copy->setName(pkname);
+    copy->setSrcAddr(myAddress);
+    copy->setDestAddr(requesterAddress);
+
+    send(copy, "out");
+}
+bool App::isAnAuditedAnonymizer(int anonymizerNodeAddress)
+{
+    for (int i = 0; i < anonymizersTracking.size(); i++) {
+        {
+            if (anonymizersTracking[i].anonymizerId == anonymizerNodeAddress && anonymizersTracking[i].status == 1)
+                return true;
+        }
+    }
+    return false;
+}
+void App::logAnonymiserReply(int anonymizerNodeAddress)
+{
+    for (int i = 0; i < anonymizersTracking.size(); i++) {
+        {
+            if (anonymizersTracking[i].anonymizerId == anonymizerNodeAddress)
+                anonymizersTracking[i].status = 2;
+        }
+    }
 }
 
 void App::createAckMessage()
