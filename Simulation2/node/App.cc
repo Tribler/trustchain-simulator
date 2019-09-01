@@ -159,10 +159,11 @@ void App::receiveMessage(cMessage *msg)
             }
 
             //I'm a node receiving reply from anonymizer
-            if (pk->getSrcAddr() != pk->getUserXID() && isAnAuditedAnonymizer(pk->getSrcAddr())) {
+            if (pk->getSrcAddr() != pk->getUserXID() && transactionStage == 1 && isAnAuditedAnonymizer(pk->getSrcAddr())) {
                 if (verificationTransactionChain(pk) && pk->getTransactionArraySize() < tempPartnerSeqNum) {
                     logTransactionChain(pk);
                     logAnonymiserReply(pk->getSrcAddr());
+                    //TODO: store the list of node in the chain for the dissemination
 
                     //have all anonymizer replied
                     bool allDone = true;
@@ -175,6 +176,7 @@ void App::receiveMessage(cMessage *msg)
                         createAckMessage();
                         tempBlockID = -1;
                         tempBlockTransaction = 0;
+                        //TODO: dissemination
                     }
                 }
                 else {
@@ -265,11 +267,24 @@ void App::receiveMessage(cMessage *msg)
 void App::anonymusAuditingTimeout()
 {
     if (transactionStage == 1) { //still waiting for anonymizer
-        char text[128];
-        sprintf(text, "TIMEOUT Time: %s s", SIMTIME_STR(simTime()));
-        getSimulation()->getActiveEnvir()->alert(text);
-    }
+        //verify status of collected anonymus chain
+        int nodesThatAcceptedToAnonymise = 0;
+        int positiveReply = 0;
+        for (int i = 0; i < anonymizersTracking.size(); i++) {
+            if (anonymizersTracking[i].status == 1 || anonymizersTracking[i].status == 2)
+                nodesThatAcceptedToAnonymise++;
+            if (anonymizersTracking[i].status == 2)
+                positiveReply++;
+        }
 
+        if (positiveReply >= nodesThatAcceptedToAnonymise / 2) {
+            transactionStage = 2;
+            createAckMessage();
+            tempBlockID = -1;
+            tempBlockTransaction = 0;
+            //TODO: dissemination
+        }
+    }
 }
 
 //TRANSACTION INIT
@@ -377,6 +392,7 @@ void App::contactAnonymizers()
         }
         anonymizersTracking.push_back(*new AnonymizerTrackingElement(destAddresses, 0));
         createChainRequestMessage(destAddresses, tempBlockID);
+        //TODO: wait a random time
     }
 
     delete rand;
