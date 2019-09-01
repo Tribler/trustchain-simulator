@@ -13,7 +13,6 @@ App::App()
 {
     timerThread = nullptr;
 }
-
 App::~App()
 {
     cancelAndDelete(timerThread);
@@ -134,7 +133,6 @@ void App::receiveMessage(cMessage *msg)
 
             transactionStage = 1;
             contactAnonymizers();
-            //createChainRequestMessage();
 
             break;
         }
@@ -221,11 +219,6 @@ void App::receiveMessage(cMessage *msg)
 //            tempBlockID = -1;
 //            tempBlockTransaction = 0;
 
-//            char text[128];
-//            sprintf(text, "Ciao mamma Time: %s s", SIMTIME_STR(simTime()));
-//            EV << text << endl;
-//            getSimulation()->getActiveEnvir()->alert(text);
-
             break;
         }
         case 3: { // Ack Received
@@ -279,6 +272,7 @@ void App::receiveMessage(cMessage *msg)
 
 }
 
+//TRANSACTION INIT
 void App::createBusyMessage(int destAddress)
 {
     char pkname[40];
@@ -339,19 +333,8 @@ void App::createTransactionMessage()
 
     send(pk, "out");
 }
-void App::createDirectChannel(int nodeId)
-{
-    cModule *target = getParentModule()->getParentModule()->getSubmodule("rte", nodeId)->getSubmodule("queue", 0);
-    cDatarateChannel *channel = cDatarateChannel::create("channel");
-    channel->setDelay((double) getParentModule()->getParentModule()->par("delay"));
-    channel->setDatarate((double) getParentModule()->getParentModule()->par("datarate") * 1000);
-    this->gate("direct")->connectTo(target->gate("direct"), channel);
-}
-void App::closeDirectChannel()
-{
-    this->gate("direct")->disconnect();
-}
 
+//AUDITING SYSTEM
 void App::contactAnonymizers()
 {
     int numberOfAnonymizer = (int) par("numberOfAnonymizer");
@@ -376,6 +359,8 @@ void App::contactAnonymizers()
         anonymizersTracking.push_back(*new AnonymizerTrackingElement(destAddresses, 0));
         createChainRequestMessage(destAddresses, tempBlockID);
     }
+
+    delete rand;
 }
 void App::sendAnonymizerConfirmation(int destAddress)
 {
@@ -507,30 +492,6 @@ void App::logAnonymiserReply(int anonymizerNodeAddress)
                 anonymizersTracking[i].status = 2;
         }
     }
-}
-
-void App::createAckMessage()
-{
-    int destAddress = tempBlockID;
-
-    char pkname[40];
-    sprintf(pkname, "#%ld from-%d-to-%d transaction ack", pkCounter++, myAddress, destAddress);
-
-    if (hasGUI())
-        getParentModule()->bubble("Generating packet...");
-
-    //Packet Creation
-    Packet *pk = new Packet(pkname);
-    pk->setByteLength(packetLengthBytes->intValue());
-    pk->setSrcAddr(myAddress);
-    pk->setDestAddr(destAddress);
-
-    pk->setPacketType(3);
-    pk->setMyChainSeqNum(trustChain.size());
-
-    createDirectChannel(tempBlockID);
-    send(pk, "direct");
-    closeDirectChannel();
 }
 
 bool App::verificationTransactionChain(Packet *pk)
@@ -672,7 +633,6 @@ void App::logTransactionChain(Packet *pk)
         }
     }
 }
-
 bool App::isAlreadyPresentInDb(LogDatabaseElement *element)
 {
     int i;
@@ -687,6 +647,52 @@ bool App::isAlreadyPresentInDb(LogDatabaseElement *element)
     return false;
 }
 
+//CREATE TRANSACTION
+void App::createAckMessage()
+{
+    int destAddress = tempBlockID;
+
+    char pkname[40];
+    sprintf(pkname, "#%ld from-%d-to-%d transaction ack", pkCounter++, myAddress, destAddress);
+
+    if (hasGUI())
+        getParentModule()->bubble("Generating packet...");
+
+    //Packet Creation
+    Packet *pk = new Packet(pkname);
+    pk->setByteLength(packetLengthBytes->intValue());
+    pk->setSrcAddr(myAddress);
+    pk->setDestAddr(destAddress);
+
+    pk->setPacketType(3);
+    pk->setMyChainSeqNum(trustChain.size());
+
+    createDirectChannel(tempBlockID);
+    send(pk, "direct");
+    closeDirectChannel();
+}
+void App::registerNewChainNode(int id, int seqNum, int value)
+{
+    TrustChainElement *chainElement = new TrustChainElement(id, seqNum, value);
+    trustChain.push_back(*chainElement);
+    calculateChainValue();
+
+    if (id != -1) {
+        LogDatabaseElement *element = new LogDatabaseElement(myAddress, trustChain.size(), id, seqNum, value);
+        logDatabase.push_back(*element);
+    }
+}
+void App::calculateChainValue()
+{
+    int localTotalChainValue = 0, i = 0;
+
+    for (i = 0; i < trustChain.size(); i++) {
+        localTotalChainValue = localTotalChainValue + trustChain[i].transactionValue;
+    }
+    chainTotalValue = localTotalChainValue;
+}
+
+//DISSEMINATION (TODO)
 void App::createDisseminationMessage(int userXID, int userXSeqNum, int userYID, int userYSeqNum, int transactionValue)
 {
     cModule *mod = getParentModule()->getSubmodule("routing");
@@ -746,39 +752,7 @@ void App::reDisseminateMessage(Packet *pk)
     }
 }
 
-int App::randomNodeAddressPicker()
-{
-    int destAddress = -1;
-
-    while (destAddress == -1 || destAddress == myAddress) {
-        destAddress = destAddresses[intuniform(0, destAddresses.size() - 1)];
-    }
-
-    return destAddress;
-}
-
-void App::registerNewChainNode(int id, int seqNum, int value)
-{
-    TrustChainElement *chainElement = new TrustChainElement(id, seqNum, value);
-    trustChain.push_back(*chainElement);
-    calculateChainValue();
-
-    if (id != -1) {
-        LogDatabaseElement *element = new LogDatabaseElement(myAddress, trustChain.size(), id, seqNum, value);
-        logDatabase.push_back(*element);
-    }
-}
-
-void App::calculateChainValue()
-{
-    int localTotalChainValue = 0, i = 0;
-
-    for (i = 0; i < trustChain.size(); i++) {
-        localTotalChainValue = localTotalChainValue + trustChain[i].transactionValue;
-    }
-    chainTotalValue = localTotalChainValue;
-}
-
+//EVIL NODE
 bool App::isNodeEvil()
 {
     if (amIEvil && trustChain.size() >= (int) par("evilNumberOfSleepingTransaction")) {
@@ -788,7 +762,6 @@ bool App::isNodeEvil()
         return false;
     }
 }
-
 bool App::itIsAlreadyBeenAttacked(int nodeId)    // The evil node can check here if a node as been already addressed or not
 {
     int i;
@@ -800,6 +773,7 @@ bool App::itIsAlreadyBeenAttacked(int nodeId)    // The evil node can check here
     return false;
 }
 
+//SIMULATION
 void App::simulationRegisterTransactionTime(int nodeId) // Here are recorded the transaction starting times for all evil nodes
 {
     int i = 0, alreadyRegistered = 0;
@@ -816,7 +790,6 @@ void App::simulationRegisterTransactionTime(int nodeId) // Here are recorded the
         simulationTiming.push_back(*timeLog);
     }
 }
-
 void App::simulationRegisterDetectionTime(int nodeId) // Here are logged the evil nodes detection times
 {
     int i = 0;
@@ -829,7 +802,6 @@ void App::simulationRegisterDetectionTime(int nodeId) // Here are logged the evi
         }
     }
 }
-
 void App::stopSimulation() // This function is being called when ever an evil node is being detected
 {
     int i, nodesDetected = 0;
@@ -850,6 +822,31 @@ void App::stopSimulation() // This function is being called when ever an evil no
         simulationTiming.clear();
         endSimulation();
     }
+}
+
+//GENERAL USE
+void App::createDirectChannel(int nodeId)
+{
+    cModule *target = getParentModule()->getParentModule()->getSubmodule("rte", nodeId)->getSubmodule("queue", 0);
+    cDatarateChannel *channel = cDatarateChannel::create("channel");
+    channel->setDelay((double) getParentModule()->getParentModule()->par("delay"));
+    channel->setDatarate((double) getParentModule()->getParentModule()->par("datarate") * 1000);
+    this->gate("direct")->connectTo(target->gate("direct"), channel);
+}
+void App::closeDirectChannel()
+{
+    this->gate("direct")->disconnect();
+}
+
+int App::randomNodeAddressPicker()
+{
+    int destAddress = -1;
+
+    while (destAddress == -1 || destAddress == myAddress) {
+        destAddress = destAddresses[intuniform(0, destAddresses.size() - 1)];
+    }
+
+    return destAddress;
 }
 
 //DEBUG CODE
