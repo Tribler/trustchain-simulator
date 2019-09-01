@@ -159,7 +159,7 @@ void App::receiveMessage(cMessage *msg)
             }
 
             //I'm a node receiving reply from anonymizer
-            if (pk->getSrcAddr() != pk->getUserXID() && transactionStage == 1 && isAnAuditedAnonymizer(pk->getSrcAddr())) {
+            if (pk->getSrcAddr() != pk->getUserXID() && pk->getUserXID() == tempBlockID && transactionStage == 1 && isAnAuditedAnonymizer(pk->getSrcAddr())) {
                 if (verificationTransactionChain(pk) && pk->getTransactionArraySize() < tempPartnerSeqNum) {
                     logTransactionChain(pk);
                     logAnonymiserReply(pk->getSrcAddr());
