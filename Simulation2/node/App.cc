@@ -30,6 +30,7 @@ void App::initialize()
     tempBlockID = -1;
     tempPartnerSeqNum = 0;
     tempBlockTransaction = 0;
+    transactionStage = 0;
 
     //Information To Log
     WATCH(pkCounter);
@@ -86,7 +87,7 @@ void App::handleMessage(cMessage *msg)
 }
 void App::threadFunction()
 {
-    if (tempBlockID == -1) { //No transaction are pending
+    if (tempBlockID == -1 && transactionStage == 0) { //No transaction are pending
         calculateChainValue();
         if (chainTotalValue > 0) {
             if (isNodeEvil() && totalEvilTransactions >= (int) par("evilNumberOfTransaction")) {
@@ -116,7 +117,7 @@ void App::receiveMessage(cMessage *msg)
     switch (pk->getPacketType()) {
         case 0: { // Transaction Request Received
 
-            if (tempBlockID != -1) { //currently in another transaction
+            if (tempBlockID != -1 || transactionStage != 0) { //currently in another transaction
                 createBusyMessage(pk->getSrcAddr());
                 break;
             }
@@ -131,6 +132,7 @@ void App::receiveMessage(cMessage *msg)
             tempPartnerSeqNum = pk->getMyChainSeqNum();
             tempBlockTransaction = pk->getTransactionValue();
 
+            transactionStage = 1;
             contactAnonymizers();
             //createChainRequestMessage();
 
@@ -174,6 +176,19 @@ void App::receiveMessage(cMessage *msg)
                 if (verificationTransactionChain(pk) && pk->getTransactionArraySize() < tempPartnerSeqNum) {
                     logTransactionChain(pk);
                     logAnonymiserReply(pk->getSrcAddr());
+
+                    //have all anonymizer replied
+                    bool allDone = true;
+                    for (int i = 0; i < anonymizersTracking.size(); i++) {
+                        if (anonymizersTracking[i].status != 2)
+                            allDone = false;
+                    }
+                    if (allDone == true) {
+                        transactionStage = 2;
+                        createAckMessage();
+                        tempBlockID = -1;
+                        tempBlockTransaction = 0;
+                    }
                 }
                 else {
                     printInformation(myAddress, tempBlockID, 0);

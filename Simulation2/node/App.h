@@ -138,6 +138,7 @@ private:
     std::vector<int> victimDestAddresses; //used to keep track of whom the evil node has attacked
     int totalEvilTransactions;
     std::vector<int> evilNodeIds;
+    int transactionStage; // 0-none 1-waiting for anonymizer 2-disseminating
 
     //Transactions related par
     int tempBlockID;
@@ -154,8 +155,8 @@ private:
     std::vector<LogDatabaseElement> logDatabase; // This variable contains the chain knowledge received by the network
 
     //Anonymizer Tracking
-    std::vector<AnonymizerTrackingElement> anonymizersTracking;
-    std::vector<AnonymizerWaitListElement> anonymizerWaitList;
+    std::vector<AnonymizerTrackingElement> anonymizersTracking; // store information regarding the anonimiser that are auditing for me
+    std::vector<AnonymizerWaitListElement> anonymizerWaitList; // store information of users that asked me to audit (im anonymizer )
 
 public:
     App();
