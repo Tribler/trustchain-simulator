@@ -8,6 +8,7 @@
 #include <omnetpp.h>
 #include "Packet_m.h"
 
+
 using namespace omnetpp;
 
 class AnonymizerTrackingElement
@@ -126,12 +127,18 @@ private:
     int myAddress;
     std::vector<int> destAddresses;
     cPar *sendIATime;
+    cPar *anonymusAuditingTimeoutTime;
     cPar *sendIaTimeEvil;
     cPar *packetLengthBytes;
 
     // state
     //cMessage *generatePacket;
-    cMessage *timerThread;
+    //cMessage *timerThread;
+    cMessage *timerInitTransaction;
+    cMessage *timerAnonymusAuditingTimeout;
+
+    //cMessage *timerThreadCompleteAuditing;
+
     long pkCounter;
     long chainTotalValue;
     bool amIEvil;
@@ -167,7 +174,7 @@ protected:
     virtual void handleMessage(cMessage *msg) override;
 
     //Utility functions
-    virtual void threadFunction();
+    virtual void initiateNewTransaction();
     virtual void receiveMessage(cMessage *msg);
     virtual int randomNodeAddressPicker();
     virtual void registerNewChainNode(int id, int seqNum, int value);
@@ -192,6 +199,8 @@ protected:
 
     virtual void createDirectChannel(int nodeId);
     virtual void closeDirectChannel();
+
+    virtual void anonymusAuditingTimeout();
 
     //Ledger management
     virtual bool verificationTransactionChain(Packet *pk);

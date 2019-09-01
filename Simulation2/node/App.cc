@@ -11,11 +11,13 @@ Define_Module(App);
 
 App::App()
 {
-    timerThread = nullptr;
+    timerInitTransaction = nullptr;
+    timerAnonymusAuditingTimeout = nullptr;
 }
 App::~App()
 {
-    cancelAndDelete(timerThread);
+    cancelAndDelete(timerInitTransaction);
+    cancelAndDelete(timerAnonymusAuditingTimeout);
 }
 
 void App::initialize()
@@ -23,6 +25,7 @@ void App::initialize()
     myAddress = par("address");
     packetLengthBytes = &par("packetLength");
     sendIATime = &par("sendIaTime");
+    anonymusAuditingTimeoutTime = &par("anonymusAuditingTimeoutTime");
     sendIaTimeEvil = &par("sendIaTimeEvil");
     pkCounter = 0;
 
@@ -30,6 +33,9 @@ void App::initialize()
     tempPartnerSeqNum = 0;
     tempBlockTransaction = 0;
     transactionStage = 0;
+
+    timerInitTransaction = new cMessage("InitNewTransaction");
+    timerAnonymusAuditingTimeout = new cMessage("AnonymusAuditingTimeout");
 
     //Information To Log
     WATCH(pkCounter);
@@ -67,8 +73,7 @@ void App::initialize()
     totalEvilTransactions = 0;
 
     //Start the recursive thread
-    timerThread = new cMessage("TimerThead");
-    scheduleAt(sendIATime->doubleValue(), timerThread);
+    scheduleAt(simTime() + sendIATime->doubleValue(), timerInitTransaction);
 
     endToEndDelaySignal = registerSignal("endToEndDelay");
     hopCountSignal = registerSignal("hopCount");
@@ -77,31 +82,15 @@ void App::initialize()
 
 void App::handleMessage(cMessage *msg)
 {
-    if (msg == timerThread) {
-        threadFunction();
+    if (msg == timerInitTransaction) {
+        initiateNewTransaction();
+    }
+    else if (msg == timerAnonymusAuditingTimeout) {
+        anonymusAuditingTimeout();
     }
     else {
         receiveMessage(msg);
     }
-}
-void App::threadFunction()
-{
-    if (tempBlockID == -1 && transactionStage == 0) { //No transaction are pending
-        calculateChainValue();
-        if (chainTotalValue > 0) {
-            if (isNodeEvil() && totalEvilTransactions >= (int) par("evilNumberOfTransaction")) {
-                return;
-            }
-            else {
-                createTransactionMessage();
-            }
-        }
-    }
-
-    if (isNodeEvil()) {
-        sendIATime = sendIaTimeEvil;
-    }
-    scheduleAt(simTime() + sendIATime->doubleValue(), timerThread);
 }
 void App::receiveMessage(cMessage *msg)
 {
@@ -272,7 +261,37 @@ void App::receiveMessage(cMessage *msg)
 
 }
 
+//TIMEOUT
+void App::anonymusAuditingTimeout()
+{
+    if (transactionStage == 1) { //still waiting for anonymizer
+        char text[128];
+        sprintf(text, "TIMEOUT Time: %s s", SIMTIME_STR(simTime()));
+        getSimulation()->getActiveEnvir()->alert(text);
+    }
+
+}
+
 //TRANSACTION INIT
+void App::initiateNewTransaction()
+{
+    if (tempBlockID == -1 && transactionStage == 0) { //No transaction are pending
+        calculateChainValue();
+        if (chainTotalValue > 0) {
+            if (isNodeEvil() && totalEvilTransactions >= (int) par("evilNumberOfTransaction")) {
+                return;
+            }
+            else {
+                createTransactionMessage();
+            }
+        }
+    }
+
+    if (isNodeEvil()) {
+        sendIATime = sendIaTimeEvil;
+    }
+    scheduleAt(simTime() + sendIATime->doubleValue(), timerInitTransaction);
+}
 void App::createBusyMessage(int destAddress)
 {
     char pkname[40];
@@ -281,7 +300,7 @@ void App::createBusyMessage(int destAddress)
     if (hasGUI())
         getParentModule()->bubble("Generating packet...");
 
-    //Packet Creation
+//Packet Creation
     Packet *pk = new Packet(pkname);
     pk->setByteLength(packetLengthBytes->intValue());
     pk->setSrcAddr(myAddress);
@@ -293,10 +312,10 @@ void App::createBusyMessage(int destAddress)
 }
 void App::createTransactionMessage()
 {
-    //Calculate transaction value
+//Calculate transaction value
     int transactionValue = intuniform(1, chainTotalValue);
 
-    //Decide destination
+//Decide destination
     int destAddress = randomNodeAddressPicker();
     if (isNodeEvil()) {
         while (itIsAlreadyBeenAttacked(destAddress)) {
@@ -321,7 +340,7 @@ void App::createTransactionMessage()
     if (hasGUI())
         getParentModule()->bubble("Generating packet...");
 
-    //Packet Creation
+//Packet Creation
     Packet *pk = new Packet(pkname);
     pk->setByteLength(packetLengthBytes->intValue());
     pk->setSrcAddr(myAddress);
@@ -361,6 +380,8 @@ void App::contactAnonymizers()
     }
 
     delete rand;
+
+    scheduleAt(simTime() + anonymusAuditingTimeoutTime->doubleValue(), timerAnonymusAuditingTimeout);
 }
 void App::sendAnonymizerConfirmation(int destAddress)
 {
@@ -370,7 +391,7 @@ void App::sendAnonymizerConfirmation(int destAddress)
     if (hasGUI())
         getParentModule()->bubble("Generating packet...");
 
-    //Packet Creation
+//Packet Creation
     Packet *pk = new Packet(pkname);
     pk->setByteLength(packetLengthBytes->intValue());
     pk->setSrcAddr(myAddress);
@@ -402,7 +423,7 @@ void App::createChainRequestMessage(int destination, int target)
     if (hasGUI())
         getParentModule()->bubble("Generating packet...");
 
-    //Packet Creation
+//Packet Creation
     Packet *pk = new Packet(pkname);
     pk->setByteLength(packetLengthBytes->intValue());
     pk->setSrcAddr(myAddress);
@@ -421,7 +442,7 @@ void App::createChainLogMessage(int destAddress)
     if (hasGUI())
         getParentModule()->bubble("Generating packet...");
 
-    //Packet Creation
+//Packet Creation
     Packet *pk = new Packet(pkname);
     pk->setByteLength(packetLengthBytes->intValue() + ((trustChain.size() - 1) * 10));
     pk->setSrcAddr(myAddress);
@@ -430,7 +451,7 @@ void App::createChainLogMessage(int destAddress)
     pk->setPacketType(2);
     pk->setUserXID(myAddress);
 
-    //Add chain to the block
+//Add chain to the block
 
     if (trustChain.size() != 0) {
         pk->setUserBIDArraySize(trustChain.size());
@@ -498,9 +519,9 @@ bool App::verificationTransactionChain(Packet *pk)
 {
     bool result = true;
 
-    //check if the your local information can be compared to the received informations
-    // 1 - same sequence number and user ids number have the same transaction value (chain block replaced with another one)
-    // 2 - All the local info regarding a user can be found in the chain (not hiding something)
+//check if the your local information can be compared to the received informations
+// 1 - same sequence number and user ids number have the same transaction value (chain block replaced with another one)
+// 2 - All the local info regarding a user can be found in the chain (not hiding something)
     int i;
     for (i = 0; i < logDatabase.size(); i++) {
 
@@ -538,7 +559,7 @@ bool App::verificationTransactionChain(Packet *pk)
         }
     }
 
-    // 3 - Check people with which the other user had transactions with and verify those too
+// 3 - Check people with which the other user had transactions with and verify those too
     for (int j = 0; j < pk->getTransactionArraySize(); j++) {
         for (i = 0; i < logDatabase.size(); i++) {
             if (logDatabase[i].UserAId == pk->getUserBID(j) && logDatabase[i].UserASeqNum == pk->getUserBSeqNum(j)) {
@@ -658,7 +679,7 @@ void App::createAckMessage()
     if (hasGUI())
         getParentModule()->bubble("Generating packet...");
 
-    //Packet Creation
+//Packet Creation
     Packet *pk = new Packet(pkname);
     pk->setByteLength(packetLengthBytes->intValue());
     pk->setSrcAddr(myAddress);
@@ -811,7 +832,7 @@ void App::stopSimulation() // This function is being called when ever an evil no
         }
     }
 
-    // If there has been detected enough nodes equal to the evil node numbers stop simulation
+// If there has been detected enough nodes equal to the evil node numbers stop simulation
     if (nodesDetected == evilNodeIds.size()) {
         char text[128];
         for (i = 0; i < simulationTiming.size(); i++) {
