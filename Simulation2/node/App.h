@@ -8,7 +8,6 @@
 #include <omnetpp.h>
 #include "Packet_m.h"
 
-
 using namespace omnetpp;
 
 class AnonymizerTrackingElement
@@ -164,6 +163,7 @@ private:
     //Anonymizer Tracking
     std::vector<AnonymizerTrackingElement> anonymizersTracking; // store information regarding the anonimiser that are auditing for me
     std::vector<AnonymizerWaitListElement> anonymizerWaitList; // store information of users that asked me to audit (im anonymizer )
+    std::vector<int> disseminationNodeAddresses;
 
 public:
     App();
@@ -196,6 +196,7 @@ protected:
     virtual void forwardReceivedChainToRequester(int requesterAddress, Packet *pk);
     virtual bool isAnAuditedAnonymizer(int anonymizerNodeAddress);
     virtual void logAnonymiserReply(int anonymizerNodeAddress);
+    virtual void updateDisseminationNodeAddresses(Packet *pk);
 
     virtual void createDirectChannel(int nodeId);
     virtual void closeDirectChannel();

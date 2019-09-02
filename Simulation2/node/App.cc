@@ -162,10 +162,10 @@ void App::receiveMessage(cMessage *msg)
             if (pk->getSrcAddr() != pk->getUserXID() && pk->getUserXID() == tempBlockID && transactionStage == 1 && isAnAuditedAnonymizer(pk->getSrcAddr())) {
                 if (verificationTransactionChain(pk) && pk->getTransactionArraySize() < tempPartnerSeqNum) {
                     logTransactionChain(pk);
+                    updateDisseminationNodeAddresses(pk);
                     logAnonymiserReply(pk->getSrcAddr());
-                    //TODO: store the list of node in the chain for the dissemination
 
-                    //have all anonymizer replied
+                    //have all anonymizer replied?
                     bool allDone = true;
                     for (int i = 0; i < anonymizersTracking.size(); i++) {
                         if (anonymizersTracking[i].status != 2)
@@ -216,7 +216,6 @@ void App::receiveMessage(cMessage *msg)
             if (pk->getSrcAddr() == tempBlockID) {
                 if (!isNodeEvil()) {
                     registerNewChainNode(tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
-                    //createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
                 }
                 else {
                     char text[128];
@@ -377,8 +376,8 @@ void App::contactAnonymizers()
         numberOfAnonymizer = numberOfNodes - 2;
     }
 
+    disseminationNodeAddresses.clear();
     anonymizersTracking.clear();
-
     RandomDistinctPicker *rand = new RandomDistinctPicker(0, numberOfNodes - 1, par("randomSeed"));
 
     for (int i = 0; i < numberOfAnonymizer; i++) {
@@ -527,6 +526,20 @@ void App::logAnonymiserReply(int anonymizerNodeAddress)
         {
             if (anonymizersTracking[i].anonymizerId == anonymizerNodeAddress)
                 anonymizersTracking[i].status = 2;
+        }
+    }
+}
+void App::updateDisseminationNodeAddresses(Packet *pk)
+{
+    for (int i = 0; i < pk->getUserBIDArraySize(); i++) {
+        if (pk->getUserBID(i) != -1) { //genesis transaction
+            bool alreadyPresent = false;
+            for (int j = 0; j < disseminationNodeAddresses.size(); j++) {
+                if (disseminationNodeAddresses[j] == pk->getUserBID(i))
+                    alreadyPresent = true;
+            }
+            if (!alreadyPresent)
+                disseminationNodeAddresses.push_back(pk->getUserBID(i));
         }
     }
 }
