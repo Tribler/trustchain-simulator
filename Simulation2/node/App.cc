@@ -216,7 +216,7 @@ void App::receiveMessage(cMessage *msg)
             if (pk->getSrcAddr() == tempBlockID) {
                 if (!isNodeEvil()) {
                     registerNewChainNode(tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
-                    createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
+                    //createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
                 }
                 else {
                     char text[128];
