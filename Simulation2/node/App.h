@@ -186,6 +186,8 @@ protected:
     virtual void createChainRequestMessage(int destination, int target);
     virtual void createChainLogMessage(int destAddress);
     virtual void createAckMessage();
+    virtual void disseminationAuditing();
+    virtual void sendMyLastTransactionTo(int destinationAddress);
     virtual void createDisseminationMessage(int userXID, int userXSeqNum, int userYID, int userYSeqNum, int transactionValue);
     virtual void reDisseminateMessage(Packet *pk);
     virtual void createBusyMessage(int destAddress);

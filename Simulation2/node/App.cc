@@ -143,13 +143,14 @@ void App::receiveMessage(cMessage *msg)
         }
         case 2: { // Partner Chain Received
 
-            //I'm anonymizer receiving a reply from a target
-            int positionIndex = getIndexFromAnonymizerWaitList(pk->getSrcAddr());
-            if (pk->getSrcAddr() == pk->getUserXID() && positionIndex != -1) {
+            if (pk->getSrcAddr() == pk->getUserXID()) {
                 if (verificationTransactionChain(pk)) {
                     logTransactionChain(pk);
-                    forwardReceivedChainToRequester(anonymizerWaitList[positionIndex].requesterId, pk);
-                    anonymizerWaitList.erase(anonymizerWaitList.begin() + positionIndex);
+                    int positionIndex = getIndexFromAnonymizerWaitList(pk->getSrcAddr());
+                    if (positionIndex != -1) { //I'm anonymizer receiving a reply from a target
+                        forwardReceivedChainToRequester(anonymizerWaitList[positionIndex].requesterId, pk);
+                        anonymizerWaitList.erase(anonymizerWaitList.begin() + positionIndex);
+                    }
                 }
                 else {
                     printInformation(myAddress, pk->getSrcAddr(), 0);
@@ -157,9 +158,8 @@ void App::receiveMessage(cMessage *msg)
                     stopSimulation();
                 }
             }
-
-            //I'm a node receiving reply from anonymizer
-            if (pk->getSrcAddr() != pk->getUserXID() && pk->getUserXID() == tempBlockID && transactionStage == 1 && isAnAuditedAnonymizer(pk->getSrcAddr())) {
+            else if (pk->getUserXID() == tempBlockID && transactionStage == 1 && isAnAuditedAnonymizer(pk->getSrcAddr())) {
+                //I'm a node receiving reply from anonymizer (pk->getSrcAddr() != pk->getUserXID())
                 if (verificationTransactionChain(pk) && pk->getTransactionArraySize() < tempPartnerSeqNum) {
                     logTransactionChain(pk);
                     updateDisseminationNodeAddresses(pk);
@@ -174,9 +174,10 @@ void App::receiveMessage(cMessage *msg)
                     if (allDone == true) {
                         transactionStage = 2;
                         createAckMessage();
+                        disseminationAuditing();
                         tempBlockID = -1;
                         tempBlockTransaction = 0;
-                        //TODO: dissemination
+                        tempPartnerSeqNum = 0;
                     }
                 }
                 else {
@@ -185,30 +186,6 @@ void App::receiveMessage(cMessage *msg)
                     stopSimulation();
                 }
             }
-
-            //I'm in the dissemination phase
-            // verify chain
-            // store log
-            if (tempBlockID != -1) {
-                // send back my chain
-            }
-
-//            if (verificationTransactionChain(pk)) {
-//                logTransactionChain(pk);
-//
-//                registerNewChainNode(tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
-//                createAckMessage();
-//                if (!isNodeEvil()) {
-//                    createDisseminationMessage(myAddress, trustChain.size(), tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
-//                }
-//            }
-//            else {
-//                printInformation(myAddress, tempBlockID, 0);
-//                simulationRegisterDetectionTime(tempBlockID);
-//                stopSimulation();
-//            }
-//            tempBlockID = -1;
-//            tempBlockTransaction = 0;
 
             break;
         }
@@ -237,7 +214,7 @@ void App::receiveMessage(cMessage *msg)
                 LogDatabaseElement *element = new LogDatabaseElement(pk->getUserXID(), pk->getUserXSeqNum(), pk->getUserYID(), pk->getUserYSeqNum(), pk->getTransactionValue());
                 if (!isAlreadyPresentInDb(element)) {
                     logDatabase.push_back(*element);
-                    reDisseminateMessage(pk);
+                    //reDisseminateMessage(pk);
                 }
             }
             else {
@@ -279,9 +256,10 @@ void App::anonymusAuditingTimeout()
         if (positiveReply >= nodesThatAcceptedToAnonymise / 2) {
             transactionStage = 2;
             createAckMessage();
+            disseminationAuditing();
             tempBlockID = -1;
             tempBlockTransaction = 0;
-            //TODO: dissemination
+            tempPartnerSeqNum = 0;
         }
     }
 }
@@ -542,6 +520,9 @@ void App::updateDisseminationNodeAddresses(Packet *pk)
                 disseminationNodeAddresses.push_back(pk->getUserBID(i));
         }
     }
+    char text[128];
+    sprintf(text, "dissemination size: #%d  Time: %s s", disseminationNodeAddresses.size(), SIMTIME_STR(simTime()));
+    getSimulation()->getActiveEnvir()->alert(text);
 }
 
 bool App::verificationTransactionChain(Packet *pk)
@@ -742,7 +723,49 @@ void App::calculateChainValue()
     chainTotalValue = localTotalChainValue;
 }
 
-//DISSEMINATION (TODO)
+//DISSEMINATION
+void App::disseminationAuditing()
+{
+    RandomDistinctPicker *rand = new RandomDistinctPicker(0, disseminationNodeAddresses.size() - 1, par("randomSeed"));
+
+    char text[128];
+    sprintf(text, "dissemination size: #%d  Time: %s s", disseminationNodeAddresses.size(), SIMTIME_STR(simTime()));
+    getSimulation()->getActiveEnvir()->alert(text);
+
+    for (int i = 0; i < disseminationNodeAddresses.size(); i++) {
+        int pickedNodeId = disseminationNodeAddresses[rand->getRandomNumber()];
+        createChainRequestMessage(pickedNodeId, pickedNodeId);
+        sendMyLastTransactionTo(pickedNodeId);
+    }
+
+    delete rand;
+
+    transactionStage = 0;
+}
+void App::sendMyLastTransactionTo(int destinationAddress)
+{
+    char pkname[40];
+    sprintf(pkname, "#%ld from-%d-to-%d dissemination", pkCounter++, myAddress, destinationAddress);
+
+    if (hasGUI())
+        getParentModule()->bubble("Generating packet...");
+
+    //Packet Creation
+    Packet *pk = new Packet(pkname);
+    pk->setByteLength(packetLengthBytes->intValue());
+    pk->setSrcAddr(myAddress);
+    pk->setDestAddr(destinationAddress);
+
+    pk->setPacketType(4);
+
+    pk->setUserXID(myAddress);
+    pk->setUserXSeqNum(trustChain.size());
+    pk->setUserYID(tempBlockID);
+    pk->setUserYSeqNum(tempPartnerSeqNum);
+    pk->setTransactionValue(tempBlockTransaction);
+
+    send(pk, "out");
+}
 void App::createDisseminationMessage(int userXID, int userXSeqNum, int userYID, int userYSeqNum, int transactionValue)
 {
     cModule *mod = getParentModule()->getSubmodule("routing");
@@ -824,7 +847,7 @@ bool App::itIsAlreadyBeenAttacked(int nodeId)    // The evil node can check here
 }
 
 //SIMULATION
-void App::simulationRegisterTransactionTime(int nodeId) // Here are recorded the transaction starting times for all evil nodes
+void App::simulationRegisterTransactionTime(int nodeId)    // Here are recorded the transaction starting times for all evil nodes
 {
     int i = 0, alreadyRegistered = 0;
 
