@@ -172,6 +172,7 @@ void App::receiveMessage(cMessage *msg)
                             allDone = false;
                     }
                     if (allDone == true) {
+                        cancelEvent(timerAnonymusAuditingTimeout);
                         transactionStage = 2;
                         registerNewChainNode(tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
                         createAckMessage();
@@ -557,7 +558,7 @@ bool App::verificationTransactionChain(Packet *pk)
                     //all good!
                 }
                 else {
-                    EV << logDatabase[i].UserBSeqNum << " " << pk->getUserBIDArraySize()<< endl;
+                    EV << logDatabase[i].UserBSeqNum << " " << pk->getUserBIDArraySize() << endl;
                     EV << "****The local transaction is not matching with the data provided B" << endl;
                     EV << pk->getUserBID(index) << " " << logDatabase[i].UserAId << endl;
                     EV << pk->getUserBSeqNum(index) << " " << logDatabase[i].UserASeqNum << endl;
