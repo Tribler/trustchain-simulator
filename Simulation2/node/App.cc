@@ -173,11 +173,12 @@ void App::receiveMessage(cMessage *msg)
                     }
                     if (allDone == true) {
                         transactionStage = 2;
+                        registerNewChainNode(tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
                         createAckMessage();
                         disseminationAuditing();
                         tempBlockID = -1;
-                        tempBlockTransaction = 0;
                         tempPartnerSeqNum = 0;
+                        tempBlockTransaction = 0;
                     }
                 }
                 else {
@@ -255,6 +256,7 @@ void App::anonymusAuditingTimeout()
 
         if (positiveReply >= nodesThatAcceptedToAnonymise / 2) {
             transactionStage = 2;
+            registerNewChainNode(tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
             createAckMessage();
             disseminationAuditing();
             tempBlockID = -1;
@@ -520,9 +522,6 @@ void App::updateDisseminationNodeAddresses(Packet *pk)
                 disseminationNodeAddresses.push_back(pk->getUserBID(i));
         }
     }
-    char text[128];
-    sprintf(text, "dissemination size: #%d  Time: %s s", disseminationNodeAddresses.size(), SIMTIME_STR(simTime()));
-    getSimulation()->getActiveEnvir()->alert(text);
 }
 
 bool App::verificationTransactionChain(Packet *pk)
@@ -542,12 +541,12 @@ bool App::verificationTransactionChain(Packet *pk)
                     //all good!
                 }
                 else {
-                    //EV << "****The local transaction is not matching with the data provided" << endl;
+                    EV << "****The local transaction is not matching with the data provided" << endl;
                     return false;
                 }
             }
             else {
-                //EV << "****There aren't enough transactions in the received chain" << endl;
+                EV << "****There aren't enough transactions in the received chain" << endl;
                 return false;
             }
         }
@@ -558,12 +557,16 @@ bool App::verificationTransactionChain(Packet *pk)
                     //all good!
                 }
                 else {
-                    //EV << "****The local transaction is not matching with the data provided B" << endl;
+                    EV << logDatabase[i].UserBSeqNum << " " << pk->getUserBIDArraySize()<< endl;
+                    EV << "****The local transaction is not matching with the data provided B" << endl;
+                    EV << pk->getUserBID(index) << " " << logDatabase[i].UserAId << endl;
+                    EV << pk->getUserBSeqNum(index) << " " << logDatabase[i].UserASeqNum << endl;
+                    EV << pk->getTransaction(index) << " " << -logDatabase[i].transactionValue << endl;
                     return false;
                 }
             }
             else {
-                //EV << "****There aren't enough transactions in the received chain B" << endl;
+                EV << "****There aren't enough transactions in the received chain B" << endl;
                 return false;
             }
         }
@@ -727,10 +730,6 @@ void App::calculateChainValue()
 void App::disseminationAuditing()
 {
     RandomDistinctPicker *rand = new RandomDistinctPicker(0, disseminationNodeAddresses.size() - 1, par("randomSeed"));
-
-    char text[128];
-    sprintf(text, "dissemination size: #%d  Time: %s s", disseminationNodeAddresses.size(), SIMTIME_STR(simTime()));
-    getSimulation()->getActiveEnvir()->alert(text);
 
     for (int i = 0; i < disseminationNodeAddresses.size(); i++) {
         int pickedNodeId = disseminationNodeAddresses[rand->getRandomNumber()];
