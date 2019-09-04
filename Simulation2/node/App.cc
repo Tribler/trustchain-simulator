@@ -13,11 +13,13 @@ App::App()
 {
     timerInitTransaction = nullptr;
     timerAnonymusAuditingTimeout = nullptr;
+    timerAnonymiserDissemination = nullptr;
 }
 App::~App()
 {
     cancelAndDelete(timerInitTransaction);
     cancelAndDelete(timerAnonymusAuditingTimeout);
+    cancelAndDelete(timerAnonymiserDissemination);
 }
 
 void App::initialize()
@@ -36,6 +38,7 @@ void App::initialize()
 
     timerInitTransaction = new cMessage("InitNewTransaction");
     timerAnonymusAuditingTimeout = new cMessage("AnonymusAuditingTimeout");
+    timerAnonymiserDissemination = new cMessage("TimerAnonymiserDissemination");
 
     //Information To Log
     WATCH(pkCounter);
@@ -73,7 +76,8 @@ void App::initialize()
     totalEvilTransactions = 0;
 
     //Start the recursive thread
-    scheduleAt(simTime() + sendIATime->doubleValue(), timerInitTransaction);
+    scheduleAt(simTime() + par("sendIaTimeInit").doubleValue(), timerInitTransaction);
+    scheduleAt(simTime() + par("anonymizerDisseminationTimeInit").doubleValue(), timerAnonymiserDissemination);
 
     endToEndDelaySignal = registerSignal("endToEndDelay");
     hopCountSignal = registerSignal("hopCount");
@@ -87,6 +91,9 @@ void App::handleMessage(cMessage *msg)
     }
     else if (msg == timerAnonymusAuditingTimeout) {
         anonymusAuditingTimeout();
+    }
+    else if (msg == timerAnonymiserDissemination) {
+        disseminateMeAsAnonymiser();
     }
     else {
         receiveMessage(msg);
@@ -373,6 +380,14 @@ void App::createTransactionMessage()
 }
 
 //AUDITING SYSTEM
+void App::disseminateMeAsAnonymiser()
+{
+    EV << SIMTIME_DBL(simTime()) << "Ciao mamma" << SIMTIME_DBL(simTime()) - 1 << endl;
+    char text[128];
+    sprintf(text, "node: %d diff: #%f Time: %s s", myAddress, SIMTIME_DBL(simTime()) - 1, SIMTIME_STR(simTime()));
+    getSimulation()->getActiveEnvir()->alert(text);
+    scheduleAt(simTime() + par("anonymizerDisseminationTime").doubleValue(), timerAnonymiserDissemination);
+}
 void App::contactAnonymizers()
 {
     int numberOfAnonymizer = (int) par("numberOfAnonymizer");

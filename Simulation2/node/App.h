@@ -130,11 +130,13 @@ private:
     cPar *sendIaTimeEvil;
     cPar *packetLengthBytes;
 
+
     // state
     //cMessage *generatePacket;
     //cMessage *timerThread;
     cMessage *timerInitTransaction;
     cMessage *timerAnonymusAuditingTimeout;
+    cMessage *timerAnonymiserDissemination;
 
     //cMessage *timerThreadCompleteAuditing;
 
@@ -190,6 +192,7 @@ protected:
     virtual void disseminationAuditing();
     virtual void sendMyLastTransactionTo(int destinationAddress);
     virtual void createDisseminationMessage(int userXID, int userXSeqNum, int userYID, int userYSeqNum, int transactionValue);
+    virtual void disseminateMeAsAnonymiser();
     virtual void reDisseminateMessage(Packet *pk);
     virtual void createBusyMessage(int destAddress);
     virtual void contactAnonymizers();
