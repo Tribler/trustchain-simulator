@@ -5,10 +5,25 @@
 #include <bits/stdc++.h>
 #include <vector>
 #include <cstdlib>
+#include <iostream>
+#include <unordered_set>
 #include <omnetpp.h>
 #include "Packet_m.h"
 
 using namespace omnetpp;
+
+class AnonymizerNodeElement
+{
+public:
+    int nodeId;
+    double time;
+
+    AnonymizerNodeElement(int nodeId, double time)
+    {
+        this->nodeId = nodeId;
+        this->time = time;
+    }
+};
 
 class AnonymizerTrackingElement
 {
@@ -130,7 +145,6 @@ private:
     cPar *sendIaTimeEvil;
     cPar *packetLengthBytes;
 
-
     // state
     //cMessage *generatePacket;
     //cMessage *timerThread;
@@ -163,10 +177,13 @@ private:
     std::vector<LogDatabaseElement> logDatabase; // This variable contains the chain knowledge received by the network
 
     //Anonymizer Tracking
+    std::vector<AnonymizerNodeElement> anonymizerList; //store the available anonymizer nodes
     std::vector<AnonymizerTrackingElement> anonymizersTracking; // store information regarding the anonimiser that are auditing for me
     std::vector<AnonymizerWaitListElement> anonymizerWaitList; // store information of users that asked me to audit (im anonymizer )
     std::vector<int> disseminationNodeAddresses;
     std::vector<int> nodeWithMissingTransaction;
+    std::unordered_set <std::string> anonyDisseminationMessageSet;
+
 
 public:
     App();
@@ -193,6 +210,8 @@ protected:
     virtual void sendMyLastTransactionTo(int destinationAddress);
     virtual void createDisseminationMessage(int userXID, int userXSeqNum, int userYID, int userYSeqNum, int transactionValue);
     virtual void disseminateMeAsAnonymiser();
+    virtual void updateAnonymizerNodeList(int nodeId);
+    virtual bool haveISeenThisAnonymizerDisseminationBefore(std::string key);
     virtual void reDisseminateMessage(Packet *pk);
     virtual void createBusyMessage(int destAddress);
     virtual void contactAnonymizers();

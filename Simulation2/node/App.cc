@@ -264,6 +264,18 @@ void App::receiveMessage(cMessage *msg)
             }
             break;
         }
+        case 6: { // Anonymization Received
+            if (pk->getUserXID() != myAddress) {
+                char key[128];
+                sprintf(key, "%d %f", pk->getUserXID(), pk->getTime());
+                if (!haveISeenThisAnonymizerDisseminationBefore(key)) {
+                    updateAnonymizerNodeList(pk->getUserXID());
+                    anonyDisseminationMessageSet.insert(key);
+                    reDisseminateMessage(pk);
+                }
+            }
+            break;
+        }
         default: {
             break;
         }
@@ -380,16 +392,11 @@ void App::createTransactionMessage()
 }
 
 //AUDITING SYSTEM
-void App::disseminateMeAsAnonymiser()
-{
-    EV << SIMTIME_DBL(simTime()) << "Ciao mamma" << SIMTIME_DBL(simTime()) - 1 << endl;
-    char text[128];
-    sprintf(text, "node: %d diff: #%f Time: %s s", myAddress, SIMTIME_DBL(simTime()) - 1, SIMTIME_STR(simTime()));
-    getSimulation()->getActiveEnvir()->alert(text);
-    scheduleAt(simTime() + par("anonymizerDisseminationTime").doubleValue(), timerAnonymiserDissemination);
-}
 void App::contactAnonymizers()
 {
+    //TODO: purge nodes that where offline last time
+    //TODO: purge nodes that are not disseminating since a while
+
     int numberOfAnonymizer = (int) par("numberOfAnonymizer");
     int numberOfNodes = (int) par("totalNodes");
     if (numberOfAnonymizer > numberOfNodes - 2) {
@@ -859,8 +866,64 @@ void App::createDisseminationMessage(int userXID, int userXSeqNum, int userYID, 
     }
     delete rand;
 }
+
+//ANONYMIZER DISSEMINATION
+void App::disseminateMeAsAnonymiser()
+{
+    cModule *mod = getParentModule()->getSubmodule("routing");
+    Routing *myRouting = check_and_cast<Routing*>(mod);
+    std::vector<int> neighbourNodeAddresses = myRouting->neighbourNodeAddresses;
+    RandomDistinctPicker *rand = new RandomDistinctPicker(0, neighbourNodeAddresses.size() - 1, par("randomSeed"));
+
+    for (int i = 0; i < neighbourNodeAddresses.size(); i++) {
+        // User selection
+        int destAddress = neighbourNodeAddresses[rand->getRandomNumber()];
+
+        char pkname[40];
+        sprintf(pkname, "#%ld from-%d-to-%d anonymizer dissemination", pkCounter++, myAddress, destAddress);
+
+        if (hasGUI())
+            getParentModule()->bubble("Generating packet...");
+
+        //Packet Creation
+        Packet *pk = new Packet(pkname);
+        pk->setByteLength(packetLengthBytes->intValue());
+        pk->setSrcAddr(myAddress);
+        pk->setDestAddr(destAddress);
+        pk->setPacketType(6);
+        pk->setTime(SIMTIME_DBL(simTime()));
+        pk->setUserXID(myAddress);
+
+        send(pk, "out");
+    }
+    delete rand;
+
+    scheduleAt(simTime() + par("anonymizerDisseminationTime").doubleValue(), timerAnonymiserDissemination);
+}
+bool App::haveISeenThisAnonymizerDisseminationBefore(std::string key)
+{
+    if (anonyDisseminationMessageSet.find(key) == anonyDisseminationMessageSet.end())
+        return false;
+    else
+        return true;
+}
+void App::updateAnonymizerNodeList(int nodeId)
+{
+    bool alreadyPresent = false;
+    for (int i = 0; i < anonymizerList.size(); i++) {
+        if (anonymizerList[i].nodeId == nodeId) {
+            anonymizerList[i].time = SIMTIME_DBL(simTime());
+            alreadyPresent = true;
+        }
+    }
+
+    if (alreadyPresent == false) {
+        anonymizerList.push_back(*new AnonymizerNodeElement(nodeId, SIMTIME_DBL(simTime())));
+    }
+}
 void App::reDisseminateMessage(Packet *pk)
 {
+    //TODO: this might need anti-loop control system
     cModule *mod = getParentModule()->getSubmodule("routing");
     Routing *myRouting = check_and_cast<Routing*>(mod);
     std::vector<int> neighbourNodeAddresses = myRouting->neighbourNodeAddresses;
@@ -871,7 +934,7 @@ void App::reDisseminateMessage(Packet *pk)
 
         Packet *copy = (Packet *) pk->dup();
         char pkname[40];
-        sprintf(pkname, "#%ld from-%d-to-%d dissemination", pkCounter++, myAddress, neighbourNodeAddresses[i]);
+        sprintf(pkname, "#%ld from-%d-to-%d anonymizer dissemination", pkCounter++, myAddress, neighbourNodeAddresses[i]);
 
         if (hasGUI())
             getParentModule()->bubble("Generating packet...");

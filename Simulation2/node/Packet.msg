@@ -22,8 +22,10 @@ packet Packet
    
    // 3 - Ack of Transaction
    
-   // 4 - Information Dissemination [OBSOLETE]
+   // 4 - Transaction Dissemination
    // 5 - Busy Message
+      
+   // 6 - Anonymization Dissemination (userXID is set with the name of the anonymiser)
    
    
    
@@ -46,5 +48,7 @@ packet Packet
     int userXSeqNum @packetData;
     int userYID @packetData;
     int userYSeqNum @packetData;
+    
+    double time @packetData;
 }
     
