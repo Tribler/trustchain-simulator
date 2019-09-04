@@ -164,6 +164,7 @@ private:
     std::vector<AnonymizerTrackingElement> anonymizersTracking; // store information regarding the anonimiser that are auditing for me
     std::vector<AnonymizerWaitListElement> anonymizerWaitList; // store information of users that asked me to audit (im anonymizer )
     std::vector<int> disseminationNodeAddresses;
+    std::vector<int> nodeWithMissingTransaction;
 
 public:
     App();
@@ -206,12 +207,15 @@ protected:
     virtual void anonymusAuditingTimeout();
 
     //Ledger management
-    virtual bool verificationTransactionChain(Packet *pk);
+    virtual int verificationTransactionChain(Packet *pk); //return 1-all good 0-if chain is uncompleted -1-error found
     virtual int verificationDissemination(Packet *pk); //return -1 if all good otherwise return the id of the evil node
     virtual void logTransactionChain(Packet *pk);
     virtual bool isAlreadyPresentInDb(LogDatabaseElement *element);
     virtual bool isNodeEvil();
     virtual bool itIsAlreadyBeenAttacked(int nodeId);
+    virtual bool isFirstTimeMissingTransaction(int nodeId);
+    virtual void registerNodeMissingTransaction(int nodeId);
+    virtual void removeNodeMissingTransaction(int nodeId);
 
     //Data logging
     virtual void simulationRegisterTransactionTime(int idNode);

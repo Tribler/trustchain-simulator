@@ -144,23 +144,46 @@ void App::receiveMessage(cMessage *msg)
         case 2: { // Partner Chain Received
 
             if (pk->getSrcAddr() == pk->getUserXID()) {
-                if (verificationTransactionChain(pk)) {
-                    logTransactionChain(pk);
-                    int positionIndex = getIndexFromAnonymizerWaitList(pk->getSrcAddr());
-                    if (positionIndex != -1) { //I'm anonymizer receiving a reply from a target
-                        forwardReceivedChainToRequester(anonymizerWaitList[positionIndex].requesterId, pk);
-                        anonymizerWaitList.erase(anonymizerWaitList.begin() + positionIndex);
+                switch (verificationTransactionChain(pk)) {
+                    case -1: {
+                        printInformation(myAddress, pk->getSrcAddr(), 0);
+                        simulationRegisterDetectionTime(pk->getSrcAddr());
+                        stopSimulation();
+                        break;
                     }
-                }
-                else {
-                    printInformation(myAddress, pk->getSrcAddr(), 0);
-                    simulationRegisterDetectionTime(pk->getSrcAddr());
-                    stopSimulation();
+                    case 0: {
+                        //ask again one time
+                        if (isFirstTimeMissingTransaction(pk->getSrcAddr())) {
+                            registerNodeMissingTransaction(pk->getSrcAddr());
+                            createChainRequestMessage(pk->getSrcAddr(), pk->getSrcAddr());
+                        }
+                        else {
+                            removeNodeMissingTransaction(pk->getSrcAddr());
+                            EV << "second tentative failed" << endl;
+                            printInformation(myAddress, pk->getSrcAddr(), 0);
+                            simulationRegisterDetectionTime(pk->getSrcAddr());
+                            stopSimulation();
+                        }
+                        break;
+                    }
+                    case 1: {
+                        removeNodeMissingTransaction(pk->getSrcAddr());
+                        logTransactionChain(pk);
+                        int positionIndex = getIndexFromAnonymizerWaitList(pk->getSrcAddr());
+                        if (positionIndex != -1) { //I'm anonymizer receiving a reply from a target
+                            forwardReceivedChainToRequester(anonymizerWaitList[positionIndex].requesterId, pk);
+                            anonymizerWaitList.erase(anonymizerWaitList.begin() + positionIndex);
+                        }
+                        break;
+                    }
+                    default: {
+                        break;
+                    }
                 }
             }
             else if (pk->getUserXID() == tempBlockID && transactionStage == 1 && isAnAuditedAnonymizer(pk->getSrcAddr())) {
                 //I'm a node receiving reply from anonymizer (pk->getSrcAddr() != pk->getUserXID())
-                if (verificationTransactionChain(pk) && pk->getTransactionArraySize() < tempPartnerSeqNum) {
+                if (verificationTransactionChain(pk) == 1 && pk->getTransactionArraySize() < tempPartnerSeqNum) {
                     logTransactionChain(pk);
                     updateDisseminationNodeAddresses(pk);
                     logAnonymiserReply(pk->getSrcAddr());
@@ -183,6 +206,7 @@ void App::receiveMessage(cMessage *msg)
                     }
                 }
                 else {
+                    EV << "anonymizer are replying wrong" << endl;
                     printInformation(myAddress, tempBlockID, 0);
                     simulationRegisterDetectionTime(tempBlockID);
                     stopSimulation();
@@ -525,9 +549,9 @@ void App::updateDisseminationNodeAddresses(Packet *pk)
     }
 }
 
-bool App::verificationTransactionChain(Packet *pk)
+int App::verificationTransactionChain(Packet *pk)
 {
-    bool result = true;
+    bool result = 1;
 
 //check if the your local information can be compared to the received informations
 // 1 - same sequence number and user ids number have the same transaction value (chain block replaced with another one)
@@ -543,12 +567,12 @@ bool App::verificationTransactionChain(Packet *pk)
                 }
                 else {
                     EV << "****The local transaction is not matching with the data provided" << endl;
-                    return false;
+                    return -1;
                 }
             }
             else {
                 EV << "****There aren't enough transactions in the received chain" << endl;
-                return false;
+                return 0;
             }
         }
         else if (logDatabase[i].UserBId == pk->getUserXID()) {
@@ -563,12 +587,12 @@ bool App::verificationTransactionChain(Packet *pk)
                     EV << pk->getUserBID(index) << " " << logDatabase[i].UserAId << endl;
                     EV << pk->getUserBSeqNum(index) << " " << logDatabase[i].UserASeqNum << endl;
                     EV << pk->getTransaction(index) << " " << -logDatabase[i].transactionValue << endl;
-                    return false;
+                    return -1;
                 }
             }
             else {
                 EV << "****There aren't enough transactions in the received chain B" << endl;
-                return false;
+                return 0;
             }
         }
     }
@@ -580,14 +604,14 @@ bool App::verificationTransactionChain(Packet *pk)
                 if (!(logDatabase[i].UserBId == pk->getUserXID() && logDatabase[i].UserBSeqNum == (j + 1) && (logDatabase[i].transactionValue == pk->getTransaction(j) || -logDatabase[i].transactionValue == pk->getTransaction(j)))) {
                     simulationRegisterDetectionTime(pk->getUserBID(j));
                     printInformation(myAddress, pk->getUserBID(j), 0);
-                    result = false;
+                    result = -1;
                 }
             }
             else if (logDatabase[i].UserBId == pk->getUserBID(j) && logDatabase[i].UserBSeqNum == pk->getUserBSeqNum(j)) {
                 if (!(logDatabase[i].UserAId == pk->getUserXID() && logDatabase[i].UserASeqNum == (j + 1) && (logDatabase[i].transactionValue == pk->getTransaction(j) || -logDatabase[i].transactionValue == pk->getTransaction(j)))) {
                     simulationRegisterDetectionTime(pk->getUserBID(j));
                     printInformation(myAddress, pk->getUserBID(j), 0);
-                    result = false;
+                    result = -1;
                 }
             }
         }
@@ -650,6 +674,25 @@ int App::verificationDissemination(Packet *pk)
     }
 
     return -1;
+}
+bool App::isFirstTimeMissingTransaction(int nodeId)
+{
+    for (int i = 0; i < nodeWithMissingTransaction.size(); i++) {
+        if (nodeWithMissingTransaction[i] == nodeId)
+            return false;
+    }
+    return true;
+}
+void App::registerNodeMissingTransaction(int nodeId)
+{
+    nodeWithMissingTransaction.push_back(nodeId);
+}
+void App::removeNodeMissingTransaction(int nodeId)
+{
+    for (int i = 0; i < nodeWithMissingTransaction.size(); i++) {
+        if (nodeWithMissingTransaction[i] == nodeId)
+            nodeWithMissingTransaction.erase(nodeWithMissingTransaction.begin() + i);
+    }
 }
 
 void App::logTransactionChain(Packet *pk)
