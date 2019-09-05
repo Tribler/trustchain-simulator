@@ -142,7 +142,7 @@ void App::receiveMessage(cMessage *msg)
             if (pk->getUserXID() == myAddress) {
                 createChainLogMessage(pk->getSrcAddr());
             }
-            else /*TEST if (myAddress != 1)*/ { // this is an anonymization request
+            else /*TEST if (myAddress != 1)*/{ // this is an anonymization request
                 sendAnonymizerConfirmation(pk->getSrcAddr());
                 anonymizerWaitList.push_back(*new AnonymizerWaitListElement(pk->getSrcAddr(), pk->getUserXID()));
                 createChainRequestMessage(pk->getUserXID(), pk->getUserXID());
@@ -423,7 +423,6 @@ void App::contactAnonymizers()
 {
     //Purge nodes that where offline last time
     for (int i = 0; i < anonymizersTracking.size(); i++) {
-        EV << anonymizersTracking[i].anonymizerId << " " << anonymizersTracking[i].status << endl;
         if (anonymizersTracking[i].status == 0) { // it did not replied
             for (int j = 0; j < anonymizerList.size(); j++) {
                 if (anonymizerList[j].nodeId == anonymizersTracking[i].anonymizerId) {
@@ -434,7 +433,14 @@ void App::contactAnonymizers()
         }
     }
 
-    //TODO: purge nodes that are not disseminating since a while
+    //Purge nodes that are not disseminating since a while
+    for (int i = 0; i < anonymizerList.size(); i++) {
+        if ((SIMTIME_DBL(simTime()) - anonymizerList[i].time) > (double) par("anonymizerLifeTime")) {
+            anonymizerList.erase(anonymizerList.begin() + i);
+            if (i > 0)
+                i--;
+        }
+    }
 
     int numberOfAnonymizer = (int) par("numberOfAnonymizer");
     int numberOfNodes = (int) par("totalNodes");

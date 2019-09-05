@@ -20,6 +20,7 @@ simple App like IApp
         volatile double anonymusAuditingTimeoutTime @unit(s);
         volatile double sendIaTimeEvil @unit(s);
         volatile int packetLength @unit(byte);  // length of one message (fixed! no "volatile" modifier)
+        volatile double anonymizerLifeTime @unit(s);
         volatile double anonymizerDisseminationTimeInit @unit(s);
         volatile double anonymizerDisseminationTime @unit(s);
         @display("i=block/browser");
