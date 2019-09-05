@@ -25,7 +25,7 @@ public:
     }
 };
 
-class AnonymizerTrackingElement
+class AnonymizerTrackingElement //it is used by a node to perform anonymis auditing
 {
 public:
     int anonymizerId, status; //-1- available 0- request sent 1- contract accepted 2- positive reply
@@ -37,7 +37,7 @@ public:
     }
 };
 
-class AnonymizerWaitListElement
+class AnonymizerWaitListElement //it is stored by the anonymizer node to keep track of who asked the query
 {
 public:
     int requesterId, targetId;

@@ -136,7 +136,7 @@ void App::receiveMessage(cMessage *msg)
             if (pk->getUserXID() == myAddress) {
                 createChainLogMessage(pk->getSrcAddr());
             }
-            else { // this is an anonymization request
+            else /*if (myAddress != 1)*/ { // this is an anonymization request
                 sendAnonymizerConfirmation(pk->getSrcAddr());
                 anonymizerWaitList.push_back(*new AnonymizerWaitListElement(pk->getSrcAddr(), pk->getUserXID()));
                 createChainRequestMessage(pk->getUserXID(), pk->getUserXID());
@@ -394,7 +394,19 @@ void App::createTransactionMessage()
 //AUDITING SYSTEM
 void App::contactAnonymizers()
 {
-    //TODO: purge nodes that where offline last time
+    //Purge nodes that where offline last time
+    for (int i = 0; i < anonymizersTracking.size(); i++) {
+        EV << anonymizersTracking[i].anonymizerId << " " << anonymizersTracking[i].status << endl;
+        if (anonymizersTracking[i].status == 0) { // it did not replied
+            for (int j = 0; j < anonymizerList.size(); j++) {
+                if (anonymizerList[j].nodeId == anonymizersTracking[i].anonymizerId) {
+                    anonymizerList.erase(anonymizerList.begin() + j);
+                }
+            }
+
+        }
+    }
+
     //TODO: purge nodes that are not disseminating since a while
 
     int numberOfAnonymizer = (int) par("numberOfAnonymizer");
@@ -1058,3 +1070,8 @@ int App::randomNodeAddressPicker()
 //                getSimulation()->getActiveEnvir()->alert(text);
 //
 //            }
+/*
+ char text[128];
+ sprintf(text, "im node: #%d - and im purging node %d Time: %s s", myAddress, anonymizerList[j].nodeId, SIMTIME_STR(simTime()));
+ getSimulation()->getActiveEnvir()->alert(text);
+ */
