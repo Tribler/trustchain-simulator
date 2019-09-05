@@ -16,6 +16,7 @@ simple App like IApp
         int randomSeed = intuniform(0, 1000000);
         volatile double sendIaTimeInit @unit(s);
         volatile double sendIaTime @unit(s) = default(exponential(1s)); // time between generating packets
+        volatile double transactionTimeoutTime @unit(s);
         volatile double anonymusAuditingTimeoutTime @unit(s);
         volatile double sendIaTimeEvil @unit(s);
         volatile int packetLength @unit(byte);  // length of one message (fixed! no "volatile" modifier)

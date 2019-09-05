@@ -149,6 +149,7 @@ private:
     //cMessage *generatePacket;
     //cMessage *timerThread;
     cMessage *timerInitTransaction;
+    cMessage *timerTransactionTimeout;
     cMessage *timerAnonymusAuditingTimeout;
     cMessage *timerAnonymiserDissemination;
 
@@ -182,8 +183,7 @@ private:
     std::vector<AnonymizerWaitListElement> anonymizerWaitList; // store information of users that asked me to audit (im anonymizer )
     std::vector<int> disseminationNodeAddresses;
     std::vector<int> nodeWithMissingTransaction;
-    std::unordered_set <std::string> anonyDisseminationMessageSet;
-
+    std::unordered_set<std::string> anonyDisseminationMessageSet;
 
 public:
     App();
@@ -226,6 +226,7 @@ protected:
     virtual void createDirectChannel(int nodeId);
     virtual void closeDirectChannel();
 
+    virtual void transactionTimeout();
     virtual void anonymusAuditingTimeout();
 
     //Ledger management

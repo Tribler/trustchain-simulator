@@ -12,12 +12,14 @@ Define_Module(App);
 App::App()
 {
     timerInitTransaction = nullptr;
+    timerTransactionTimeout = nullptr;
     timerAnonymusAuditingTimeout = nullptr;
     timerAnonymiserDissemination = nullptr;
 }
 App::~App()
 {
     cancelAndDelete(timerInitTransaction);
+    cancelAndDelete(timerTransactionTimeout);
     cancelAndDelete(timerAnonymusAuditingTimeout);
     cancelAndDelete(timerAnonymiserDissemination);
 }
@@ -37,6 +39,7 @@ void App::initialize()
     transactionStage = 0;
 
     timerInitTransaction = new cMessage("InitNewTransaction");
+    timerTransactionTimeout = new cMessage("TransactionTimeout");
     timerAnonymusAuditingTimeout = new cMessage("AnonymusAuditingTimeout");
     timerAnonymiserDissemination = new cMessage("TimerAnonymiserDissemination");
 
@@ -89,6 +92,9 @@ void App::handleMessage(cMessage *msg)
     if (msg == timerInitTransaction) {
         initiateNewTransaction();
     }
+    else if (msg == timerTransactionTimeout) {
+        transactionTimeout();
+    }
     else if (msg == timerAnonymusAuditingTimeout) {
         anonymusAuditingTimeout();
     }
@@ -136,7 +142,7 @@ void App::receiveMessage(cMessage *msg)
             if (pk->getUserXID() == myAddress) {
                 createChainLogMessage(pk->getSrcAddr());
             }
-            else /*if (myAddress != 1)*/ { // this is an anonymization request
+            else /*TEST if (myAddress != 1)*/ { // this is an anonymization request
                 sendAnonymizerConfirmation(pk->getSrcAddr());
                 anonymizerWaitList.push_back(*new AnonymizerWaitListElement(pk->getSrcAddr(), pk->getUserXID()));
                 createChainRequestMessage(pk->getUserXID(), pk->getUserXID());
@@ -224,6 +230,9 @@ void App::receiveMessage(cMessage *msg)
         }
         case 3: { // Ack Received
             if (pk->getSrcAddr() == tempBlockID) {
+                EV << "im node: " << myAddress << " just received ack" << endl;
+                cancelEvent(timerTransactionTimeout);
+
                 if (!isNodeEvil()) {
                     registerNewChainNode(tempBlockID, pk->getMyChainSeqNum(), -tempBlockTransaction);
                 }
@@ -259,6 +268,7 @@ void App::receiveMessage(cMessage *msg)
         }
         case 5: { // Busy Received
             if (pk->getSrcAddr() == tempBlockID) {
+                cancelEvent(timerTransactionTimeout);
                 tempBlockID = -1;
                 tempBlockTransaction = 0;
             }
@@ -285,6 +295,14 @@ void App::receiveMessage(cMessage *msg)
 }
 
 //TIMEOUT
+void App::transactionTimeout()
+{
+    char text[128];
+    sprintf(text, "im node: #%d life is good and i hate %d for not concluding the transaction Time: %s s", myAddress, tempBlockID, SIMTIME_STR(simTime()));
+    getSimulation()->getActiveEnvir()->alert(text);
+    tempBlockID = -1;
+    tempBlockTransaction = 0;
+}
 void App::anonymusAuditingTimeout()
 {
     if (transactionStage == 1) { //still waiting for anonymizer
@@ -298,11 +316,19 @@ void App::anonymusAuditingTimeout()
                 positiveReply++;
         }
 
-        if (positiveReply >= nodesThatAcceptedToAnonymise / 2) {
+        //TODO: positiveReply is better to be >1
+        if (positiveReply > 0 && positiveReply >= nodesThatAcceptedToAnonymise / 2) {
             transactionStage = 2;
             registerNewChainNode(tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
             createAckMessage();
             disseminationAuditing();
+            tempBlockID = -1;
+            tempBlockTransaction = 0;
+            tempPartnerSeqNum = 0;
+        }
+        else {
+            //transaction not good (NOT POSITVE OR ENOUGH REPLY)
+            transactionStage = 0;
             tempBlockID = -1;
             tempBlockTransaction = 0;
             tempPartnerSeqNum = 0;
@@ -321,6 +347,7 @@ void App::initiateNewTransaction()
             }
             else {
                 createTransactionMessage();
+                scheduleAt(simTime() + par("transactionTimeoutTime").doubleValue(), timerTransactionTimeout);
             }
         }
     }
