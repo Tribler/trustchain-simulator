@@ -443,9 +443,9 @@ void App::contactAnonymizers()
     }
 
     int numberOfAnonymizer = (int) par("numberOfAnonymizer");
-    int numberOfNodes = (int) par("totalNodes");
-    if (numberOfAnonymizer > numberOfNodes - 2) {
-        numberOfAnonymizer = numberOfNodes - 2;
+    int numberOfNodes = (int) anonymizerList.size();
+    if (numberOfAnonymizer > numberOfNodes) {
+        numberOfAnonymizer = numberOfNodes;
     }
 
     disseminationNodeAddresses.clear();
@@ -453,16 +453,11 @@ void App::contactAnonymizers()
     RandomDistinctPicker *rand = new RandomDistinctPicker(0, numberOfNodes - 1, par("randomSeed"));
 
     for (int i = 0; i < numberOfAnonymizer; i++) {
-        int destAddresses = rand->getRandomNumber();
-        if (destAddresses == myAddress || destAddresses == tempBlockID) {
-            destAddresses = rand->getRandomNumber();
-            if (destAddresses == myAddress || destAddresses == tempBlockID) {
-
-                destAddresses = rand->getRandomNumber(); // worse case can mistake two time in row
-            }
+        int destAddresses = anonymizerList[rand->getRandomNumber()].nodeId;
+        if (destAddresses != tempBlockID) {
+            anonymizersTracking.push_back(*new AnonymizerTrackingElement(destAddresses, 0));
+            createChainRequestMessage(destAddresses, tempBlockID);
         }
-        anonymizersTracking.push_back(*new AnonymizerTrackingElement(destAddresses, 0));
-        createChainRequestMessage(destAddresses, tempBlockID);
         //TODO: wait a random time
     }
 
