@@ -145,7 +145,7 @@ void App::receiveMessage(cMessage *msg)
             else /*TEST if (myAddress != 1)*/{ // this is an anonymization request
                 sendAnonymizerConfirmation(pk->getSrcAddr());
                 anonymizerWaitList.push_back(*new AnonymizerWaitListElement(pk->getSrcAddr(), pk->getUserXID()));
-                createChainRequestMessage(pk->getUserXID(), pk->getUserXID());
+                createChainRequestMessage(pk->getUserXID(), pk->getUserXID(), 0);
             }
 
             break;
@@ -168,7 +168,7 @@ void App::receiveMessage(cMessage *msg)
                         //ask again one time
                         if (isFirstTimeMissingTransaction(pk->getSrcAddr())) {
                             registerNodeMissingTransaction(pk->getSrcAddr());
-                            createChainRequestMessage(pk->getSrcAddr(), pk->getSrcAddr());
+                            createChainRequestMessage(pk->getSrcAddr(), pk->getSrcAddr(), 0);
                         }
                         else {
                             removeNodeMissingTransaction(pk->getSrcAddr());
@@ -421,6 +421,11 @@ void App::createTransactionMessage()
 //AUDITING SYSTEM
 void App::contactAnonymizers()
 {
+
+    char text[128];
+    sprintf(text, "im node: #%d - and anonymizer list size is %d Time: %s s", myAddress, anonymizerList.size(), SIMTIME_STR(simTime()));
+    getSimulation()->getActiveEnvir()->alert(text);
+
     //Purge nodes that where offline last time
     for (int i = 0; i < anonymizersTracking.size(); i++) {
         if (anonymizersTracking[i].status == 0) { // it did not replied
@@ -444,9 +449,12 @@ void App::contactAnonymizers()
 
     int numberOfAnonymizer = (int) par("numberOfAnonymizer");
     int numberOfNodes = (int) anonymizerList.size();
-    if (numberOfAnonymizer > numberOfNodes) {
-        numberOfAnonymizer = numberOfNodes;
+    if (numberOfAnonymizer > numberOfNodes - 1) {
+        numberOfAnonymizer = numberOfNodes - 1;
     }
+
+    sprintf(text, "im node: #%d - and anonymizer list size is %d Time: %s s", myAddress, numberOfAnonymizer, SIMTIME_STR(simTime()));
+    getSimulation()->getActiveEnvir()->alert(text);
 
     disseminationNodeAddresses.clear();
     anonymizersTracking.clear();
@@ -454,11 +462,11 @@ void App::contactAnonymizers()
 
     for (int i = 0; i < numberOfAnonymizer; i++) {
         int destAddresses = anonymizerList[rand->getRandomNumber()].nodeId;
-        if (destAddresses != tempBlockID) {
-            anonymizersTracking.push_back(*new AnonymizerTrackingElement(destAddresses, 0));
-            createChainRequestMessage(destAddresses, tempBlockID);
+        if (destAddresses == tempBlockID) { //it can happen at most one time
+            destAddresses = anonymizerList[rand->getRandomNumber()].nodeId;
         }
-        //TODO: wait a random time
+        anonymizersTracking.push_back(*new AnonymizerTrackingElement(destAddresses, 0));
+        createChainRequestMessage(destAddresses, tempBlockID, uniform(0.1, 0.3));
     }
 
     delete rand;
@@ -490,7 +498,7 @@ void App::markAnonymizerNodeAsActive(int nodeAddress)
             anonymizersTracking[i].status = 1;
     }
 }
-void App::createChainRequestMessage(int destination, int target)
+void App::createChainRequestMessage(int destination, int target, double delay)
 {
     int destAddress = destination;
 
@@ -514,7 +522,7 @@ void App::createChainRequestMessage(int destination, int target)
     pk->setPacketType(1);
     pk->setUserXID(target);
 
-    send(pk, "out");
+    sendDelayed(pk, delay, "out");
 }
 void App::createChainLogMessage(int destAddress)
 {
@@ -839,7 +847,7 @@ void App::disseminationAuditing()
 
     for (int i = 0; i < disseminationNodeAddresses.size(); i++) {
         int pickedNodeId = disseminationNodeAddresses[rand->getRandomNumber()];
-        createChainRequestMessage(pickedNodeId, pickedNodeId);
+        createChainRequestMessage(pickedNodeId, pickedNodeId, 0);
         sendMyLastTransactionTo(pickedNodeId);
     }
 
@@ -934,7 +942,7 @@ void App::disseminateMeAsAnonymiser()
         pk->setTime(SIMTIME_DBL(simTime()));
         pk->setUserXID(myAddress);
 
-        send(pk, "out");
+        sendDelayed(pk, uniform(0, 0.1), "out");
     }
     delete rand;
 

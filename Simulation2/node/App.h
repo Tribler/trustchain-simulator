@@ -203,7 +203,7 @@ protected:
 
     //Messaging
     virtual void createTransactionMessage();
-    virtual void createChainRequestMessage(int destination, int target);
+    virtual void createChainRequestMessage(int destination, int target, double delay);
     virtual void createChainLogMessage(int destAddress);
     virtual void createAckMessage();
     virtual void disseminationAuditing();
