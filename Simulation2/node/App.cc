@@ -421,11 +421,6 @@ void App::createTransactionMessage()
 //AUDITING SYSTEM
 void App::contactAnonymizers()
 {
-
-    char text[128];
-    sprintf(text, "im node: #%d - and anonymizer list size is %d Time: %s s", myAddress, anonymizerList.size(), SIMTIME_STR(simTime()));
-    getSimulation()->getActiveEnvir()->alert(text);
-
     //Purge nodes that where offline last time
     for (int i = 0; i < anonymizersTracking.size(); i++) {
         if (anonymizersTracking[i].status == 0) { // it did not replied
@@ -452,9 +447,6 @@ void App::contactAnonymizers()
     if (numberOfAnonymizer > numberOfNodes - 1) {
         numberOfAnonymizer = numberOfNodes - 1;
     }
-
-    sprintf(text, "im node: #%d - and anonymizer list size is %d Time: %s s", myAddress, numberOfAnonymizer, SIMTIME_STR(simTime()));
-    getSimulation()->getActiveEnvir()->alert(text);
 
     disseminationNodeAddresses.clear();
     anonymizersTracking.clear();
