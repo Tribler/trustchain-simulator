@@ -39,5 +39,7 @@ packet Packet
     int userXSeqNum @packetData;
     int userYID @packetData;
     int userYSeqNum @packetData;
+    
+    double time @packetData;
 }
     

@@ -58,6 +58,8 @@ class Packet;
  *     int userXSeqNum \@packetData;
  *     int userYID \@packetData;
  *     int userYSeqNum \@packetData;
+ * 
+ *     double time \@packetData;
  * }
  * </pre>
  */
@@ -80,6 +82,7 @@ class Packet : public ::omnetpp::cPacket
     int userXSeqNum = 0;
     int userYID = 0;
     int userYSeqNum = 0;
+    double time = 0;
 
   private:
     void copy(const Packet& other);
@@ -139,6 +142,8 @@ class Packet : public ::omnetpp::cPacket
     virtual void setUserYID(int userYID);
     virtual int getUserYSeqNum() const;
     virtual void setUserYSeqNum(int userYSeqNum);
+    virtual double getTime() const;
+    virtual void setTime(double time);
 };
 
 inline void doParsimPacking(omnetpp::cCommBuffer *b, const Packet& obj) {obj.parsimPack(b);}

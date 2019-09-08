@@ -180,18 +180,25 @@ void App::receiveMessage(cMessage *msg)
             break;
         }
         case 4: { // Dissemination Received
-            int result = verificationDissemination(pk);
-            if (result == -1) {
-                LogDatabaseElement *element = new LogDatabaseElement(pk->getUserXID(), pk->getUserXSeqNum(), pk->getUserYID(), pk->getUserYSeqNum(), pk->getTransactionValue());
-                if (!isAlreadyPresentInDb(element)) {
-                    logDatabase.push_back(*element);
-                    reDisseminateMessage(pk);
+            if (pk->getUserXID() != myAddress) {
+                int result = verificationDissemination(pk);
+                if (result == -1) {
+                    LogDatabaseElement *element = new LogDatabaseElement(pk->getUserXID(), pk->getUserXSeqNum(), pk->getUserYID(), pk->getUserYSeqNum(), pk->getTransactionValue());
+                    if (!isAlreadyPresentInDb(element)) {
+                        logDatabase.push_back(*element);
+
+                        char key[128];
+                        sprintf(key, "%d %d %f", pk->getUserXID(), pk->getUserYID(), pk->getTime());
+                        if (!haveISeenThisDisseminationBefore(key)) {
+                            reDisseminateMessage(pk);
+                        }
+                    }
                 }
-            }
-            else {
-                printInformation(myAddress, result, 1);
-                simulationRegisterDetectionTime(result);
-                stopSimulation();
+                else {
+                    printInformation(myAddress, result, 1);
+                    simulationRegisterDetectionTime(result);
+                    stopSimulation();
+                }
             }
             break;
         }
@@ -531,7 +538,7 @@ void App::createDisseminationMessage(int userXID, int userXSeqNum, int userYID, 
     cModule *mod = getParentModule()->getSubmodule("routing");
     Routing *myRouting = check_and_cast<Routing*>(mod);
     std::vector<int> neighbourNodeAddresses = myRouting->neighbourNodeAddresses;
-    RandomDistinctPicker *rand = new RandomDistinctPicker(0, neighbourNodeAddresses.size()-1, par("randomSeed"));
+    RandomDistinctPicker *rand = new RandomDistinctPicker(0, neighbourNodeAddresses.size() - 1, par("randomSeed"));
 
     for (int i = 0; i < neighbourNodeAddresses.size(); i++) {
 // User selection
@@ -548,6 +555,7 @@ void App::createDisseminationMessage(int userXID, int userXSeqNum, int userYID, 
         pk->setByteLength(packetLengthBytes->intValue());
         pk->setSrcAddr(myAddress);
         pk->setDestAddr(destAddress);
+        pk->setTime(SIMTIME_DBL(simTime()));
 
         pk->setPacketType(4);
 
@@ -560,6 +568,13 @@ void App::createDisseminationMessage(int userXID, int userXSeqNum, int userYID, 
         send(pk, "out");
     }
     delete rand;
+}
+bool App::haveISeenThisDisseminationBefore(std::string key)
+{
+    if (disseminationMessageSet.find(key) == disseminationMessageSet.end())
+        return false;
+    else
+        return true;
 }
 void App::reDisseminateMessage(Packet *pk)
 {

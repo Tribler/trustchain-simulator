@@ -129,6 +129,7 @@ private:
     //TrustChain Storage
     std::vector<TrustChainElement> trustChain; // This variable contains the personal chain
     std::vector<LogDatabaseElement> logDatabase; // This variable contains the chain knowledge received by the network
+    std::unordered_set<std::string> disseminationMessageSet;
 
 public:
     App();
@@ -154,6 +155,7 @@ protected:
     virtual void createDisseminationMessage(int userXID, int userXSeqNum, int userYID, int userYSeqNum, int transactionValue);
     virtual void reDisseminateMessage(Packet *pk);
     virtual void createBusyMessage(int destAddress);
+    virtual bool haveISeenThisDisseminationBefore(std::string key);
 
     virtual void createDirectChannel(int nodeId);
     virtual void closeDirectChannel();

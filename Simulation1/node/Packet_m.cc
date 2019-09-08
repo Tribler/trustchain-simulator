@@ -262,6 +262,7 @@ void Packet::copy(const Packet& other)
     this->userXSeqNum = other.userXSeqNum;
     this->userYID = other.userYID;
     this->userYSeqNum = other.userYSeqNum;
+    this->time = other.time;
 }
 
 void Packet::parsimPack(omnetpp::cCommBuffer *b) const
@@ -283,6 +284,7 @@ void Packet::parsimPack(omnetpp::cCommBuffer *b) const
     doParsimPacking(b,this->userXSeqNum);
     doParsimPacking(b,this->userYID);
     doParsimPacking(b,this->userYSeqNum);
+    doParsimPacking(b,this->time);
 }
 
 void Packet::parsimUnpack(omnetpp::cCommBuffer *b)
@@ -322,6 +324,7 @@ void Packet::parsimUnpack(omnetpp::cCommBuffer *b)
     doParsimUnpacking(b,this->userXSeqNum);
     doParsimUnpacking(b,this->userYID);
     doParsimUnpacking(b,this->userYSeqNum);
+    doParsimUnpacking(b,this->time);
 }
 
 int Packet::getSrcAddr() const
@@ -622,6 +625,16 @@ void Packet::setUserYSeqNum(int userYSeqNum)
     this->userYSeqNum = userYSeqNum;
 }
 
+double Packet::getTime() const
+{
+    return this->time;
+}
+
+void Packet::setTime(double time)
+{
+    this->time = time;
+}
+
 class PacketDescriptor : public omnetpp::cClassDescriptor
 {
   private:
@@ -640,6 +653,7 @@ class PacketDescriptor : public omnetpp::cClassDescriptor
         FIELD_userXSeqNum,
         FIELD_userYID,
         FIELD_userYSeqNum,
+        FIELD_time,
     };
   public:
     PacketDescriptor();
@@ -702,7 +716,7 @@ const char *PacketDescriptor::getProperty(const char *propertyname) const
 int PacketDescriptor::getFieldCount() const
 {
     omnetpp::cClassDescriptor *basedesc = getBaseClassDescriptor();
-    return basedesc ? 13+basedesc->getFieldCount() : 13;
+    return basedesc ? 14+basedesc->getFieldCount() : 14;
 }
 
 unsigned int PacketDescriptor::getFieldTypeFlags(int field) const
@@ -727,8 +741,9 @@ unsigned int PacketDescriptor::getFieldTypeFlags(int field) const
         FD_ISEDITABLE,    // FIELD_userXSeqNum
         FD_ISEDITABLE,    // FIELD_userYID
         FD_ISEDITABLE,    // FIELD_userYSeqNum
+        FD_ISEDITABLE,    // FIELD_time
     };
-    return (field >= 0 && field < 13) ? fieldTypeFlags[field] : 0;
+    return (field >= 0 && field < 14) ? fieldTypeFlags[field] : 0;
 }
 
 const char *PacketDescriptor::getFieldName(int field) const
@@ -753,8 +768,9 @@ const char *PacketDescriptor::getFieldName(int field) const
         "userXSeqNum",
         "userYID",
         "userYSeqNum",
+        "time",
     };
-    return (field >= 0 && field < 13) ? fieldNames[field] : nullptr;
+    return (field >= 0 && field < 14) ? fieldNames[field] : nullptr;
 }
 
 int PacketDescriptor::findField(const char *fieldName) const
@@ -774,6 +790,7 @@ int PacketDescriptor::findField(const char *fieldName) const
     if (fieldName[0] == 'u' && strcmp(fieldName, "userXSeqNum") == 0) return base+10;
     if (fieldName[0] == 'u' && strcmp(fieldName, "userYID") == 0) return base+11;
     if (fieldName[0] == 'u' && strcmp(fieldName, "userYSeqNum") == 0) return base+12;
+    if (fieldName[0] == 't' && strcmp(fieldName, "time") == 0) return base+13;
     return basedesc ? basedesc->findField(fieldName) : -1;
 }
 
@@ -799,8 +816,9 @@ const char *PacketDescriptor::getFieldTypeString(int field) const
         "int",    // FIELD_userXSeqNum
         "int",    // FIELD_userYID
         "int",    // FIELD_userYSeqNum
+        "double",    // FIELD_time
     };
-    return (field >= 0 && field < 13) ? fieldTypeStrings[field] : nullptr;
+    return (field >= 0 && field < 14) ? fieldTypeStrings[field] : nullptr;
 }
 
 const char **PacketDescriptor::getFieldPropertyNames(int field) const
@@ -864,6 +882,10 @@ const char **PacketDescriptor::getFieldPropertyNames(int field) const
             static const char *names[] = { "packetData",  nullptr };
             return names;
         }
+        case FIELD_time: {
+            static const char *names[] = { "packetData",  nullptr };
+            return names;
+        }
         default: return nullptr;
     }
 }
@@ -914,6 +936,9 @@ const char *PacketDescriptor::getFieldProperty(int field, const char *propertyna
             if (!strcmp(propertyname, "packetData")) return "";
             return nullptr;
         case FIELD_userYSeqNum:
+            if (!strcmp(propertyname, "packetData")) return "";
+            return nullptr;
+        case FIELD_time:
             if (!strcmp(propertyname, "packetData")) return "";
             return nullptr;
         default: return nullptr;
@@ -974,6 +999,7 @@ std::string PacketDescriptor::getFieldValueAsString(void *object, int field, int
         case FIELD_userXSeqNum: return long2string(pp->getUserXSeqNum());
         case FIELD_userYID: return long2string(pp->getUserYID());
         case FIELD_userYSeqNum: return long2string(pp->getUserYSeqNum());
+        case FIELD_time: return double2string(pp->getTime());
         default: return "";
     }
 }
@@ -1001,6 +1027,7 @@ bool PacketDescriptor::setFieldValueAsString(void *object, int field, int i, con
         case FIELD_userXSeqNum: pp->setUserXSeqNum(string2long(value)); return true;
         case FIELD_userYID: pp->setUserYID(string2long(value)); return true;
         case FIELD_userYSeqNum: pp->setUserYSeqNum(string2long(value)); return true;
+        case FIELD_time: pp->setTime(string2double(value)); return true;
         default: return false;
     }
 }
