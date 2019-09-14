@@ -1,0 +1,203 @@
+OMNeT++ Discrete Event Simulation  (C) 1992-2019 Andras Varga, OpenSim Ltd.
+Version: 5.5.1, build: 190613-08ba16f914, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from .:  7
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20190914-18:38:37-16383
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 1.5e-05s (0m 00s)   ev/sec=0
+
+<!> Evil node: #44 - starting transaction with #58 of value $8 Time: 74.589169695973 s
+
+
+<!> Evil node: #44 - starting transaction with #31 of value $4 Time: 74.999169695973 s
+
+
+<!> Evil node: #44 - completed transaction with #31 of value $4 Time: 76.767153476268 s
+
+
+<!> Evil node: #44 - starting transaction with #1 of value $2 Time: 76.769169695973 s
+
+
+<!> Node: #62 - detected double spending during chain verification done by: #44 Time: 78.733552496685 s
+
+
+<!> Simulation: evil node #44 delta detection time:  1.964382800712
+
+** Event #775560   t=78.733552496685   Elapsed: 0.947084s (0m 00s)   ev/sec=818902
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[62].app (id=1059), at t=78.733552496685s, event #775560
+
+Calling finish() at end of Run #0...
+undisposed object: (Packet) Net5.rte[62].app.#673 from-44-to-62 chain log -- check module destructor
+
+Preparing for running configuration General, run #1...
+Assigned runID=General-1-20190914-18:38:38-16383
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 3e-06s (0m 00s)   ev/sec=0
+
+<!> Evil node: #37 - starting transaction with #32 of value $189 Time: 88.139331153362 s
+
+
+<!> Evil node: #37 - completed transaction with #32 of value $189 Time: 90.124568872198 s
+
+
+<!> Evil node: #37 - starting transaction with #53 of value $79 Time: 90.129331153362 s
+
+
+<!> Evil node: #37 - completed transaction with #53 of value $79 Time: 91.904297167033 s
+
+
+<!> Node: #74 - detected double spending during dissemination verification done by: #37 Time: 91.9059638337 s
+
+
+<!> Simulation: evil node #37 delta detection time:  1.776632680338
+
+** Event #927458   t=91.9059638337   Elapsed: 1.31349s (0m 01s)   ev/sec=706104
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[74].app (id=1151), at t=91.9059638337s, event #927458
+
+Calling finish() at end of Run #1...
+undisposed object: (Packet) Net5.rte[74].app.#1478 from-53-to-74 dissemination -- check module destructor
+
+Preparing for running configuration General, run #2...
+Assigned runID=General-2-20190914-18:38:40-16383
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)   ev/sec=0
+
+<!> Evil node: #40 - starting transaction with #90 of value $15 Time: 87.310859810096 s
+
+
+<!> Evil node: #40 - completed transaction with #90 of value $15 Time: 89.410906115674 s
+
+
+<!> Evil node: #40 - starting transaction with #19 of value $22 Time: 89.420859810096 s
+
+
+<!> Node: #19 - detected double spending during chain verification done by: #40 Time: 90.648625062031 s
+
+
+<!> Simulation: evil node #40 delta detection time:  1.227765251935
+
+** Event #894032   t=90.648625062031   Elapsed: 1.22879s (0m 01s)   ev/sec=727576
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[19].app (id=747), at t=90.648625062031s, event #894032
+
+Calling finish() at end of Run #2...
+undisposed object: (Packet) Net5.rte[19].app.#1111 from-37-to-19 chain log from anonmizer -- check module destructor
+
+Preparing for running configuration General, run #3...
+Assigned runID=General-3-20190914-18:38:41-16383
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)   ev/sec=0
+
+<!> Evil node: #24 - starting transaction with #26 of value $23 Time: 69.337321674686 s
+
+
+<!> Evil node: #24 - completed transaction with #26 of value $23 Time: 71.600008751937 s
+
+
+<!> Evil node: #24 - starting transaction with #85 of value $9 Time: 71.607321674686 s
+
+
+<!> Node: #10 - detected double spending during chain verification done by: #24 Time: 73.664493222584 s
+
+
+<!> Simulation: evil node #24 delta detection time:  2.057171547898
+
+** Event #716400   t=73.664493222584   Elapsed: 0.896015s (0m 00s)   ev/sec=799544
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[10].app (id=686), at t=73.664493222584s, event #716400
+
+Calling finish() at end of Run #3...
+undisposed object: (Packet) Net5.rte[10].app.#466 from-24-to-10 chain log -- check module destructor
+
+Preparing for running configuration General, run #4...
+Assigned runID=General-4-20190914-18:38:42-16383
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)   ev/sec=0
+
+<!> Evil node: #46 - starting transaction with #86 of value $95 Time: 65.021401059348 s
+
+
+<!> Evil node: #46 - starting transaction with #2 of value $128 Time: 65.841401059348 s
+
+
+<!> Evil node: #46 - starting transaction with #95 of value $123 Time: 66.861401059348 s
+
+
+<!> Evil node: #46 - completed transaction with #95 of value $123 Time: 68.980032231072 s
+
+
+<!> Evil node: #46 - starting transaction with #69 of value $18 Time: 68.981401059348 s
+
+
+<!> Evil node: #46 - completed transaction with #69 of value $18 Time: 71.110580449685 s
+
+
+<!> Node: #51 - detected double spending during dissemination verification done by: #46 Time: 71.213913783019 s
+
+
+<!> Simulation: evil node #46 delta detection time:  2.232512723671
+
+** Event #670777   t=71.213913783019   Elapsed: 0.822312s (0m 00s)   ev/sec=815724
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[51].app (id=976), at t=71.213913783019s, event #670777
+
+Calling finish() at end of Run #4...
+undisposed object: (Packet) Net5.rte[51].app.#1107 from-69-to-51 dissemination -- check module destructor
+
+Preparing for running configuration General, run #5...
+Assigned runID=General-5-20190914-18:38:43-16383
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-06s (0m 00s)   ev/sec=0
+
+<!> Evil node: #99 - starting transaction with #16 of value $21 Time: 73.699622554705 s
+
+
+<!> Evil node: #99 - starting transaction with #2 of value $25 Time: 74.319622554705 s
+
+
+<!> Evil node: #99 - completed transaction with #2 of value $25 Time: 77.037383601247 s
+
+
+<!> Evil node: #99 - starting transaction with #15 of value $9 Time: 77.039622554705 s
+
+
+<!> Node: #87 - detected double spending during chain verification done by: #99 Time: 79.658780375152 s
+
+
+<!> Simulation: evil node #99 delta detection time:  2.619157820447
+
+** Event #769862   t=79.658780375152   Elapsed: 1.01462s (0m 01s)   ev/sec=758770
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[87].app (id=1236), at t=79.658780375152s, event #769862
+
+Calling finish() at end of Run #5...
+undisposed object: (Packet) Net5.rte[87].app.#305 from-99-to-87 chain log -- check module destructor
+
+Run statistics: total 6, successful 6
+
+End.
