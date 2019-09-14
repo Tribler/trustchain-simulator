@@ -20,8 +20,7 @@ public class SimulationsResultTypeCounter {
 		try {
 			int disseminationDetection = 0, chainDetection = 0, numberOfEvilNodes = 0;
 
-			// FileReader input = new FileReader(args[0]);
-			FileReader input = new FileReader("input.txt");
+			FileReader input = new FileReader(args[0]);
 			BufferedReader inputbufferizzato = new BufferedReader(input);
 			String linea;
 			while ((linea = inputbufferizzato.readLine()) != null) {
