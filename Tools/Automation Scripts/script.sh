@@ -17,5 +17,5 @@ make MODE=release -j 8
 chmod 755 Simulation1
 
 cd ../../../
-sbatch clusterJob.job $1
+sbatch -J $1 clusterJob.job $1
 squeue
