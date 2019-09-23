@@ -25,7 +25,6 @@ network Net5
         }
     connections:
 
-    Number of nodes: 500
   rte[0].port++ <--> C <--> rte[165].port++;
   rte[0].port++ <--> C <--> rte[253].port++;
   rte[0].port++ <--> C <--> rte[335].port++;
