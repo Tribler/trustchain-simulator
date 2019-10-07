@@ -18,28 +18,35 @@ public class SimulationsResultTypeCounter {
 
 		// File reading -> filtering -> console output
 		try {
-			int disseminationDetection = 0, chainDetection = 0, numberOfEvilNodes = 0;
+			
+			int disseminationDetection = 0, chainDetection = 0;
+			int transactionCounter = 0;
 
 			FileReader input = new FileReader(args[0]);
 			BufferedReader inputbufferizzato = new BufferedReader(input);
 			String linea;
 			while ((linea = inputbufferizzato.readLine()) != null) {
-				if (linea.contains("detected double spending during chain")) {
-					chainDetection++;
+
+				if (linea.contains("Preparing for running configuration")) {
+					transactionCounter=0;
 				}
-				if (linea.contains("detected double spending during dissemination")) {
-					disseminationDetection++;
+				
+				
+				if (linea.contains("completed transaction with")) {
+					transactionCounter++;
 				}
-				if (linea.contains("delta detection time")) {
-					numberOfEvilNodes++;
+				
+				if (linea.contains("Calling finish() at end")) {
+					if(transactionCounter ==1){
+						chainDetection++;
+					}else{
+						disseminationDetection++;
+					}
+				transactionCounter = 0;
 				}
+			
 			}
 			input.close();
-
-			if (chainDetection + disseminationDetection > numberOfEvilNodes) {
-				int diff = chainDetection + disseminationDetection - numberOfEvilNodes;
-				chainDetection -= diff;
-			}
 
 			System.out.println(chainDetection);
 			System.out.println(disseminationDetection);
