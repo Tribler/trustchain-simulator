@@ -1,5 +1,5 @@
 # Trustchain Simulator
-The programs present in this repository are used simulate the Trustchain technology described in this [paper](https://www.sciencedirect.com/science/article/pii/S0167739X17318988) and are built with the [OMNeT++](https://omnetpp.org/) simulation framework.
+The programs present in this repository are used to simulate the Trustchain technology described in this [paper](https://www.sciencedirect.com/science/article/pii/S0167739X17318988) and are built with the [OMNeT++](https://omnetpp.org/) simulation framework.
 
 
 ## Project Goal
