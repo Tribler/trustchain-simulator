@@ -52,10 +52,11 @@ With this project, I want to approach one of the biggest weaknesses on Trustchai
 
 [Trustchain article](https://www.sciencedirect.com/science/article/pii/S0167739X17318988)
 
-[Thesis description doc](https://www.overleaf.com/read/mqxnswyjzcbm)
+[Project motivation doc](https://www.overleaf.com/read/mqxnswyjzcbm)
 
 [Attack and malicious node definition doc](https://www.overleaf.com/read/wmnnttvdggzb)
 
+[Thesis doc]()
 
 
 
