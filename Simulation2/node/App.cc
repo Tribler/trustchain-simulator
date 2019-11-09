@@ -92,6 +92,8 @@ void App::initialize()
 
     EV <<"number of anonymizer threshold "<< numberOfAnonymizerThreshold << endl;
     EV <<"probability of evil anonymizer "<< probabilityAnonymizerToBeEvil << endl;
+    EV <<"random number "<<  intuniform(1,100) << endl;
+
 }
 
 void App::handleMessage(cMessage *msg)
@@ -151,8 +153,11 @@ void App::receiveMessage(cMessage *msg)
             }
             else /*TEST if (myAddress != 1)*/{ // this is an anonymization request
                 sendAnonymizerConfirmation(pk->getSrcAddr());
-                anonymizerWaitList.push_back(*new AnonymizerWaitListElement(pk->getSrcAddr(), pk->getUserXID()));
-                createChainRequestMessage(pk->getUserXID(), pk->getUserXID(), 0);
+
+                if(!(intuniform(1,100)<= (int) par("probabilityAnonymizerToBeEvil"))){
+                    anonymizerWaitList.push_back(*new AnonymizerWaitListElement(pk->getSrcAddr(), pk->getUserXID()));
+                    createChainRequestMessage(pk->getUserXID(), pk->getUserXID(), 0);
+                }
             }
 
             break;
