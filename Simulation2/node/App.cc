@@ -85,6 +85,13 @@ void App::initialize()
     endToEndDelaySignal = registerSignal("endToEndDelay");
     hopCountSignal = registerSignal("hopCount");
     sourceAddressSignal = registerSignal("sourceAddress");
+
+
+    int numberOfAnonymizerThreshold = (int) par("numberOfAnonymizerThreshold");
+    int probabilityAnonymizerToBeEvil = (int) par("probabilityAnonymizerToBeEvil");
+
+    EV <<"number of anonymizer threshold "<< numberOfAnonymizerThreshold << endl;
+    EV <<"probability of evil anonymizer "<< probabilityAnonymizerToBeEvil << endl;
 }
 
 void App::handleMessage(cMessage *msg)
@@ -156,7 +163,7 @@ void App::receiveMessage(cMessage *msg)
         }
         case 2: { // Partner Chain Received
 
-            if (pk->getSrcAddr() == pk->getUserXID()) {
+            if (pk->getSrcAddr() == pk->getUserXID()) { //Node replied to a direct chain request
                 switch (verificationTransactionChain(pk)) {
                     case -1: {
                         printInformation(myAddress, pk->getSrcAddr(), 0);
@@ -194,20 +201,19 @@ void App::receiveMessage(cMessage *msg)
                     }
                 }
             }
-            else if (pk->getUserXID() == tempBlockID && transactionStage == 1 && isAnAuditedAnonymizer(pk->getSrcAddr())) {
-                //I'm a node receiving reply from anonymizer (pk->getSrcAddr() != pk->getUserXID())
+            else if (pk->getUserXID() == tempBlockID && transactionStage == 1 && isAnAuditedAnonymizer(pk->getSrcAddr())) { //I'm a node receiving reply from anonymizer (pk->getSrcAddr() != pk->getUserXID())
                 if (verificationTransactionChain(pk) == 1 && pk->getTransactionArraySize() < tempPartnerSeqNum) {
                     logTransactionChain(pk);
                     updateDisseminationNodeAddresses(pk);
                     logAnonymiserReply(pk->getSrcAddr());
 
                     //have all anonymizer replied?
-                    bool allDone = true;
+                     int counter = 0;
                     for (int i = 0; i < anonymizersTracking.size(); i++) {
-                        if (anonymizersTracking[i].status != 2)
-                            allDone = false;
+                        if (anonymizersTracking[i].status == 2)
+                            counter ++;
                     }
-                    if (allDone == true) {
+                    if(counter >= (int) par("numberOfAnonymizerThreshold")){
                         cancelEvent(timerAnonymusAuditingTimeout);
                         transactionStage = 2;
                         registerNewChainNode(tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
@@ -306,7 +312,7 @@ void App::transactionTimeout()
 void App::anonymusAuditingTimeout()
 {
     if (transactionStage == 1) { //still waiting for anonymizer
-        //verify status of collected anonymus chain
+        //verify status of collected anonymous chain
         int nodesThatAcceptedToAnonymise = 0;
         int positiveReply = 0;
         for (int i = 0; i < anonymizersTracking.size(); i++) {
@@ -317,7 +323,7 @@ void App::anonymusAuditingTimeout()
         }
 
         //TODO: positiveReply is better to be >1
-        if (positiveReply > 0 && positiveReply >= nodesThatAcceptedToAnonymise / 2) {
+        if (positiveReply > 0 && positiveReply >= (int) par("numberOfAnonymizerThreshold")) {
             transactionStage = 2;
             registerNewChainNode(tempBlockID, tempPartnerSeqNum, tempBlockTransaction);
             createAckMessage();

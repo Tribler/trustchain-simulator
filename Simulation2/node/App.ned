@@ -12,6 +12,8 @@ simple App like IApp
         int evilNumberOfSleepingTransaction;
         int evilNumberOfTransaction;
         int numberOfAnonymizer;
+        int numberOfAnonymizerThreshold;
+        int probabilityAnonymizerToBeEvil;
         string evilNodeIds;
         int randomSeed = intuniform(0, 1000000);
         volatile double sendIaTimeInit @unit(s);

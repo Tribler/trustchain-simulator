@@ -65,3 +65,4 @@ Simulation2/out/clang-release/node/L2Queue.o.d
 Simulation2/out/clang-release/node/Packet_m.h.d
 Simulation2/out/clang-release/node/Packet_m.o.d
 Simulation2/out/clang-release/node/Routing.o.d
+*.d
