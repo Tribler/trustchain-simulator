@@ -241,6 +241,7 @@ protected:
     virtual void removeNodeMissingTransaction(int nodeId);
 
     //Data logging
+    virtual void printInformationNodeAttackedByAnonymizer();
     virtual void simulationRegisterTransactionTime(int idNode);
     virtual void simulationRegisterDetectionTime(int idNode);
     virtual void stopSimulation();

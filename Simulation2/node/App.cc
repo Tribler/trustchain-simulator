@@ -339,6 +339,7 @@ void App::anonymusAuditingTimeout()
         }
         else {
             //transaction not good (NOT POSITVE OR ENOUGH REPLY)
+            printInformationNodeAttackedByAnonymizer();
             transactionStage = 0;
             tempBlockID = -1;
             tempBlockTransaction = 0;
@@ -1019,6 +1020,13 @@ bool App::itIsAlreadyBeenAttacked(int nodeId)    // The evil node can check here
 }
 
 //SIMULATION
+void App::printInformationNodeAttackedByAnonymizer()
+{
+    char text[128];
+    sprintf(text, "Good node reported as evil - anonymizer dropping message - Time: %s s", SIMTIME_STR(simTime()));
+    EV << text << endl;
+    getSimulation()->getActiveEnvir()->alert(text);
+}
 void App::simulationRegisterTransactionTime(int nodeId)    // Here are recorded the transaction starting times for all evil nodes
 {
     int i = 0, alreadyRegistered = 0;
