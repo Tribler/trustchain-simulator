@@ -85,15 +85,6 @@ void App::initialize()
     endToEndDelaySignal = registerSignal("endToEndDelay");
     hopCountSignal = registerSignal("hopCount");
     sourceAddressSignal = registerSignal("sourceAddress");
-
-
-    int numberOfAnonymizerThreshold = (int) par("numberOfAnonymizerThreshold");
-    int probabilityAnonymizerToBeEvil = (int) par("probabilityAnonymizerToBeEvil");
-
-    EV <<"number of anonymizer threshold "<< numberOfAnonymizerThreshold << endl;
-    EV <<"probability of evil anonymizer "<< probabilityAnonymizerToBeEvil << endl;
-    EV <<"random number "<<  intuniform(1,100) << endl;
-
 }
 
 void App::handleMessage(cMessage *msg)
@@ -136,6 +127,13 @@ void App::receiveMessage(cMessage *msg)
             if (isNodeEvil() && chainTotalValue != 0) { //ignore all the incoming transactions
                 createBusyMessage(pk->getSrcAddr());
                 break;
+            }
+
+            if((long) par("transaction_limit") > 0 ){
+                numberOfTransactionCounter++;
+                if(numberOfTransactionCounter > (long) par("transaction_limit")){
+                    endSimulation();
+                }
             }
 
             tempBlockID = pk->getSrcAddr();

@@ -134,6 +134,8 @@ private:
 
 static std::vector<SimulationTiming> simulationTiming; // This variable contains the evil nodes last transaction and detection timing
 
+static long numberOfTransactionCounter= 0;
+
 class App : public omnetpp::cSimpleModule
 {
 private:
