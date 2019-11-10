@@ -1,53 +1,8 @@
-OMNeT++ Discrete Event Simulation  (C) 1992-2019 Andras Varga, OpenSim Ltd.
-Version: 5.5.1, build: 190613-08ba16f914, edition: Academic Public License -- NOT FOR COMMERCIAL USE
-See the license for distribution terms and warranty disclaimer
-
-Setting up Cmdenv...
-
-Loading NED files from .:  7
-
-Preparing for running configuration General, run #0...
-Assigned runID=General-0-20191110-19:30:31-11336
-Setting up network "networks.Net5"...
-Initializing...
-
-Running simulation...
-** Event #0   t=0   Elapsed: 3e-006s (0m 00s)  0% completed  (0% total)   ev/sec=0
-
-
-Good node reported as evil
-Good node reported as evil
-Good node reported as evil
-Good node reported as evil
-Good node reported as evil
-Good node reported as evil
-
-
-Calling finish() at end
-
-OMNeT++ Discrete Event Simulation  (C) 1992-2019 Andras Varga, OpenSim Ltd.
-Version: 5.5.1, build: 190613-08ba16f914, edition: Academic Public License -- NOT FOR COMMERCIAL USE
-See the license for distribution terms and warranty disclaimer
-
-Setting up Cmdenv...
-
-Loading NED files from .:  7
-
-Preparing for running configuration General, run #0...
-Assigned runID=General-0-20191110-19:30:31-11336
-Setting up network "networks.Net5"...
-Initializing...
-
-Running simulation...
-** Event #0   t=0   Elapsed: 3e-006s (0m 00s)  0% completed  (0% total)   ev/sec=0
-
-
-Good node reported as evil
-Good node reported as evil
-Good node reported as evil
-Good node reported as evil
-Good node reported as evil
-Good node reported as evil
-
-
-Calling finish() at end
+Preparing for running configuration 
+ Good node reported as evil 
+ Calling finish() at end 
+ Preparing for running configuration  
+ Calling finish() at end 
+Preparing for running configuration 
+ Good node reported as evil 
+ Calling finish() at end 
