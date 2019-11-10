@@ -132,6 +132,7 @@ void App::receiveMessage(cMessage *msg)
             if((long) par("transaction_limit") > 0 ){
                 numberOfTransactionCounter++;
                 if(numberOfTransactionCounter > (long) par("transaction_limit")){
+                    numberOfTransactionCounter=0;
                     endSimulation();
                 }
             }
