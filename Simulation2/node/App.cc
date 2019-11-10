@@ -306,9 +306,6 @@ void App::receiveMessage(cMessage *msg)
 //TIMEOUT
 void App::transactionTimeout()
 {
-    char text[128];
-    sprintf(text, "im node: #%d life is good and i hate %d for not concluding the transaction Time: %s s", myAddress, tempBlockID, SIMTIME_STR(simTime()));
-    getSimulation()->getActiveEnvir()->alert(text);
     tempBlockID = -1;
     tempBlockTransaction = 0;
 }
