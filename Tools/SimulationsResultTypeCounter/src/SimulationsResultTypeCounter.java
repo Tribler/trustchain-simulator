@@ -52,7 +52,7 @@ public class SimulationsResultTypeCounter {
 			System.out.println(disseminationDetection);
 
 		} catch (Exception e) {
-			System.out.println("Simulation Results Extractor: The input file can not be found or it is corrupted");
+			System.out.println("Simulation Results Type Counter: The input file can not be found or it is corrupted");
 			System.exit(0);
 		}
 	}
