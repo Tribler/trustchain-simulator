@@ -1,0 +1,396 @@
+OMNeT++ Discrete Event Simulation  (C) 1992-2019 Andras Varga, OpenSim Ltd.
+Version: 5.5.1, build: 190613-08ba16f914, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Cmdenv...
+
+Loading NED files from .:  7
+
+Preparing for running configuration General, run #0...
+Assigned runID=General-0-20191111-11:43:14-1520
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-006s (0m 00s)   ev/sec=0
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 138.889293601668 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 176.632023073901 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 180.355249497505 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 259.427887759804 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 265.560732612787 s
+
+** Event #62482671   t=289.366973714356   Elapsed: -1148.63s (-19m -9s)   ev/sec=19858.9
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[251].app (id=5747), at t=289.366973714356s, event #62482671
+
+Calling finish() at end of Run #0...
+undisposed object: (Packet) Net5.rte[251].app.#16578 from-220-to-251 $36 -- check module destructor
+
+Preparing for running configuration General, run #1...
+Assigned runID=General-1-20191111-11:54:57-1520
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-006s (0m 00s)   ev/sec=0
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 120.319421705857 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 182.020155160421 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 227.01958594581 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 254.798298901579 s
+
+** Event #62084161   t=289.653914476215   Elapsed: 707.747s (11m 47s)   ev/sec=87720.9
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[152].app (id=4922), at t=289.653914476215s, event #62084161
+
+Calling finish() at end of Run #1...
+undisposed object: (Packet) Net5.rte[152].app.#13281 from-298-to-152 $233 -- check module destructor
+
+Preparing for running configuration General, run #2...
+Assigned runID=General-2-20191111-12:06:54-1520
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-006s (0m 00s)   ev/sec=0
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 91.768021234378 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 195.288278597942 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 252.762372027783 s
+
+** Event #62450846   t=289.507391286381   Elapsed: 725.204s (12m 05s)   ev/sec=86114.8
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[4].app (id=3694), at t=289.507391286381s, event #62450846
+
+Calling finish() at end of Run #2...
+undisposed object: (Packet) Net5.rte[4].app.#23960 from-339-to-4 $221 -- check module destructor
+
+Preparing for running configuration General, run #3...
+Assigned runID=General-3-20191111-12:19:12-1520
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-006s (0m 00s)   ev/sec=0
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 114.798699771121 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 196.519579142032 s
+
+** Event #62559909   t=288.710437238613   Elapsed: -1114.45s (-18m -35s)   ev/sec=19669.7
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[112].app (id=4577), at t=288.710437238613s, event #62559909
+
+Calling finish() at end of Run #3...
+undisposed object: (Packet) Net5.rte[112].app.#14613 from-414-to-112 $14 -- check module destructor
+
+Preparing for running configuration General, run #4...
+Assigned runID=General-4-20191111-12:31:32-1520
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-006s (0m 00s)   ev/sec=0
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 75.578190243969 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 143.640783969014 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 157.724754173034 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 178.478867686852 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 191.848025802458 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 220.890653723318 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 230.81710221369 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 289.78761774531 s
+
+** Event #62761650   t=293.333690479332   Elapsed: 720.686s (12m 00s)   ev/sec=87086
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[463].app (id=7489), at t=293.333690479332s, event #62761650
+
+Calling finish() at end of Run #4...
+undisposed object: (Packet) Net5.rte[463].app.#9096 from-300-to-463 $63 -- check module destructor
+
+Preparing for running configuration General, run #5...
+Assigned runID=General-5-20191111-12:43:43-1520
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-006s (0m 00s)   ev/sec=0
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 94.138001418971 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 181.474295293147 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 181.906775164817 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 194.438994515285 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 202.436876654091 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 250.605659642458 s
+
+** Event #62531936   t=289.258965086258   Elapsed: -1134.02s (-18m -55s)   ev/sec=19782.7
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[15].app (id=3792), at t=289.258965086258s, event #62531936
+
+Calling finish() at end of Run #5...
+undisposed object: (Packet) Net5.rte[15].app.#17703 from-19-to-15 $12 -- check module destructor
+
+Preparing for running configuration General, run #6...
+Assigned runID=General-6-20191111-12:55:45-1520
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-006s (0m 00s)   ev/sec=0
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 45.130420724661 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 53.947764582765 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 78.252462293454 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 92.232978255187 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 104.749568644178 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 127.039449415236 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 178.377723416843 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 240.655856649459 s
+
+** Event #62656242   t=290.373714213559   Elapsed: 734.89s (12m 14s)   ev/sec=85259.3
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[354].app (id=6594), at t=290.373714213559s, event #62656242
+
+Calling finish() at end of Run #6...
+undisposed object: (Packet) Net5.rte[354].app.#13830 from-146-to-354 $2 -- check module destructor
+
+Preparing for running configuration General, run #7...
+Assigned runID=General-7-20191111-13:08:10-1520
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-006s (0m 00s)   ev/sec=0
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 55.132933697229 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 87.491524051941 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 170.762888369416 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 204.756310118527 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 223.722837521265 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 274.540019028786 s
+
+** Event #62194336   t=289.273991469593   Elapsed: 754.26s (12m 34s)   ev/sec=82457.4
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[244].app (id=5684), at t=289.273991469593s, event #62194336
+
+Calling finish() at end of Run #7...
+undisposed object: (Packet) Net5.rte[244].app.#13128 from-345-to-244 $120 -- check module destructor
+
+Preparing for running configuration General, run #8...
+Assigned runID=General-8-20191111-13:20:56-1520
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-006s (0m 00s)   ev/sec=0
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 140.76322813292 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 145.713424761846 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 163.722353733312 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 187.00244250328 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 190.54758526122 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 237.553357875342 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 256.229534458903 s
+
+** Event #62545053   t=290.21915422606   Elapsed: -1123.58s (-18m -44s)   ev/sec=19721.7
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[25].app (id=3895), at t=290.21915422606s, event #62545053
+
+Calling finish() at end of Run #8...
+undisposed object: (Packet) Net5.rte[25].app.#13193 from-343-to-25 $5 -- check module destructor
+
+Preparing for running configuration General, run #9...
+Assigned runID=General-9-20191111-13:33:08-1520
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-006s (0m 00s)   ev/sec=0
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 50.158936508299 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 68.102763195122 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 106.18987280067 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 114.316042157288 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 118.200573925559 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 178.536737113524 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 262.27872669973 s
+
+** Event #62491873   t=290.15062041471   Elapsed: 716.323s (11m 56s)   ev/sec=87239.7
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[241].app (id=5650), at t=290.15062041471s, event #62491873
+
+Calling finish() at end of Run #9...
+undisposed object: (Packet) Net5.rte[241].app.#11042 from-127-to-241 $1 -- check module destructor
+
+Preparing for running configuration General, run #10...
+Assigned runID=General-10-20191111-13:45:15-1520
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-006s (0m 00s)   ev/sec=0
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 88.685605775532 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 132.610694117312 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 196.911203331245 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 198.498177955894 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 201.777131205957 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 212.7363261651 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 241.212146278405 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 265.679501641341 s
+
+** Event #62776676   t=293.646802521611   Elapsed: -1124.31s (-18m -45s)   ev/sec=19799.2
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[391].app (id=6907), at t=293.646802521611s, event #62776676
+
+Calling finish() at end of Run #10...
+undisposed object: (Packet) Net5.rte[391].app.#17865 from-214-to-391 $68 -- check module destructor
+
+Preparing for running configuration General, run #11...
+Assigned runID=General-11-20191111-13:57:28-1520
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 5e-006s (0m 00s)   ev/sec=0
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 101.126676881753 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 118.697049833202 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 158.034742398586 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 181.839815824924 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 200.039262472121 s
+
+** Event #62352598   t=290.015456354914   Elapsed: 721.796s (12m 01s)   ev/sec=86385.3
+
+<!> Simulation stopped with endSimulation() -- in module (App) Net5.rte[372].app (id=6745), at t=290.015456354914s, event #62352598
+
+Calling finish() at end of Run #11...
+undisposed object: (Packet) Net5.rte[372].app.#19043 from-313-to-372 $24 -- check module destructor
+
+Preparing for running configuration General, run #12...
+Assigned runID=General-12-20191111-14:09:41-1520
+Setting up network "networks.Net5"...
+Initializing...
+
+Running simulation...
+** Event #0   t=0   Elapsed: 4e-006s (0m 00s)   ev/sec=0
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 81.241646062982 s
+
+
+<!> Good node reported as evil - anonymizer dropping message - Time: 159.425671614507 s
+
