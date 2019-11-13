@@ -12,7 +12,10 @@ simple App like IApp
         int evilNumberOfSleepingTransaction;
         int evilNumberOfTransaction;
         int numberOfAnonymizer;
+        int numberOfAnonymizerThreshold;
+        int probabilityAnonymizerToBeEvil;
         string evilNodeIds;
+        int transaction_limit;
         int randomSeed = intuniform(0, 1000000);
         volatile double sendIaTimeInit @unit(s);
         volatile double sendIaTime @unit(s) = default(exponential(1s)); // time between generating packets
