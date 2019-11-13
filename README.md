@@ -45,7 +45,7 @@ With this project, I want to approach one of the biggest weaknesses on Trustchai
 - [x] Update the standard implementation with new defence system
 - [x] Test simulator in different scenarios and analyse data
 - [x] Compare data of proposed solution/s with current one
-- [] Graduate
+- [ ] Graduate
 
 
 
